@@ -6,3 +6,5 @@ __pycache__/
 .venv/
 venv/
 .idea/
+auto_settings.json
+backtest_results.csv
