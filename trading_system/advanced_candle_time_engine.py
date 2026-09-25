@@ -70,7 +70,7 @@ CONTEXT_FEATURES = [
 class AdvancedConfig:
     window: int = 20                 # candles per pattern
     top_matches: int = 60            # K nearest neighbours
-    horizon: int = 30                # bars allowed for the trade to hit TP or SL
+    horizon: int = 60                # bars allowed for the trade to hit TP or SL
     atr_period: int = 14
     level_lookback: int = 50         # bars used for rolling support / resistance
     level_distance_atr: float = 1.0  # N-distance (in ATR) for Time-to-Level
@@ -80,9 +80,11 @@ class AdvancedConfig:
     slow_velocity_span: int = 20
     sl_atr_mult: float = 1.5
     reward_risk: float = 2.0         # TP = SL * reward_risk
-    min_sl_pips: float = 5.0         # floor so SL is never inside the spread noise
+    min_sl_pips: float = 2.0         # absolute SL floor in pips
+    min_sl_spread_mult: float = 4.0  # SL is never smaller than 4x the spread (spread would eat the trade)
     min_edge: float = 0.10           # probability required above break-even
     min_matches: int = 20
+    min_resolved: int = 15           # matches that must actually hit TP or SL (not time out)
     structure_weight: float = 1.0
     time_weight: float = 1.5         # extra weight on the time-regulation context
     recency_weight_min: float = 0.5  # oldest candle in the window weighted 0.5, newest 1.0
@@ -100,6 +102,8 @@ class AdvancedSignal:
     tp_pips: float
     matches_used: int
     avg_match_distance: float
+    resolved_matches: int                # matches that hit TP or SL inside the horizon
+    timeout_rate: float                  # % of matches that hit neither (ignored in the probability)
     expected_bars_to_outcome: float
     expected_seconds_to_outcome: float
     velocity_state: str                  # "ACCELERATING", "DECELERATING", "STEADY"
@@ -344,8 +348,9 @@ def simulate_barrier_outcome(
 ) -> tuple[bool, int, bool, int]:
     """
     Replays bars t+1 .. t+horizon (bid prices) for a BUY and a SELL opened at close[t].
-    Conservative: if TP and SL fall inside the same bar, the trade is a loss. Timeout = loss.
-    Returns (buy_win, buy_bars, sell_win, sell_bars).
+    Conservative: if TP and SL fall inside the same bar, the trade is a loss.
+    Returns (buy_win, buy_resolved, buy_bars, sell_win, sell_resolved, sell_bars).
+    *_resolved is False when neither TP nor SL was reached inside the horizon (timeout).
     """
     fh = high[t + 1: t + 1 + horizon]
     fl = low[t + 1: t + 1 + horizon]
@@ -360,15 +365,17 @@ def simulate_barrier_outcome(
     b_tp = first(fh >= ask_entry + tp_dist)
     b_sl = first(fl <= ask_entry - sl_dist)
     buy_win = b_tp < b_sl and b_tp <= n
+    buy_resolved = min(b_tp, b_sl) < n
     buy_bars = min(b_tp, b_sl, n) + 1
 
     # SELL fills at bid, closes on ask = bid + spread
     s_tp = first(fl + spread <= entry_bid - tp_dist)
     s_sl = first(fh + spread >= entry_bid + sl_dist)
     sell_win = s_tp < s_sl and s_tp <= n
+    sell_resolved = min(s_tp, s_sl) < n
     sell_bars = min(s_tp, s_sl, n) + 1
 
-    return buy_win, buy_bars, sell_win, sell_bars
+    return buy_win, buy_resolved, buy_bars, sell_win, sell_resolved, sell_bars
 
 
 def predict_advanced(
@@ -418,37 +425,50 @@ def predict_advanced(
     top = np.argpartition(distances, k - 1)[:k]
     top = top[np.argsort(distances[top])]
 
-    min_sl_price = cfg.min_sl_pips * pip_size
-    weights, buy_wins, sell_wins, buy_bars, sell_bars = [], [], [], [], []
+    min_sl_price = max(cfg.min_sl_pips * pip_size, cfg.min_sl_spread_mult * spread_price)
+    weights, buy_wins, sell_wins, buy_res, sell_res, buy_bars, sell_bars = [], [], [], [], [], [], []
     for j in top:
         t = int(cand_idx[j])
         sl_d = max(cfg.sl_atr_mult * atr[t], min_sl_price)
         tp_d = sl_d * cfg.reward_risk
-        bw, bb, sw, sb = simulate_barrier_outcome(h, l, c[t], t, cfg.horizon, sl_d, tp_d, spread_price)
+        bw, br, bb, sw, sr, sb = simulate_barrier_outcome(h, l, c[t], t, cfg.horizon, sl_d, tp_d, spread_price)
         weights.append(1.0 / (distances[j] + 1e-9))
         buy_wins.append(bw)
         sell_wins.append(sw)
+        buy_res.append(br)
+        sell_res.append(sr)
         buy_bars.append(bb)
         sell_bars.append(sb)
 
     w = np.asarray(weights)
     w = w / w.sum()
-    buy_prob = float(np.dot(w, buy_wins)) * 100
-    sell_prob = float(np.dot(w, sell_wins)) * 100
+
+    # Probability = TP-first among the matches that were decided (TP or SL hit).
+    # Matches that timed out say nothing about direction, so they are left out.
+    def resolved_prob(wins: list, resolved: list) -> tuple[float, int]:
+        mask = np.asarray(resolved, dtype=bool)
+        if not mask.any():
+            return 0.0, 0
+        return float(np.dot(w[mask], np.asarray(wins)[mask]) / w[mask].sum()) * 100, int(mask.sum())
+
+    buy_prob, buy_resolved = resolved_prob(buy_wins, buy_res)
+    sell_prob, sell_resolved = resolved_prob(sell_wins, sell_res)
 
     breakeven = 100.0 / (1.0 + cfg.reward_risk)
     required = breakeven + cfg.min_edge * 100
 
     if k < cfg.min_matches:
         signal, prob = "NEUTRAL", max(buy_prob, sell_prob)
-    elif buy_prob >= required and buy_prob > sell_prob:
+    elif buy_prob >= required and buy_prob > sell_prob and buy_resolved >= cfg.min_resolved:
         signal, prob = "BUY", buy_prob
-    elif sell_prob >= required and sell_prob > buy_prob:
+    elif sell_prob >= required and sell_prob > buy_prob and sell_resolved >= cfg.min_resolved:
         signal, prob = "SELL", sell_prob
     else:
         signal, prob = "NEUTRAL", max(buy_prob, sell_prob)
 
     exp_bars = float(np.dot(w, sell_bars if signal == "SELL" else buy_bars))
+    side_resolved = sell_res if signal == "SELL" else buy_res
+    resolved_count = sell_resolved if signal == "SELL" else buy_resolved
 
     # Current trade sizing (same rule used in the historical replay)
     sl_now = max(cfg.sl_atr_mult * atr[last], min_sl_price)
@@ -476,6 +496,8 @@ def predict_advanced(
         tp_pips=round(tp_now / pip_size, 1),
         matches_used=int(k),
         avg_match_distance=round(float(distances[top].mean()), 4),
+        resolved_matches=resolved_count,
+        timeout_rate=round((1 - float(np.mean(side_resolved))) * 100, 1),
         expected_bars_to_outcome=round(exp_bars, 1),
         expected_seconds_to_outcome=round(exp_bars * bar_seconds, 0),
         velocity_state=v_state,

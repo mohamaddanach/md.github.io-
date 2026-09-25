@@ -89,7 +89,7 @@ DEFAULT_SYMBOL = os.environ.get("DEFAULT_SYMBOL", "EURUSD").upper()
 MT5_PATH = os.environ.get("MT5_PATH", "")
 LOT_SIZE = float(os.environ.get("LOT_SIZE", "0.01"))
 MAX_OPEN_POSITIONS = int(os.environ.get("MAX_OPEN_POSITIONS", "3"))
-HISTORY_BARS = int(os.environ.get("HISTORY_BARS", "30000"))
+HISTORY_BARS = int(os.environ.get("HISTORY_BARS", "30000"))   # upper limit for any timeframe
 CLASSIC_SL_PIPS = float(os.environ.get("CLASSIC_SL_PIPS", "15"))
 CLASSIC_TP_PIPS = float(os.environ.get("CLASSIC_TP_PIPS", "30"))
 MONITOR_INTERVAL_SEC = float(os.environ.get("MONITOR_INTERVAL_SEC", "3"))
@@ -112,6 +112,10 @@ TIMEFRAMES = {
     "1h": (mt5.TIMEFRAME_H1, "1 Hour"),
     "4h": (mt5.TIMEFRAME_H4, "4 Hours"),
 }
+# Candles downloaded per timeframe. Big timeframes need far fewer candles; asking MT5 for
+# 30000 H4 candles (~20 years) makes it download years of history and freezes the program.
+BARS_PER_TIMEFRAME = {"1m": 30000, "5m": 20000, "15m": 12000, "30m": 8000, "1h": 6000, "4h": 3000}
+
 TF_ALIASES = {"1": "1m", "5": "5m", "15": "15m", "30": "30m", "60": "1h", "h1": "1h", "h4": "4h", "240": "4h"}
 
 MODEL_LABELS = {"CLASSIC": "[CLASSIC MODEL]", "ADVANCED": "[ADVANCED MODEL]"}
@@ -420,7 +424,8 @@ class TradingController:
         await notify(f"🔍 <b>{html.escape(tag)}</b> analysing <code>{symbol}</code> [{tf_label}]…")
         self.log(f"🔍 {tag} analysing {symbol} {tf_key}")
 
-        df = await self.mt5.call(fetch_closed_rates, symbol, tf_const, HISTORY_BARS)
+        bars = min(HISTORY_BARS, BARS_PER_TIMEFRAME.get(tf_key, HISTORY_BARS))
+        df = await self.mt5.call(fetch_closed_rates, symbol, tf_const, bars)
         meta = await self.mt5.call(get_symbol_meta, symbol)
         if df is None or meta is None:
             await notify("❌ History download failed.")
@@ -445,6 +450,8 @@ class TradingController:
             details = (
                 f"\n• BUY {adv.buy_probability:.1f}% | SELL {adv.sell_probability:.1f}% "
                 f"(need ≥ {adv.required_probability:.1f}%)"
+                f"\n• Decided matches: {adv.resolved_matches}/{adv.matches_used} "
+                f"({adv.timeout_rate:.0f}% ran out of time)"
                 f"\n• Velocity: {adv.velocity_state} ({adv.velocity_pips_per_sec:+.4f} pips/s)"
                 f"\n• Time-to-level: {adv.time_to_level_bars:.0f} bars ({adv.time_to_level_seconds:.0f}s)"
                 f"\n• Resistance +{adv.dist_to_resistance_pips} pips | Support -{adv.dist_to_support_pips} pips"
