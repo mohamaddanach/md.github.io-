@@ -67,8 +67,24 @@ def load_env_file(path: Path) -> None:
 
 load_env_file(BASE_DIR / ".env")
 
-TELEGRAM_TOKEN = os.environ.get("TELEGRAM_TOKEN", "")
-ALLOWED_CHAT_IDS = {int(x) for x in os.environ.get("TELEGRAM_ALLOWED_CHAT_IDS", "").split(",") if x.strip()}
+def _parse_chat_ids(raw: str) -> set[int]:
+    """Comma-separated chat ids. Anything that isn't a number (e.g. a leftover placeholder) is ignored."""
+    ids = set()
+    for part in raw.split(","):
+        part = part.strip()
+        if part.lstrip("-").isdigit():
+            ids.add(int(part))
+        elif part:
+            print(f"⚠️ Ignoring invalid TELEGRAM_ALLOWED_CHAT_IDS entry: {part!r} (must be a number)")
+    return ids
+
+
+TELEGRAM_TOKEN = os.environ.get("TELEGRAM_TOKEN", "").strip()
+if TELEGRAM_TOKEN.startswith("<") or ":" not in TELEGRAM_TOKEN:
+    if TELEGRAM_TOKEN:
+        print("⚠️ TELEGRAM_TOKEN in .env is not a real BotFather token - Telegram disabled.")
+    TELEGRAM_TOKEN = ""
+ALLOWED_CHAT_IDS = _parse_chat_ids(os.environ.get("TELEGRAM_ALLOWED_CHAT_IDS", ""))
 DEFAULT_SYMBOL = os.environ.get("DEFAULT_SYMBOL", "EURUSD").upper()
 MT5_PATH = os.environ.get("MT5_PATH", "")
 LOT_SIZE = float(os.environ.get("LOT_SIZE", "0.01"))
