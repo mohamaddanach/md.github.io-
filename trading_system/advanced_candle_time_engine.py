@@ -25,7 +25,8 @@ What it does
    - Builds one feature vector per historical window (OHLC anatomy + time/velocity context)
    - Finds the K nearest historical windows (standardised Euclidean distance)
    - For every match, replays what happened next with the SAME SL/TP barrier logic
-     (TP-before-SL = win, SL first / same-bar / timeout = loss), spread included
+     (TP-before-SL = win, SL first / same-bar = loss), spread included
+   - Matches that hit neither TP nor SL in time are ignored (they say nothing about direction)
    - Distance-weighted BUY and SELL win probabilities -> BUY / SELL / NEUTRAL
 
 It does not need MetaTrader 5 to run: give it a pandas DataFrame with the columns
@@ -345,7 +346,7 @@ def simulate_barrier_outcome(
     sl_dist: float,
     tp_dist: float,
     spread: float,
-) -> tuple[bool, int, bool, int]:
+) -> tuple[bool, bool, int, bool, bool, int]:
     """
     Replays bars t+1 .. t+horizon (bid prices) for a BUY and a SELL opened at close[t].
     Conservative: if TP and SL fall inside the same bar, the trade is a loss.
