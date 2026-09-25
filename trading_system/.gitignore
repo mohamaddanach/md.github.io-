@@ -1,0 +1,8 @@
+.env
+*.db
+*.log
+trading_performance.json
+__pycache__/
+.venv/
+venv/
+.idea/
