@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Customs Department — Training Shipping</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=IBM+Plex+Mono&display=swap">
+<link rel="stylesheet" href="../shared/style.css">
+</head>
+<body>
+<div id="app"></div>
+<script src="../shared/core.js"></script>
+<script src="../shared/reference.js"></script>
+<script src="../shared/department.js"></script>
+<script>
+(function () {
+  const L = TS.L, t = TS.t, esc = TS.esc;
+  TS.dept.mount({
+    key: 'customs', icon: '🛃',
+    title: L('Customs Department', 'قسم الجمارك'),
+    intro: L('Shipments handed over by Operations appear here with all the data needed for the Lebanese customs declaration (NAJM). The full hands-on customs module (declaration form, tariff, lanes, duty & VAT payment) is the next training module.', 'تظهر هنا الشحنات المسلّمة من العمليات مع كل البيانات اللازمة للبيان الجمركي اللبناني (نجم). وحدة الجمارك العملية الكاملة (نموذج البيان، التعرفة، المسارات، دفع الرسوم والضريبة) هي وحدة التدريب التالية.'),
+    body(el, s, save) {
+      const hs = Object.entries(s.handoffs || {}).filter(([, h]) => h.department === 'customs');
+      el.innerHTML = hs.map(([k, h]) => {
+        const p = h.pack;
+        const cif = p.customsValueCIF || 0;
+        return `<div class="card"><div class="row" style="justify-content:space-between"><h2 style="margin:0">${esc(k)} <span class="badge info">${esc(h.type)}</span></h2><span class="badge ${String(h.status).includes('released') ? 'ok' : 'warn'}">${esc(h.status)}</span></div>
+          <p class="muted">${t(L('Received from Operations on', 'استُلم من العمليات بتاريخ'))} ${TS.fmtDate(h.sentSim)}</p>
+          ${TS.dept.kv([
+            [L('Shipment', 'الشحنة'), `<span class="mono">${esc(p.shipmentId)}</span> (${esc(p.direction)})`],
+            [L('Exporter', 'المصدّر'), esc(p.exporter.name) + '<br><small>' + esc(p.exporter.address || '') + '</small>'],
+            [L('Importer', 'المستورد'), esc(p.importer.name) + '<br><small>' + esc(p.importer.address || '') + (p.importer.reg ? ' — ' + esc(p.importer.reg) : '') + '</small>'],
+            [L('Goods', 'البضاعة'), esc(p.commodity)],
+            [L('HS code (as provided)', 'رمز HS (كما ورد)'), `<b>${esc(p.hsProvided)}</b> <small>${t(L('— to be verified by the broker', '— يتحقّق منه المخلّص'))}</small>`],
+            [L('Packages / weights', 'الطرود / الأوزان'), `${p.packages} ${esc(p.packageType)} · gross ${TS.num(p.grossKg, 0)} kg · net ${TS.num(p.netKg, 0)} kg · ${TS.num(p.cbm)} CBM`],
+            [L('Invoice value', 'قيمة الفاتورة'), `${esc(p.currency)} ${TS.num(p.invoiceValue)} — ${esc(p.incoterm)}`],
+            [L('Country of origin', 'بلد المنشأ'), esc(p.origin)],
+            [L('Transport', 'النقل'), p.transport ? `${esc(p.transport.carrier)} · ${esc(p.transport.vessel)} ${esc(p.transport.voyage)} · ${esc(p.transport.pol)} → ${esc(p.transport.pod)} · booking ${esc(p.transport.bookingNo)}` : '—'],
+            [L('Container', 'الحاوية'), p.container ? `${esc(p.container.no)} (${esc(p.container.type)}) · seal ${esc(p.container.seal)} · VGM ${TS.num(p.container.vgm, 0)} kg` : '—'],
+            [L('B/L', 'البوليصة'), p.bl ? `MBL ${esc(p.bl.mbl)} · HBL ${esc(p.bl.hbl)}` : '—'],
+            ...(p.doNo ? [[L('Delivery order', 'إذن التسليم'), esc(p.doNo)]] : []),
+            ...(cif ? [[L('Customs value (CIF)', 'القيمة الجمركية (CIF)'), `<b>USD ${TS.num(cif)}</b> = FOB ${TS.num(p.invoiceValue)} + freight ${TS.num(p.freight)} + insurance ${TS.num(p.insurance)}`]] : []),
+            ...(p.documents ? [[L('Documents', 'المستندات'), p.documents.map((d) => '• ' + esc(d)).join('<br>')]] : []),
+          ])}
+          ${cif ? `<h3>${t(L('Duty & VAT estimate (training)', 'تقدير الرسوم والضريبة (تدريبي)'))}</h3><div class="row"><label>${t(L('Duty rate % (sample, per Lebanese tariff for the HS code)', 'نسبة الرسم % (مثال، حسب التعرفة اللبنانية لرمز HS)'))} <input type="number" data-rate="${k}" value="${h.dutyRate != null ? h.dutyRate : 10}" style="width:90px"></label></div><div class="note" id="est_${k}"></div>` : ''}
+          ${!String(h.status).includes('received') ? `<button class="btn primary" data-recv="${k}">${t(L('Acknowledge receipt', 'تأكيد الاستلام'))}</button>` : ''}
+        </div>`;
+      }).join('');
+      const est = (k) => {
+        const h = s.handoffs[k], p = h.pack, cif = p.customsValueCIF, r = Number(h.dutyRate != null ? h.dutyRate : 10);
+        const duty = (cif * r) / 100, vat = (cif + duty) * 0.11;
+        const box = el.querySelector('#est_' + k);
+        if (box) box.innerHTML = `${t(L('Duty', 'الرسم'))} ${r}% × ${TS.num(cif)} = <b>USD ${TS.num(duty)}</b> · VAT 11% × (CIF + ${t(L('duty', 'الرسم'))}) = <b>USD ${TS.num(vat)}</b> · ${t(L('Total payable by importer', 'المجموع على المستورد'))}: <b>USD ${TS.num(duty + vat)}</b>`;
+      };
+      el.querySelectorAll('[data-rate]').forEach((i) => { i.oninput = () => { s.handoffs[i.dataset.rate].dutyRate = Number(i.value); TS.store.save(s); est(i.dataset.rate); }; est(i.dataset.rate); });
+      el.querySelectorAll('[data-recv]').forEach((b) => (b.onclick = () => { const h = s.handoffs[b.dataset.recv]; h.status = h.status + ' · received by customs'; h.receivedAt = new Date().toISOString(); save(); }));
+    },
+  });
+})();
+</script>
+</body>
+</html>

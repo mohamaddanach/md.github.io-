@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Accounting Department — Training Shipping</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=IBM+Plex+Mono&display=swap">
+<link rel="stylesheet" href="../shared/style.css">
+</head>
+<body>
+<div id="app"></div>
+<script src="../shared/core.js"></script>
+<script src="../shared/reference.js"></script>
+<script src="../shared/department.js"></script>
+<script>
+(function () {
+  const L = TS.L, t = TS.t, esc = TS.esc;
+  const row = (a, b, c, d) => `<tr><td>${a}</td><td>${b}</td><td class="num">${c ? TS.num(c) : ''}</td><td class="num">${d ? TS.num(d) : ''}</td></tr>`;
+  TS.dept.mount({
+    key: 'accounting', icon: '📒',
+    title: L('Accounting Department', 'قسم المحاسبة'),
+    intro: L('Closed jobs handed over by Operations appear here: the client invoice with VAT 11%, supplier payables, the container deposit and the job profit, with the journal entries they generate. The full accounting module (receivables follow-up, supplier payments, VAT return, LBP reporting) is a next training module.', 'تظهر هنا العمليات المقفلة المسلّمة من العمليات: فاتورة الزبون مع ضريبة 11%، مستحقات المورّدين، تأمين الحاوية وربح العملية، مع القيود اليومية الناتجة. وحدة المحاسبة الكاملة (متابعة الذمم، دفع المورّدين، التصريح الضريبي، التقارير بالليرة) وحدة تدريب لاحقة.'),
+    body(el, s, save) {
+      const h = s.handoffs.accounting;
+      if (!h) { el.innerHTML = ''; return; }
+      const p = h.pack, inv = p.invoice;
+      const vendors = {};
+      p.payables.forEach((x) => { vendors[x.vendor] = (vendors[x.vendor] || 0) + x.amount; });
+      const costTotal = p.payables.reduce((a, x) => a + x.amount, 0);
+      const revenue = inv.total - inv.vat;
+      el.innerHTML = `<div class="card"><div class="row" style="justify-content:space-between"><h2 style="margin:0">${esc(inv.no)}</h2><span class="badge ${h.status === 'posted' ? 'ok' : 'warn'}">${esc(h.status)}</span></div>
+        <p class="muted">${t(L('Customer', 'الزبون'))}: <b>${esc(inv.customer.name)}</b> — ${esc(inv.customer.reg || '')}</p>
+        <div class="grid c4"><div class="stat"><div class="k">${t(L('Revenue (excl. VAT)', 'الإيراد (دون الضريبة)'))}</div><div class="v">${TS.num(revenue)}</div></div><div class="stat"><div class="k">VAT 11%</div><div class="v">${TS.num(inv.vat)}</div></div><div class="stat"><div class="k">${t(L('Cost', 'الكلفة'))}</div><div class="v">${TS.num(costTotal)}</div></div><div class="stat"><div class="k">${t(L('Job profit', 'ربح العملية'))}</div><div class="v">${TS.num(p.jobProfit)} · ${TS.num(p.marginPct, 1)}%</div></div></div>
+        <p>${t(L('Quoted profit was', 'الربح المقدّر في العرض كان'))} USD ${TS.num(p.quotedProfit)}. VAT in LBP: ${TS.num(inv.vatLBP, 0)} (@ ${TS.num(inv.lbpRate, 0)}).</p>
+        <h3>${t(L('Invoice lines', 'بنود الفاتورة'))}</h3><div class="table-wrap"><table><thead><tr><th>Code</th><th>${t(L('Description', 'الوصف'))}</th><th>VAT</th><th class="num">USD</th></tr></thead><tbody>${inv.lines.map((l) => `<tr><td>${esc(l.code)}</td><td>${esc(l.desc)}</td><td>${l.vat ? '11%' : '—'}</td><td class="num">${TS.num(l.amount)}</td></tr>`).join('')}</tbody></table></div>
+        <h3>${t(L('Supplier payables', 'مستحقات المورّدين'))}</h3><div class="table-wrap"><table><thead><tr><th>${t(L('Vendor', 'المورّد'))}</th><th class="num">USD</th></tr></thead><tbody>${Object.entries(vendors).map(([v, a]) => `<tr><td>${esc(v)}</td><td class="num">${TS.num(a)}</td></tr>`).join('')}</tbody></table></div>
+        ${p.disbursements.length ? `<h3>${t(L('Disbursements (not revenue)', 'السُلف (ليست إيرادًا)'))}</h3><div class="table-wrap"><table><thead><tr><th>${t(L('Type', 'النوع'))}</th><th>${t(L('Held by', 'لدى'))}</th><th class="num">${t(L('Amount', 'المبلغ'))}</th><th class="num">${t(L('Deducted', 'المحسوم'))}</th><th class="num">${t(L('Refunded', 'المسترد'))}</th></tr></thead><tbody>${p.disbursements.map((d) => `<tr><td>${esc(d.type)}</td><td>${esc(d.to)}</td><td class="num">${TS.num(d.amount)}</td><td class="num">${TS.num(d.deducted)}</td><td class="num">${TS.num(d.refunded)}</td></tr>`).join('')}</tbody></table></div>` : ''}
+        <h3>${t(L('Journal entries generated (simplified)', 'القيود اليومية الناتجة (مبسّطة)'))}</h3>
+        <div class="table-wrap"><table><thead><tr><th>${t(L('Account', 'الحساب'))}</th><th>${t(L('Narrative', 'البيان'))}</th><th class="num">${t(L('Debit', 'مدين'))}</th><th class="num">${t(L('Credit', 'دائن'))}</th></tr></thead><tbody>
+          ${row('411 Accounts receivable — ' + esc(inv.customer.name), esc(inv.no), inv.total, 0)}
+          ${row('706 Freight & forwarding revenue', esc(inv.no), 0, revenue)}
+          ${row('4427 VAT payable (11%)', esc(inv.no), 0, inv.vat)}
+          ${row('604 Cost of freight services', esc(s.id), costTotal, 0)}
+          ${Object.entries(vendors).map(([v, a]) => row('401 Accounts payable — ' + esc(v), esc(s.id), 0, a)).join('')}
+          ${p.receivables[0].paidAmount ? row('512 Bank', 'Receipt ' + esc(inv.no), p.receivables[0].paidAmount, 0) + row('411 Accounts receivable — ' + esc(inv.customer.name), 'Receipt', 0, p.receivables[0].paidAmount) : ''}
+        </tbody></table></div>
+        <p class="muted"><small>${t(L('Account numbers follow the logic of the Lebanese general chart of accounts (classes 4/6/7) — simplified for training. Real postings are the job of the Accounting module.', 'أرقام الحسابات تتبع منطق التصميم المحاسبي العام اللبناني (الفئات 4/6/7) — مبسّطة للتدريب. القيود الفعلية عمل وحدة المحاسبة.'))}</small></p>
+        ${h.status !== 'posted' ? `<button class="btn primary" id="post">${t(L('Post to ledger (simulated)', 'ترحيل إلى الدفتر (محاكاة)'))}</button>` : ''}</div>`;
+      const b = el.querySelector('#post');
+      if (b) b.onclick = () => { h.status = 'posted'; h.postedAt = new Date().toISOString(); save(); };
+    },
+  });
+})();
+</script>
+</body>
+</html>

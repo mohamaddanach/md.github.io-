@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Training Shipping</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=IBM+Plex+Mono&display=swap">
+<link rel="stylesheet" href="shared/style.css">
+</head>
+<body>
+<div id="app"></div>
+<script src="shared/core.js"></script>
+<script src="shared/reference.js"></script>
+<script>
+(function () {
+  const L = TS.L, t = TS.t, esc = TS.esc;
+  function render() {
+    TS.applyLang();
+    const list = TS.store.list();
+    const depts = [
+      { href: 'operations_pricing_freight_forwarder/index.html', icon: '⛴', status: L('Module 1 — available', 'الوحدة 1 — متاحة'), ok: true,
+        name: L('Operations & Pricing (Freight Forwarder)', 'العمليات والتسعير (وكيل الشحن)'),
+        desc: L('From the client’s request to the empty container back at the depot: rates, quotation, booking, cutoffs, VGM, B/L, sailing, tracking, D/O, delivery, demurrage & detention, file closing.', 'من طلب الزبون حتى عودة الحاوية فارغة: الأسعار، العرض، الحجز، المواعيد النهائية، VGM، البوليصة، الإبحار، التتبّع، إذن التسليم، التسليم، الغرامات، إقفال الملف.') },
+      { href: 'customs_department/index.html', icon: '🛃', status: L('Receives data — full module next', 'يستقبل البيانات — الوحدة الكاملة لاحقًا'),
+        name: L('Customs Department', 'قسم الجمارك'),
+        desc: L('Receives the export/import declaration hand-offs from Operations (shipment JSON): parties, HS, values, CIF, documents — the base for NAJM declaration training.', 'يستقبل تسليمات بيانات التصدير/الاستيراد من العمليات (ملف JSON): الأطراف، HS، القيم، CIF، المستندات — أساس التدريب على البيان في نظام نجم.') },
+      { href: 'accounting_department/index.html', icon: '📒', status: L('Receives data — full module next', 'يستقبل البيانات — الوحدة الكاملة لاحقًا'),
+        name: L('Accounting Department', 'قسم المحاسبة'),
+        desc: L('Receives the closed job: invoice with VAT 11%, supplier payables, deposit, job profit — with sample journal entries.', 'يستقبل العملية المقفلة: الفاتورة مع ضريبة 11%، مستحقات المورّدين، التأمين، ربح العملية — مع قيود يومية نموذجية.') },
+    ];
+    document.getElementById('app').innerHTML = `
+      <header class="topbar"><a class="brand" href="index.html">⚓ Training Shipping <small>/ ${t(L('Freight forwarding academy — Lebanon', 'أكاديمية الشحن — لبنان'))}</small></a><span class="spacer"></span>${TS.langSwitch()}</header>
+      <main class="main" style="max-width:1100px;margin:0 auto">
+        <section class="hero"><h1>${t(L('Learn freight forwarding by doing it', 'تعلّم الشحن الدولي بالممارسة'))}</h1>
+          <p>${t(L('A virtual company in Beirut. You work real-style shipments step by step — with lessons, virtual emails with shipping lines, clients and agents, booking tables, documents and quizzes — in English or Arabic. Every shipment is one JSON file that travels from Operations to Customs to Accounting.', 'شركة افتراضية في بيروت. تنفّذ شحنات بأسلوب حقيقي خطوة بخطوة — مع دروس وبريد افتراضي مع الخطوط الملاحية والزبائن والوكلاء وجداول حجز ومستندات واختبارات — بالعربية أو الإنجليزية. كل شحنة ملف JSON واحد ينتقل من العمليات إلى الجمارك إلى المحاسبة.'))}</p>
+          <a class="btn" style="background:#fff;color:#0b4f71;border-color:#fff" href="operations_pricing_freight_forwarder/index.html">${t(L('Start training', 'ابدأ التدريب'))} →</a></section>
+        <h2>${t(L('Departments', 'الأقسام'))}</h2>
+        <div class="grid c3">${depts.map((d) => `<a class="dept" href="${d.href}"><div class="card" style="height:100%"><div style="font-size:28px">${d.icon}</div><h3>${t(d.name)}</h3><span class="badge ${d.ok ? 'ok' : 'info'}">${t(d.status)}</span><p class="muted" style="margin-top:8px">${t(d.desc)}</p></div></a>`).join('')}</div>
+        <div class="card"><h3>${t(L('How the shipment file flows', 'كيف ينتقل ملف الشحنة'))}</h3>
+          <p>${t(L('Operations creates <code>PFT-IMP-yyyy-0001.json</code>. When you reach the customs steps, a <code>handoffs.customs_export</code> or <code>handoffs.customs_import</code> section is written into the same file; when you close the job, <code>handoffs.accounting</code> is added. Departments on this computer read it automatically (browser storage). On another computer: download the JSON from Operations and import it in the department page.', 'تنشئ العمليات الملف <code>PFT-IMP-yyyy-0001.json</code>. عند الوصول لمراحل الجمارك يُكتب قسم <code>handoffs.customs_export</code> أو <code>handoffs.customs_import</code> في الملف نفسه؛ وعند إقفال العملية يُضاف <code>handoffs.accounting</code>. الأقسام على هذا الجهاز تقرأه تلقائيًا (تخزين المتصفح). على جهاز آخر: نزّل ملف JSON من العمليات واستورده في صفحة القسم.'))}</p>
+          <div class="row"><span class="badge info">Operations</span> → <span class="badge">shipment.json</span> → <span class="badge info">Customs</span> → <span class="badge">shipment.json</span> → <span class="badge info">Accounting</span></div></div>
+        <div class="card"><h3>${t(L('Shipments on this computer', 'الشحنات على هذا الجهاز'))} (${list.length})</h3>
+          ${list.length ? `<div class="table-wrap"><table><thead><tr><th>ID</th><th>${t(L('Status', 'الحالة'))}</th><th>${t(L('Department', 'القسم'))}</th><th>${t(L('Hand-offs', 'التسليمات'))}</th></tr></thead><tbody>${list.map((s) => `<tr><td class="mono">${esc(s.id)}</td><td>${esc(s.status)}</td><td>${esc(s.currentDepartment)}</td><td>${Object.keys(s.handoffs || {}).map((k) => '<span class="badge">' + esc(k) + '</span>').join(' ') || '—'}</td></tr>`).join('')}</tbody></table></div>` : `<p class="muted">${t(L('None yet.', 'لا شيء بعد.'))}</p>`}</div>
+        <div class="note warn">${t(TS.REF.disclaimer)}</div>
+      </main>`;
+  }
+  document.addEventListener('ts:lang', render);
+  render();
+})();
+</script>
+</body>
+</html>
