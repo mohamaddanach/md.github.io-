@@ -16,9 +16,9 @@ Progress is saved automatically in the browser. Use **Shipment JSON file → Dow
 ```
 training_shipping/
 ├── index.html                               ← start here (hub)
-├── shared/                                  ← language, storage/JSON, styles, task widgets, reference library
+├── shared/                                  ← language, storage/JSON, styles, task widgets, department engine, reference library
 ├── operations_pricing_freight_forwarder/    ← MODULE 1 (complete)
-├── customs_department/                      ← receives customs hand-offs (full module next)
+├── customs_department/                      ← MODULE 3 (complete)
 └── accounting_department/                   ← MODULE 2 (complete)
 ```
 
@@ -58,6 +58,23 @@ The job arrives from Operations inside the shipment JSON (`handoffs.accounting`)
 
 Journal entries are checked automatically (balanced, right accounts, right sides, right amounts). The journal, ledger, trial balance and documents (tax invoice, supplier invoices, customer statement, bank reconciliation, VAT working paper) are saved in `accounting` inside the same shipment JSON.
 
+## Module 3 — Customs: the 8 steps
+
+The file arrives from Operations inside the shipment JSON (`handoffs.customs_import` at step 10 for imports, `handoffs.customs_export` at step 6 for exports). Sample files are available on the Customs home page.
+
+| # | Step | What you do |
+|---|------|-------------|
+| 1 | File & documents | Required documents, cross-check invoice ↔ packing list ↔ manifest/certificates, get the error corrected |
+| 2 | Classification | HS code per item with a tariff extract (chairs 9401 ≠ tables 9403; tahini 2008.19), effect of a wrong code |
+| 3 | Customs value | Import: allocate freight & insurance per item → CIF, LBP. Export: FOB from a CFR price |
+| 4 | Duties & taxes | Duty per item, import VAT 11% on (CIF + duty), total USD/LBP; export: what applies |
+| 5 | Declaration | NAJM-style form: regime, parties, origin/consignment, B/L, container, packages, weights, value, preference |
+| 6 | Lodge & lane | Submit, receive green/yellow lane, answer the officer correctly (never a bribe) |
+| 7 | Payment & release | Order of the release chain, pay the Treasury, release / loading and proof of export |
+| 8 | Close | What goes to Accounting (fee = revenue, duties = disbursement), write the result into the JSON |
+
+Tariff rates and the customs exchange rate are **samples** for training.
+
 ## The shipment JSON file (hand-offs between departments)
 
 ```jsonc
@@ -75,9 +92,11 @@ Journal entries are checked automatically (balanced, right accounts, right sides
   "tracking": [ … ], "release": { … }, "delivery": { … }, "dd": { … },
   "handoffs": {
     "customs_export" | "customs_import": { "department": "customs", "status", "pack": { … CIF, HS, documents … } },
-    "accounting": { "department": "accounting", "pack": { "invoice", "payables", "receivables", "disbursements", "jobProfit" } }
+    "customs": { "declaration", "value", "taxes", "payment", "release", "result" },
+  "accounting": { "department": "accounting", "pack": { "invoice", "payables", "receivables", "disbursements", "jobProfit" } }
   },
   "emails": [ … ], "milestones": [ … ], "score": { "mistakes", "hints" },
+  "customs": { "declaration", "value", "taxes", "payment", "release", "result" },
   "accounting": { "journal": [ { "ref", "date", "lines": [ { "acc", "dr", "cr" } ] } ], "docs": { "invoice", "bankRec", "vatReturn" }, "result": { … }, "score": { … } }
 }
 ```
