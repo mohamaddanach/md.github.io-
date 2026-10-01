@@ -16,10 +16,10 @@ Progress is saved automatically in the browser. Use **Shipment JSON file → Dow
 ```
 training_shipping/
 ├── index.html                               ← start here (hub)
-├── shared/                                  ← language, storage/JSON, styles, reference library (glossary, Incoterms, containers, Lebanon guide)
+├── shared/                                  ← language, storage/JSON, styles, task widgets, reference library
 ├── operations_pricing_freight_forwarder/    ← MODULE 1 (complete)
 ├── customs_department/                      ← receives customs hand-offs (full module next)
-└── accounting_department/                   ← receives the closed job + journal entries (full module next)
+└── accounting_department/                   ← MODULE 2 (complete)
 ```
 
 ## Module 1 — Operations & Pricing: the 12 steps
@@ -41,6 +41,23 @@ training_shipping/
 
 Two scenarios: **Import** (furniture, Shanghai → Beirut, FOB, 40′ HC, door delivery Choueifat) and **Export** (tahini, Zahle → Hamburg, CFR, 20′ DV, CAD with EUR.1).
 
+## Module 2 — Accounting: the 8 steps
+
+The job arrives from Operations inside the shipment JSON (`handoffs.accounting`). You can also practise on the two **sample jobs** on the Accounting home page.
+
+| # | Step | What you do |
+|---|------|-------------|
+| 1 | Receive & review | Check sell vs cost lines, VAT treatment of each line (11% / exempt), job profit vs quoted |
+| 2 | Tax invoice | Mandatory Lebanese invoice content, exempt/taxable split, VAT 11%, VAT in LBP, balance due |
+| 3 | Sales entry | Dr 411 / Cr 706 / Cr 4427 |
+| 4 | Supplier invoices | Match the trucker's invoice (hold + credit note), input VAT, Dr 604 / Dr 4426 / Cr 401 |
+| 5 | Cash | Customer receipt, supplier payments, full container-deposit lifecycle (4191 / 4671, D&D deduction, offset, refund) |
+| 6 | Bank reconciliation | Statement vs books, outstanding payment, bank charges, Dr 627 / Cr 512 |
+| 7 | VAT return | Quarter end, output − input VAT, LBP, 20-day deadline, Dr 4427 / Cr 4426 / Cr 4424, payment |
+| 8 | Close | Job P&L from the ledger, which accounts must be zero, trial balance, close the job |
+
+Journal entries are checked automatically (balanced, right accounts, right sides, right amounts). The journal, ledger, trial balance and documents (tax invoice, supplier invoices, customer statement, bank reconciliation, VAT working paper) are saved in `accounting` inside the same shipment JSON.
+
 ## The shipment JSON file (hand-offs between departments)
 
 ```jsonc
@@ -60,7 +77,8 @@ Two scenarios: **Import** (furniture, Shanghai → Beirut, FOB, 40′ HC, door d
     "customs_export" | "customs_import": { "department": "customs", "status", "pack": { … CIF, HS, documents … } },
     "accounting": { "department": "accounting", "pack": { "invoice", "payables", "receivables", "disbursements", "jobProfit" } }
   },
-  "emails": [ … ], "milestones": [ … ], "score": { "mistakes", "hints" }
+  "emails": [ … ], "milestones": [ … ], "score": { "mistakes", "hints" },
+  "accounting": { "journal": [ { "ref", "date", "lines": [ { "acc", "dr", "cr" } ] } ], "docs": { "invoice", "bankRec", "vatReturn" }, "result": { … }, "score": { … } }
 }
 ```
 

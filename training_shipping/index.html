@@ -25,9 +25,9 @@
       { href: 'customs_department/index.html', icon: '🛃', status: L('Receives data — full module next', 'يستقبل البيانات — الوحدة الكاملة لاحقًا'),
         name: L('Customs Department', 'قسم الجمارك'),
         desc: L('Receives the export/import declaration hand-offs from Operations (shipment JSON): parties, HS, values, CIF, documents — the base for NAJM declaration training.', 'يستقبل تسليمات بيانات التصدير/الاستيراد من العمليات (ملف JSON): الأطراف، HS، القيم، CIF، المستندات — أساس التدريب على البيان في نظام نجم.') },
-      { href: 'accounting_department/index.html', icon: '📒', status: L('Receives data — full module next', 'يستقبل البيانات — الوحدة الكاملة لاحقًا'),
+      { href: 'accounting_department/index.html', icon: '📒', status: L('Module 2 — available', 'الوحدة 2 — متاحة'), ok: true,
         name: L('Accounting Department', 'قسم المحاسبة'),
-        desc: L('Receives the closed job: invoice with VAT 11%, supplier payables, deposit, job profit — with sample journal entries.', 'يستقبل العملية المقفلة: الفاتورة مع ضريبة 11%، مستحقات المورّدين، التأمين، ربح العملية — مع قيود يومية نموذجية.') },
+        desc: L('Takes the closed job from the shipment JSON: tax invoice (VAT 11% + LBP), sales & purchase entries, supplier matching, receipts & payments, container deposit, bank reconciliation, VAT return, trial balance and job closing.', 'يستلم العملية المقفلة من ملف JSON: الفاتورة الضريبية (11% + الليرة)، قيود المبيعات والمشتريات، مطابقة المورّدين، المقبوضات والمدفوعات، تأمين الحاوية، التسوية المصرفية، التصريح الضريبي، ميزان المراجعة وإقفال العملية.') },
     ];
     document.getElementById('app').innerHTML = `
       <header class="topbar"><a class="brand" href="index.html">⚓ Training Shipping <small>/ ${t(L('Freight forwarding academy — Lebanon', 'أكاديمية الشحن — لبنان'))}</small></a><span class="spacer"></span>${TS.langSwitch()}</header>
