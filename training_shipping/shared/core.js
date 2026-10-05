@@ -125,5 +125,16 @@
     setTimeout(() => el.remove(), 4400);
   };
 
+
+  /* single-file (offline .htm) mode: links between departments switch the frame in the parent shell */
+  if (window.TS_BUNDLED) {
+    document.addEventListener('click', (e) => {
+      const a = e.target.closest('a[href]');
+      if (!a) return;
+      const h = a.getAttribute('href');
+      const key = /operations_pricing_freight_forwarder/.test(h) ? 'ops' : /customs_department/.test(h) ? 'cus' : /accounting_department/.test(h) ? 'acc' : /(^|\/)index\.html$/.test(h) ? 'home' : null;
+      if (key) { e.preventDefault(); try { window.parent.postMessage({ tsNav: key }, '*'); } catch (err) { /* ignore */ } }
+    }, true);
+  }
   TS.applyLang();
 })();

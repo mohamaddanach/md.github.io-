@@ -34,14 +34,15 @@
       s.currentDepartment = cfg.key;
       return S(s);
     };
+    let memId = ''; // fallback when sessionStorage is blocked (offline single-file frame)
     function load() {
-      let id = '';
-      try { id = sessionStorage.getItem(cfg.session) || ''; } catch (e) { /* ignore */ }
+      let id = memId;
+      try { id = sessionStorage.getItem(cfg.session) || memId; } catch (e) { /* ignore */ }
       const s = id ? TS.store.get(id) : null;
       app.ship = s && cfg.handoff(s) ? s : null;
       if (app.ship) NS.init(app.ship);
     }
-    const open = (id) => { try { sessionStorage.setItem(cfg.session, id); } catch (e) { /* ignore */ } load(); app.save(); };
+    const open = (id) => { memId = id; try { sessionStorage.setItem(cfg.session, id); } catch (e) { /* ignore */ } load(); app.save(); };
     app.save = () => { if (app.ship) TS.store.save(app.ship); };
     app.mutate = (id, fn) => {
       if (app.ship && app.ship.id === id) { fn(app.ship); app.save(); app.render(); }
@@ -127,8 +128,9 @@
       if (app.keep) window.scrollTo(0, y);
       app.keep = true;
       bind(root);
+      if (TS.decorateAll) TS.decorateAll(root);
     };
-    const go = (v) => { app.view = v; app.keep = false; history.replaceState(null, '', '#' + v); app.render(); window.scrollTo(0, 0); };
+    const go = (v) => { app.view = v; app.keep = false; try { history.replaceState(null, '', '#' + v); } catch (e) { /* offline single-file frame */ } app.render(); window.scrollTo(0, 0); };
     app.go = go;
     function bind(root) {
       root.querySelectorAll('[data-go]').forEach((b) => (b.onclick = (e) => { e.preventDefault(); go(b.dataset.go); }));
@@ -225,7 +227,7 @@
     }
     function viewDocs(main) {
       const s = app.ship, list = NS.docs(s), cur = list.find((x) => x.id === app.doc) || list[0];
-      main.innerHTML = `<h1>📄 ${t(L('Documents', 'المستندات'))}</h1><div class="row no-print" style="margin-bottom:12px">${list.map((x) => `<button class="btn sm ${cur && x.id === cur.id ? 'primary' : ''}" data-doc="${x.id}">${esc(t(x.name))}</button>`).join('')}${cur ? `<button class="btn sm ghost" onclick="window.print()">🖨 ${t(L('Print / PDF', 'طباعة / PDF'))}</button>` : `<p class="muted">${t(L('Documents appear as you complete the steps.', 'تظهر المستندات كلما أنجزت المراحل.'))}</p>`}</div>${cur ? `<div dir="ltr">${cur.html(s)}</div>` : ''}`;
+      main.innerHTML = `<h1>📄 ${t(L('Documents', 'المستندات'))}</h1><div class="row no-print" style="margin-bottom:12px">${list.map((x) => `<button class="btn sm ${cur && x.id === cur.id ? 'primary' : ''}" data-doc="${x.id}">${esc(t(x.name))}</button>`).join('')}${cur ? `<button class="btn sm ghost" onclick="window.print()">🖨 ${t(L('Print / PDF', 'طباعة / PDF'))}</button>` : `<p class="muted">${t(L('Documents appear as you complete the steps.', 'تظهر المستندات كلما أنجزت المراحل.'))}</p>`}</div>${cur ? `<p class="doc-hint no-print">💡 ${t(L('Click any underlined label or term on the document to see what it means (English + Arabic).', 'انقر على أي عنوان أو مصطلح مسطّر في المستند لمعرفة معناه (إنجليزي + عربي).'))}</p>` + cur.html(s) : ''}`;
       main.querySelectorAll('[data-doc]').forEach((b) => (b.onclick = () => { app.doc = b.dataset.doc; app.render(); }));
     }
     function viewInbox(main) {

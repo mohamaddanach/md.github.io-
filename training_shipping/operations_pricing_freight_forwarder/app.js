@@ -183,11 +183,12 @@
     if (app.keepScroll) window.scrollTo(0, scrollY);
     app.keepScroll = true;
     bindGlobal(root);
+    if (TS.decorateAll) TS.decorateAll(root);
   };
 
   function go(v) {
     app.view = v; app.keepScroll = false;
-    if (location.hash !== '#' + v) history.replaceState(null, '', '#' + v);
+    try { if (location.hash !== '#' + v) history.replaceState(null, '', '#' + v); } catch (e) { /* offline single-file frame */ }
     app.render(); window.scrollTo(0, 0);
   }
   app.go = go;
@@ -370,7 +371,7 @@
     main.innerHTML = `<h1>📄 ${t(L('Documents', 'المستندات'))}</h1>
       <p class="muted">${t(L('Documents are generated from the shipment data as you complete the steps. Trade documents are in English, as in real practice. Use Print to save as PDF.', 'تُولَّد المستندات من بيانات الشحنة كلما أنجزت المراحل. المستندات التجارية بالإنجليزية كما في الواقع. استعمل الطباعة لحفظها PDF.'))}</p>
       <div class="row no-print" style="margin-bottom:12px">${avail.map((d) => `<button class="btn sm ${cur && d.id === cur.id ? 'primary' : ''}" data-doc="${d.id}">${esc(t(d.name))}</button>`).join('')}${cur ? `<button class="btn sm ghost" onclick="window.print()">🖨 ${t(L('Print / PDF', 'طباعة / PDF'))}</button>` : ''}</div>
-      ${cur ? `<div class="ltr" dir="ltr">${cur.html(ship)}</div>` : `<p class="muted">${t(L('No documents yet.', 'لا مستندات بعد.'))}</p>`}`;
+      <p class="doc-hint no-print">💡 ${t(L('Click any underlined label or term on the document to see what it means (English + Arabic).', 'انقر على أي عنوان أو مصطلح مسطّر في المستند لمعرفة معناه (إنجليزي + عربي).'))}</p>${cur ? cur.html(ship) : `<p class="muted">${t(L('No documents yet.', 'لا مستندات بعد.'))}</p>`}`;
     main.querySelectorAll('[data-doc]').forEach((b) => (b.onclick = () => { app.doc = b.dataset.doc; app.render(); }));
   }
 
@@ -423,7 +424,7 @@
     const q = TS.norm(app.gq);
     const rows = REF.glossary.filter(([k, v]) => !q || TS.norm(k + ' ' + v.en + ' ' + v.ar).includes(q));
     main.innerHTML = `<h1>Aa ${t(L('Glossary', 'المصطلحات'))}</h1><input type="text" id="gq" value="${esc(app.gq)}" placeholder="${t(L('Search…', 'ابحث…'))}" style="max-width:360px;margin-bottom:10px">
-      ${ui.table([L('Term', 'المصطلح'), 'English', 'العربية'], rows.map(([k, v]) => `<tr><td><b class="ltr">${esc(k)}</b></td><td>${esc(v.en)}</td><td dir="rtl">${esc(v.ar)}</td></tr>`))}`;
+      <div class="lesson">${ui.table([L('Term', 'المصطلح'), 'English', 'العربية'], rows.map(([k, v]) => `<tr><td><b class="ltr">${esc(k)}</b></td><td>${esc(v.en)}</td><td dir="rtl">${esc(v.ar)}</td></tr>`))}</div><h2 style="margin-top:20px">${t(L('Clickable dictionary', 'القاموس التفاعلي'))}</h2><p class="muted">${t(L('Click any term to open its card (English + Arabic). The same terms are clickable inside every document, lesson and email.', 'انقر على أي مصطلح لفتح بطاقته (إنجليزي + عربي). المصطلحات نفسها قابلة للنقر داخل كل مستند ودرس وبريد.'))}</p><div class="row">${Object.entries(TS.TERMS).filter(([k, v]) => !q || TS.norm(v.en + ' ' + v.ar + ' ' + v.d.en + ' ' + v.d.ar).includes(q)).map(([k, v]) => `<button type="button" class="term-chip" data-term="${k}">${esc(TS.lang === 'ar' ? v.ar : v.en)}</button>`).join('')}</div>`;
     const inp = $('#gq', main);
     inp.oninput = () => { app.gq = inp.value; app.render(); const n = $('#gq'); n.focus(); n.setSelectionRange(n.value.length, n.value.length); };
   }

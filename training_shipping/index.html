@@ -42,6 +42,7 @@
           <div class="row"><span class="badge info">Operations</span> → <span class="badge">shipment.json</span> → <span class="badge info">Customs</span> → <span class="badge">shipment.json</span> → <span class="badge info">Accounting</span></div></div>
         <div class="card"><h3>${t(L('Shipments on this computer', 'الشحنات على هذا الجهاز'))} (${list.length})</h3>
           ${list.length ? `<div class="table-wrap"><table><thead><tr><th>ID</th><th>${t(L('Status', 'الحالة'))}</th><th>${t(L('Department', 'القسم'))}</th><th>${t(L('Hand-offs', 'التسليمات'))}</th></tr></thead><tbody>${list.map((s) => `<tr><td class="mono">${esc(s.id)}</td><td>${esc(s.status)}</td><td>${esc(s.currentDepartment)}</td><td>${Object.keys(s.handoffs || {}).map((k) => '<span class="badge">' + esc(k) + '</span>').join(' ') || '—'}</td></tr>`).join('')}</tbody></table></div>` : `<p class="muted">${t(L('None yet.', 'لا شيء بعد.'))}</p>`}</div>
+        ${window.TS_BUNDLED ? '' : `<div class="card"><h3>⬇ ${t(L('Offline single-file edition', 'النسخة المستقلة بملف واحد'))}</h3><p class="muted">${t(L('The whole system (Operations, Customs, Accounting) in one .htm file: download it, put it on your desktop and double-click — no internet needed.', 'النظام كاملًا (العمليات، الجمارك، المحاسبة) في ملف ‎.htm واحد: نزّله، ضعه على سطح المكتب وانقر عليه مرتين — بدون حاجة للإنترنت.'))}</p><a class="btn primary" href="training_shipping.htm" download>⬇ training_shipping.htm</a></div>`}
         <div class="note warn">${t(TS.REF.disclaimer)}</div>
       </main>`;
   }

@@ -26,14 +26,8 @@
   CUS.rateOf = (hs) => { const r = CUS.tariff.find((x) => x.hs === hs); return r ? r.duty : null; };
 
   /* how the single commercial line of Operations really breaks down on the supplier's detailed invoice */
-  CUS.itemsFor = (s) => (s.direction === 'import'
-    ? [
-      { id: 'T', desc: 'Wooden dining tables, knocked down', descAr: 'طاولات سفرة خشبية مفكّكة', hsGiven: '9403.60', hs: '9403.60', qty: 30, unit: 'pcs', pkgs: 30, gross: 3600, net: 3300, value: 21500 },
-      { id: 'C', desc: 'Wooden dining chairs, not upholstered', descAr: 'كراسي سفرة خشبية غير منجّدة', hsGiven: '9403.60', hs: '9401.69', qty: 180, unit: 'pcs', pkgs: 90, gross: 4800, net: 4500, value: 17000 },
-    ]
-    : [
-      { id: 'H', desc: 'Tahini (sesame paste) in glass jars, 24 × 900 g per carton, on pallets', descAr: 'طحينة في مرطبانات زجاجية، 24 × 900 غ في الكرتونة، على طبليات', hsGiven: '2008.19', hs: '2008.19', qty: 20, unit: 'pallets', pkgs: 20, gross: 17000, net: 15600, value: 42000 },
-    ]);
+  /* the supplier's detailed invoice lines (shared with the other departments' documents) */
+  CUS.itemsFor = (s) => TS.cargoItems(s);
 
   const seed = (s) => s.id.split('').reduce((a, c) => (a * 31 + c.charCodeAt(0)) % 999983, 7);
   CUS.handoff = (s) => s.handoffs && (s.handoffs.customs_import || s.handoffs.customs_export);

@@ -6,6 +6,8 @@ Everything you do is saved in **one JSON file per shipment**, which the next dep
 
 ## How to open it
 
+- **Easiest — one file:** download `training_shipping.htm` (whole system in a single file), save it on your Desktop and double-click it. Works offline. Rebuild it after code changes with `python3 tools/build_single.py`.
+
 - **On your desktop:** copy the whole `training_shipping` folder to your Desktop and double-click `index.html` (works offline in Chrome, Edge or Firefox).
 - **Online:** if GitHub Pages is enabled for this repository, open `…/training_shipping/index.html`.
 
@@ -74,6 +76,12 @@ The file arrives from Operations inside the shipment JSON (`handoffs.customs_imp
 | 8 | Close | What goes to Accounting (fee = revenue, duties = disbursement), write the result into the JSON |
 
 Tariff rates and the customs exchange rate are **samples** for training.
+
+## Realistic documents & clickable terms
+
+Documents follow real layouts (watermarked **SPECIMEN · TRAINING**, fictional parties): quotation, commercial invoice, packing list, certificate of origin, EUR.1, health certificate, booking confirmation, EIRs, VGM declaration, shipping instructions, master & house B/L / sea waybill, arrival notice, delivery order, trucking order, tax invoice; customs declaration (numbered-box layout), assessment notice, release; supplier invoices & credit note, statement of account, bank statement & reconciliation, VAT working paper, journal vouchers.
+
+Every important label or term (in documents, lessons, emails) is clickable: a card opens with the meaning in **English and Arabic** (`shared/terms.js`, ~150 terms).
 
 ## The shipment JSON file (hand-offs between departments)
 
