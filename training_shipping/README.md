@@ -6,7 +6,7 @@ Everything you do is saved in **one JSON file per shipment**, which the next dep
 
 ## How to open it
 
-- **Easiest — one file:** download `training_shipping.htm` (whole system in a single file), save it on your Desktop and double-click it. Works offline. Rebuild it after code changes with `python3 tools/build_single.py`.
+- **Easiest — one file:** download `training_shipping.html` (whole system in a single file), save it on your Desktop and double-click it. Works offline. Rebuild it after code changes with `python3 tools/build_single.py`.
 
 - **On your desktop:** copy the whole `training_shipping` folder to your Desktop and double-click `index.html` (works offline in Chrome, Edge or Firefox).
 - **Online:** if GitHub Pages is enabled for this repository, open `…/training_shipping/index.html`.

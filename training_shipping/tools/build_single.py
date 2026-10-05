@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Build training_shipping.htm: the whole training system (hub + Operations + Customs + Accounting)
+"""Build training_shipping.html: the whole training system (hub + Operations + Customs + Accounting)
 in ONE self-contained HTML file that works offline by double-click.
 Each department page is inlined (CSS + JS) and shown in a frame; all pages share the same browser storage."""
 import json, os, re
@@ -65,6 +65,6 @@ show(start);
 </body>
 </html>
 '''
-out = os.path.join(ROOT, 'training_shipping.htm')
+out = os.path.join(ROOT, 'training_shipping.html')
 open(out, 'w', encoding='utf-8').write(shell)
 print('wrote', out, round(os.path.getsize(out) / 1024), 'KB')
