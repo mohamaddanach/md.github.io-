@@ -77,6 +77,14 @@ The file arrives from Operations inside the shipment JSON (`handoffs.customs_imp
 
 Tariff rates and the customs exchange rate are **samples** for training.
 
+## Graphics & automations
+
+- **Dashboards & insights:** shipment dashboard (journey map with the ship’s position, deadline timeline, container fill meters, carrier rate chart, price build-up, demurrage cost curve, profit waterfall); a chart under each step; customs duty/VAT waterfall; accounting P&L waterfall, supplier and VAT charts; KPI tiles on every home page. Charts use a CVD-validated palette, direct labels and hover tooltips, in light and dark.
+- **Autopilot (▶ / ⏩):** watch the app play the current step or the whole file (counts as hints in the score).
+- **Next-action coach:** tells you the next task and warns about cutoffs, demurrage, unread emails, unpaid balances and VAT deadlines.
+- **Command palette (Ctrl+K or /):** jump to any step, page, document or term.
+- **Light/dark toggle (◐), mobile menu (☰), first-visit tour, celebration when a step is completed.**
+
 ## Realistic documents & clickable terms
 
 Documents follow real layouts (watermarked **SPECIMEN · TRAINING**, fictional parties): quotation, commercial invoice, packing list, certificate of origin, EUR.1, health certificate, booking confirmation, EIRs, VGM declaration, shipping instructions, master & house B/L / sea waybill, arrival notice, delivery order, trucking order, tax invoice; customs declaration (numbered-box layout), assessment notice, release; supplier invoices & credit note, statement of account, bank statement & reconciliation, VAT working paper, journal vouchers.

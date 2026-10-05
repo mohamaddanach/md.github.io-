@@ -40,6 +40,7 @@
     jobsTitle: L('Customs files received from Operations', 'ملفات الجمارك الواردة من العمليات'),
     emptyNote: L('No file has been handed to Customs yet. Reach the customs step in Operations (step 6 for exports, step 10 for imports), import a JSON file, or load a sample below.', 'لم يُسلَّم أي ملف للجمارك بعد. صِل إلى مرحلة الجمارك في العمليات (المرحلة 6 للتصدير، 10 للاستيراد)، أو استورد ملف JSON، أو حمّل نموذجًا أدناه.'),
     disclaimer: CUS.disclaimer, dateLabel: L('Customs date', 'التاريخ الجمركي'),
+    insight: (id, s) => (CUS.insight ? CUS.insight(id, s) : ''), alerts: (s) => (CUS.alerts ? CUS.alerts(s) : []), homeKpis: (l) => (CUS.homeKpis ? CUS.homeKpis(l) : ''),
     handoff: CUS.handoff,
     init: () => ({}),
     samples: () => window.ACC_SAMPLES || [],

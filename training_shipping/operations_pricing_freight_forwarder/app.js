@@ -104,6 +104,7 @@
       const i = app.stepIndex(st.id);
       ship.stage = OPS.steps[i + 1] ? OPS.steps[i + 1].id : 'closed';
       TS.toast('✓ ' + t(L('Step completed: ', 'تم إنجاز المرحلة: ')) + t(st.title), 'ok');
+      if (TS.celebrate && !(TS.autopilot && TS.autopilot.running)) TS.celebrate();
     }
   };
 
@@ -143,6 +144,7 @@
         <div class="muted" style="font-size:.8rem;margin:0 8px 6px">${doneN}/${OPS.steps.length} ${t(L('steps', 'مراحل'))}</div>
         <h4>${t(L('Process steps', 'مراحل العملية'))}</h4><div class="nav-group">${stepsHTML}</div>
         <h4>${t(L('Workspace', 'مساحة العمل'))}</h4><div class="nav-group">
+        ${nav('dashboard', '📊', L('Shipment dashboard', 'لوحة الشحنة'))}
         ${nav('inbox', '✉', L('Email (virtual)', 'البريد (افتراضي)'), n ? `<span class="badge n">${n}</span>` : '')}
         ${nav('portal', '⛴', L('Carrier portal & bookings', 'بوابة الخطوط والحجوزات'))}
         ${nav('docs', '📄', L('Documents', 'المستندات'))}
@@ -168,6 +170,7 @@
       if (app.view === 'home') viewHome(main);
       else if (app.view.startsWith('step:')) viewStep(main, app.view.slice(5));
       else if (app.view === 'inbox') viewInbox(main);
+      else if (app.view === 'dashboard') OPS.viewDashboard(main);
       else if (app.view === 'portal') viewPortal(main);
       else if (app.view === 'docs') viewDocs(main);
       else if (app.view === 'json') viewJSON(main);
@@ -184,6 +187,7 @@
     app.keepScroll = true;
     bindGlobal(root);
     if (TS.decorateAll) TS.decorateAll(root);
+    if (OPS.afterRender) OPS.afterRender();
   };
 
   function go(v) {
@@ -203,6 +207,7 @@
   function viewHome(main) {
     const list = TS.store.list();
     main.innerHTML = `
+      ${OPS.homeKpis ? OPS.homeKpis() : ''}
       <section class="hero"><h1>${t(L('Operations & Pricing — Freight Forwarder simulator', 'العمليات والتسعير — محاكي وكيل الشحن'))}</h1>
       <p>${t(L('Work a real shipment end to end: client inquiry → rates from shipping lines → quotation → booking → empty pickup & stuffing → cutoffs → B/L → sailing → arrival → release & customs → delivery → empty return → file closing. Every step has a lesson, a hands-on task, virtual emails and a quiz. Everything you do is saved in one shipment JSON file that the Customs and Accounting departments read.', 'نفّذ شحنة حقيقية من البداية للنهاية: استفسار الزبون ← أسعار الخطوط ← عرض السعر ← الحجز ← سحب الحاوية والتعبئة ← المواعيد النهائية ← البوليصة ← الإبحار ← الوصول ← الإفراج والتخليص ← التسليم ← إرجاع الفارغ ← إقفال الملف. لكل مرحلة درس ومهمة عملية وبريد افتراضي واختبار. كل ما تقوم به يُحفظ في ملف JSON واحد للشحنة يقرأه قسما الجمارك والمحاسبة.'))}</p></section>
       <h2>${t(L('Start a new training shipment', 'ابدأ شحنة تدريبية جديدة'))}</h2>
@@ -246,7 +251,8 @@
       <div class="step-head"><div class="num">${i + 1}</div><div><h1>${t(st.title)}</h1><p>${t(st.sub)}</p></div></div>
       <div class="row" style="margin:8px 0 14px"><span class="simclock">🗓 ${t(L('Simulation date', 'تاريخ المحاكاة'))}: <b>${TS.fmtDate(ship.sim.today)}</b></span>
         ${done ? `<span class="badge ok">✓ ${t(L('Completed', 'مُنجزة'))}</span>` : un ? `<span class="badge info">${t(L('In progress', 'قيد التنفيذ'))}</span>` : `<span class="badge">🔒 ${t(L('Locked', 'مقفلة'))}</span>`}
-        <span class="badge">${t(OPS.sc(ship).direction === 'import' ? L('Import', 'استيراد') : L('Export', 'تصدير'))}</span></div>
+        <span class="badge">${t(OPS.sc(ship).direction === 'import' ? L('Import', 'استيراد') : L('Export', 'تصدير'))}</span>
+        ${un && !done ? `<span class="spacer" style="flex:1"></span><button class="btn sm" data-ap="step" title="${t(L('Watch the autopilot do this step (counts as hints)', 'شاهد الطيار الآلي ينفّذ هذه المرحلة (تُحتسب كتلميحات)'))}">▶ ${t(L('Autopilot', 'الطيار الآلي'))}</button><button class="btn sm ghost" data-ap="all">⏩ ${t(L('Play all', 'نفّذ الكل'))}</button>` : ''}</div>
       <div class="tabs">
         <button data-tab="lesson" class="${tab === 'lesson' ? 'on' : ''}">📘 ${t(L('Lesson', 'الدرس'))}</button>
         <button data-tab="task" class="${tab === 'task' ? 'on' : ''}">🛠 ${t(L('Task', 'المهمة'))} <span class="badge ${pd === st.parts.length ? 'ok' : ''}">${pd}/${st.parts.length}</span></button>
@@ -258,6 +264,7 @@
         ${OPS.steps[i + 1] ? `<button class="btn ${done ? 'primary' : ''}" data-go="step:${OPS.steps[i + 1].id}">${t(OPS.steps[i + 1].title)} →</button>` : ''}
       </div>`;
     main.querySelectorAll('[data-tab]').forEach((b) => (b.onclick = () => { app.tab[st.id] = b.dataset.tab; app.keepScroll = false; app.render(); }));
+    main.querySelectorAll('[data-ap]').forEach((b) => (b.onclick = () => TS.autopilot.start(OPS.apAdapter, b.dataset.ap)));
     const body = $('#stepBody', main);
     if (tab === 'lesson') {
       body.innerHTML = `<div class="card lesson">${st.lesson(ship)}</div><div class="row"><button class="btn primary" id="toTask">${t(L('Go to the task', 'انتقل إلى المهمة'))} →</button></div>`;
@@ -287,6 +294,8 @@
       if (done) b.innerHTML = p.summary ? p.summary(ctx) : `<p class="muted">✓ ${t(L('Done.', 'تم.'))}</p>`;
       else if (!locked) p.render(ctx, b);
     });
+    const ins = OPS.insight && OPS.insight(st.id, ship);
+    if (ins) { const c = document.createElement('div'); c.innerHTML = ins; body.appendChild(c); bindGlobal(c); }
     const allParts = st.parts.every((p) => ctx.w.parts[p.id]);
     if (allParts && st.quiz && st.quiz.length && !ctx.w.quiz.passed) {
       const n = document.createElement('div');
@@ -481,5 +490,6 @@
     const h = location.hash.slice(1);
     app.view = h || (app.ship ? 'step:' + (app.ship.stage && app.ship.stage !== 'closed' ? app.ship.stage : OPS.steps[0].id) : 'home');
     app.render();
+    if (TS.tour) TS.tour('ops', TS.TOUR_BASIC);
   });
 })();

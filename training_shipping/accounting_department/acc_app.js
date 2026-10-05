@@ -104,6 +104,7 @@
     jobsTitle: L('Jobs received from Operations', 'العمليات الواردة من قسم العمليات'),
     emptyNote: L('No job has been handed to Accounting yet. Finish a shipment in Operations (step 12), import a JSON file, or load a sample job below.', 'لم تُسلَّم أي عملية للمحاسبة بعد. أنهِ شحنة في العمليات (المرحلة 12)، أو استورد ملف JSON، أو حمّل عملية نموذجية أدناه.'),
     disclaimer: ACC.disclaimer, dateLabel: L('Accounting date', 'التاريخ المحاسبي'),
+    insight: (id, s) => (ACC.insight ? ACC.insight(id, s) : ''), alerts: (s) => (ACC.alerts ? ACC.alerts(s) : []), homeKpis: (l) => (ACC.homeKpis ? ACC.homeKpis(l) : ''),
     handoff: (s) => s.handoffs && s.handoffs.accounting,
     init: (s, h) => ({ journal: [{ id: 'J0', step: 'opening', date: h.sentSim, ref: 'OPEN', narrative: 'Opening balances (training): bank funded by share capital', lines: [{ acc: '512', dr: ACC.OPENING_BANK, cr: 0 }, { acc: '101', dr: 0, cr: ACC.OPENING_BANK }] }] }),
     ctx: (ctx, st) => { ctx.post = (entry) => { const a = A(ctx.ship); a.journal = a.journal.filter((j) => j.key !== entry.key); a.journal.push(Object.assign({ id: 'J' + a.journal.length, step: st.id, date: a.today }, entry)); }; },

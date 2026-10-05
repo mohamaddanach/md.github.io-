@@ -82,6 +82,7 @@
       if (st.parts.every((p) => w.parts[p.id]) && (!st.quiz || w.quiz.passed) && !app.done(s, st)) {
         S(s).steps[st.id] = { done: true, at: new Date().toISOString() };
         TS.toast('✓ ' + t(L('Step completed: ', 'تم إنجاز المرحلة: ')) + t(st.title), 'ok');
+        if (TS.celebrate && !(TS.autopilot && TS.autopilot.running)) TS.celebrate();
       }
     };
 
@@ -129,6 +130,7 @@
       app.keep = true;
       bind(root);
       if (TS.decorateAll) TS.decorateAll(root);
+      if (TS.coach) TS.coach(coachModel());
     };
     const go = (v) => { app.view = v; app.keep = false; try { history.replaceState(null, '', '#' + v); } catch (e) { /* offline single-file frame */ } app.render(); window.scrollTo(0, 0); };
     app.go = go;
@@ -143,7 +145,7 @@
     function viewHome(main) {
       const list = jobs();
       const samples = cfg.samples ? cfg.samples() : [];
-      main.innerHTML = `<section class="hero"><h1>${cfg.icon} ${t(cfg.title)}</h1><p>${t(cfg.hero)}</p></section>
+      main.innerHTML = `${cfg.homeKpis ? cfg.homeKpis(list) : ''}<section class="hero"><h1>${cfg.icon} ${t(cfg.title)}</h1><p>${t(cfg.hero)}</p></section>
         <h2>${t(cfg.jobsTitle)}</h2>
         ${list.length ? ui.table([L('Job', 'العملية'), L('Direction', 'الاتجاه'), L('Customer', 'الزبون'), L('Progress', 'التقدّم'), L('Status', 'الحالة'), ''], list.map((s) => {
           const st = S(s), dn = st ? NS.steps.filter((x) => st.steps[x.id]).length : 0, h = cfg.handoff(s);
@@ -175,11 +177,12 @@
       const tab = app.tab[st.id] || (Object.keys(w.parts).length ? 'task' : 'lesson');
       const pd = pdone(s, st);
       main.innerHTML = `<div class="step-head"><div class="num">${i + 1}</div><div><h1>${t(st.title)}</h1><p>${t(st.sub)}</p></div></div>
-        <div class="row" style="margin:8px 0 14px"><span class="simclock">🗓 ${t(cfg.dateLabel)}: <b>${TS.fmtDate(S(s).today)}</b></span>${done ? `<span class="badge ok">✓ ${t(L('Completed', 'مُنجزة'))}</span>` : un ? `<span class="badge info">${t(L('In progress', 'قيد التنفيذ'))}</span>` : `<span class="badge">🔒</span>`}<span class="badge">${esc(s.id)}</span><span class="badge">${s.direction === 'import' ? t(L('Import', 'استيراد')) : t(L('Export', 'تصدير'))}</span></div>
+        <div class="row" style="margin:8px 0 14px"><span class="simclock">🗓 ${t(cfg.dateLabel)}: <b>${TS.fmtDate(S(s).today)}</b></span>${done ? `<span class="badge ok">✓ ${t(L('Completed', 'مُنجزة'))}</span>` : un ? `<span class="badge info">${t(L('In progress', 'قيد التنفيذ'))}</span>` : `<span class="badge">🔒</span>`}<span class="badge">${esc(s.id)}</span><span class="badge">${s.direction === 'import' ? t(L('Import', 'استيراد')) : t(L('Export', 'تصدير'))}</span>${un && !done ? `<span style="flex:1"></span><button class="btn sm" data-ap="step">▶ ${t(L('Autopilot', 'الطيار الآلي'))}</button><button class="btn sm ghost" data-ap="all">⏩ ${t(L('Play all', 'نفّذ الكل'))}</button>` : ''}</div>
         <div class="tabs"><button data-tab="lesson" class="${tab === 'lesson' ? 'on' : ''}">📘 ${t(L('Lesson', 'الدرس'))}</button><button data-tab="task" class="${tab === 'task' ? 'on' : ''}">🛠 ${t(L('Task', 'المهمة'))} <span class="badge ${pd === st.parts.length ? 'ok' : ''}">${pd}/${st.parts.length}</span></button>${st.quiz ? `<button data-tab="quiz" class="${tab === 'quiz' ? 'on' : ''}">❓ ${t(L('Quiz', 'اختبار'))} ${w.quiz.passed ? '<span class="badge ok">✓</span>' : ''}</button>` : ''}</div>
         <div id="sb"></div>
         <div class="row" style="justify-content:space-between;margin-top:18px">${i > 0 ? `<button class="btn" data-go="step:${NS.steps[i - 1].id}">← ${t(NS.steps[i - 1].title)}</button>` : '<span></span>'}${NS.steps[i + 1] ? `<button class="btn ${done ? 'primary' : ''}" data-go="step:${NS.steps[i + 1].id}">${t(NS.steps[i + 1].title)} →</button>` : ''}</div>`;
       main.querySelectorAll('[data-tab]').forEach((b) => (b.onclick = () => { app.tab[st.id] = b.dataset.tab; app.keep = false; app.render(); }));
+      main.querySelectorAll('[data-ap]').forEach((b) => (b.onclick = () => TS.autopilot.start(adapter, b.dataset.ap)));
       const b = $('#sb', main);
       if (tab === 'lesson') { b.innerHTML = `<div class="card lesson">${st.lesson(s)}</div><button class="btn primary" id="tt">${t(L('Go to the task', 'انتقل إلى المهمة'))} →</button>`; $('#tt', b).onclick = () => { app.tab[st.id] = 'task'; app.render(); }; }
       else if (tab === 'quiz') quiz(b, st);
@@ -200,6 +203,8 @@
         if (done) body.innerHTML = p.summary ? p.summary(ctx) : `<p class="muted">✓ ${t(L('Done.', 'تم.'))}</p>`;
         else if (!locked) p.render(ctx, body);
       });
+      const ins = cfg.insight ? cfg.insight(st.id, s) : '';
+      if (ins) { const c = document.createElement('div'); c.className = 'card'; c.innerHTML = `<b>📊 ${t(L('Insight', 'رؤية بيانية'))}</b>` + ins; b.appendChild(c); }
       if (st.parts.every((p) => ctx.w.parts[p.id]) && st.quiz && !ctx.w.quiz.passed) {
         const n = document.createElement('div'); n.className = 'note';
         n.innerHTML = `<strong>${t(L('Task finished!', 'انتهت المهمة!'))}</strong>${t(L('Pass the quiz to complete this step.', 'اجتز الاختبار لإنهاء المرحلة.'))} <button class="btn sm primary" id="tq">${t(L('Open quiz', 'افتح الاختبار'))}</button>`;
@@ -241,12 +246,46 @@
       main.querySelectorAll('[data-m]').forEach((b) => (b.onclick = () => { app.mailSel = b.dataset.m; app.render(); }));
     }
 
+    /* ---------------- automations: coach, autopilot, command palette ---------------- */
+    function coachModel() {
+      const s = app.ship;
+      if (!s) return { title: t(L('Open a job from the list (or load a sample) to start.', 'افتح عملية من القائمة (أو حمّل نموذجًا) للبدء.')) };
+      const st = NS.steps.find((x) => !app.done(s, x));
+      const alerts = cfg.alerts ? cfg.alerts(s) : [];
+      const un = s.emails.filter((e) => e.box === 'in' && !e.read && String(e.step || '').startsWith(cfg.prefix)).length;
+      if (un) alerts.push({ lvl: 'warn', text: un + ' ' + t(L('unread email(s)', 'رسائل غير مقروءة')) });
+      if (!st) return { title: t(L('Job closed in this department — well done!', 'أُقفلت العملية في هذا القسم — أحسنت!')), alerts };
+      const w = W(s, st.id), p = st.parts.find((x) => !w.parts[x.id]);
+      return { title: (app.idx(st.id) + 1) + '. ' + t(st.title), text: p ? '→ ' + t(typeof p.title === 'function' ? p.title(s) : p.title) : '→ ' + t(L('Pass the quiz', 'اجتز الاختبار')), alerts, action: { label: t(L('Go', 'انتقل')), run: () => { app.tab[st.id] = p ? 'task' : 'quiz'; go('step:' + st.id); } } };
+    }
+    const adapter = {
+      current() { const s = app.ship; if (!s) return null; const st = NS.steps.find((x) => !app.done(s, x)); if (!st) return null; const w = W(s, st.id); const p = st.parts.find((x) => !w.parts[x.id]); return { stepId: st.id, partId: p ? p.id : null, n: Object.keys(w.parts).length }; },
+      open(id, tab) { if (app.view !== 'step:' + id || app.tab[id] !== tab) { app.tab[id] = tab; go('step:' + id); } },
+      fillQuiz(id) { const st = NS.steps.find((x) => x.id === id), w = W(app.ship, id); w.quiz.ans = {}; st.quiz.forEach((q, i) => (w.quiz.ans[i] = q.a)); app.save(); app.render(); },
+    };
+    TS.autopilot.adapter = adapter;
+    TS.cmd.providers.push(() => {
+      const s = app.ship, out = [];
+      if (s) {
+        NS.steps.forEach((x, i) => out.push({ label: (i + 1) + '. ' + t(x.title), hint: t(L('Step', 'مرحلة')), run: () => go('step:' + x.id) }));
+        NS.docs(s).forEach((d) => out.push({ label: t(d.name), hint: t(L('Document', 'مستند')), run: () => { app.doc = d.id; go('docs'); } }));
+        (cfg.nav || []).forEach((n) => out.push({ label: t(n.l), hint: t(L('Page', 'صفحة')), run: () => go(n.v) }));
+        out.push({ label: t(L('▶ Autopilot: play the current step', '▶ الطيار الآلي: نفّذ المرحلة الحالية')), hint: t(L('Automation', 'أتمتة')), run: () => TS.autopilot.start(adapter, 'step') });
+        out.push({ label: t(L('⏩ Autopilot: play the whole job', '⏩ الطيار الآلي: نفّذ العملية كاملة')), hint: t(L('Automation', 'أتمتة')), run: () => TS.autopilot.start(adapter, 'all') });
+      }
+      out.push({ label: t(L('Jobs (home)', 'الملفات (الرئيسية)')), hint: t(L('Page', 'صفحة')), run: () => go('home') });
+      (cfg.learn || []).forEach((n) => out.push({ label: t(n.l), hint: t(L('Page', 'صفحة')), run: () => go(n.v) }));
+      out.push({ label: t(L('Show the tour again', 'أعد عرض الجولة')), hint: t(L('Help', 'مساعدة')), run: () => TS.tour(cfg.key, TS.TOUR_BASIC, true) });
+      return out;
+    });
+
     document.addEventListener('ts:lang', () => app.render());
     window.addEventListener('DOMContentLoaded', () => {
       load();
       const h = location.hash.slice(1);
       app.view = h || (app.ship ? firstOpen() : 'home');
       app.render();
+      if (TS.tour) TS.tour(cfg.key, TS.TOUR_BASIC);
     });
     return app;
   };
