@@ -24,28 +24,45 @@ training_shipping/
 └── accounting_department/                   ← MODULE 2 (complete)
 ```
 
+## 20 clients — never the same exercise twice
+
+The Operations home page is a **client board**: 20 different clients, each asking for a different job, plus a **🎲 random client** generator. Every case has its own:
+
+- **Mode & direction** — FCL or LCL, import to Beirut or export from Lebanon (8 FCL imports, 5 LCL imports, 5 FCL exports… see the board filters).
+- **Goods** — furniture, tiles, solar panels, coffee, medical gloves, textiles, laptops, car parts, cosmetics, tyres, toys, paper; tahini, olive oil, wine, soap, za'atar, baklava, handmade furniture, pickles — each with its own HS codes, distractor codes, duty rates and licences.
+- **Route & partners** — 25 ports (Far East, India, Med, North Europe, Gulf, Americas, Oceania), transshipment hubs, fictional suppliers, buyers and overseas agents, 5 lines and 4 LCL consolidators.
+- **Terms** — EXW / FCA / FOB imports, CFR / CIF / DAP exports; payment by advance, 30/70 T/T against copy B/L, CAD or L/C (which decides the B/L release and the HBL consignee).
+- **Persona** — formal, friendly, in a hurry, demanding (always negotiates), first-timer — changes the emails, the negotiation threshold and the mail tasks.
+- **Numbers & traps** — quantities, weights, CBM, units (cm / mm / total weight), rates, validity trap, short-free-time trap, ETDs, delay at the hub, customs lane, CFS re-measurement…
+
+Quizzes mix lesson questions with **generated micro-exercises** (new numbers every file, options shuffled). The **🎯 Drills** page (in every department) is endless: CBM, W/M, LCL freight, container choice, margin/markup, D&D, CFS storage, Incoterm who-pays, ISO 6346 check digit, VGM, cutoffs, CIF, duty + VAT, FOB from CFR, HS, journal entries, VAT and LBP — with streak and accuracy.
+
 ## Module 1 — Operations & Pricing: the 12 steps
 
-| # | Step | What you do |
-|---|------|-------------|
-| 1 | Client inquiry & job file | Read the client email, compute weight/CBM, choose equipment, Incoterm, scope, pre-checks |
-| 2 | Rate request | Choose what to send, email 3–5 lines, compare the buy sheet (validity, T/S, free time, risk-adjusted cost) |
-| 3 | Quotation | Sell price per line, margin, VAT 11%, validity, conditions; client may negotiate |
-| 4 | Booking | Pick a feasible sailing vs cutoffs, e-booking form, read the SO, inform client |
-| 5 | Empty pickup & stuffing | Stuffing instructions, ISO 6346 check digit, container inspection, VGM & seal |
-| 6 | Export customs & gate-in | Export clearance (hand-off to Customs for Lebanese exports), VGM submission, gate-in window, EIR |
-| 7 | SI & draft B/L | MBL/HBL parties ("to order"), SI before cutoff, find the errors in the draft, HBL approval |
-| 8 | Sailing & release | OBL / telex / seaway choice, freight payment, pre-alert, manifest (NAJM / ICS2) |
-| 9 | Tracking & arrival notice | Transshipment delay, honest client update, arrival notice |
-| 10 | Release & customs | Credit control, D/O with container deposit, CIF value, hand-off to Customs |
-| 11 | Delivery & empty return | Trucking order, demurrage/detention calculation, EIR, deposit refund |
-| 12 | Closing | Job costing, invoice VAT (USD + LBP), closing checklist, hand-off to Accounting |
+| # | Step | FCL | LCL |
+|---|------|-----|-----|
+| 1 | Client inquiry & job file | Weight/CBM, equipment, Incoterm, scope, pre-checks | + chargeable W/M |
+| 2 | Rate request | 5 lines: all-in, validity, T/S, free time, risk-adjusted cost | 4 consolidators: rate/W/M, minimum, CFS storage |
+| 3 | Quotation | Lines × quantity, margin, VAT 11%, conditions, negotiation | per-W/M lines, “billed on CFS measurement” |
+| 4 | Booking | Feasible sailing vs CY cutoff, SO | CFS cutoff |
+| 5 | Pickup & stuffing | ISO 6346, inspection, VGM & seal | Cargo to CFS, dock receipt re-measurement, marks |
+| 6 | Export customs & gate-in | EXW = buyer clears; Lebanese export docs by zone (EUR.1 / Arab COO / health cert) | consolidation & loading record |
+| 7 | SI & draft B/L | MBL/HBL parties (“to order” only with a bank), 3 random errors in the draft | CFS/CFS |
+| 8 | Sailing & release | Release by payment terms, prepaid carrier invoice, pre-alert, ICS2 / AMS / NAJM | |
+| 9 | Tracking & arrival | Random delay & reason, honest update, arrival notice | |
+| 10 | Release & customs | Credit control, D/O + deposit, CIF, hand-off to Customs; export: release sequence by payment, preference | no deposit |
+| 11 | Delivery | Trucking or client pick-up, D&D, deposit refund | CFS storage |
+| 12 | Closing | **Answer every open email**, job costing, invoice VAT (USD + LBP), hand-off to Accounting | W/M adjustment & storage rebilled |
 
-Two scenarios: **Import** (furniture, Shanghai → Beirut, FOB, 40′ HC, door delivery Choueifat) and **Export** (tahini, Zahle → Hamburg, CFR, 20′ DV, CAD with EUR.1).
+### Mailbox v2 & document alerts
+
+- Folders (Inbox, **Needs reply**, Sent, Clients, Lines & consolidators, Agents & suppliers, Customs/trucking/banks), avatars, threads, search, quick reply.
+- **Mail tasks**: 4 per file, chosen for the case — ETA questions, documents for customs, deposit, free time, fee breakdown, insurance, early empty, bank documents, duty at destination, LCL re-measurement complaint, missing VGM from the line, broker’s missing document, agent invoice overcharge, trucker waiting time, supplier delay… You must pick and send the right reply; the file cannot be closed while one is open.
+- Attachments (📎) open the real document in a printable pop-up. Every time a new document becomes available, a **📄 New document** alert appears with a View button.
 
 ## Module 2 — Accounting: the 8 steps
 
-The job arrives from Operations inside the shipment JSON (`handoffs.accounting`). You can also practise on the two **sample jobs** on the Accounting home page.
+The job arrives from Operations inside the shipment JSON (`handoffs.accounting`). You can also practise on the **sample jobs** (FCL/LCL, import/export) on the Accounting home page.
 
 | # | Step | What you do |
 |---|------|-------------|
@@ -67,15 +84,19 @@ The file arrives from Operations inside the shipment JSON (`handoffs.customs_imp
 | # | Step | What you do |
 |---|------|-------------|
 | 1 | File & documents | Required documents, cross-check invoice ↔ packing list ↔ manifest/certificates, get the error corrected |
-| 2 | Classification | HS code per item with a tariff extract (chairs 9401 ≠ tables 9403; tahini 2008.19), effect of a wrong code |
-| 3 | Customs value | Import: allocate freight & insurance per item → CIF, LBP. Export: FOB from a CFR price |
-| 4 | Duties & taxes | Duty per item, import VAT 11% on (CIF + duty), total USD/LBP; export: what applies |
+| 2 | Classification | HS code per item with a tariff extract built for the case (right codes + the supplier’s code + distractors), effect of a wrong code |
+| 3 | Customs value | Import: allocate freight & insurance per item → CIF, LBP. Export: FOB from a CFR / CIF / DAP price |
+| 4 | Duties & taxes | Duty per item, preferential origin (EU EUR.1 / GAFTA → 0%, origin ≠ country of shipment), import VAT 11%, total USD/LBP |
 | 5 | Declaration | NAJM-style form: regime, parties, origin/consignment, B/L, container, packages, weights, value, preference |
-| 6 | Lodge & lane | Submit, receive green/yellow lane, answer the officer correctly (never a bribe) |
+| 6 | Lodge & lane | Submit, receive a green / yellow / red lane, answer the officer correctly (never a bribe) |
 | 7 | Payment & release | Order of the release chain, pay the Treasury, release / loading and proof of export |
 | 8 | Close | What goes to Accounting (fee = revenue, duties = disbursement), write the result into the JSON |
 
 Tariff rates and the customs exchange rate are **samples** for training.
+
+## Design
+
+Navy & red colour scheme (light and dark), client cards, navy top bar with a red accent line, red highlights for active items and calls to action.
 
 ## Graphics & automations
 

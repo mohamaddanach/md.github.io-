@@ -6,7 +6,10 @@
   const C = (s) => s.customs;
   const LB = (en, ar) => `<div class="note lb"><strong>🇱🇧 ${t(L('Lebanon', 'لبنان'))}</strong>${t(L(en, ar))}</div>`;
   const usd = (n) => 'USD ' + TS.num(n);
-  const tariffOpts = (filter) => CUS.tariff.filter(filter || (() => true)).map((x) => ({ v: x.hs, l: { en: x.hs + ' — ' + x.d.en, ar: x.hs + ' — ' + x.d.ar } }));
+  const tariffOpts = (s) => CUS.tariffFor(s).map((x) => ({ v: x.hs, l: { en: x.hs + ' — ' + x.d.en, ar: x.hs + ' — ' + x.d.ar } }));
+  const shuf = (s, salt, arr) => { const r = TS.rng(TS.seedOf(s.id) * 7 + salt); const a = arr.slice(); for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(r() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
+  const nm = (x) => (TS.lang === 'ar' ? x.descAr || x.desc : x.desc);
+  const CNAME = (cc) => CUS.countryName(cc);
   CUS.steps = [];
 
   /* ============================================================ 1. FILE & DOCUMENTS */
@@ -21,7 +24,7 @@
 <ul><li>Commercial invoice (signed, with Incoterm and currency) and detailed packing list.</li><li>Certificate of origin (origin is declared on every item; a preferential COO reduces duty).</li><li>B/L copy and the line’s delivery order (D/O).</li><li>Importer’s commercial registration and VAT/financial number.</li><li>Licences/approvals for restricted goods.</li></ul>
 <h3>Typical export file</h3>
 <ul><li>Commercial invoice, packing list, booking confirmation.</li><li>Exporter’s registration.</li><li>Certificates required by the buyer’s country: COO / EUR.1 from the Chamber, health or phytosanitary certificate from the Ministry of Agriculture for food.</li></ul>
-<p>A difference between documents is not a detail: declaring 120 cartons when the packing list says 118 is a false declaration — fix the document first.</p>`,
+<p>A difference between documents is not a detail: declaring a package count that differs from the packing list is a false declaration — fix the document first.</p>`,
     `
 <h3>القاعدة الأولى للمخلّص</h3>
 <p>أنت توقّع البيان، إذًا أنت مسؤول عنه. قبل تقديم أي شيء اجمع كل المستندات و<b>قاطعها</b>: الفاتورة ↔ قائمة التعبئة ↔ البوليصة/المانيفست ↔ الشهادات. يجب أن تتطابق الكمية والوزن والوصف والقيمة والأطراف.</p>
@@ -29,25 +32,19 @@
 <ul><li>الفاتورة التجارية (موقّعة، مع شرط التسليم والعملة) وقائمة تعبئة مفصّلة.</li><li>شهادة المنشأ (يُصرَّح عن المنشأ لكل صنف؛ وشهادة المنشأ التفضيلية تخفّض الرسم).</li><li>نسخة البوليصة وإذن التسليم من الخط.</li><li>السجل التجاري للمستورد ورقمه المالي/الضريبي.</li><li>التراخيص/الموافقات للبضائع المقيّدة.</li></ul>
 <h3>ملف التصدير النموذجي</h3>
 <ul><li>الفاتورة التجارية، قائمة التعبئة، تأكيد الحجز.</li><li>تسجيل المصدّر.</li><li>الشهادات التي يطلبها بلد المشتري: المنشأ / EUR.1 من الغرفة، الشهادة الصحية أو الصحة النباتية من وزارة الزراعة للأغذية.</li></ul>
-<p>الفرق بين المستندات ليس تفصيلًا: التصريح عن 120 كرتونة بينما تقول قائمة التعبئة 118 هو تصريح كاذب — صحّح المستند أولًا.</p>`)),
+<p>الفرق بين المستندات ليس تفصيلًا: التصريح عن عدد طرود يختلف عن قائمة التعبئة هو تصريح كاذب — صحّح المستند أولًا.</p>`)),
     parts: [
       {
         id: 'docs', title: L('Which documents do you need?', 'ما المستندات التي تحتاجها؟'),
         render(ctx, b) {
-          const imp = ctx.d.imp;
+          const s = ctx.ship, d = ctx.d, imp = d.imp, sc = d.sc;
+          const good = imp ? [L('Commercial invoice', 'الفاتورة التجارية'), L('Packing list', 'قائمة التعبئة'), L('Certificate of origin' + (d.pref === 'EUR1' ? ' / EUR.1' : d.pref === 'GAFTA' ? ' (Arab)' : ''), 'شهادة المنشأ' + (d.pref === 'EUR1' ? ' / EUR.1' : d.pref === 'GAFTA' ? ' (العربية)' : '')), L('B/L copy (+ release)', 'نسخة البوليصة (+ الإفراج)'), L('Delivery order', 'إذن التسليم'), L('Importer’s commercial registration & VAT number', 'السجل التجاري للمستورد ورقمه الضريبي')].concat(sc.licence ? [L('Import approval / licence for the product', 'موافقة / ترخيص استيراد المنتج')] : [])
+            : [L('Commercial invoice', 'الفاتورة التجارية'), L('Packing list', 'قائمة التعبئة'), L('Booking confirmation', 'تأكيد الحجز'), L('Exporter’s commercial registration', 'السجل التجاري للمصدّر'), L('Certificate of origin', 'شهادة المنشأ')].concat(sc.zone === 'EU' ? [L('EUR.1 movement certificate', 'شهادة الحركة EUR.1')] : []).concat(sc.zone === 'ARAB' ? [L('Arab certificate of origin (GAFTA)', 'شهادة المنشأ العربية')] : []).concat(sc.cargo && sc.cargo.food ? [L('Health certificate', 'الشهادة الصحية')] : []);
+          const bad = imp ? [{ l: L('Our quotation to the client', 'عرض السعر للزبون'), fb: L('Commercial document between us and the client — not a customs document.', 'مستند تجاري بيننا وبين الزبون — ليس مستندًا جمركيًا.') }, { l: L(`Booking confirmation from ${sc.far ? sc.far.city : 'origin'}`, `تأكيد الحجز من ${sc.far ? sc.far.city : 'المنشأ'}`), fb: L('Origin document, not needed for import clearance.', 'مستند منشأ، غير ضروري للتخليص الوارد.') }]
+            : [{ l: L('Delivery order', 'إذن التسليم'), fb: L('Import document at destination.', 'مستند استيراد في الوجهة.') }, { l: L('Arrival notice', 'إشعار الوصول'), fb: L('Destination document.', 'مستند في الوجهة.') }].concat(sc.zone !== 'EU' ? [{ l: L('EUR.1', 'EUR.1'), fb: L(`Only for the EU/EFTA — not for ${sc.destCountry}.`, `فقط لأوروبا — ليس لـ ${sc.destCountry}.`) }] : []);
           ui().choice(ctx, b, {
             key: 'docs', multi: true, q: imp ? L('Select the documents required to lodge the Lebanese import declaration.', 'اختر المستندات المطلوبة لتقديم بيان الاستيراد اللبناني.') : L('Select the documents required for the Lebanese export declaration and the buyer.', 'اختر المستندات المطلوبة لبيان التصدير اللبناني وللمشتري.'),
-            options: imp ? [
-              { l: L('Commercial invoice', 'الفاتورة التجارية'), ok: true }, { l: L('Packing list', 'قائمة التعبئة'), ok: true }, { l: L('Certificate of origin', 'شهادة المنشأ'), ok: true },
-              { l: L('B/L copy (+ telex release)', 'نسخة البوليصة (+ التلكس)'), ok: true }, { l: L('Delivery order from the line', 'إذن التسليم من الخط'), ok: true }, { l: L('Importer’s commercial registration & VAT number', 'السجل التجاري للمستورد ورقمه الضريبي'), ok: true },
-              { l: L('Our quotation to the client', 'عرض السعر للزبون'), ok: false, fb: L('Commercial document between us and the client — not a customs document.', 'مستند تجاري بيننا وبين الزبون — ليس مستندًا جمركيًا.') },
-              { l: L('Booking confirmation from Shanghai', 'تأكيد الحجز من شنغهاي'), ok: false, fb: L('Origin document, not needed for import clearance.', 'مستند منشأ، غير ضروري للتخليص الوارد.') },
-            ] : [
-              { l: L('Commercial invoice', 'الفاتورة التجارية'), ok: true }, { l: L('Packing list', 'قائمة التعبئة'), ok: true }, { l: L('Booking confirmation', 'تأكيد الحجز'), ok: true },
-              { l: L('Exporter’s commercial registration', 'السجل التجاري للمصدّر'), ok: true }, { l: L('Certificate of origin + EUR.1', 'شهادة المنشأ + EUR.1'), ok: true }, { l: L('Health certificate (Ministry of Agriculture)', 'الشهادة الصحية (وزارة الزراعة)'), ok: true },
-              { l: L('Delivery order', 'إذن التسليم'), ok: false, fb: L('Import document at destination.', 'مستند استيراد في الوجهة.') },
-              { l: L('Arrival notice', 'إشعار الوصول'), ok: false, fb: L('Destination document.', 'مستند في الوجهة.') },
-            ],
+            options: shuf(s, 1, good.map((l) => ({ l, ok: true })).concat(bad.map((x) => Object.assign({ ok: false }, x)))),
             onSuccess: () => ctx.finish('docs'),
           });
         },
@@ -55,26 +52,32 @@
       {
         id: 'cross', title: L('Cross-check the documents', 'قاطع المستندات'),
         render(ctx, b) {
-          const s = ctx.ship, d = ctx.d, imp = d.imp;
-          const pre = imp
-            ? `<div class="grid c3"><div class="email-preview"><b>Commercial invoice</b><br>${d.items.map((x) => `${x.qty} ${x.unit} ${esc(x.desc)} — ${x.pkgs} ctns — USD ${TS.num(x.value)}`).join('<br>')}<br><b>Total 120 cartons — USD ${TS.num(d.valTotal)}</b></div><div class="email-preview"><b>Packing list</b><br>Tables: 30 ctns, 3,600 kg<br>Chairs: <b>88 ctns</b>, 4,800 kg<br><b>Total 118 cartons, 8,400 kg</b></div><div class="email-preview"><b>B/L / manifest</b><br>${esc(s.documents.bl.mblNo)}<br>${esc(s.equipment.containerNo)}<br><b>120 CARTONS — 8,400 KGS</b></div></div>`
-            : `<div class="grid c3"><div class="email-preview"><b>Commercial invoice</b><br>${esc(d.items[0].desc)}<br>20 pallets — net 15,600 kg — gross 17,000 kg<br>USD ${TS.num(d.cfr)} CFR Hamburg</div><div class="email-preview"><b>Packing list</b><br>20 pallets<br>Net 15,600 kg — gross 17,000 kg</div><div class="email-preview"><b>Health certificate (draft)</b><br>Tahini in glass jars<br><b>Net weight 15,000 kg</b><br>Exporter: ${esc(s.parties.shipper.name)}</div></div>`;
+          const s = ctx.ship, d = ctx.d, imp = d.imp, last = d.items[d.items.length - 1];
+          const kind = imp ? ['pkgs', 'gross'][d.seed % 2] : d.sc.cargo && d.sc.cargo.food ? ['net', 'pkgs'][d.seed % 2] : 'pkgs';
+          const mfest = s.documents && s.documents.bl ? s.documents.bl.mblNo : '';
+          const cnt = s.equipment ? s.equipment.containerNo : '';
+          const diff = kind === 'pkgs' ? Math.max(1, Math.round(last.pkgs * 0.08)) : 0;
+          const badGross = Math.round(d.gross * 0.96 / 10) * 10, badNet = Math.round(d.net * 0.96 / 10) * 10;
+          const inv = `<div class="email-preview"><b>Commercial invoice</b><br>${d.items.map((x) => `${TS.num(x.qty, 0)} ${esc(x.unit)} ${esc(x.desc)} — ${x.pkgs} pkgs — USD ${TS.num(x.value)}`).join('<br>')}<br><b>Total ${d.pkgs} packages — USD ${TS.num(d.valTotal)}</b></div>`;
+          const pl = `<div class="email-preview"><b>Packing list</b><br>${d.items.map((x, i) => `${esc(x.desc.split(',')[0])}: <b>${kind === 'pkgs' && i === d.items.length - 1 ? x.pkgs - diff : x.pkgs} pkgs</b>, ${TS.num(x.gross, 0)} kg`).join('<br>')}<br><b>Total ${kind === 'pkgs' ? d.pkgs - diff : d.pkgs} packages, ${TS.num(kind === 'gross' ? badGross : d.gross, 0)} kg gross</b></div>`;
+          const third = imp || kind !== 'net' ? `<div class="email-preview"><b>B/L / manifest</b><br>${esc(mfest)}<br>${esc(cnt)}<br><b>${d.pkgs} ${esc(String(s.jobFile.pkgType).toUpperCase())} — ${TS.num(d.gross, 0)} KGS</b></div>` : `<div class="email-preview"><b>Health certificate (draft)</b><br>${esc(d.items[0].desc.split(',')[0])}<br><b>Net weight ${TS.num(badNet, 0)} kg</b><br>Exporter: ${esc(s.parties.shipper.name)}</div>`;
+          const q = kind === 'pkgs' ? L(`The packing list says ${d.pkgs - diff} packages; the invoice and the B/L say ${d.pkgs}. What do you do?`, `قائمة التعبئة تقول ${d.pkgs - diff} طردًا؛ والفاتورة والبوليصة ${d.pkgs}. ماذا تفعل؟`)
+            : kind === 'gross' ? L(`The packing list shows ${TS.num(badGross, 0)} kg gross; the B/L/manifest shows ${TS.num(d.gross, 0)} kg. What do you do?`, `قائمة التعبئة تُظهر ${TS.num(badGross, 0)} كغ قائمًا؛ والبوليصة/المانيفست ${TS.num(d.gross, 0)} كغ. ماذا تفعل؟`)
+              : L(`The draft health certificate shows ${TS.num(badNet, 0)} kg net; invoice and packing list show ${TS.num(d.net, 0)} kg. What do you do?`, `مسودة الشهادة الصحية تُظهر ${TS.num(badNet, 0)} كغ صافيًا؛ والفاتورة وقائمة التعبئة ${TS.num(d.net, 0)} كغ. ماذا تفعل؟`);
+          const who = imp ? L(`the supplier (through our ${d.sc.far ? d.sc.far.city : 'origin'} agent)`, `المورّد (عبر وكيلنا في ${d.sc.far ? d.sc.far.city : 'المنشأ'})`) : kind === 'net' ? L('the Ministry (through the exporter)', 'الوزارة (عبر المصدّر)') : L('the exporter', 'المصدّر');
+          const fix = kind === 'net' ? L('the certificate', 'الشهادة') : L('the packing list', 'قائمة التعبئة');
           ui().choice(ctx, b, {
-            key: 'cross', pre,
-            q: imp ? L('The packing list says 118 cartons; the invoice and the manifest say 120. What do you do?', 'قائمة التعبئة تقول 118 كرتونة؛ والفاتورة والمانيفست تقولان 120. ماذا تفعل؟') : L('The draft health certificate shows 15,000 kg net; invoice and packing list show 15,600 kg. What do you do?', 'مسودة الشهادة الصحية تُظهر 15,000 كغ صافيًا؛ والفاتورة وقائمة التعبئة 15,600 كغ. ماذا تفعل؟'),
-            options: imp ? [
-              { l: L('Stop and ask the supplier (via our Shanghai agent) for a corrected packing list before lodging; check the container count if needed', 'توقّف واطلب من المورّد (عبر وكيلنا في شنغهاي) قائمة تعبئة مصحّحة قبل التقديم؛ وتحقّق من العدد في الحاوية إذا لزم'), ok: true },
-              { l: L('Declare 118 cartons — the packing list is the most detailed', 'صرّح عن 118 كرتونة — قائمة التعبئة هي الأكثر تفصيلًا'), ok: false, fb: L('Then your declaration contradicts the manifest (120) — that triggers a discrepancy and possible penalty.', 'عندها يتعارض بيانك مع المانيفست (120) — مما يسبّب فرقًا وغرامة محتملة.') },
-              { l: L('Declare 120 and say nothing', 'صرّح عن 120 ولا تقل شيئًا'), ok: false, fb: L('If customs inspects and finds the documents inconsistent, you are responsible.', 'إذا كشفت الجمارك ووجدت المستندات غير متطابقة، فأنت المسؤول.') },
-            ] : [
-              { l: L('Ask the Ministry of Agriculture (through the exporter) to correct the certificate to 15,600 kg before loading', 'اطلب من وزارة الزراعة (عبر المصدّر) تصحيح الشهادة إلى 15,600 كغ قبل التحميل'), ok: true },
-              { l: L('Ship it — the German side will not check', 'اشحن — الجانب الألماني لن يتحقّق'), ok: false, fb: L('EU border control checks food documents; a mismatch can block the container in Hamburg.', 'الرقابة الحدودية الأوروبية تدقّق مستندات الأغذية؛ والفرق قد يوقف الحاوية في هامبورغ.') },
-              { l: L('Change the invoice to 15,000 kg', 'غيّر الفاتورة إلى 15,000 كغ'), ok: false, fb: L('Never alter the invoice to match a wrong certificate.', 'لا تعدّل الفاتورة أبدًا لتطابق شهادة خاطئة.') },
-            ],
+            key: 'cross', pre: `<div class="grid c3">${inv}${pl}${third}</div>`, q,
+            options: shuf(s, 2, [
+              { l: L(`Stop and ask ${who.en} for a corrected ${fix.en} before lodging; check the cargo if needed`, `توقّف واطلب من ${who.ar} ${fix.ar} مصحّحة قبل التقديم؛ وتحقّق من البضاعة إذا لزم`), ok: true },
+              { l: L('Declare the figure of the packing list — it is the most detailed', 'صرّح برقم قائمة التعبئة — هي الأكثر تفصيلًا'), ok: false, fb: L('Then your declaration contradicts the manifest — that triggers a discrepancy and possible penalty.', 'عندها يتعارض بيانك مع المانيفست — مما يسبّب فرقًا وغرامة محتملة.') },
+              { l: L('Lodge as it is and say nothing', 'قدّم كما هو ولا تقل شيئًا'), ok: false, fb: L('If customs inspects and finds the documents inconsistent, you are responsible.', 'إذا كشفت الجمارك ووجدت المستندات غير متطابقة، فأنت المسؤول.') },
+              { l: L('Change the invoice yourself to match', 'عدّل الفاتورة بنفسك لتتطابق'), ok: false, fb: L('Never alter a commercial document.', 'لا تعدّل أبدًا مستندًا تجاريًا.') },
+            ]),
             onSuccess: () => {
-              const to = imp ? 'ops@huangpu-log.test' : s.parties.client.email;
-              ctx.send({ to, subject: imp ? L('Packing list correction — ' + s.documents.bl.hblNo, 'تصحيح قائمة التعبئة — ' + s.documents.bl.hblNo) : L('Health certificate correction — ' + s.id, 'تصحيح الشهادة الصحية — ' + s.id), body: imp ? L('The packing list shows 118 cartons but the invoice and B/L show 120 (90 cartons of chairs). Please send a corrected, signed packing list today.', 'قائمة التعبئة تُظهر 118 كرتونة بينما الفاتورة والبوليصة 120 (90 كرتونة كراسي). يرجى إرسال قائمة تعبئة مصحّحة وموقّعة اليوم.') : L('The draft health certificate shows 15,000 kg net instead of 15,600 kg. Please have it corrected before loading.', 'مسودة الشهادة الصحية تُظهر 15,000 كغ صافيًا بدل 15,600 كغ. يرجى تصحيحها قبل التحميل.') });
-              ctx.receive({ from: to, subject: imp ? L('Corrected packing list', 'قائمة تعبئة مصحّحة') : L('Corrected health certificate', 'شهادة صحية مصحّحة'), body: imp ? L('Apologies — typo. Corrected packing list attached: chairs 90 cartons, total 120 cartons, 8,400 kg.', 'نعتذر — خطأ طباعي. مرفق القائمة المصحّحة: الكراسي 90 كرتونة، المجموع 120 كرتونة، 8,400 كغ.') : L('Corrected certificate issued: net 15,600 kg.', 'صدرت الشهادة المصحّحة: صافي 15,600 كغ.'), attachments: [imp ? 'Packing_list_rev1.pdf' : 'Health_certificate_rev1.pdf'] }, 800);
+              const to = imp ? (s.parties.agent && s.parties.agent.email) || s.parties.shipper.email : s.parties.client.email;
+              ctx.send({ to, subject: L(`${fix.en} correction — ${s.id}`, `تصحيح ${fix.ar} — ${s.id}`), body: L(`Please correct the ${fix.en}: ${q.en.split('. What')[0]}. Send the corrected, signed document today.`, `يرجى تصحيح ${fix.ar}: ${q.ar.split('. ماذا')[0]}. أرسلوا المستند المصحّح والموقّع اليوم.`) });
+              ctx.receive({ from: to, subject: L(`Corrected ${fix.en}`, `${fix.ar} مصحّحة`), body: L(`Apologies — typo. Corrected document attached: ${d.pkgs} packages, ${TS.num(d.gross, 0)} kg gross, ${TS.num(d.net, 0)} kg net.`, `نعتذر — خطأ طباعي. المستند المصحّح مرفق: ${d.pkgs} طردًا، ${TS.num(d.gross, 0)} كغ قائم، ${TS.num(d.net, 0)} كغ صافٍ.`), attachments: [{ name: (kind === 'net' ? 'Health_certificate' : 'Packing_list') + '_rev1.pdf', doc: kind === 'net' ? null : 'pl' }] }, 800);
               ctx.finish('cross');
             },
           });
@@ -96,7 +99,7 @@
 <h3>How the HS works</h3>
 <p>The Harmonized System has 21 sections, 97 chapters, 4-digit headings and 6-digit subheadings, used worldwide; Lebanon adds national digits. Classify with the <b>General Interpretative Rules</b>: first the wording of the heading and the section/chapter notes, then the most specific description.</p>
 <h3>One invoice line ≠ one HS code</h3>
-<p>Suppliers often put one HS code for the whole shipment. Customs classifies <b>each different item</b>. Dining tables are “other wooden furniture” (9403.60); chairs are <b>seats</b> — heading 9401, even if they are sold with the tables.</p>
+<p>Suppliers often put one HS code for the whole shipment. Customs classifies <b>each different item</b>. Example: dining tables are “other wooden furniture” (9403.60); chairs are <b>seats</b> — heading 9401, even if they are sold with the tables. The same trap exists for trousers (men’s 6203 / women’s 6204), solar panels and inverters, brake pads and filters…</p>
 <h3>Why it matters</h3>
 <ul><li>The duty rate.</li><li>Licences and controls (some codes need ministry approval).</li><li>Preferential origin rules.</li><li>Penalties: a wrong code that lowers duty is an infraction even if it was the supplier’s code.</li></ul>
 <p>When in doubt, ask customs for a <b>binding/advance ruling</b> or use the official explanatory notes.</p>`,
@@ -112,33 +115,38 @@
       {
         id: 'hs', title: L('Classify each item', 'صنّف كل صنف'),
         render(ctx, b) {
-          const d = ctx.d;
+          const s = ctx.ship, d = ctx.d, tf = CUS.tariffFor(s);
           const wrap = document.createElement('div');
-          wrap.innerHTML = `<p>${t(L('Tariff extract (sample rates):', 'مقتطف من التعرفة (نسب نموذجية):'))}</p>` + ui().table(['HS', L('Description', 'الوصف'), { l: L('Duty %', 'الرسم %'), num: 1 }], CUS.tariff.map((x) => `<tr><td class="mono">${x.hs}</td><td>${esc(t(x.d))}</td><td class="num">${x.duty}</td></tr>`));
+          wrap.innerHTML = `<p>${t(L('Tariff extract (sample rates):', 'مقتطف من التعرفة (نسب نموذجية):'))}</p>` + ui().table(['HS', L('Description', 'الوصف'), { l: L('Duty % (MFN)', 'الرسم % (العادي)'), num: 1 }], tf.map((x) => `<tr><td class="mono">${x.hs}</td><td>${esc(t(x.d))}</td><td class="num">${x.duty}</td></tr>`));
           b.appendChild(wrap);
           const f = document.createElement('div'); b.appendChild(f);
+          const given = [...new Set(d.items.map((x) => x.hsGiven || x.hs))].join(', ');
           ui().form(ctx, f, {
-            key: 'hs', intro: L('The supplier/shipper wrote HS ' + d.items[0].hsGiven + ' for everything. Check it item by item.', 'كتب المورّد/الشاحن الرمز ' + d.items[0].hsGiven + ' لكل شيء. تحقّق صنفًا صنفًا.'),
-            fields: d.items.map((x) => ({ k: x.id, label: (TS.lang === 'ar' ? x.descAr : x.desc) + ` (${x.qty} ${x.unit})`, type: 'select', options: tariffOpts(), ans: () => x.hs, full: true, fb: x.id === 'C' ? L('Chairs are seats: heading 9401. Wooden frame, not upholstered → 9401.69.', 'الكراسي مقاعد: البند 9401. هيكل خشبي غير منجّد ← 9401.69.') : x.id === 'H' ? L('Tahini is a prepared sesame seed product → 2008.19 (not sesame seeds 1207, not sesame oil 1515).', 'الطحينة منتج محضّر من بذور السمسم ← 2008.19 (ليست بذور 1207 ولا زيت 1515).') : L('Dining tables: other wooden furniture → 9403.60.', 'طاولات السفرة: أثاث خشبي آخر ← 9403.60.') })),
-            onSuccess: () => { C(ctx.ship).items = d.items.map((x) => ({ id: x.id, hs: x.hs, rate: d.imp ? CUS.rateOf(x.hs) : 0 })); ctx.finish('hs'); },
+            key: 'hs', intro: L(`The ${d.imp ? 'supplier' : 'exporter'} wrote HS ${given}${d.multi ? ' for everything' : ''}. Check it item by item.`, `كتب ${d.imp ? 'المورّد' : 'المصدّر'} الرمز ${given}${d.multi ? ' لكل شيء' : ''}. تحقّق صنفًا صنفًا.`),
+            fields: d.items.map((x) => ({ k: x.id, label: nm(x) + ` (${TS.num(x.qty, 0)} ${x.unit})`, type: 'select', options: shuf(s, 3, tariffOpts(s)), ans: () => x.hs, full: true, fb: L(`Correct: ${x.hs} — ${CUS.descOf(x.hs).en}.`, `الصحيح: ${x.hs} — ${CUS.descOf(x.hs).ar}.`) })),
+            onSuccess: () => { C(ctx.ship).items = d.items.map((x) => ({ id: x.id, hs: x.hs, rate: d.imp ? x.rate : 0 })); ctx.finish('hs'); },
           });
         },
-        summary: (ctx) => `<p>✓ ${ctx.d.items.map((x) => `${esc(x.desc)} → <b class="mono">${x.hs}</b>`).join(' · ')}</p>`,
+        summary: (ctx) => `<p>✓ ${ctx.d.items.map((x) => `${esc(x.desc.split(',')[0])} → <b class="mono">${x.hs}</b>${x.hsGiven && x.hsGiven !== x.hs ? ` <small class="muted">(${t(L('supplier said', 'قال المورّد'))} ${x.hsGiven})</small>` : ''}`).join(' · ')}</p>`,
       },
       {
         id: 'why', title: L('Consequence of the supplier’s code', 'نتيجة رمز المورّد'),
         render(ctx, b) {
-          const d = ctx.d;
-          if (!d.imp) {
-            ui().choice(ctx, b, { key: 'why', q: L('Lebanon charges no export duty here. Why must the export HS still be right?', 'لا يفرض لبنان رسم تصدير هنا. لماذا يجب أن يكون رمز التصدير صحيحًا؟'), options: [{ l: L('It must match the EUR.1/COO and the buyer’s import declaration in the EU, and feeds Lebanese trade statistics', 'يجب أن يطابق EUR.1/شهادة المنشأ وبيان الاستيراد لدى المشتري في أوروبا، ويغذّي إحصاءات التجارة اللبنانية'), ok: true }, { l: L('It does not matter for exports', 'لا يهمّ في التصدير'), ok: false }], onSuccess: () => ctx.finish('why') });
+          const d = ctx.d, s = ctx.ship;
+          const wrongItem = d.items.find((x) => x.hsGiven && x.hsGiven !== x.hs && CUS.rateOf(x.hsGiven) !== CUS.rateOf(x.hs));
+          if (!d.imp || !wrongItem) {
+            const q = !d.imp ? L(`Lebanon charges no export duty here. Why must the export HS still be right?`, 'لا يفرض لبنان رسم تصدير هنا. لماذا يجب أن يكون رمز التصدير صحيحًا؟') : L('Here the supplier’s code gives the same duty (or the goods are duty-free with a preference). Does the right code still matter?', 'هنا رمز المورّد يعطي الرسم نفسه (أو البضاعة معفاة بالتفضيل). هل يبقى الرمز الصحيح مهمًا؟');
+            const ok = !d.imp ? L(`It must match the certificates and the buyer’s import declaration in ${d.sc.destCountry}, and feeds Lebanese trade statistics`, `يجب أن يطابق الشهادات وبيان الاستيراد لدى المشتري في ${d.sc.destCountry}، ويغذّي إحصاءات التجارة اللبنانية`) : L('Yes — a wrong code is an infraction even without loss of duty; it also drives licences, origin rules and statistics', 'نعم — الرمز الخاطئ مخالفة حتى بدون خسارة رسوم؛ ويحدّد التراخيص وقواعد المنشأ والإحصاءات');
+            ui().choice(ctx, b, { key: 'why', q, options: shuf(s, 4, [{ l: ok, ok: true }, { l: L('It does not matter', 'لا يهمّ'), ok: false }, { l: L('Only the shipping line uses the HS code', 'فقط الخط الملاحي يستعمل رمز HS'), ok: false }]), onSuccess: () => ctx.finish('why') });
             return;
           }
+          const w = wrongItem, mR = CUS.rateOf(w.hsGiven), rR = CUS.rateOf(w.hs);
           ui().form(ctx, b, {
-            key: 'why', intro: L('Compare the duty if everything were declared under the supplier’s code with the duty under the correct codes (use the CIF values you will calculate in the next step: here we give them).', 'قارن الرسم لو صُرّح عن كل شيء برمز المورّد مع الرسم بالرموز الصحيحة (نعطيك هنا قيم CIF التي ستحسبها في المرحلة التالية).'),
+            key: 'why', intro: L(`Compare the duty on “${w.desc.split(',')[0]}” under the supplier’s code with the correct code (MFN rates, CIF given below — you will calculate it in the next step).`, `قارن الرسم على «${(w.descAr || w.desc).split('،')[0]}» برمز المورّد مع الرمز الصحيح (النسب العادية، وCIF معطى أدناه — ستحسبه في المرحلة التالية).`),
             fields: [
-              { k: 'cif', label: L('CIF of the chairs', 'CIF للكراسي'), unit: 'USD', ro: true, value: () => TS.num(d.items[1].cif) },
-              { k: 'wrong', label: L('Duty on the chairs at 25% (supplier’s 9403.60)', 'الرسم على الكراسي بنسبة 25% (رمز المورّد 9403.60)'), unit: 'USD', type: 'number', tol: 1, ans: () => R(d.items[1].cif * 0.25) },
-              { k: 'right', label: L('Duty on the chairs at 20% (correct 9401.69)', 'الرسم على الكراسي بنسبة 20% (الرمز الصحيح 9401.69)'), unit: 'USD', type: 'number', tol: 1, ans: () => R(d.items[1].cif * 0.2) },
+              { k: 'cif', label: L('CIF of the item', 'CIF للصنف'), unit: 'USD', ro: true, value: () => TS.num(w.cif) },
+              { k: 'wrong', label: L(`Duty at ${mR}% (supplier’s ${w.hsGiven})`, `الرسم بنسبة ${mR}% (رمز المورّد ${w.hsGiven})`), unit: 'USD', type: 'number', tol: 1, ans: () => R((w.cif * mR) / 100) },
+              { k: 'right', label: L(`Duty at ${rR}% (correct ${w.hs})`, `الرسم بنسبة ${rR}% (الرمز الصحيح ${w.hs})`), unit: 'USD', type: 'number', tol: 1, ans: () => R((w.cif * rR) / 100) },
             ],
             onSuccess: () => ctx.finish('why'),
           });
@@ -179,28 +187,28 @@
       render(ctx, b) {
         const d = ctx.d;
         if (d.imp) {
-          const [a, c] = d.items;
+          const fields = [];
+          d.items.forEach((x) => {
+            if (d.multi) fields.push({ k: 'f' + x.id, label: L('Freight share — ' + x.desc.split(',')[0], 'حصة الشحن — ' + (x.descAr || x.desc).split('،')[0]), unit: 'USD', type: 'number', tol: 1, ans: () => x.freight });
+            fields.push({ k: 'c' + x.id, label: L('CIF — ' + x.desc.split(',')[0], 'CIF — ' + (x.descAr || x.desc).split('،')[0]), unit: 'USD', type: 'number', tol: 1.5, ans: () => x.cif });
+          });
+          if (d.multi) fields.push({ k: 'ct', label: L('Total CIF', 'مجموع CIF'), unit: 'USD', type: 'number', tol: 1, ans: () => d.cif });
+          fields.push({ k: 'cl', label: L('Total CIF in LBP', 'مجموع CIF بالليرة'), unit: 'LBP', type: 'number', tol: CUS.RATE * 2, ans: () => d.cifLBP });
           ui().form(ctx, b, {
-            key: 'val', intro: L(`FOB invoice USD ${TS.num(d.valTotal)} (tables ${TS.num(a.value)}, chairs ${TS.num(c.value)}). Freight paid to Beirut USD ${TS.num(d.freight)}, insurance USD ${TS.num(d.ins)}. Allocate by value. Customs rate (sample): LBP ${TS.num(CUS.RATE, 0)}/USD.`, `فاتورة FOB ${TS.num(d.valTotal)} دولار (طاولات ${TS.num(a.value)}، كراسي ${TS.num(c.value)}). الشحن المدفوع حتى بيروت ${TS.num(d.freight)}، التأمين ${TS.num(d.ins)}. وزّع بحسب القيمة. السعر الجمركي (مثال): ${TS.num(CUS.RATE, 0)} ليرة/دولار.`),
-            fields: [
-              { k: 'fa', label: L('Freight share — tables', 'حصة الشحن — الطاولات'), unit: 'USD', type: 'number', tol: 1, ans: () => a.freight },
-              { k: 'fc', label: L('Freight share — chairs', 'حصة الشحن — الكراسي'), unit: 'USD', type: 'number', tol: 1, ans: () => c.freight },
-              { k: 'ca', label: L('CIF — tables', 'CIF — الطاولات'), unit: 'USD', type: 'number', tol: 1.5, ans: () => a.cif },
-              { k: 'cc', label: L('CIF — chairs', 'CIF — الكراسي'), unit: 'USD', type: 'number', tol: 1.5, ans: () => c.cif },
-              { k: 'ct', label: L('Total CIF', 'مجموع CIF'), unit: 'USD', type: 'number', tol: 1, ans: () => d.cif },
-              { k: 'cl', label: L('Total CIF in LBP', 'مجموع CIF بالليرة'), unit: 'LBP', type: 'number', tol: CUS.RATE * 2, ans: () => d.cifLBP },
-            ],
+            key: 'val', intro: L(`${d.inc} invoice USD ${TS.num(d.valTotal)}${d.multi ? ' (' + d.items.map((x) => x.desc.split(',')[0] + ' ' + TS.num(x.value)).join(', ') + ')' : ''}. Freight & transport to Beirut paid by the importer USD ${TS.num(d.freight)}, insurance USD ${TS.num(d.ins)}.${d.multi ? ' Allocate by value.' : ''} Customs rate (sample): LBP ${TS.num(CUS.RATE, 0)}/USD.`, `فاتورة ${d.inc} بقيمة ${TS.num(d.valTotal)} دولار. الشحن والنقل حتى بيروت المدفوع من المستورد ${TS.num(d.freight)}، التأمين ${TS.num(d.ins)}.${d.multi ? ' وزّع بحسب القيمة.' : ''} السعر الجمركي (مثال): ${TS.num(CUS.RATE, 0)} ليرة/دولار.`),
+            fields,
             onSuccess: () => { C(ctx.ship).value = { basis: 'CIF', cif: d.cif, cifLBP: d.cifLBP, rate: CUS.RATE, items: d.items.map((x) => ({ id: x.id, value: x.value, freight: x.freight, ins: x.ins, cif: x.cif })) }; ctx.finish('calc'); },
           });
         } else {
+          const what = d.inc === 'CIF' ? L('ocean freight and insurance', 'الشحن البحري والتأمين') : d.inc === 'DAP' ? L('ocean freight and destination delivery charges', 'الشحن البحري ورسوم التسليم في الوجهة') : L('ocean freight & surcharges', 'الشحن البحري والرسوم الإضافية');
           ui().form(ctx, b, {
-            key: 'val', intro: L(`Invoice: USD ${TS.num(d.cfr)} CFR Hamburg. International freight included in the price (ocean freight & surcharges billed by us): USD ${TS.num(d.freightSold)}.`, `الفاتورة: ${TS.num(d.cfr)} دولار CFR هامبورغ. الشحن الدولي المضمّن في الثمن (الشحن والرسوم التي فوترناها): ${TS.num(d.freightSold)} دولار.`),
+            key: 'val', intro: L(`Invoice: USD ${TS.num(d.invoice)} ${d.inc} ${d.sc.far ? d.sc.far.city : ''}. Costs after the Lebanese border included in the price (${what.en}, billed by us): USD ${TS.num(d.deduct)}.`, `الفاتورة: ${TS.num(d.invoice)} دولار ${d.inc}. الكلف بعد الحدود اللبنانية المضمّنة في الثمن (${what.ar}، فوترناها): ${TS.num(d.deduct)} دولار.`),
             fields: [
-              { k: 'inc', label: L('Incoterm of the sale', 'شرط التسليم في البيع'), type: 'select', options: ['EXW', 'FOB', 'CFR', 'CIF', 'DAP'].map((v) => ({ v, l: v })), ans: () => 'CFR' },
-              { k: 'fob', label: L('FOB value to declare', 'قيمة FOB للتصريح'), unit: 'USD', type: 'number', tol: 1, ans: () => d.fob, fb: L('FOB = CFR price − international freight.', 'FOB = ثمن CFR − الشحن الدولي.') },
+              { k: 'inc', label: L('Incoterm of the sale', 'شرط التسليم في البيع'), type: 'select', options: ['EXW', 'FCA', 'FOB', 'CFR', 'CIF', 'DAP'].map((v) => ({ v, l: v })), ans: () => d.inc },
+              { k: 'fob', label: L('FOB value to declare', 'قيمة FOB للتصريح'), unit: 'USD', type: 'number', tol: 1, ans: () => d.fob, fb: L(`FOB = ${d.inc} price − ${what.en}.`, `FOB = ثمن ${d.inc} − ${what.ar}.`) },
               { k: 'lbp', label: L('FOB in LBP', 'FOB بالليرة'), unit: 'LBP', type: 'number', tol: CUS.RATE * 2, ans: () => d.fobLBP },
             ],
-            onSuccess: () => { C(ctx.ship).value = { basis: 'FOB', fob: d.fob, fobLBP: d.fobLBP, rate: CUS.RATE, invoiceCFR: d.cfr, freightDeducted: d.freightSold }; ctx.finish('calc'); },
+            onSuccess: () => { C(ctx.ship).value = { basis: 'FOB', fob: d.fob, fobLBP: d.fobLBP, rate: CUS.RATE, invoice: d.invoice, incoterm: d.inc, deducted: d.deduct }; ctx.finish('calc'); },
           });
         }
       },
@@ -219,7 +227,7 @@
     lesson: () => t(L(`
 <h3>The calculation chain (import)</h3>
 <ol><li>Customs duty = CIF × duty rate of the HS code.</li><li>Excise (only some goods).</li><li>VAT 11% = (CIF + duty + excise) × 11%.</li><li>Total to pay = duty + excise + VAT (+ fees).</li></ol>
-<p>Preferential origin (GAFTA, EU, EFTA) can reduce the duty rate — only with a valid origin document. Goods from China pay the full rate.</p>
+<p>Preferential origin (GAFTA, EU EUR.1, EFTA) can reduce the duty rate — often to 0% — but only with a valid origin document, and the <b>origin</b> counts, not the port of shipment: Chinese laptops shipped from Dubai pay the full rate.</p>
 <h3>Who pays</h3>
 <p>The importer, before release. If the forwarder pays on the importer’s behalf it is a <b>disbursement</b>: re-invoiced at cost, not revenue. The importer, if VAT-registered, recovers the import VAT as input VAT.</p>
 <h3>Exports</h3>
@@ -227,7 +235,7 @@
     `
 <h3>سلسلة الحساب (استيراد)</h3>
 <ol><li>الرسم الجمركي = CIF × نسبة رسم رمز HS.</li><li>رسم الاستهلاك (لبعض السلع فقط).</li><li>الضريبة 11% = (CIF + الرسم + الاستهلاك) × 11%.</li><li>المجموع المستحق = الرسم + الاستهلاك + الضريبة (+ الرسوم الإدارية).</li></ol>
-<p>المنشأ التفضيلي (العربية، الأوروبية، EFTA) قد يخفّض نسبة الرسم — فقط مع مستند منشأ صالح. البضائع الصينية تدفع النسبة الكاملة.</p>
+<p>المنشأ التفضيلي (العربية، EUR.1 الأوروبية، EFTA) قد يخفّض نسبة الرسم — غالبًا إلى 0% — لكن فقط مع مستند منشأ صالح، والعبرة <b>للمنشأ</b> لا لمرفأ الشحن: حواسيب صينية مشحونة من دبي تدفع النسبة الكاملة.</p>
 <h3>من يدفع</h3>
 <p>المستورد، قبل الإفراج. إذا دفع وكيل الشحن نيابةً عنه فهي <b>سلفة</b>: تُعاد فوترتها بالكلفة، وليست إيرادًا. والمستورد المسجّل يستردّ ضريبة الاستيراد كضريبة مدخلات.</p>
 <h3>الصادرات</h3>
@@ -235,33 +243,34 @@
     parts: [{
       id: 'calc', title: L('Assessment', 'التصفية'),
       render(ctx, b) {
-        const d = ctx.d;
+        const d = ctx.d, s = ctx.ship;
         if (!d.imp) {
+          const pref = d.sc.zone === 'EU' ? { l: L(`The EUR.1 lets the buyer in ${d.sc.destCountry} claim reduced/zero EU duty`, `شهادة EUR.1 تتيح للمشتري في ${d.sc.destCountry} رسمًا أوروبيًا مخفّضًا/صفرًا`), ok: true } : d.sc.zone === 'ARAB' ? { l: L(`The Arab certificate of origin lets the buyer in ${d.sc.destCountry} claim GAFTA exemption`, `شهادة المنشأ العربية تتيح للمشتري في ${d.sc.destCountry} إعفاء منطقة التجارة العربية`), ok: true } : { l: L(`No free-trade preference applies in ${d.sc.destCountry}; the buyer pays normal duty there`, `لا تفضيل تجاري في ${d.sc.destCountry}؛ يدفع المشتري الرسم العادي هناك`), ok: true };
           ui().choice(ctx, b, {
             key: 'exp', multi: true, q: L('What applies to this Lebanese export?', 'ما الذي ينطبق على هذا التصدير اللبناني؟'),
-            options: [
+            options: shuf(s, 5, [
               { l: L('No export duty to pay', 'لا رسم تصدير'), ok: true },
               { l: L('The export declaration is still mandatory', 'بيان التصدير يبقى إلزاميًا'), ok: true },
               { l: L('The exporter’s sale is zero-rated for VAT; keep the proof of export', 'بيع المصدّر خاضع للمعدّل الصفري؛ احتفظ بإثبات التصدير'), ok: true },
-              { l: L('The EUR.1 lets the German buyer pay reduced/zero EU duty', 'شهادة EUR.1 تسمح للمشتري الألماني بدفع رسم أوروبي مخفّض/صفر'), ok: true },
+              pref,
               { l: L('The exporter pays 11% VAT on the export value', 'يدفع المصدّر 11% على قيمة التصدير'), ok: false },
-            ],
+            ]),
             onSuccess: () => { C(ctx.ship).taxes = { duty: 0, vat: 0, total: 0, note: 'Export — no duty, VAT zero-rated' }; ctx.finish('calc'); },
           });
           return;
         }
-        const [a, c] = d.items;
+        const fields = d.items.map((x) => ({ k: 'd' + x.id, label: L('Duty — ' + x.desc.split(',')[0] + ' (' + x.rate + '%)', 'الرسم — ' + (x.descAr || x.desc).split('،')[0] + ' (' + x.rate + '%)'), unit: 'USD', type: 'number', tol: 1, ans: () => x.duty }));
+        fields.push(
+          { k: 'vb', label: L('VAT base (CIF + duty)', 'أساس الضريبة (CIF + الرسم)'), unit: 'USD', type: 'number', tol: 2, ans: () => d.vatBase },
+          { k: 'vat', label: L('Import VAT 11%', 'ضريبة الاستيراد 11%'), unit: 'USD', type: 'number', tol: 1, ans: () => d.vat },
+          { k: 'tot', label: L('Total duties & taxes', 'مجموع الرسوم والضرائب'), unit: 'USD', type: 'number', tol: 2, ans: () => d.taxes },
+          { k: 'lbp', label: L('Total in LBP', 'المجموع بالليرة'), unit: 'LBP', type: 'number', tol: CUS.RATE * 3, ans: () => d.taxesLBP },
+        );
+        const prefTxt = d.pref === 'none' ? L(`origin ${CNAME(d.origin)}${d.consigned !== d.origin ? ' (shipped from ' + CNAME(d.consigned) + ')' : ''}, no preference → full rates`, `المنشأ ${CNAME(d.origin)}${d.consigned !== d.origin ? ' (شُحنت من ' + CNAME(d.consigned) + ')' : ''}، بدون تفضيل ← النسب الكاملة`) : L(`origin ${CNAME(d.origin)} with ${d.pref === 'EUR1' ? 'EUR.1 (EU–Lebanon Association Agreement)' : 'Arab certificate of origin (GAFTA)'} → preferential rate 0%`, `المنشأ ${CNAME(d.origin)} مع ${d.pref === 'EUR1' ? 'EUR.1 (اتفاقية الشراكة)' : 'شهادة منشأ عربية'} ← نسبة تفضيلية 0%`);
         ui().form(ctx, b, {
-          key: 'tax', intro: L(`CIF tables ${TS.num(a.cif)} (HS ${a.hs}, ${a.rate}%) · CIF chairs ${TS.num(c.cif)} (HS ${c.hs}, ${c.rate}%) · origin China, no preference.`, `CIF الطاولات ${TS.num(a.cif)} (${a.hs}، ${a.rate}%) · CIF الكراسي ${TS.num(c.cif)} (${c.hs}، ${c.rate}%) · المنشأ الصين، بدون تفضيل.`),
-          fields: [
-            { k: 'da', label: L('Duty — tables', 'الرسم — الطاولات'), unit: 'USD', type: 'number', tol: 1, ans: () => a.duty },
-            { k: 'dc', label: L('Duty — chairs', 'الرسم — الكراسي'), unit: 'USD', type: 'number', tol: 1, ans: () => c.duty },
-            { k: 'vb', label: L('VAT base (CIF + duty)', 'أساس الضريبة (CIF + الرسم)'), unit: 'USD', type: 'number', tol: 2, ans: () => d.vatBase },
-            { k: 'vat', label: L('Import VAT 11%', 'ضريبة الاستيراد 11%'), unit: 'USD', type: 'number', tol: 1, ans: () => d.vat },
-            { k: 'tot', label: L('Total duties & taxes', 'مجموع الرسوم والضرائب'), unit: 'USD', type: 'number', tol: 2, ans: () => d.taxes },
-            { k: 'lbp', label: L('Total in LBP', 'المجموع بالليرة'), unit: 'LBP', type: 'number', tol: CUS.RATE * 3, ans: () => d.taxesLBP },
-          ],
-          onSuccess: () => { C(ctx.ship).taxes = { duty: d.duty, vat: d.vat, total: d.taxes, totalLBP: d.taxesLBP, items: d.items.map((x) => ({ id: x.id, hs: x.hs, rate: x.rate, cif: x.cif, duty: x.duty, vat: x.vat })) }; ctx.finish('calc'); },
+          key: 'tax', intro: L(`${d.items.map((x) => 'CIF ' + x.desc.split(',')[0] + ' ' + TS.num(x.cif) + ' (HS ' + x.hs + ', MFN ' + x.mfn + '%)').join(' · ')} · ${prefTxt.en}.`, `${d.items.map((x) => 'CIF ' + (x.descAr || x.desc).split('،')[0] + ' ' + TS.num(x.cif) + ' (' + x.hs + '، ' + x.mfn + '%)').join(' · ')} · ${prefTxt.ar}.`),
+          fields,
+          onSuccess: () => { C(ctx.ship).taxes = { duty: d.duty, vat: d.vat, total: d.taxes, totalLBP: d.taxesLBP, pref: d.pref, items: d.items.map((x) => ({ id: x.id, hs: x.hs, rate: x.rate, cif: x.cif, duty: x.duty, vat: x.vat })) }; ctx.finish('calc'); },
         });
       },
       summary: (ctx) => (ctx.d.imp ? `<p>✓ ${t(L('Duty', 'الرسم'))} ${usd(ctx.d.duty)} + VAT ${usd(ctx.d.vat)} = <b>${usd(ctx.d.taxes)}</b> (LBP ${TS.num(ctx.d.taxesLBP, 0)})</p>` : `<p>✓ ${t(L('Export: no duty, VAT zero-rated.', 'تصدير: لا رسم، ضريبة بمعدّل صفري.'))}</p>`),
@@ -296,17 +305,18 @@
             { k: 'reg', label: L('Customs regime', 'النظام الجمركي'), type: 'select', options: CUS.regimes, ans: () => d.regime, full: true },
             { k: 'dec', label: L('Declarant', 'المصرِّح'), ro: true, value: () => CUS.company.licence },
             { k: 'party', label: d.imp ? L('Importer', 'المستورد') : L('Exporter', 'المصدّر'), contains: [party.name.split(' ')[0]], ans: () => party.name },
+            ...(d.imp ? [] : [{ k: 'dest', label: L('Country of destination', 'بلد المقصد'), type: 'select', options: CUS.countries, ans: () => d.destination }]),
             { k: 'regno', label: L('Registration / VAT no.', 'رقم التسجيل / الضريبي'), contains: [String(party.reg || '').split('VAT ')[1] || party.name], ans: () => (party.reg || '').split('— ')[1] || party.reg, help: L('From the client’s registration in the file.', 'من تسجيل الزبون في الملف.') },
             { k: 'orig', label: L('Country of origin', 'بلد المنشأ'), type: 'select', options: CUS.countries, ans: () => d.origin },
             { k: 'cons', label: L('Country of consignment', 'بلد الإرسال'), type: 'select', options: CUS.countries, ans: () => d.consigned, fb: L('The country the goods were shipped from — not the transshipment port.', 'البلد الذي شُحنت منه البضاعة — وليس مرفأ المسافنة.') },
             { k: 'bl', label: L('B/L (manifest reference)', 'البوليصة (مرجع المانيفست)'), ans: () => s.documents.bl.mblNo },
             { k: 'cn', label: L('Container no.', 'رقم الحاوية'), ans: () => s.equipment.containerNo },
             { k: 'pk', label: L('Total packages', 'مجموع الطرود'), type: 'number', ans: () => d.pkgs },
-            { k: 'gw', label: L('Total gross weight', 'الوزن القائم الكلي'), unit: 'kg', type: 'number', ans: () => d.gross },
-            { k: 'nw', label: L('Total net weight', 'الوزن الصافي الكلي'), unit: 'kg', type: 'number', ans: () => d.net },
+            { k: 'gw', label: L('Total gross weight', 'الوزن القائم الكلي'), unit: 'kg', type: 'number', tol: 2, ans: () => d.gross },
+            { k: 'nw', label: L('Total net weight', 'الوزن الصافي الكلي'), unit: 'kg', type: 'number', tol: 2, ans: () => d.net },
             { k: 'items', label: L('Number of items (HS lines)', 'عدد الأصناف (أسطر HS)'), type: 'number', ans: () => d.items.length },
             { k: 'val', label: d.imp ? L('Total CIF value', 'مجموع قيمة CIF') : L('Total FOB value', 'مجموع قيمة FOB'), unit: 'USD', type: 'number', tol: 1, ans: () => (d.imp ? d.cif : d.fob) },
-            { k: 'pref', label: L('Preference requested', 'التفضيل المطلوب'), type: 'select', options: CUS.prefs, ans: () => d.pref, fb: d.imp ? L('China has no trade agreement with Lebanon: no preference.', 'لا اتفاقية تجارية بين الصين ولبنان: لا تفضيل.') : L('Export to the EU with EUR.1.', 'تصدير إلى الاتحاد الأوروبي مع EUR.1.') },
+            { k: 'pref', label: L('Preference requested', 'التفضيل المطلوب'), type: 'select', options: CUS.prefs, ans: () => d.pref, fb: d.pref === 'none' ? L(`${CNAME(d.imp ? d.origin : d.destination)}: no free-trade agreement applies here — no preference.`, `${CNAME(d.imp ? d.origin : d.destination)}: لا اتفاقية تجارة حرة هنا — لا تفضيل.`) : d.pref === 'EUR1' ? L('EU origin/destination with EUR.1 (EU–Lebanon Association Agreement).', 'منشأ/وجهة أوروبية مع EUR.1 (اتفاقية الشراكة).') : L('Arab origin/destination with an Arab certificate of origin (GAFTA).', 'منشأ/وجهة عربية مع شهادة منشأ عربية.') },
           ],
           onSuccess: (v) => { C(s).declaration = Object.assign({ no: null, status: 'prepared' }, v, { items: d.items.map((x) => ({ id: x.id, hs: x.hs, desc: x.desc, pkgs: x.pkgs, gross: x.gross, net: x.net, value: d.imp ? x.cif : x.fob })) }); ctx.finish('form'); },
         });
@@ -349,18 +359,32 @@
           b.querySelector('#go').onclick = () => {
             ctx.advance(d.lodge); ctx.data.waiting = true;
             C(s).declaration.no = d.declNo; C(s).declaration.status = 'lodged'; C(s).declaration.lodged = d.lodge;
-            ctx.receive({ from: 'najm@customs-training.test', subject: L('NAJM — declaration ' + d.declNo + ' registered — lane ' + d.lane.toUpperCase(), 'نجم — البيان ' + d.declNo + ' مسجّل — المسار ' + (d.lane === 'green' ? 'الأخضر' : 'الأصفر')), body: d.lane === 'green' ? L(`Declaration ${d.declNo} registered on ${TS.fmtDate(d.lodge)}.\nRisk lane: GREEN — release without inspection.\n(Simulated NAJM message.)`, `البيان ${d.declNo} مسجّل بتاريخ ${TS.fmtDate(d.lodge)}.\nمسار المخاطر: الأخضر — إفراج بدون كشف.\n(رسالة محاكاة من نجم.)`) : L(`Declaration ${d.declNo} registered on ${TS.fmtDate(d.lodge)}.\nRisk lane: YELLOW — documentary check.\nOfficer’s request: present the importer’s commercial registration certificate valid for the current year and the original certificate of origin.\n(Simulated NAJM message.)`, `البيان ${d.declNo} مسجّل بتاريخ ${TS.fmtDate(d.lodge)}.\nمسار المخاطر: الأصفر — تدقيق مستندات.\nطلب الموظف: تقديم شهادة السجل التجاري للمستورد الصالحة للسنة الحالية وشهادة المنشأ الأصلية.\n(رسالة محاكاة من نجم.)`), onArrive: (sh) => { const w = sh.customs.work.lane; w.data.waiting = false; w.parts.lodge = true; sh.customs.declaration.lane = CUS.d(sh).lane; } }, 1200);
+            const LN = { green: ['GREEN', 'الأخضر'], yellow: ['YELLOW', 'الأصفر'], red: ['RED', 'الأحمر'] }[d.lane];
+            const msg = { green: L('release without inspection.', 'إفراج بدون كشف.'), yellow: L('documentary check.\nOfficer’s request: present the importer’s commercial registration certificate valid for the current year and the original certificate of origin.', 'تدقيق مستندات.\nطلب الموظف: تقديم شهادة السجل التجاري للمستورد الصالحة للسنة الحالية وشهادة المنشأ الأصلية.'), red: L(`physical inspection.\nThe ${d.lcl ? 'packages must be presented at the CFS' : 'container must be presented at the inspection area'} with the importer or its representative.`, `كشف حسّي.\nيجب تقديم ${d.lcl ? 'الطرود في محطة التجميع' : 'الحاوية في منطقة الكشف'} بحضور المستورد أو ممثله.`) }[d.lane];
+            ctx.receive({ from: 'najm@customs-training.test', subject: L('NAJM — declaration ' + d.declNo + ' registered — lane ' + LN[0], 'نجم — البيان ' + d.declNo + ' مسجّل — المسار ' + LN[1]), body: L(`Declaration ${d.declNo} registered on ${TS.fmtDate(d.lodge)}.\nRisk lane: ${LN[0]} — ${msg.en}\n(Simulated NAJM message.)`, `البيان ${d.declNo} مسجّل بتاريخ ${TS.fmtDate(d.lodge)}.\nمسار المخاطر: ${LN[1]} — ${msg.ar}\n(رسالة محاكاة من نجم.)`), onArrive: (sh) => { const w = sh.customs.work.lane; w.data.waiting = false; w.parts.lodge = true; sh.customs.declaration.lane = CUS.d(sh).lane; } }, 1200);
             ctx.save(); ctx.rerender();
           };
         },
-        summary: (ctx) => `<p>✓ ${esc(ctx.d.declNo)} — ${t(L('lane', 'المسار'))}: <b>${ctx.d.lane === 'green' ? '🟢 ' + t(L('GREEN', 'الأخضر')) : '🟡 ' + t(L('YELLOW', 'الأصفر'))}</b></p>`,
+        summary: (ctx) => `<p>✓ ${esc(ctx.d.declNo)} — ${t(L('lane', 'المسار'))}: <b>${ctx.d.lane === 'green' ? '🟢 ' + t(L('GREEN', 'الأخضر')) : ctx.d.lane === 'red' ? '🔴 ' + t(L('RED', 'الأحمر')) : '🟡 ' + t(L('YELLOW', 'الأصفر'))}</b></p>`,
       },
       {
         id: 'answer', title: L('Respond to customs', 'الردّ على الجمارك'),
         render(ctx, b) {
           const d = ctx.d;
+          if (d.lane === 'red') {
+            ui().choice(ctx, b, {
+              key: 'rd', q: L('RED lane: physical inspection. What do you do?', 'المسار الأحمر: كشف حسّي. ماذا تفعل؟'),
+              options: shuf(ctx.ship, 6, [
+                { l: L(`Book the inspection slot, inform the client, attend with the importer’s representative, have the ${d.lcl ? 'packages' : 'container'} opened and make sure the goods match the declaration`, `احجز موعد الكشف، أبلغ الزبون، احضر مع ممثل المستورد، افتح ${d.lcl ? 'الطرود' : 'الحاوية'} وتأكّد أن البضاعة تطابق البيان`), ok: true },
+                { l: L('Offer the officer a “tip” to skip the inspection', 'اعرض على الموظف «إكرامية» لتجاوز الكشف'), ok: false, fb: L('Bribery is a crime — never.', 'الرشوة جريمة — أبدًا.') },
+                { l: L('Ask the line to deliver the container anyway', 'اطلب من الخط تسليم الحاوية على أي حال'), ok: false, fb: L('Nothing leaves the port before customs release.', 'لا شيء يخرج من المرفأ قبل الإفراج الجمركي.') },
+              ]),
+              onSuccess: () => { ctx.send({ to: ctx.ship.parties.client.email, subject: L('Customs inspection ' + d.declNo, 'كشف جمركي ' + d.declNo), body: L('Your declaration is in the red lane: physical inspection is booked. Please send a representative; we will attend with them.', 'بيانكم في المسار الأحمر: تم حجز موعد الكشف الحسّي. يرجى إرسال ممثل؛ سنحضر معه.') }); ctx.finish('answer'); },
+            });
+            return;
+          }
           if (d.lane === 'green') {
-            ui().choice(ctx, b, { key: 'gr', q: L('Your export is GREEN. What does that mean?', 'تصديرك في المسار الأخضر. ماذا يعني ذلك؟'), options: [{ l: L('Released without document check or inspection — the container can be loaded', 'إفراج بدون تدقيق أو كشف — يمكن تحميل الحاوية'), ok: true }, { l: L('Customs will open the container', 'ستفتح الجمارك الحاوية'), ok: false, fb: L('That is the red lane.', 'هذا هو المسار الأحمر.') }, { l: L('The declaration is cancelled', 'أُلغي البيان'), ok: false }], onSuccess: () => ctx.finish('answer') });
+            ui().choice(ctx, b, { key: 'gr', q: d.imp ? L('Your import is GREEN. What does that mean?', 'استيرادك في المسار الأخضر. ماذا يعني ذلك؟') : L('Your export is GREEN. What does that mean?', 'تصديرك في المسار الأخضر. ماذا يعني ذلك؟'), options: [{ l: d.imp ? L('No document check or inspection — pay the duties and VAT and collect the release', 'بدون تدقيق أو كشف — ادفع الرسوم والضريبة واستلم الإفراج') : L('Released without document check or inspection — the cargo can be loaded', 'إفراج بدون تدقيق أو كشف — يمكن تحميل البضاعة'), ok: true }, { l: L('Customs will open the container', 'ستفتح الجمارك الحاوية'), ok: false, fb: L('That is the red lane.', 'هذا هو المسار الأحمر.') }, { l: L('The declaration is cancelled', 'أُلغي البيان'), ok: false }], onSuccess: () => ctx.finish('answer') });
             return;
           }
           ui().choice(ctx, b, {
@@ -406,9 +430,9 @@
         render(ctx, b) {
           const d = ctx.d;
           const steps = d.imp
-            ? [L('D/O from the line', 'إذن التسليم من الخط'), L('Declaration lodged in NAJM', 'تقديم البيان على نجم'), L('Lane / document check', 'المسار / تدقيق المستندات'), L('Duties & VAT paid', 'دفع الرسوم والضريبة'), L('Customs release', 'الإفراج الجمركي'), L('Terminal gate-out & delivery', 'خروج الحاوية من المحطة والتسليم')]
+            ? [L('D/O from the line' + (d.lcl ? ' / consolidator' : ''), 'إذن التسليم من الخط' + (d.lcl ? ' / المجمِّع' : '')), L('Declaration lodged in NAJM', 'تقديم البيان على نجم'), L('Lane / ' + (d.lane === 'red' ? 'physical inspection' : 'document check'), 'المسار / ' + (d.lane === 'red' ? 'الكشف الحسّي' : 'تدقيق المستندات')), L('Duties & VAT paid', 'دفع الرسوم والضريبة'), L('Customs release', 'الإفراج الجمركي'), L(d.lcl ? 'Cargo collected from the CFS & delivery' : 'Terminal gate-out & delivery', d.lcl ? 'استلام البضاعة من المحطة والتسليم' : 'خروج الحاوية من المحطة والتسليم')]
             : [L('Export declaration lodged', 'تقديم بيان التصدير'), L('Lane & release', 'المسار والإفراج'), L('Gate-in / loading permission', 'الدخول / إذن التحميل'), L('Loaded on board', 'التحميل على الباخرة'), L('Proof of export filed', 'حفظ إثبات التصدير')];
-          const order = steps.map((_, i) => i).sort((x, y) => ((x * 7 + 3) % steps.length) - ((y * 7 + 3) % steps.length));
+          const order = shuf(ctx.ship, 7, steps.map((_, i) => i));
           ctx.data.seq = ctx.data.seq || order.map(() => '');
           b.innerHTML = `<p>${t(L('Number the steps (1 = first).', 'رقّم الخطوات (1 = الأولى).'))}</p>${order.map((i, pos) => `<div class="row" style="margin-bottom:6px"><select data-p="${pos}" style="width:80px"><option value="">—</option>${steps.map((_, n) => `<option ${String(ctx.data.seq[pos]) === String(n + 1) ? 'selected' : ''}>${n + 1}</option>`).join('')}</select><span>${t(steps[i])}</span></div>`).join('')}<div class="row"><button class="btn primary" data-act="check">${t(L('Check', 'تحقّق'))}</button><button class="btn ghost" data-act="answer">${t(L('Show me the answer', 'أرني الجواب'))}</button></div>`;
           b.querySelectorAll('[data-p]').forEach((sel) => (sel.onchange = () => { ctx.data.seq[Number(sel.dataset.p)] = sel.value; ctx.save(); }));
@@ -446,7 +470,7 @@
             onSuccess: (v) => {
               ctx.data.waiting = true;
               C(s).payment = { amount: v.amt, lbp: v.lbp, paidBy: 'importer', receipt: 'TR-' + (d.seed % 900000 + 100000) };
-              ctx.receive({ from: 'najm@customs-training.test', subject: L('NAJM — release ' + d.declNo, 'نجم — إفراج ' + d.declNo), body: L(`Payment receipt ${C(s).payment.receipt} matched. Declaration ${d.declNo} RELEASED on ${TS.fmtDate(d.release)}. Container ${s.equipment.containerNo} may exit Beirut port with the D/O ${s.release.doNo} and the terminal gate pass.\n(Simulated.)`, `تمت مطابقة إيصال الدفع ${C(s).payment.receipt}. البيان ${d.declNo} أُفرج عنه بتاريخ ${TS.fmtDate(d.release)}. يمكن للحاوية ${s.equipment.containerNo} الخروج من مرفأ بيروت مع إذن التسليم ${s.release.doNo} وإذن خروج المحطة.\n(محاكاة.)`), onArrive: (sh) => { const w = sh.customs.work.release; w.data.waiting = false; w.parts.pay = true; sh.customs.release = { date: CUS.d(sh).release }; sh.customs.today = CUS.d(sh).release; } }, 1200);
+              ctx.receive({ from: 'najm@customs-training.test', subject: L('NAJM — release ' + d.declNo, 'نجم — إفراج ' + d.declNo), body: L(`Payment receipt ${C(s).payment.receipt} matched. Declaration ${d.declNo} RELEASED on ${TS.fmtDate(d.release)}. ${d.lcl ? 'The cargo (HBL ' + s.documents.bl.hblNo + ') may leave the CFS' : 'Container ' + s.equipment.containerNo + ' may exit Beirut port'} with the D/O ${s.release.doNo}${d.lcl ? '' : ' and the terminal gate pass'}.\n(Simulated.)`, `تمت مطابقة إيصال الدفع ${C(s).payment.receipt}. البيان ${d.declNo} أُفرج عنه بتاريخ ${TS.fmtDate(d.release)}. ${d.lcl ? 'يمكن للبضاعة (HBL ' + s.documents.bl.hblNo + ') الخروج من محطة التجميع' : 'يمكن للحاوية ' + s.equipment.containerNo + ' الخروج من مرفأ بيروت'} مع إذن التسليم ${s.release.doNo}.\n(محاكاة.)`), onArrive: (sh) => { const w = sh.customs.work.release; w.data.waiting = false; w.parts.pay = true; sh.customs.release = { date: CUS.d(sh).release }; sh.customs.today = CUS.d(sh).release; } }, 1200);
               ctx.save(); ctx.rerender();
             },
           });
@@ -511,4 +535,6 @@
     ],
   });
 
+  const DR = { file: [], classify: ['hs'], value: ['cif', 'fobcfr'], duties: ['dutyvat', 'cif'], declare: ['incoterm'], lane: [], release: ['vat'], close: ['vat', 'lbp'] };
+  CUS.steps.forEach((st) => (st.drills = DR[st.id] || []));
 })();

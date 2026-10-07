@@ -80,7 +80,7 @@
     ],
     quiz: [
       { q: L('The client has not paid yet. Do you record the revenue?', 'لم يدفع الزبون بعد. هل تسجّل الإيراد؟'), o: [L('No, only when paid', 'لا، فقط عند الدفع'), L('Yes — accrual basis; the unpaid amount sits in 411', 'نعم — أساس الاستحقاق؛ المبلغ غير المدفوع في 411')], a: 1 },
-      { q: L('Ocean freight Shanghai → Beirut invoiced by a Lebanese forwarder is normally…', 'الشحن البحري من شنغهاي إلى بيروت المفوتر من وكيل لبناني عادة…'), o: [L('Subject to 11% VAT', 'خاضع لضريبة 11%'), L('Exempt / zero-rated (international transport)', 'معفى / صفر (نقل دولي)')], a: 1 },
+      { q: L('International ocean freight invoiced by a Lebanese forwarder is normally…', 'الشحن البحري الدولي المفوتر من وكيل لبناني عادة…'), o: [L('Subject to 11% VAT', 'خاضع لضريبة 11%'), L('Exempt / zero-rated (international transport)', 'معفى / صفر (نقل دولي)')], a: 1 },
       { q: L('The container deposit received from the client is…', 'تأمين الحاوية المقبوض من الزبون هو…'), o: [L('Revenue', 'إيراد'), L('A liability to the client (4191)', 'التزام تجاه الزبون (4191)')], a: 1 },
     ],
   });
@@ -216,21 +216,23 @@
 <ul><li>مدين <b>604</b> الكلفة (صافي) · مدين <b>4426</b> ضريبة المشتريات · دائن <b>401</b> الموردون (المجموع).</li></ul>`)),
     parts: [
       {
-        id: 'match', title: L('Match the trucker’s invoice', 'طابق فاتورة الناقل البري'),
+        id: 'match', title: L('Match a supplier’s invoice with the job costing', 'طابق فاتورة مورّد مع كلفة العملية'),
         render(ctx, b) {
-          const d = ctx.d, tr = d.sup.find((v) => v.vendor === 'trucker');
-          if (!tr) { b.innerHTML = `<p class="muted">${t(L('No trucking invoice on this job.', 'لا فاتورة نقل بري في هذه العملية.'))}</p><button class="btn primary" id="ok">OK</button>`; b.querySelector('#ok').onclick = () => ctx.finish('match'); return; }
-          const pre = `<div class="email-preview"><b>${esc(tr.name)}</b> — invoice ${esc(tr.no)}<br>${tr.lines.map((l) => `${esc(l.desc)}: USD ${TS.num(l.amount)}`).join('<br>')}<br><b>Waiting time 2 hrs: USD 20.00</b><br>VAT 11%: USD ${TS.num((tr.net + 20) * ACC.VAT)}<br><b>Total: USD ${TS.num((tr.net + 20) * (1 + ACC.VAT))}</b></div><p>${t(L('Job costing (agreed with Operations)', 'كلفة العملية (المتفق عليها مع العمليات)'))}: USD ${TS.num(tr.net)} + VAT. ${t(L('Nothing in the file mentions waiting time.', 'لا شيء في الملف يذكر وقت انتظار.'))}</p>`;
+          const d = ctx.d, tr = d.sup.find((v) => v.vendor === 'trucker') || d.sup.find((v) => v.vendor === 'broker') || d.sup.find((v) => v.lines.some((l) => l.vat));
+          if (!tr) { b.innerHTML = `<p class="muted">${t(L('No local supplier invoice to match on this job.', 'لا فاتورة مورّد محلي لمطابقتها في هذه العملية.'))}</p><button class="btn primary" id="ok">OK</button>`; b.querySelector('#ok').onclick = () => ctx.finish('match'); return; }
+          const X = { trucker: ['Waiting time 2 hrs', 'وقت انتظار ساعتان'], broker: ['Extra handling — document typing', 'معالجة إضافية — طباعة مستندات'], carrier: ['B/L amendment fee', 'رسم تعديل البوليصة'] }[tr.vendor] || ['Extra charge', 'رسم إضافي'];
+          const ex = 20 + (ACC.seed(ctx.ship) % 4) * 5, exV = TS.round2(ex * ACC.VAT);
+          const pre = `<div class="email-preview"><b>${esc(tr.name)}</b> — invoice ${esc(tr.no)}<br>${tr.lines.map((l) => `${esc(l.desc)}: USD ${TS.num(l.amount)}`).join('<br>')}<br><b>${esc(t(L(X[0], X[1])))}: USD ${TS.num(ex)}</b><br>VAT 11%: USD ${TS.num((tr.net + ex) * ACC.VAT)}<br><b>Total: USD ${TS.num((tr.net + ex) * (1 + ACC.VAT))}</b></div><p>${t(L('Job costing (agreed with Operations)', 'كلفة العملية (المتفق عليها مع العمليات)'))}: USD ${TS.num(tr.net)} + VAT. ${t(L('Nothing in the file mentions this extra charge.', 'لا شيء في الملف يذكر هذا الرسم الإضافي.'))}</p>`;
           ui().choice(ctx, b, {
             key: 'mt', pre, q: L('What do you do?', 'ماذا تفعل؟'),
             options: [
-              { l: L('Put the invoice on hold and ask the trucker for proof or a credit note of USD 20 + VAT', 'أوقف الفاتورة واطلب من الناقل إثباتًا أو إشعارًا دائنًا بـ20 دولار + الضريبة'), ok: true },
-              { l: L('Approve and pay — it is only USD 22', 'اعتمد وادفع — فقط 22 دولار'), ok: false, fb: L('Small unexplained amounts add up to real losses over hundreds of jobs.', 'المبالغ الصغيرة غير المبرّرة تتراكم خسائر حقيقية على مئات العمليات.') },
-              { l: L('Add USD 20 to the client’s invoice', 'أضف 20 دولار على فاتورة الزبون'), ok: false, fb: L('You cannot rebill a cost that is not justified or agreed.', 'لا يمكن إعادة فوترة كلفة غير مبرّرة أو غير متفق عليها.') },
+              { l: L(`Put the invoice on hold and ask for proof or a credit note of USD ${ex} + VAT`, `أوقف الفاتورة واطلب إثباتًا أو إشعارًا دائنًا بـ${ex} دولار + الضريبة`), ok: true },
+              { l: L(`Approve and pay — it is only USD ${TS.num(ex + exV)}`, `اعتمد وادفع — فقط ${TS.num(ex + exV)} دولار`), ok: false, fb: L('Small unexplained amounts add up to real losses over hundreds of jobs.', 'المبالغ الصغيرة غير المبرّرة تتراكم خسائر حقيقية على مئات العمليات.') },
+              { l: L(`Add USD ${ex} to the client’s invoice`, `أضف ${ex} دولار على فاتورة الزبون`), ok: false, fb: L('You cannot rebill a cost that is not justified or agreed.', 'لا يمكن إعادة فوترة كلفة غير مبرّرة أو غير متفق عليها.') },
             ],
             onSuccess: () => {
-              ctx.send({ to: tr.email, subject: L('Invoice ' + tr.no + ' on hold', 'الفاتورة ' + tr.no + ' موقوفة'), body: L('Waiting time is not in our order and no waiting was reported. Please issue a credit note for USD 20 + VAT.', 'وقت الانتظار غير وارد في أمرنا ولم يُبلَّغ عن انتظار. يرجى إصدار إشعار دائن بـ20 دولار + الضريبة.') });
-              ctx.receive({ from: tr.email, subject: L('Credit note CN-' + tr.no, 'إشعار دائن CN-' + tr.no), body: L('Apologies, waiting time charged by mistake. Credit note attached: USD 20.00 + VAT 2.20.', 'نعتذر، احتُسب وقت الانتظار خطأً. مرفق إشعار دائن: 20 دولار + ضريبة 2.20.'), attachments: ['CN-' + tr.no + '.pdf'] }, 700);
+              ctx.send({ to: tr.email, subject: L('Invoice ' + tr.no + ' on hold', 'الفاتورة ' + tr.no + ' موقوفة'), body: L(`“${X[0]}” is not in our order and was not reported. Please issue a credit note for USD ${ex} + VAT.`, `«${X[1]}» غير وارد في أمرنا ولم يُبلَّغ عنه. يرجى إصدار إشعار دائن بـ${ex} دولار + الضريبة.`) });
+              ctx.receive({ from: tr.email, subject: L('Credit note CN-' + tr.no, 'إشعار دائن CN-' + tr.no), body: L(`Apologies, charged by mistake. Credit note attached: USD ${TS.num(ex)} + VAT ${TS.num(exV)}.`, `نعتذر، احتُسب خطأً. مرفق إشعار دائن: ${TS.num(ex)} دولار + ضريبة ${TS.num(exV)}.`), attachments: ['CN-' + tr.no + '.pdf'] }, 700);
               ctx.finish('match');
             },
           });
@@ -293,7 +295,7 @@
         render(ctx, b) {
           const d = ctx.d;
           ctx.advance(TS.addDays(d.invDate, 3));
-          ui().journal(ctx, b, { key: 'rcpt', ref: 'RCPT-' + ctx.ship.id, narrative: L('Receipt from ' + ctx.ship.parties.client.name, 'مقبوض من ' + ctx.ship.parties.client.name), help: L(`The bank shows a transfer of ${money(d.paid)} from the client (paid before the D/O / B/L release).`, `يُظهر المصرف تحويلًا بقيمة ${TS.num(d.paid)} دولار من الزبون (دُفع قبل إذن التسليم / الإفراج عن البوليصة).`), expected: [{ acc: '512', dr: d.paid }, { acc: '411', cr: d.paid }], onSuccess: () => ctx.finish('rcpt') });
+          ui().journal(ctx, b, { key: 'rcpt', ref: 'RCPT-' + ctx.ship.id, narrative: L('Receipt from ' + ctx.ship.parties.client.name, 'مقبوض من ' + ctx.ship.parties.client.name), help: d.extraRcpt ? L(`The bank shows two transfers from the client: ${money(d.paid)} (before release) and ${money(d.extraRcpt)} (balance of the final invoice). Record the total received.`, `يُظهر المصرف تحويلين من الزبون: ${TS.num(d.paid)} دولار (قبل الإفراج) و${TS.num(d.extraRcpt)} دولار (رصيد الفاتورة النهائية). سجّل المجموع المقبوض.`) : L(`The bank shows a transfer of ${money(d.paid)} from the client (paid before the D/O / B/L release).`, `يُظهر المصرف تحويلًا بقيمة ${TS.num(d.paid)} دولار من الزبون (دُفع قبل إذن التسليم / الإفراج عن البوليصة).`), expected: [{ acc: '512', dr: d.received }, { acc: '411', cr: d.received }], onSuccess: () => ctx.finish('rcpt') });
         },
       },
       {
@@ -508,4 +510,6 @@
     ],
   });
 
+  const DR = { receive: ['margin'], invoice: ['vat', 'lbp'], sales: ['entry'], purchases: ['entry', 'vat'], cash: ['entry'], bank: ['entry'], vat: ['vat', 'lbp'], close: ['margin'] };
+  ACC.steps.forEach((st) => (st.drills = DR[st.id] || ['entry']));
 })();

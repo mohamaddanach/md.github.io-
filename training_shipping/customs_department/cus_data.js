@@ -7,71 +7,68 @@
   CUS.VAT = 0.11;
   CUS.RATE = 89500; // sample customs exchange rate LBP/USD — always check the official rate in force
 
-  /* Extract of a tariff — rates are SAMPLE training values, not the official Lebanese tariff */
-  CUS.tariff = [
-    { hs: '9401.61', d: L('Seats with wooden frames — upholstered', 'مقاعد بهياكل خشبية — منجّدة'), duty: 20 },
-    { hs: '9401.69', d: L('Seats with wooden frames — other (not upholstered)', 'مقاعد بهياكل خشبية — غيرها (غير منجّدة)'), duty: 20 },
-    { hs: '9401.71', d: L('Seats with metal frames — upholstered', 'مقاعد بهياكل معدنية — منجّدة'), duty: 20 },
-    { hs: '9403.30', d: L('Wooden furniture of a kind used in offices', 'أثاث خشبي من النوع المستعمل في المكاتب'), duty: 15 },
-    { hs: '9403.40', d: L('Wooden furniture of a kind used in kitchens', 'أثاث خشبي من النوع المستعمل في المطابخ'), duty: 15 },
-    { hs: '9403.50', d: L('Wooden furniture of a kind used in bedrooms', 'أثاث خشبي من النوع المستعمل في غرف النوم'), duty: 25 },
-    { hs: '9403.60', d: L('Other wooden furniture (e.g. dining tables)', 'أثاث خشبي آخر (مثل طاولات السفرة)'), duty: 25 },
-    { hs: '9403.91', d: L('Parts of furniture, of wood', 'أجزاء أثاث من الخشب'), duty: 10 },
-    { hs: '1207.40', d: L('Sesame seeds', 'بذور السمسم'), duty: 5 },
-    { hs: '1515.50', d: L('Sesame oil and its fractions', 'زيت السمسم وأجزاؤه'), duty: 10 },
-    { hs: '2008.11', d: L('Groundnuts, prepared or preserved (incl. peanut butter)', 'فول سوداني محضّر أو محفوظ (بما فيه زبدة الفول السوداني)'), duty: 20 },
-    { hs: '2008.19', d: L('Other nuts and seeds, prepared or preserved, incl. mixtures (e.g. tahini)', 'مكسرات وبذور أخرى محضّرة أو محفوظة، بما فيها المخاليط (مثل الطحينة)'), duty: 20 },
-    { hs: '2103.90', d: L('Sauces and preparations therefor; mixed condiments', 'صلصات ومحضّراتها؛ توابل مخلوطة'), duty: 20 },
-  ];
-  CUS.rateOf = (hs) => { const r = CUS.tariff.find((x) => x.hs === hs); return r ? r.duty : null; };
+  /* Tariff extract — SAMPLE training rates built from the commodity catalogue (not the official Lebanese tariff) */
+  CUS.tariff = Object.values(TS.TARIFF || {}).sort((x, y) => x.hs.localeCompare(y.hs));
+  CUS.rateOf = (hs) => { const r = (TS.TARIFF || {})[hs]; return r ? r.duty : null; };
+  CUS.descOf = (hs) => { const r = (TS.TARIFF || {})[hs]; return r ? r.d : L(hs, hs); };
+  /* the tariff lines relevant to a file: the right codes, the codes the supplier gave and plausible distractors */
+  CUS.tariffFor = (s) => { const sc = s.case || {}, set = new Set(); TS.cargoItems(s).forEach((x) => { set.add(x.hs); set.add(x.hsGiven || x.hs); }); (sc.distract || []).forEach((h) => set.add(h)); return CUS.tariff.filter((x) => set.has(x.hs)); };
 
-  /* how the single commercial line of Operations really breaks down on the supplier's detailed invoice */
   /* the supplier's detailed invoice lines (shared with the other departments' documents) */
   CUS.itemsFor = (s) => TS.cargoItems(s);
 
   const seed = (s) => s.id.split('').reduce((a, c) => (a * 31 + c.charCodeAt(0)) % 999983, 7);
   CUS.handoff = (s) => s.handoffs && (s.handoffs.customs_import || s.handoffs.customs_export);
+  const Q = (l) => Number(l.sell || 0) * (l.qty || 1);
+  const LANES = ['green', 'yellow', 'yellow', 'red'];
+  CUS.PREF = { EUR1: L('EU — EUR.1 (EU–Lebanon Association Agreement)', 'الاتحاد الأوروبي — EUR.1 (اتفاقية الشراكة)'), GAFTA: L('GAFTA — Arab certificate of origin', 'منطقة التجارة العربية — شهادة منشأ عربية'), none: L('None — full (MFN) duty', 'لا شيء — الرسم الكامل') };
 
   CUS.d = (s) => {
-    const imp = s.direction === 'import';
+    const imp = s.direction === 'import', sc = s.case || {};
     const h = CUS.handoff(s), p = h.pack;
     const items = CUS.itemsFor(s).map((x) => Object.assign({}, x));
-    const valTotal = items.reduce((a, x) => a + x.value, 0);
-    const q = s.quotation;
-    const freightSold = R(q.lines.filter((l) => l.group === 'freight').reduce((a, l) => a + Number(l.sell), 0));
+    const valTotal = R(items.reduce((a, x) => a + x.value, 0));
+    const q = s.quotation, act = q.lines.filter((l) => l.group !== 'optional' || q.insurance);
+    const freightSold = R(act.filter((l) => l.group === 'freight' && l.code !== 'INS').reduce((a, l) => a + Q(l), 0) + (s.lclAdj ? s.lclAdj.sell : 0));
     const eta = (s.booking && (s.booking.revisedEta || s.booking.eta)) || s.sim.today;
-    const out = { imp, h, p, items, valTotal, freightSold, seed: seed(s) };
+    const lcl = sc.mode === 'LCL', inc = (s.jobFile && s.jobFile.incoterm) || 'FOB';
+    const out = { imp, h, p, items, valTotal, freightSold, seed: seed(s), lcl, inc, sc, multi: items.length > 1 };
+    const alloc = (total, key) => { let acc = 0; items.forEach((x, i) => { const last = i === items.length - 1; x[key] = last ? R(total - acc) : R((total * x.value) / valTotal); acc = R(acc + x[key]); }); };
+    out.origin = sc.originCC || (imp ? 'CN' : 'LB'); out.consigned = sc.consignCC || out.origin; out.destination = sc.destCC || 'LB';
+    out.pref = sc.pref || 'none';
     if (imp) {
       const freight = R(p.freight != null ? p.freight : freightSold), ins = R(p.insurance || 0);
-      let fr = 0, is = 0;
-      items.forEach((x, i) => {
-        const last = i === items.length - 1;
-        x.freight = last ? R(freight - fr) : R((freight * x.value) / valTotal); fr = R(fr + x.freight);
-        x.ins = last ? R(ins - is) : R((ins * x.value) / valTotal); is = R(is + x.ins);
+      alloc(freight, 'freight'); alloc(ins, 'ins');
+      items.forEach((x) => {
         x.cif = R(x.value + x.freight + x.ins);
-        x.rate = CUS.rateOf(x.hs);
+        x.mfn = CUS.rateOf(x.hs); x.rate = out.pref !== 'none' ? 0 : x.mfn;
         x.duty = R((x.cif * x.rate) / 100);
         x.vatBase = R(x.cif + x.duty);
         x.vat = R(x.vatBase * CUS.VAT);
       });
       const T = (k) => R(items.reduce((a, x) => a + x[k], 0));
+      const lane = LANES[seed(s) % 4];
       Object.assign(out, {
         freight, ins, cif: T('cif'), duty: T('duty'), vatBase: T('vatBase'), vat: T('vat'),
-        taxes: R(T('duty') + T('vat')), wrongDuty: R(items.reduce((a, x) => a + (x.cif * CUS.rateOf(x.hsGiven)) / 100, 0)),
-        declNo: 'IM/' + eta.slice(0, 4) + '/' + (seed(s) % 90000 + 10000), lane: 'yellow',
-        lodge: TS.addDays(eta, 2), release: TS.addDays(eta, 9), regime: 'IMPORT_HOME', origin: 'CN', consigned: 'CN', pref: 'none',
+        taxes: R(T('duty') + T('vat')), wrongDuty: R(items.reduce((a, x) => a + (x.cif * (out.pref !== 'none' ? 0 : CUS.rateOf(x.hsGiven || x.hs) || 0)) / 100, 0)),
+        declNo: 'IM/' + eta.slice(0, 4) + '/' + (seed(s) % 90000 + 10000), lane,
+        lodge: TS.addDays(eta, 2), release: TS.addDays(eta, { green: 3, yellow: 6, red: 9 }[lane] + (lcl ? 1 : 0)), regime: 'IMPORT_HOME',
       });
       out.cifLBP = Math.round(out.cif * CUS.RATE); out.taxesLBP = Math.round(out.taxes * CUS.RATE);
     } else {
-      const it = items[0];
-      it.fob = R(it.value - freightSold);
-      it.rate = 0; it.duty = 0;
+      /* FOB = invoice price minus everything after the Lebanese border that is included in the price */
+      const insL = act.find((l) => l.code === 'INS'), insV = inc === 'CIF' && insL ? R(Number(insL.sell)) : 0;
+      const destV = inc === 'DAP' ? R(act.filter((l) => l.group === 'dest').reduce((a, l) => a + Q(l), 0)) : 0;
+      const deduct = R(freightSold + insV + destV);
+      alloc(deduct, 'deduct');
+      items.forEach((x) => { x.fob = R(x.value - x.deduct); x.rate = 0; x.duty = 0; });
+      const stuffed = (s.equipment && s.equipment.stuffedOn) || s.sim.today;
       Object.assign(out, {
-        cfr: it.value, fob: it.fob, fobLBP: Math.round(it.fob * CUS.RATE), taxes: 0,
-        declNo: 'EX/' + (s.equipment && s.equipment.stuffedOn ? s.equipment.stuffedOn : s.sim.today).slice(0, 4) + '/' + (seed(s) % 90000 + 10000), lane: 'green',
-        lodge: (s.equipment && s.equipment.stuffedOn) || s.sim.today, release: (s.equipment && s.equipment.stuffedOn) || s.sim.today,
-        regime: 'EXPORT_DEF', origin: 'LB', consigned: 'LB', destination: 'DE', pref: 'EUR1',
+        invoice: valTotal, cfr: valTotal, insDeducted: insV, destDeducted: destV, deduct, fob: R(valTotal - deduct), taxes: 0,
+        declNo: 'EX/' + stuffed.slice(0, 4) + '/' + (seed(s) % 90000 + 10000), lane: 'green',
+        lodge: stuffed, release: stuffed, regime: 'EXPORT_DEF',
       });
+      out.fobLBP = Math.round(out.fob * CUS.RATE);
     }
     out.pkgs = items.reduce((a, x) => a + x.pkgs, 0);
     out.gross = items.reduce((a, x) => a + x.gross, 0);
@@ -87,8 +84,10 @@
     { v: 'EXPORT_DEF', l: L('Definitive export', 'تصدير نهائي') },
     { v: 'REEXPORT', l: L('Re-export', 'إعادة تصدير') },
   ];
-  CUS.countries = [{ v: 'CN', l: L('China', 'الصين') }, { v: 'LB', l: L('Lebanon', 'لبنان') }, { v: 'DE', l: L('Germany', 'ألمانيا') }, { v: 'EG', l: L('Egypt (transshipment)', 'مصر (مسافنة)') }, { v: 'IT', l: L('Italy (transshipment)', 'إيطاليا (مسافنة)') }];
-  CUS.prefs = [{ v: 'none', l: L('None — full (MFN) duty', 'لا شيء — الرسم الكامل') }, { v: 'GAFTA', l: L('GAFTA — Arab certificate of origin', 'منطقة التجارة العربية — شهادة منشأ عربية') }, { v: 'EUR1', l: L('EU — EUR.1 movement certificate', 'الاتحاد الأوروبي — شهادة EUR.1') }, { v: 'EFTA', l: L('EFTA — EUR.1', 'EFTA — EUR.1') }];
+  const CN = { LB: ['Lebanon', 'لبنان'], CN: ['China', 'الصين'], MY: ['Malaysia', 'ماليزيا'], VN: ['Vietnam', 'فيتنام'], IN: ['India', 'الهند'], TR: ['Türkiye', 'تركيا'], IT: ['Italy', 'إيطاليا'], ES: ['Spain', 'إسبانيا'], FR: ['France', 'فرنسا'], CY: ['Cyprus', 'قبرص'], EG: ['Egypt', 'مصر'], DE: ['Germany', 'ألمانيا'], NL: ['Netherlands', 'هولندا'], GB: ['United Kingdom', 'المملكة المتحدة'], AE: ['United Arab Emirates', 'الإمارات'], SA: ['Saudi Arabia', 'السعودية'], BR: ['Brazil', 'البرازيل'], US: ['United States', 'الولايات المتحدة'], CA: ['Canada', 'كندا'], AU: ['Australia', 'أستراليا'], GR: ['Greece (transshipment)', 'اليونان (مسافنة)'], MT: ['Malta (transshipment)', 'مالطا (مسافنة)'] };
+  CUS.countries = Object.entries(CN).map(([v, [en, ar]]) => ({ v, l: L(v + ' — ' + en, v + ' — ' + ar) }));
+  CUS.countryName = (cc) => (CN[cc] ? CN[cc][0] : cc);
+  CUS.prefs = [{ v: 'none', l: CUS.PREF.none }, { v: 'GAFTA', l: CUS.PREF.GAFTA }, { v: 'EUR1', l: CUS.PREF.EUR1 }, { v: 'EFTA', l: L('EFTA — EUR.1', 'EFTA — EUR.1') }];
 
   /* ---------------- Lebanon customs guide ---------------- */
   CUS.guide = [

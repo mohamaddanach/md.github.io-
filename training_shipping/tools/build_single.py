@@ -31,17 +31,17 @@ shell = '''<!doctype html>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Training Shipping — offline</title>
 <style>
-  html, body { margin: 0; height: 100%; background: #0b4f71; font-family: "Segoe UI", Tahoma, Arial, sans-serif; }
-  #bar { height: 40px; display: flex; align-items: center; gap: 6px; padding: 0 10px; color: #fff; overflow-x: auto; white-space: nowrap; }
+  html, body { margin: 0; height: 100%; background: #06205c; font-family: "Segoe UI", Tahoma, Arial, sans-serif; }
+  #bar { height: 40px; border-bottom: 3px solid #e1061a; box-sizing: border-box; display: flex; align-items: center; gap: 6px; padding: 0 10px; color: #fff; overflow-x: auto; white-space: nowrap; }
   #bar b { margin-inline-end: 10px; }
   #bar button { background: rgba(255,255,255,.14); color: #fff; border: 1px solid rgba(255,255,255,.3); border-radius: 7px; padding: 5px 10px; cursor: pointer; font: inherit; font-size: 13px; }
-  #bar button.on { background: #fff; color: #0b4f71; font-weight: 700; }
+  #bar button.on { background: #fff; color: #06205c; font-weight: 700; box-shadow: inset 0 -3px 0 #e1061a; }
   #bar small { margin-inline-start: auto; opacity: .75; }
   iframe { display: block; width: 100%; height: calc(100% - 40px); border: 0; background: #f4f6f9; }
 </style>
 </head>
 <body>
-<div id="bar"><b>⚓ Training Shipping</b>
+<div id="bar"><b>TS · Training Shipping</b>
   <button data-p="home">Home · الرئيسية</button>
   <button data-p="ops">⛴ Operations · العمليات</button>
   <button data-p="cus">🛃 Customs · الجمارك</button>

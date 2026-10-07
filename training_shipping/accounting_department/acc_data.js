@@ -32,11 +32,12 @@
   ACC.classNames = { 1: L('Capital', 'الأموال الدائمة'), 2: L('Fixed assets', 'الأصول الثابتة'), 4: L('Third parties', 'حسابات الغير'), 5: L('Financial', 'الحسابات المالية'), 6: L('Expenses', 'الأعباء'), 7: L('Revenues', 'الإيرادات') };
 
   ACC.vendorNames = {
-    carrier: (s) => (s.booking ? s.booking.carrierName + ' — Beirut agency' : 'Shipping line'),
+    carrier: (s) => (s.booking ? s.booking.carrierName + (s.booking.consol ? ' — Beirut office' : ' — Beirut agency') : 'Shipping line'),
+    agent: (s) => (s.case && s.case.agent ? s.case.agent.name : 'Overseas agent'),
     broker: () => 'Khoury Clearance SARL (licensed customs broker)',
     trucker: () => 'Al Amal Transport SARL',
     insurer: () => 'Cedar Marine Insurance SAL',
-    chamber: () => 'Chamber of Commerce, Industry & Agriculture of Zahle & Bekaa',
+    chamber: () => 'Chamber of Commerce, Industry & Agriculture (Lebanon)',
   };
   ACC.vendorEmail = { carrier: 'agency.beirut@line-training.test', broker: 'accounts@khoury-clearance.test', trucker: 'dispatch@alamal-transport.test', insurer: 'finance@cedar-marine.test', chamber: 'services@cciaz.test' };
 
@@ -48,14 +49,14 @@
     const pack = s.handoffs.accounting.pack, inv = pack.invoice;
     const imp = s.direction === 'import';
     const ql = s.quotation.lines;
-    const vatOf = (code) => code === 'DD' || !!(ql.find((l) => l.code === code) || {}).vat;
+    const vatOf = (code) => code === 'DD' || code === 'STO' || (code !== 'WMA' && !!(ql.find((l) => l.code === code) || {}).vat);
     const exempt = R(inv.lines.filter((l) => !l.vat).reduce((a, l) => a + l.amount, 0));
     const taxable = R(inv.lines.filter((l) => l.vat).reduce((a, l) => a + l.amount, 0));
     const revenue = R(exempt + taxable), outVat = R(taxable * ACC.VAT), total = R(revenue + outVat);
 
     const vend = {};
     pack.payables.forEach((p) => {
-      const v = (vend[p.vendor] = vend[p.vendor] || { vendor: p.vendor, name: (ACC.vendorNames[p.vendor] || (() => p.vendor))(s), email: ACC.vendorEmail[p.vendor] || '', lines: [] });
+      const v = (vend[p.vendor] = vend[p.vendor] || { vendor: p.vendor, name: (ACC.vendorNames[p.vendor] || (() => p.vendorName || p.vendor))(s), email: p.vendor === 'agent' && s.case ? s.case.agent.email : ACC.vendorEmail[p.vendor] || '', foreign: p.vendor === 'agent', lines: [] });
       v.lines.push({ code: p.code, desc: p.desc, amount: p.amount, vat: vatOf(p.code) });
     });
     const sup = Object.values(vend).map((v, i) => {
@@ -66,13 +67,15 @@
     const costNet = R(sup.reduce((a, v) => a + v.net, 0)), inVat = R(sup.reduce((a, v) => a + v.vat, 0)), payTotal = R(costNet + inVat);
 
     const disb = (pack.disbursements || []).find((x) => x.type === 'container_deposit');
-    const ddNet = R((s.dd && s.dd.destination && imp ? s.dd.destination.cost : 0) || 0);
+    const ddNet = R((s.dd && s.dd.destination && disb ? s.dd.destination.cost : 0) || 0);
     const ddIncl = R(ddNet * (1 + ACC.VAT));
     const deposit = disb ? disb.amount : 0;
     const lineRefund = R(deposit - (deposit ? ddIncl : 0));
     const paid = R(pack.receivables[0].paidAmount || 0);
     const balance = R(total - paid);
     const clientRefund = R(deposit - (deposit ? balance : 0));
+    /* no deposit to offset: the client pays the balance (storage / D&D / W/M rebilled after release) by a second transfer */
+    const extraRcpt = deposit ? 0 : Math.max(0, balance), received = R(paid + extraRcpt);
     const carrier = sup.find((v) => v.vendor === 'carrier');
     const broker = sup.find((v) => v.vendor === 'broker');
     const carrierByBank = carrier ? R(carrier.total - (deposit ? ddIncl : 0)) : 0;
@@ -90,6 +93,7 @@
     const mv = [];
     const d0 = (s.release && s.release.clientPaidOn) || startDate;
     mv.push({ date: d0, txt: 'Receipt ' + s.parties.client.name + ' (against arrival notice / invoice)', amt: paid });
+    if (extraRcpt) mv.push({ date: TS.addDays(startDate, 2), txt: 'Receipt ' + s.parties.client.name + ' — balance of the final invoice', amt: extraRcpt });
     if (deposit) {
       mv.push({ date: d0, txt: 'Container deposit received from ' + s.parties.client.name, amt: deposit });
       mv.push({ date: (s.release && s.release.doDate) || d0, txt: 'Container deposit paid to ' + carrier.name, amt: -deposit });
@@ -105,7 +109,7 @@
     const stmtBal = R(ACC.OPENING_BANK + stmt.reduce((a, m) => a + m.amt, 0));
 
     return {
-      imp, inv, exempt, taxable, revenue, outVat, total, sup, costNet, inVat, payTotal, deposit, ddNet, ddIncl, lineRefund, paid, balance, clientRefund,
+      imp, inv, exempt, taxable, revenue, outVat, total, extraRcpt, received, sup, costNet, inVat, payTotal, deposit, ddNet, ddIncl, lineRefund, paid, balance, clientRefund,
       carrier, broker, carrierByBank, supByBank, bankCharges, outstanding, invDate, qEnd, vatDue, mv, stmt, bookBal, stmtBal,
       netVat: R(outVat - inVat), profit: R(revenue - costNet), profitAfterBank: R(revenue - costNet - bankCharges),
       quotedProfit: pack.quotedProfit, invNo: 'PFT/' + invDate.slice(0, 4) + '/' + String(seed(s) % 900 + 100).padStart(5, '0'),

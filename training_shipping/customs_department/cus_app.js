@@ -46,6 +46,6 @@
     samples: () => window.ACC_SAMPLES || [],
     prepareSample: (s) => { const h = CUS.handoff(s); h.status = 'submitted'; delete h.result; },
     nav: [{ v: 'file', icon: '🗂', l: L('Hand-off file', 'ملف التسليم'), view: viewFile }],
-    learn: [{ v: 'guide', icon: '🇱🇧', l: L('Lebanese customs guide', 'دليل الجمارك اللبنانية'), view: viewGuide }, { v: 'tariff', icon: '📚', l: L('Tariff extract', 'مقتطف التعرفة'), view: viewTariff }],
+    learn: [{ v: 'guide', icon: '🇱🇧', l: L('Lebanese customs guide', 'دليل الجمارك اللبنانية'), view: viewGuide }, { v: 'tariff', icon: '📚', l: L('Tariff extract', 'مقتطف التعرفة'), view: viewTariff }, { v: 'drills', icon: '🎯', l: L('Drills (endless practice)', 'تمارين (تدريب لا ينتهي)'), view: (main) => TS.drillsView(main, 'cus') }],
   });
 })();

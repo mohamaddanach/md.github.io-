@@ -42,7 +42,7 @@
     let ok;
     if (f.type === 'number') ok = Math.abs(Number(v) - Number(ans)) <= (f.tol != null ? f.tol : 0.01);
     else if (f.type === 'select' || f.type === 'date') ok = String(v) === String(ans);
-    else if (f.contains) ok = f.contains.every((k) => TS.norm(v).includes(TS.norm(k)));
+    else if (f.contains) ok = f.contains.every((k) => TS.norm(v).includes(TS.norm(k))) || (!!f.containsAlt && f.containsAlt.every((k) => TS.norm(v).includes(TS.norm(k))));
     else ok = TS.norm(v) === TS.norm(ans);
     return ok ? { ok: true } : { ok: false, msg: t(f.fb || L('Not correct — check the source document or email again.', 'غير صحيح — راجع المستند أو البريد مرة أخرى.')) };
   }

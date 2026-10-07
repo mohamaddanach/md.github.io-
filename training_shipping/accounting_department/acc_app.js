@@ -111,7 +111,7 @@
     samples: () => window.ACC_SAMPLES || [],
     prepareSample: (s) => { s.handoffs.accounting.status = 'submitted'; },
     nav: [{ v: 'journal', icon: 'J', l: L('Journal', 'دفتر اليومية'), view: viewJournal }, { v: 'ledger', icon: 'Σ', l: L('Ledger & trial balance', 'الأستاذ وميزان المراجعة'), view: viewLedger }],
-    learn: [{ v: 'guide', icon: '🇱🇧', l: L('Lebanon accounting guide', 'دليل المحاسبة في لبنان'), view: viewGuide }, { v: 'coa', icon: '#', l: L('Chart of accounts', 'المخطط المحاسبي'), view: viewCoa }],
+    learn: [{ v: 'guide', icon: '🇱🇧', l: L('Lebanon accounting guide', 'دليل المحاسبة في لبنان'), view: viewGuide }, { v: 'coa', icon: '#', l: L('Chart of accounts', 'المخطط المحاسبي'), view: viewCoa }, { v: 'drills', icon: '🎯', l: L('Drills (endless practice)', 'تمارين (تدريب لا ينتهي)'), view: (main) => TS.drillsView(main, 'acc') }],
   }), { acct: '512' });
   ACC.app = app;
 })();

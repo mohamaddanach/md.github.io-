@@ -126,7 +126,7 @@
       else if (ad.special && ad.special(body, cur.stepId, cur.partId)) wait = 300;
       else {
         const ans = body.querySelector('[data-act=answer], #ans');
-        const go = body.querySelector('[data-act=check], #sel, #ok, #chk, #snd, #go');
+        const go = body.querySelector('[data-act=check], #sel, #ok, #chk, #snd, #go, #rev');
         if (ans && !clicked[key]) { clicked[key] = 1; await hl(ans); ans.click(); }
         else if (go) { await hl(go); go.click(); wait = 700; }
       }
@@ -136,6 +136,34 @@
     if (same > 25) { AP.stop(); TS.toast(t(L('Autopilot stopped — please continue by hand.', 'توقّف الطيار الآلي — يرجى المتابعة يدويًا.')), 'bad'); return; }
     timer = setTimeout(() => tick(ad), wait);
   }
+
+  /* ---------------- document pop-up (printable) ---------------- */
+  TS.docModal = (title, html) => {
+    let el = document.querySelector('.docmodal');
+    if (!el) { el = document.createElement('div'); el.className = 'docmodal'; document.body.appendChild(el); }
+    el.innerHTML = `<div class="dm-box" role="dialog" aria-modal="true" aria-label="${esc(title)}"><div class="dm-head"><b>📄 ${esc(title)}</b><span><button class="btn sm" data-dm-print>🖨 ${esc(t(L('Print / PDF', 'طباعة / PDF')))}</button><button class="btn sm ghost" data-dm-x aria-label="close">✕</button></span></div><div class="dm-body">${html}</div><p class="dm-hint">💡 ${esc(t(L('Click any underlined label to see what it means (English + Arabic).', 'انقر على أي عنوان مسطّر لمعرفة معناه (إنجليزي + عربي).')))}</p></div>`;
+    el.classList.add('on'); document.body.classList.add('dm-open');
+    const close = () => { el.classList.remove('on'); document.body.classList.remove('dm-open'); };
+    el.querySelector('[data-dm-x]').onclick = close;
+    el.querySelector('[data-dm-print]').onclick = () => window.print();
+    el.onclick = (e) => { if (e.target === el) close(); };
+    if (TS.decorateAll) TS.decorateAll(el);
+    el.querySelector('[data-dm-x]').focus();
+  };
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') { const m = document.querySelector('.docmodal.on'); if (m) { m.classList.remove('on'); document.body.classList.remove('dm-open'); } } });
+
+  /* ---------------- "new document" alerts ---------------- */
+  /* items: [{id, name, open(), dismiss()}] · dismissAll() */
+  TS.docAlerts = (items, dismissAll) => {
+    let el = document.querySelector('.docalerts');
+    if (!items || !items.length || (TS.autopilot && TS.autopilot.running && items.length > 6)) { if (el) el.remove(); return; }
+    if (!el) { el = document.createElement('div'); el.className = 'docalerts no-print'; el.setAttribute('aria-live', 'polite'); document.body.appendChild(el); }
+    const show = items.slice(-2);
+    el.innerHTML = show.map((d, i) => `<div class="da"><span class="da-ico">📄</span><div class="da-t"><small>${esc(t(L('New document', 'مستند جديد')))}</small><b>${esc(d.name)}</b></div><button class="btn sm primary" data-da-open="${i}">${esc(t(L('View', 'عرض')))}</button><button class="btn sm ghost" data-da-x="${i}" aria-label="dismiss">✕</button></div>`).join('') + (items.length > 1 ? `<div class="da-more">${items.length > 2 ? '+' + (items.length - 2) + ' ' + esc(t(L('more', 'أخرى'))) + ' · ' : ''}<button class="linkbtn" data-da-all>${esc(t(L('Mark all as seen', 'تعليم الكل كمقروء')))}</button></div>` : '');
+    el.querySelectorAll('[data-da-open]').forEach((b) => (b.onclick = () => show[Number(b.dataset.daOpen)].open()));
+    el.querySelectorAll('[data-da-x]').forEach((b) => (b.onclick = () => show[Number(b.dataset.daX)].dismiss()));
+    const all = el.querySelector('[data-da-all]'); if (all && dismissAll) all.onclick = dismissAll;
+  };
 
   /* ---------------- first-visit tour ---------------- */
   TS.tour = (key, slides, force) => {

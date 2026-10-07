@@ -92,7 +92,7 @@
     (cfg.nav || []).concat(cfg.learn || []).forEach((n) => (views[n.v] = n));
     function topbar() {
       const list = jobs();
-      return `<header class="topbar"><a class="brand" href="../index.html">⚓ Training Shipping <small>/ ${t(cfg.title)}</small></a><span class="spacer"></span>
+      return `<header class="topbar"><a class="brand" href="../index.html"><span class="logo-mark">TS</span> Training Shipping <small>/ ${t(cfg.title)}</small></a><span class="spacer"></span>
         ${list.length ? `<select id="jobSel">${app.ship ? '' : '<option value="">—</option>'}${list.map((s) => `<option value="${esc(s.id)}" ${app.ship && app.ship.id === s.id ? 'selected' : ''}>${esc(s.id)}</option>`).join('')}</select>` : ''}
         <button class="btn sm" data-go="home">📂 ${t(L('Jobs', 'الملفات'))}</button><a class="btn sm" href="../operations_pricing_freight_forwarder/index.html">⛴ ${t(L('Operations', 'قسم العمليات'))}</a>${TS.langSwitch()}</header>`;
     }
@@ -216,15 +216,17 @@
         b.appendChild(n); bind(n);
       }
     }
+    app.quizItems = (s, st) => { const w = W(s, st.id); if (!w.quiz.items) w.quiz.items = TS.quizBuild(st.quiz || [], st.drills || [], TS.rng(TS.seedOf(s.id + cfg.prefix) * 131 + app.idx(st.id)), 5); return w.quiz.items; };
     function quiz(b, st) {
       const s = app.ship, w = W(s, st.id);
       w.quiz.ans = w.quiz.ans || {};
       const ck = w.quiz.checked;
-      b.innerHTML = st.quiz.map((q, qi) => { const a = w.quiz.ans[qi], ok = a === q.a; return `<div class="q"><div class="qt">${qi + 1}. ${t(q.q)}</div>${q.o.map((o, oi) => `<label class="check ${ck && a === oi ? (ok ? 'right' : 'wrong') : ''}"><input type="radio" name="q${qi}" value="${oi}" ${a === oi ? 'checked' : ''}><span>${t(o)}</span></label>`).join('')}${ck && q.e && (w.quiz.passed || !ok) ? `<div class="explain note ${ok ? 'ok' : 'bad'}">${t(q.e)}</div>` : ''}</div>`; }).join('') + `<div class="row"><button class="btn primary" id="qc">${t(L('Check answers', 'تحقّق من الإجابات'))}</button>${w.quiz.passed ? `<span class="badge ok">✓</span>` : ''}</div>`;
+      const items = app.quizItems(s, st);
+      b.innerHTML = `<p class="muted">🎲 ${t(L('Lesson questions mixed with generated exercises — different for every file.', 'أسئلة الدرس ممزوجة بتمارين مولَّدة — مختلفة لكل ملف.'))}</p>` + items.map((q, qi) => { const a = w.quiz.ans[qi], ok = a === q.a; return `<div class="q"><div class="qt">${qi + 1}. ${t(q.q)}</div>${q.o.map((o, oi) => `<label class="check ${ck && a === oi ? (ok ? 'right' : 'wrong') : ''}"><input type="radio" name="q${qi}" value="${oi}" ${a === oi ? 'checked' : ''}><span>${t(o)}</span></label>`).join('')}${ck && q.e && (w.quiz.passed || !ok) ? `<div class="explain note ${ok ? 'ok' : 'bad'}">${t(q.e)}</div>` : ''}</div>`; }).join('') + `<div class="row"><button class="btn primary" id="qc">${t(L('Check answers', 'تحقّق من الإجابات'))}</button>${w.quiz.passed ? `<span class="badge ok">✓</span>` : ''}</div>`;
       b.querySelectorAll('input[type=radio]').forEach((r) => r.addEventListener('change', () => { w.quiz.ans[Number(r.name.slice(1))] = Number(r.value); w.quiz.checked = false; app.save(); }));
       $('#qc', b).onclick = () => {
         w.quiz.checked = true;
-        const wrong = st.quiz.filter((q, qi) => w.quiz.ans[qi] !== q.a).length;
+        const wrong = items.filter((q, qi) => w.quiz.ans[qi] !== q.a).length;
         if (wrong) { S(s).score.mistakes += wrong; TS.toast(t(L(`${wrong} wrong — read the explanations`, `${wrong} خطأ — اقرأ الشرح`)), 'bad'); }
         else { w.quiz.passed = true; app.check(s, st); }
         app.save(); app.render();
@@ -261,7 +263,7 @@
     const adapter = {
       current() { const s = app.ship; if (!s) return null; const st = NS.steps.find((x) => !app.done(s, x)); if (!st) return null; const w = W(s, st.id); const p = st.parts.find((x) => !w.parts[x.id]); return { stepId: st.id, partId: p ? p.id : null, n: Object.keys(w.parts).length }; },
       open(id, tab) { if (app.view !== 'step:' + id || app.tab[id] !== tab) { app.tab[id] = tab; go('step:' + id); } },
-      fillQuiz(id) { const st = NS.steps.find((x) => x.id === id), w = W(app.ship, id); w.quiz.ans = {}; st.quiz.forEach((q, i) => (w.quiz.ans[i] = q.a)); app.save(); app.render(); },
+      fillQuiz(id) { const st = NS.steps.find((x) => x.id === id), w = W(app.ship, id); w.quiz.ans = {}; app.quizItems(app.ship, st).forEach((q, i) => (w.quiz.ans[i] = q.a)); app.save(); app.render(); },
     };
     TS.autopilot.adapter = adapter;
     TS.cmd.providers.push(() => {

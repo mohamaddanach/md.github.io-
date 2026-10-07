@@ -19,7 +19,7 @@
     return `<table class="t"><thead><tr>${cols.map((c) => `<th style="${c.w ? 'width:' + c.w : ''}${c.r ? ';text-align:right' : ''}">${c.k ? TS.term(esc(c.l), c.k) : esc(c.l)}</th>`).join('')}</tr></thead><tbody>${rows.map((r) => `<tr>${r.map((v, i) => `<td class="v ${cols[i] && cols[i].r ? 'r' : ''}">${v}</td>`).join('')}</tr>`).join('')}${o.tot ? `<tr class="tot">${o.tot.map((v, i) => `<td class="${cols[i] && cols[i].r ? 'r' : ''}">${v}</td>`).join('')}</tr>` : ''}</tbody></table>`;
   };
   /* letterhead: {mark, color, co, sub, title, titleKey, ref} */
-  DK.lh = (o) => `<div class="lh"><div class="logo"><div class="mark" style="background:${o.color || '#0b4f71'}">${esc(o.mark)}</div><div class="co">${esc(o.co)}<small>${o.sub || ''}</small></div></div><div class="ttl"><b>${o.titleKey ? TS.term(esc(o.title), o.titleKey) : esc(o.title)}</b><small>${o.ref || ''}</small></div></div>`;
+  DK.lh = (o) => `<div class="lh"><div class="logo"><div class="mark" style="background:${o.color || '#06205c'}">${esc(o.mark)}</div><div class="co">${esc(o.co)}<small>${o.sub || ''}</small></div></div><div class="ttl"><b>${o.titleKey ? TS.term(esc(o.title), o.titleKey) : esc(o.title)}</b><small>${o.ref || ''}</small></div></div>`;
   DK.page = (inner, o) => {
     o = o || {};
     return `<div class="rd-wrap"><div class="rd"><div class="wm"><span>${esc(o.wm || 'SPECIMEN · TRAINING')}</span></div>${inner}<div class="foot"><span>${esc(o.foot || 'Training Shipping simulator — fictional parties, specimen document, not valid for any real transaction.')}</span><span>${esc(o.page || 'Page 1 of 1')}</span></div></div></div>`;
@@ -44,7 +44,7 @@
 
   /* fictional letterheads */
   DK.heads = {
-    pft: { mark: 'PFT', color: '#0b4f71', co: 'PHOENICIA FREIGHT TRAINING SAL', sub: 'International Freight Forwarders · NVOCC · Licensed Customs Broker<br>Port Road, Medawar, Beirut, Lebanon · Tel +961 1 400 400 · VAT No. 3001234-601 · CR Beirut 2001/12345' },
+    pft: { mark: 'PFT', color: '#06205c', co: 'PHOENICIA FREIGHT TRAINING SAL', sub: 'International Freight Forwarders · NVOCC · Licensed Customs Broker<br>Port Road, Medawar, Beirut, Lebanon · Tel +961 1 400 400 · VAT No. 3001234-601 · CR Beirut 2001/12345' },
     carrier: (s) => { const n = (s.booking && s.booking.carrierName) || (s.rates && s.rates.selected && s.rates.selected.carrierName) || 'Shipping Line'; const col = { 'CMA CGM': '#04246a', MSC: '#b8860b', Maersk: '#3c7fa8', 'COSCO Shipping': '#1a3d8f', 'Hapag-Lloyd': '#e2611a' }[n] || '#333'; return { mark: n.split(/[\s-]/).map((x) => x[0]).join('').slice(0, 3).toUpperCase(), color: col, co: n.toUpperCase() + ' — BEIRUT AGENCY', sub: 'As agents for the carrier · Port area, Beirut, Lebanon<br>Training specimen — not issued by ' + esc(n) }; },
     hongda: { mark: 'HD', color: '#8a1c1c', co: 'SHANGHAI HONGDA FURNITURE CO., LTD.', sub: 'No. 88 Xinqiao Industrial Road, Songjiang District, Shanghai, China · Tel +86 21 5774 8800' },
     bekaa: { mark: 'BVF', color: '#4f7a28', co: 'BEKAA VALLEY FOODS SARL', sub: 'Zahle Industrial Area, Zahle, Bekaa, Lebanon · Tel +961 8 811 900 · VAT No. 1188776-601 · CR Zahle 2008/1190' },
@@ -59,22 +59,34 @@
     moa: { mark: 'MoA', color: '#2e6b3a', co: 'REPUBLIC OF LEBANON — MINISTRY OF AGRICULTURE', sub: 'Training specimen — not an official certificate' },
   };
 
-  /* the supplier's detailed invoice lines for each scenario (shared by Operations, Customs, Accounting documents) */
-  TS.cargoItems = (s) => (s.direction === 'import'
-    ? [
-      { id: 'T', desc: 'Wooden dining tables, knocked down', descAr: 'طاولات سفرة خشبية مفكّكة', hsGiven: '9403.60', hs: '9403.60', qty: 30, unit: 'pcs', pkgs: 30, ctn: '1–30', gross: 3600, net: 3300, value: 21500, price: 716.67, dims: '120×80×60 cm', model: 'HD-DT1800 oak veneer' },
-      { id: 'C', desc: 'Wooden dining chairs, not upholstered', descAr: 'كراسي سفرة خشبية غير منجّدة', hsGiven: '9403.60', hs: '9401.69', qty: 180, unit: 'pcs', pkgs: 90, ctn: '31–120', gross: 4800, net: 4500, value: 17000, price: 94.44, dims: '120×80×60 cm', model: 'HD-CH45 solid beech (2 pcs/ctn)' },
-    ]
-    : [
-      { id: 'H', desc: 'Tahini (sesame paste) in glass jars, 24 × 900 g per carton, on pallets', descAr: 'طحينة في مرطبانات زجاجية، 24 × 900 غ في الكرتونة، على طبليات', hsGiven: '2008.19', hs: '2008.19', qty: 20, unit: 'pallets', pkgs: 20, ctn: 'P1–P20', gross: 17000, net: 15600, value: 42000, price: 2100, dims: '120×100×110 cm', model: '722 cartons × 24 jars × 900 g' },
-    ]);
+  /* generic letterhead for any (fictional) company of a case */
+  const COLS = ['#8a1c1c', '#2d5f8b', '#4f7a28', '#6b4c1e', '#5a3e85', '#24557a', '#7a4a1d', '#1f6b5c', '#83304f', '#3d4f8c'];
+  DK.headFor = (p, sub) => {
+    if (!p) return DK.heads.pft;
+    const name = String(p.name || '').replace(/\s*\(.*?\)\s*/g, ' ').trim();
+    const mark = name.split(/\s+/).filter((w) => /^[A-Za-z]/.test(w) && !/^(SAL|SARL|Ltd|Co|Inc|GmbH|S\.?L\.?|B\.?V\.?|Est|FZE|Ltda|JSC|Pty|A\.Ş\.|S\.p\.A\.)/i.test(w)).map((w) => w[0]).join('').slice(0, 3).toUpperCase() || 'CO';
+    const color = COLS[name.split('').reduce((a, ch) => a + ch.charCodeAt(0), 0) % COLS.length];
+    return { mark, color, co: name.toUpperCase(), sub: esc([p.address, p.phone ? 'Tel ' + p.phone : '', p.reg].filter(Boolean).join(' · ')) + (sub ? '<br>' + sub : '') };
+  };
+  const CS = (s) => s.case || null;
+
+  /* the supplier's detailed invoice lines (shared by Operations, Customs, Accounting documents) */
+  TS.cargoItems = (s) => ((CS(s) && CS(s).items) || []).map((x) => Object.assign({}, x, { dims: Array.isArray(x.dims) ? x.dims.join('×') + ' cm' : x.dims, model: x.model || '' }));
 
   /* ---------------- shared commercial documents (used by every department) ---------------- */
-  const PORTS = { LBBEY: 'Beirut, Lebanon', LBKYE: 'Tripoli, Lebanon', CNSHA: 'Shanghai, China', CNNGB: 'Ningbo, China', DEHAM: 'Hamburg, Germany', NLRTM: 'Rotterdam, Netherlands', EGPSD: 'Port Said, Egypt', MZBEW: 'Beira, Mozambique', SAJED: 'Jeddah, Saudi Arabia', AEJEA: 'Jebel Ali, UAE' };
+  const PORTS = { LBBEY: 'Beirut, Lebanon', LBKYE: 'Tripoli, Lebanon', CNSHA: 'Shanghai, China', CNNGB: 'Ningbo, China', CNQIN: 'Qingdao, China', MYPKG: 'Port Klang, Malaysia', VNCLI: 'Ho Chi Minh, Vietnam', INNSA: 'Nhava Sheva, India', TRMER: 'Mersin, Türkiye', TRAMR: 'Istanbul (Ambarli), Türkiye', ITGOA: 'Genoa, Italy', ESVLC: 'Valencia, Spain', FRMRS: 'Marseille, France', CYLMS: 'Limassol, Cyprus', EGALY: 'Alexandria, Egypt', DEHAM: 'Hamburg, Germany', NLRTM: 'Rotterdam, Netherlands', GBFXT: 'Felixstowe, United Kingdom', AEJEA: 'Jebel Ali, UAE', SAJED: 'Jeddah, Saudi Arabia', BRSSZ: 'Santos, Brazil', USNYC: 'New York, USA', CAMTR: 'Montreal, Canada', AUSYD: 'Sydney, Australia', EGPSD: 'Port Said, Egypt', MZBEW: 'Beira, Mozambique' };
   DK.port = (code) => code + ' ' + (PORTS[code] || '');
   DK.seed = (s) => s.id.split('').reduce((a, ch) => (a * 31 + ch.charCodeAt(0)) % 999983, 7);
-  DK.marks = (s) => (s.direction === 'import' ? 'CEDAR HOME\nBEIRUT\nC/NO. 1-120\nMADE IN CHINA' : 'LEVANTE FEINKOST\nHAMBURG\nP1-P20\nPRODUCT OF LEBANON');
-  DK.invNo = (s) => (s.direction === 'import' ? 'HD-2026-' + (DK.seed(s) % 900 + 100) : 'BVF/EX/' + (DK.seed(s) % 900 + 100));
+  DK.origin = (s) => ((CS(s) && CS(s).originCountry) || (s.direction === 'import' ? 'CHINA' : 'LEBANON')).toUpperCase();
+  DK.dest = (s) => ((CS(s) && CS(s).destCountry) || (s.direction === 'import' ? 'LEBANON' : 'GERMANY')).toUpperCase();
+  DK.marks = (s) => {
+    const sc = CS(s), cons = s.parties && s.parties.consignee ? s.parties.consignee.name : '';
+    const short = cons.replace(/\b(SAL|SARL|Ltd|Inc\.?|GmbH|B\.V\.|Est\.|FZE|Pty|Co\.,?)\b/gi, '').replace(/\s+/g, ' ').trim().split(' ').slice(0, 2).join(' ').toUpperCase();
+    const city = sc ? (s.direction === 'import' ? 'BEIRUT' : sc.far.city.toUpperCase()) : 'BEIRUT';
+    const n = (s.jobFile && s.jobFile.packages) || (sc && sc.cargo.packages) || 1;
+    return `${short}\n${city}\nNO. 1-${n}\n${s.direction === 'import' ? 'MADE IN ' + DK.origin(s) : 'PRODUCT OF LEBANON'}`;
+  };
+  DK.invNo = (s) => { const h = DK.headFor(s.parties && s.parties.shipper); return h.mark + '-' + (s.direction === 'import' ? 'INV' : 'EX') + '-' + (DK.seed(s) % 9000 + 1000); };
   DK.invDate = (s) => TS.addDays(s.sim.start, s.direction === 'import' ? -12 : 8);
   TS.DOCS = {};
   (function () {
@@ -83,40 +95,40 @@
     const S0 = (s) => s.parties;
     const items = (s) => TS.cargoItems(s);
     const marks = DK.marks, invNo = DK.invNo, invDate = DK.invDate, portFull = DK.port;
+    const payTxt = (s) => (CS(s) && CS(s).payment ? CS(s).payment.en : '');
   /* ---------------- commercial invoice ---------------- */
   function commercialInvoice(s) {
     const it = items(s), S = S0(s), seller = S.shipper, buyer = S.consignee;
-    const head = imp(s) ? DK.heads.hongda : DK.heads.bekaa;
+    const head = DK.headFor(seller);
     const total = it.reduce((a, x) => a + x.value, 0);
     return page(lh(Object.assign({ title: 'COMMERCIAL INVOICE', titleKey: 'ci', ref: 'Invoice No. ' + invNo(s) + '<br>Date ' + d(invDate(s)) }, head)) +
       g([
-        c(6, 'Seller / Exporter', 'shipper', party(seller), { h: 72 }), c(3, 'Invoice No. & date', null, invNo(s) + '\n' + d(invDate(s))), c(3, imp(s) ? 'Contract / PO No.' : 'Buyer’s order No.', null, imp(s) ? 'PO CH-2026-114' : 'LF-PO-77812'),
-        c(6, 'Buyer / Consignee', 'consignee', party(buyer), { h: 72 }), c(3, 'Terms of payment', imp(s) ? 'tt' : 'cad', imp(s) ? '30% T/T advance, 70% T/T against copy B/L' : 'Cash against documents (D/P) through buyer’s bank'), c(3, 'Delivery terms', 'incoterm', s.jobFile.incoterm + ' ' + s.jobFile.namedPlace + ' (Incoterms 2020)'),
-        c(3, 'Port of loading', 'pol', portFull(s.jobFile.pol)), c(3, 'Port of discharge', 'pod', portFull(s.jobFile.pod)), c(3, 'Country of origin', 'origin', imp(s) ? 'CHINA' : 'LEBANON'), c(3, 'Vessel / voyage', 'vessel', s.booking ? s.booking.vessel + ' ' + s.booking.voyage : 'TBA'),
+        c(6, 'Seller / Exporter', 'shipper', party(seller), { h: 72 }), c(3, 'Invoice No. & date', null, invNo(s) + '\n' + d(invDate(s))), c(3, imp(s) ? 'Contract / PO No.' : 'Buyer’s order No.', null, 'PO-' + (DK.seed(s) % 90000 + 10000)),
+        c(6, 'Buyer / Consignee', 'consignee', party(buyer), { h: 72 }), c(3, 'Terms of payment', CS(s) && CS(s).payKind === 'lc' ? 'lc' : CS(s) && CS(s).payKind === 'cad' ? 'cad' : 'tt', payTxt(s)), c(3, 'Delivery terms', 'incoterm', s.jobFile.incoterm + ' ' + s.jobFile.namedPlace + ' (Incoterms 2020)'),
+        c(3, 'Port of loading', 'pol', portFull(s.jobFile.pol)), c(3, 'Port of discharge', 'pod', portFull(s.jobFile.pod)), c(3, 'Country of origin', 'origin', DK.origin(s)), c(3, 'Vessel / voyage', 'vessel', s.booking ? s.booking.vessel + ' ' + s.booking.voyage : 'TBA'),
       ]) +
       t([{ l: 'Marks & numbers', k: 'marks', w: '110px' }, { l: 'Description of goods', k: 'desc' }, { l: 'HS code', k: 'hscode' }, { l: 'Qty', r: 1 }, { l: 'Unit price', r: 1 }, { l: 'Amount USD', r: 1 }],
-        it.map((x, i) => [i === 0 ? esc(marks(s)).replace(/\n/g, '<br>') : '', esc(x.desc) + '<br><small>' + esc(x.model) + '</small>', esc(x.hs), n(x.qty, 0) + ' ' + esc(x.unit), m(x.price), m(x.value)]),
-        { tot: ['', 'TOTAL ' + s.jobFile.incoterm + ' ' + s.jobFile.namedPlace, '', n(it.reduce((a, x) => a + x.pkgs, 0), 0) + ' ' + s.jobFile.pkgType.toUpperCase(), '', m(total)] }) +
+        it.map((x, i) => [i === 0 ? esc(marks(s)).replace(/\n/g, '<br>') : '', esc(x.desc) + '<br><small>' + x.pkgs + ' ' + esc(s.jobFile.pkgType) + (x.model ? ' · ' + esc(x.model) : '') + '</small>', esc(x.hsGiven || x.hs), n(x.qty, 0) + ' ' + esc(x.unit), m(x.unitPrice != null ? x.unitPrice : x.price), m(x.value)]),
+        { tot: ['', 'TOTAL ' + s.jobFile.incoterm + ' ' + s.jobFile.namedPlace, '', n(it.reduce((a, x) => a + x.pkgs, 0), 0) + ' ' + String(s.jobFile.pkgType).toUpperCase(), '', m(total)] }) +
       `<p class="v" style="font-family:Courier New;font-weight:700">${esc(words(total))}</p>` +
-      g([c(4, 'Total packages', 'pkgs', s.jobFile.packages + ' ' + s.jobFile.pkgType.toUpperCase()), c(4, 'Total net weight', 'net', n(it.reduce((a, x) => a + x.net, 0), 0) + ' KGS'), c(4, 'Total gross weight', 'gross', n(s.jobFile.grossKg, 0) + ' KGS'),
-        c(12, 'Beneficiary bank', null, imp(s) ? 'Training Bank of Shanghai — SWIFT TBSHCNSH — A/C 6222 0000 1234 5678' : 'Training Bank of Zahle SAL — SWIFT TBZLLBBE — IBAN LB00 0000 0000 0000 0000 0000 0000')]) +
-      `<p class="fine">We hereby certify that this invoice is true and correct, that the goods described are of ${imp(s) ? 'Chinese' : 'Lebanese'} origin and that the prices shown are the prices actually paid or payable.</p>` +
+      g([c(4, 'Total packages', 'pkgs', s.jobFile.packages + ' ' + String(s.jobFile.pkgType).toUpperCase()), c(4, 'Total net weight', 'net', n(it.reduce((a, x) => a + x.net, 0), 0) + ' KGS'), c(4, 'Total gross weight', 'gross', n(s.jobFile.grossKg, 0) + ' KGS'),
+        c(12, 'Beneficiary bank', null, 'Training Bank of ' + (imp(s) ? (CS(s) ? CS(s).far.city : 'Origin') : 'Lebanon SAL') + ' — SWIFT TRNG' + (CS(s) ? CS(s).originCC : 'XX') + 'XX — A/C ' + (DK.seed(s) % 900000 + 100000) + ' 0000')]) +
+      `<p class="fine">We hereby certify that this invoice is true and correct, that the goods described are of ${DK.origin(s)} origin and that the prices shown are the prices actually paid or payable.</p>` +
       sig(['Authorised signature & company stamp<br>' + esc(seller.contact || ''), '']), { page: 'Commercial invoice ' + invNo(s) });
   }
 
   /* ---------------- packing list ---------------- */
   function packingList(s) {
     const it = items(s), S = S0(s);
-    const head = imp(s) ? DK.heads.hongda : DK.heads.bekaa;
-    const cbmEach = (x) => (imp(s) ? 0.576 : 1.32) * x.pkgs;
+    const head = DK.headFor(S.shipper);
     return page(lh(Object.assign({ title: 'PACKING LIST', titleKey: 'pl', ref: 'Ref. invoice ' + invNo(s) + '<br>Date ' + d(invDate(s)) }, head)) +
       g([c(6, 'Shipper', 'shipper', party(S.shipper), { h: 64 }), c(6, 'Consignee', 'consignee', party(S.consignee), { h: 64 }),
-        c(4, 'Vessel / voyage', 'vessel', s.booking ? s.booking.vessel + ' ' + s.booking.voyage : 'TBA'), c(4, 'Container / seal', 'cntrno', s.equipment && s.equipment.containerNo ? s.equipment.containerNo + ' / ' + (s.equipment.seal || '') : 'TBA'), c(4, 'From / to', 'pol', s.jobFile.pol + ' → ' + s.jobFile.pod)]) +
+        c(4, 'Vessel / voyage', 'vessel', s.booking ? s.booking.vessel + ' ' + s.booking.voyage : 'TBA'), c(4, 'Container / seal', 'cntrno', s.equipment && s.equipment.containerNo ? s.equipment.containerNo + ' / ' + (s.equipment.seal || '') + (CS(s) && CS(s).mode === 'LCL' ? ' (LCL)' : '') : 'TBA'), c(4, 'From / to', 'pol', s.jobFile.pol + ' → ' + s.jobFile.pod)]) +
       t([{ l: 'Package Nos.', k: 'marks' }, { l: 'Description', k: 'desc' }, { l: 'Qty', r: 1 }, { l: 'Pkgs', k: 'pkgs', r: 1 }, { l: 'Dimensions per pkg' }, { l: 'Net kg', k: 'net', r: 1 }, { l: 'Gross kg', k: 'gross', r: 1 }, { l: 'CBM', k: 'cbm', r: 1 }],
-        it.map((x) => [esc(x.ctn), esc(x.desc), n(x.qty, 0) + ' ' + esc(x.unit), n(x.pkgs, 0), esc(x.dims), n(x.net, 0), n(x.gross, 0), n(cbmEach(x), 2)]),
+        it.map((x) => [esc(x.ctn), esc(x.desc), n(x.qty, 0) + ' ' + esc(x.unit), n(x.pkgs, 0), esc(x.dims), n(x.net, 0), n(x.gross, 0), n(x.cbm, 2)]),
         { tot: ['TOTAL', '', '', n(it.reduce((a, x) => a + x.pkgs, 0), 0), '', n(it.reduce((a, x) => a + x.net, 0), 0), n(it.reduce((a, x) => a + x.gross, 0), 0), n(s.jobFile.cbm, 2)] }) +
       `<p><b>${TS.term('Marks & numbers', 'marks')}:</b><br><span class="v" style="font-family:Courier New;white-space:pre-line">${esc(marks(s))}</span></p>` +
-      (imp(s) ? '' : `<p class="fine">Pallets: heat treated wood, ${TS.term('ISPM 15', 'ispm15')} marked. Glass jars — fragile — do not stack more than 2 pallets high.</p>`) +
+      (['pallets', 'crates'].includes(s.jobFile.pkgType) ? `<p class="fine">Wooden packaging: heat treated, ${TS.term('ISPM 15', 'ispm15')} marked.${CS(s) && CS(s).cargo.food ? ' Food product — keep dry, do not stack more than 2 high.' : ''}</p>` : '') +
       sig(['Packed and checked by', 'Authorised signature & stamp']), { page: 'Packing list' });
   }
 

@@ -6,12 +6,14 @@
   CUS.insight = (id, s) => {
     const D = CUS.d(s), c = s.customs || {};
     if (id === 'classify' && D.imp) {
-      const ch = D.items.find((x) => x.id === 'C');
-      return V.hbars({ title: t(L('Duty on the chairs — wrong vs right code', 'الرسم على الكراسي — الرمز الخاطئ مقابل الصحيح')), series: [{ l: 'USD', c: 's1' }], unit: 'USD', rows: [{ label: '9403.60 (25%)', values: [R(ch.cif * 0.25)], tips: [t(L('Supplier’s code', 'رمز المورّد'))] }, { label: '9401.69 (20%)', values: [R(ch.cif * 0.2)], strong: true, tips: [t(L('Correct code', 'الرمز الصحيح'))] }] });
+      const ch = D.items.find((x) => x.hsGiven && x.hsGiven !== x.hs && CUS.rateOf(x.hsGiven) !== CUS.rateOf(x.hs));
+      if (!ch) return '';
+      const wr = CUS.rateOf(ch.hsGiven), rr = CUS.rateOf(ch.hs);
+      return V.hbars({ title: t(L('Duty on ', 'الرسم على ')) + ch.desc.split(',')[0] + t(L(' — supplier’s code vs right code (MFN)', ' — رمز المورّد مقابل الصحيح (العادي)')), series: [{ l: 'USD', c: 's1' }], unit: 'USD', rows: [{ label: ch.hsGiven + ' (' + wr + '%)', values: [R(ch.cif * wr / 100)], tips: [t(L('Supplier’s code', 'رمز المورّد'))] }, { label: ch.hs + ' (' + rr + '%)', values: [R(ch.cif * rr / 100)], strong: true, tips: [t(L('Correct code', 'الرمز الصحيح'))] }] });
     }
     if (id === 'value' || (id === 'duties' && !D.imp)) {
-      return D.imp ? V.stack({ title: t(L('What makes the customs value (CIF)', 'مكوّنات القيمة الجمركية (CIF)')), unit: 'USD', parts: [{ l: t(L('Goods (FOB invoice)', 'البضاعة (فاتورة FOB)')), v: D.valTotal, c: 's1' }, { l: t(L('Freight to Beirut', 'الشحن حتى بيروت')), v: D.freight, c: 's2' }, { l: t(L('Insurance', 'التأمين')), v: D.ins, c: 's3' }] })
-        : V.stack({ title: t(L('From the CFR price to the FOB export value', 'من سعر CFR إلى قيمة FOB للتصدير')), unit: 'USD', parts: [{ l: t(L('FOB value (declared)', 'قيمة FOB (المصرَّح بها)')), v: D.fob, c: 's1' }, { l: t(L('Freight included in CFR', 'الشحن المضمّن في CFR')), v: D.freightSold, c: 's2' }] });
+      return D.imp ? V.stack({ title: t(L('What makes the customs value (CIF)', 'مكوّنات القيمة الجمركية (CIF)')), unit: 'USD', parts: [{ l: t(L('Goods (' + D.inc + ' invoice)', 'البضاعة (فاتورة ' + D.inc + ')')), v: D.valTotal, c: 's1' }, { l: t(L('Freight to Beirut', 'الشحن حتى بيروت')), v: D.freight, c: 's2' }, { l: t(L('Insurance', 'التأمين')), v: D.ins, c: 's3' }] })
+        : V.stack({ title: t(L('From the ' + D.inc + ' price to the FOB export value', 'من سعر ' + D.inc + ' إلى قيمة FOB للتصدير')), unit: 'USD', parts: [{ l: t(L('FOB value (declared)', 'قيمة FOB (المصرَّح بها)')), v: D.fob, c: 's1' }, { l: t(L('Costs after the border included in ', 'كلف بعد الحدود مضمّنة في ')) + D.inc, v: D.deduct, c: 's2' }] });
     }
     if (D.imp && ['duties', 'declare', 'lane', 'release', 'close'].includes(id)) {
       const w = V.waterfall({ title: t(L('From customs value to total landed taxes', 'من القيمة الجمركية إلى مجموع الضرائب')), sub: 'USD', unit: 'USD', items: [{ l: 'CIF', v: D.cif, kind: 'total' }, { l: t(L('Duty', 'الرسم')), v: D.duty, kind: 'delta' }, { l: 'VAT 11%', v: D.vat, kind: 'delta' }, { l: t(L('CIF + taxes', 'CIF + الضرائب')), v: R(D.cif + D.taxes), kind: 'total' }] });
