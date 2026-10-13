@@ -17,6 +17,7 @@ Progress is saved automatically in the browser. Use **Shipment JSON file → Dow
 training_shipping/
 ├── index.html                               ← start here (hub)
 ├── shared/                                  ← language, storage/JSON, styles, reference library (glossary, Incoterms, containers, Lebanon guide)
+├── port_terminal_management/               ← PORT MASTER ACADEMY: port & terminal management, junior → senior (complete)
 ├── operations_pricing_freight_forwarder/    ← MODULE 1 (complete)
 ├── customs_department/                      ← receives customs hand-offs (full module next)
 └── accounting_department/                   ← receives the closed job + journal entries (full module next)
@@ -67,3 +68,15 @@ Two scenarios: **Import** (furniture, Shanghai → Beirut, FOB, 40′ HC, door d
 The Customs and Accounting pages list every shipment that has a hand-off for them, from browser storage or from an imported JSON file.
 
 > ⚠️ Training content. Lebanese rates, fees, exchange rates and procedures change often. The figures are realistic samples and the companies are fictional. Always confirm with Lebanese Customs, a licensed broker and your accountant.
+
+## Port Master Academy — port & terminal management (junior → senior)
+
+Open `port_terminal_management/index.html`. A virtual container terminal (CBCT, fictional) in English/Arabic with a navy & red maritime theme:
+
+- **Academy** — 26 lessons in 5 levels (Foundations · Vessel operations · Yard & gate · Depots & equipment control · Senior management), each with formulas, worked examples, a senior tip and a quiz.
+- **Virtual cases** — 16 decision scenarios (early arrival, deep draft vs tide, crane breakdown, reefer alarm, DG leak, yard congestion, overstow, VGM cut-off, empty shortage, damage dispute, storm, ransomware, labour shortage, security, line negotiation, gate queue), scored like a senior would judge them.
+- **Simulators** — berth planner (Gantt, compared with an auto-planner), crane split optimiser, yard stacking & rehandles, gate check-in desk (ISO 6346, VGM, seals, cut-offs, DG, reefers), depot survey & liability, 24 h control-room shift.
+- **Exercises** — 22 calculation types with random numbers and full solutions (TEU, check digit, UKC/squat, GMPH, berth occupancy, yard capacity, Little's law, storage tiers, EOR, days of cover, MTBF, LTIFR, break-even…).
+- **Level exams & certificates**, an XP-based **career ladder** (Trainee → Senior Port Operations Manager), an 86-term **EN/AR glossary**, and progress export/import.
+
+Progress is stored in the browser (`ptm_progress_v1`).
