@@ -69,14 +69,16 @@ The Customs and Accounting pages list every shipment that has a hand-off for the
 
 > ⚠️ Training content. Lebanese rates, fees, exchange rates and procedures change often. The figures are realistic samples and the companies are fictional. Always confirm with Lebanese Customs, a licensed broker and your accountant.
 
-## Port Master Academy — port & terminal management (junior → senior)
+## Port Master Academy — ports, terminals, vessels & development (junior → senior)
 
-Open `port_terminal_management/index.html`. A virtual container terminal (CBCT, fictional) in English/Arabic with a navy & red maritime theme:
+Open `port_terminal_management/index.html`. A fictional multi-terminal port (Cedar Bay: container terminal CBCT, grain silo terminal, liquid bulk terminal, ro-ro/car terminal, multipurpose berth, empty depot) in English/Arabic with a navy & red maritime theme.
 
-- **Academy** — 26 lessons in 5 levels (Foundations · Vessel operations · Yard & gate · Depots & equipment control · Senior management), each with formulas, worked examples, a senior tip and a quiz.
-- **Virtual cases** — 16 decision scenarios (early arrival, deep draft vs tide, crane breakdown, reefer alarm, DG leak, yard congestion, overstow, VGM cut-off, empty shortage, damage dispute, storm, ransomware, labour shortage, security, line negotiation, gate queue), scored like a senior would judge them.
-- **Simulators** — berth planner (Gantt, compared with an auto-planner), crane split optimiser, yard stacking & rehandles, gate check-in desk (ISO 6346, VGM, seals, cut-offs, DG, reefers), depot survey & liability, 24 h control-room shift.
-- **Exercises** — 22 calculation types with random numbers and full solutions (TEU, check digit, UKC/squat, GMPH, berth occupancy, yard capacity, Little's law, storage tiers, EOR, days of cover, MTBF, LTIFR, break-even…).
-- **Level exams & certificates**, an XP-based **career ladder** (Trainee → Senior Port Operations Manager), an 86-term **EN/AR glossary**, and progress export/import.
+**Core programme (levels 1–5, container terminal):** Foundations · Vessel operations · Yard & gate · Depots & equipment control · Senior management.
+**Specialisation tracks (levels 6–9):** Vessel management (ship management, ISM, chartering, laytime/demurrage, voyage economics, surveys/PSC, crew) · Bulk & silo terminals (silos, grain quality, dust-explosion safety, bulk discharge & draft survey) · Other terminals & depots (liquid bulk, ro-ro, breakbulk/heavy lift, advanced depot management) · Port development (master planning, forecasting, capacity, feasibility/NPV, PPP concessions, project delivery, green & smart ports).
+
+- **44 lessons** with formulas, worked examples, a senior tip and a quiz each.
+- **26 virtual cases** scored like a senior would judge them (berth conflicts, tides, crane failure, reefer/DG incidents, yard congestion, storms, ransomware, demurrage claims, PSC detention, slow steaming, silo hot spots, dust risk, tank overfill, heavy lifts, expansion strategy, concession bids…).
+- **9 simulators**: berth planner, crane split, yard stacking, gate desk, depot survey, 24 h control room, silo bin allocation, voyage speed desk, 10-year port development game.
+- **39 unlimited exercise types** with random numbers and full solutions; **9 level exams** with certificates; XP **career ladder** up to Port Director; **140-term EN/AR glossary**.
 
 Progress is stored in the browser (`ptm_progress_v1`).

@@ -259,3 +259,4 @@ body { background: var(--bg); }
   .pt-top .logo > span:last-child { display: none; }
   .pt-top .lang-switch button { padding: 6px 8px; }
 }
+.lvl.l6 { background: #0a6c8c; } .lvl.l7 { background: #9a7400; } .lvl.l8 { background: #4a5872; } .lvl.l9 { background: #04246a; }
