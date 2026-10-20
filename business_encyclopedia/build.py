@@ -265,7 +265,16 @@ def md_to_html(text, ctx):
             ctx.category = re.sub(r"\{.*\}$", "", h2.group(1)).strip()
         out.append(lines[i])
         i += 1
-    h = markdown.markdown(inline_syntax("\n".join(out), ctx), extensions=MD_EXT)
+    fixed, in_code = [], False
+    for line in out:
+        if line.lstrip().startswith("```"):
+            in_code = not in_code
+        # Python-Markdown needs a blank line before a list that follows a paragraph
+        if (not in_code and re.match(r"^([-*+]|\d+\.)\s", line) and fixed and fixed[-1].strip()
+                and not re.match(r"^\s*([-*+]|\d+\.)\s", fixed[-1]) and not fixed[-1].startswith(("|", "    "))):
+            fixed.append("")
+        fixed.append(line)
+    h = markdown.markdown(inline_syntax("\n".join(fixed), ctx), extensions=MD_EXT)
     h = index_tables(h, ctx)
     return re.sub(r"<p>BLOCKX(\d+)X</p>", lambda m: blocks[int(m.group(1))], h)
 

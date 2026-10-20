@@ -1,0 +1,786 @@
+{
+ "num": 4,
+ "title": "Banking, International Trade and Treasury",
+ "title_ar": "المصارف والتجارة الدولية والخزينة",
+ "file": "Volume_04_Banking_International_Trade_And_Treasury.pdf",
+ "pages": 81,
+ "toc": [
+  {
+   "kind": "part",
+   "num": "VI",
+   "title": "Banking and the Financial System",
+   "title_ar": "المصارف والنظام المالي",
+   "anchor": "v4-part-VI",
+   "chapters": [
+    {
+     "num": 44,
+     "title": "The Financial System and the Types of Banks",
+     "anchor": "ch44",
+     "sections": [
+      {
+       "num": "44.1",
+       "title": "What the financial system does",
+       "anchor": "s44-1",
+       "page": 7
+      },
+      {
+       "num": "44.2",
+       "title": "Types of banks",
+       "anchor": "s44-2",
+       "page": 7
+      },
+      {
+       "num": "44.3",
+       "title": "Non-bank financial institutions",
+       "anchor": "s44-3",
+       "page": 8
+      },
+      {
+       "num": "44.4",
+       "title": "Islamic banking essentials",
+       "anchor": "s44-4",
+       "page": 8
+      }
+     ],
+     "page": 7
+    },
+    {
+     "num": 45,
+     "title": "How Banks Make Money: The Bank Balance Sheet, Deposits, Lending and Relationship Management",
+     "anchor": "ch45",
+     "sections": [
+      {
+       "num": "45.1",
+       "title": "A bank’s balance sheet",
+       "anchor": "s45-1",
+       "page": 10
+      },
+      {
+       "num": "45.2",
+       "title": "A bank’s income statement",
+       "anchor": "s45-2",
+       "page": 10
+      },
+      {
+       "num": "45.3",
+       "title": "The economics of a corporate loan",
+       "anchor": "s45-3",
+       "page": 11
+      },
+      {
+       "num": "45.4",
+       "title": "Deposits and funding",
+       "anchor": "s45-4",
+       "page": 11
+      },
+      {
+       "num": "45.5",
+       "title": "Relationship management",
+       "anchor": "s45-5",
+       "page": 11
+      }
+     ],
+     "page": 10
+    },
+    {
+     "num": 46,
+     "title": "Corporate Credit Analysis: How a Bank Decides",
+     "anchor": "ch46",
+     "sections": [
+      {
+       "num": "46.1",
+       "title": "The credit process",
+       "anchor": "s46-1",
+       "page": 13
+      },
+      {
+       "num": "46.2",
+       "title": "Frameworks: the Cs of credit",
+       "anchor": "s46-2",
+       "page": 13
+      },
+      {
+       "num": "46.3",
+       "title": "Analysing repayment capacity by purpose",
+       "anchor": "s46-3",
+       "page": 14
+      },
+      {
+       "num": "46.4",
+       "title": "Risk rating and pricing",
+       "anchor": "s46-4",
+       "page": 14
+      },
+      {
+       "num": "46.5",
+       "title": "Complete fictional credit memorandum",
+       "anchor": "s46-5",
+       "page": 14
+      }
+     ],
+     "page": 13
+    },
+    {
+     "num": 47,
+     "title": "Credit Facilities, Collateral, Guarantees and Covenants",
+     "anchor": "ch47",
+     "sections": [
+      {
+       "num": "47.1",
+       "title": "Matching facility to purpose",
+       "anchor": "s47-1",
+       "page": 17
+      },
+      {
+       "num": "47.2",
+       "title": "Facility types in detail",
+       "anchor": "s47-2",
+       "page": 17
+      },
+      {
+       "num": "47.3",
+       "title": "Secured vs unsecured lending",
+       "anchor": "s47-3",
+       "page": 18
+      },
+      {
+       "num": "47.4",
+       "title": "Types of collateral",
+       "anchor": "s47-4",
+       "page": 18
+      },
+      {
+       "num": "47.5",
+       "title": "Guarantees and other credit support",
+       "anchor": "s47-5",
+       "page": 19
+      },
+      {
+       "num": "47.6",
+       "title": "Covenants",
+       "anchor": "s47-6",
+       "page": 19
+      },
+      {
+       "num": "47.7",
+       "title": "Pricing a facility",
+       "anchor": "s47-7",
+       "page": 19
+      }
+     ],
+     "page": 17
+    },
+    {
+     "num": 48,
+     "title": "Payments, Correspondent Banking, SWIFT and Reconciliation",
+     "anchor": "ch48",
+     "sections": [
+      {
+       "num": "48.1",
+       "title": "Payment instruments",
+       "anchor": "s48-1",
+       "page": 21
+      },
+      {
+       "num": "48.2",
+       "title": "Domestic payment systems",
+       "anchor": "s48-2",
+       "page": 21
+      },
+      {
+       "num": "48.3",
+       "title": "Cross-border payments and correspondent banking",
+       "anchor": "s48-3",
+       "page": 22
+      },
+      {
+       "num": "48.4",
+       "title": "SWIFT and ISO 20022",
+       "anchor": "s48-4",
+       "page": 22
+      },
+      {
+       "num": "48.5",
+       "title": "Value dates, cut-offs and timing",
+       "anchor": "s48-5",
+       "page": 23
+      },
+      {
+       "num": "48.6",
+       "title": "Bank reconciliation",
+       "anchor": "s48-6",
+       "page": 23
+      }
+     ],
+     "page": 21
+    },
+    {
+     "num": 49,
+     "title": "Trade, Working-Capital, Project and Structured Finance; Debt and Equity Capital Markets",
+     "anchor": "ch49",
+     "sections": [
+      {
+       "num": "49.1",
+       "title": "Trade finance — overview",
+       "anchor": "s49-1",
+       "page": 25
+      },
+      {
+       "num": "49.2",
+       "title": "Supply chain and working-capital finance",
+       "anchor": "s49-2",
+       "page": 25
+      },
+      {
+       "num": "49.3",
+       "title": "Project finance",
+       "anchor": "s49-3",
+       "page": 26
+      },
+      {
+       "num": "49.4",
+       "title": "Structured and asset-based finance",
+       "anchor": "s49-4",
+       "page": 26
+      },
+      {
+       "num": "49.5",
+       "title": "Debt capital markets (DCM)",
+       "anchor": "s49-5",
+       "page": 27
+      },
+      {
+       "num": "49.6",
+       "title": "Equity capital markets (ECM)",
+       "anchor": "s49-6",
+       "page": 27
+      }
+     ],
+     "page": 25
+    },
+    {
+     "num": 50,
+     "title": "KYC, AML, Sanctions Screening, Bank Risk and Regulation",
+     "anchor": "ch50",
+     "sections": [
+      {
+       "num": "50.1",
+       "title": "KYC and customer due diligence",
+       "anchor": "s50-1",
+       "page": 28
+      },
+      {
+       "num": "50.2",
+       "title": "AML and transaction monitoring",
+       "anchor": "s50-2",
+       "page": 28
+      },
+      {
+       "num": "50.3",
+       "title": "Sanctions screening",
+       "anchor": "s50-3",
+       "page": 29
+      },
+      {
+       "num": "50.4",
+       "title": "The main risks a bank manages",
+       "anchor": "s50-4",
+       "page": 29
+      },
+      {
+       "num": "50.5",
+       "title": "Basel framework essentials",
+       "anchor": "s50-5",
+       "page": 29
+      }
+     ],
+     "page": 28
+    },
+    {
+     "num": 51,
+     "title": "Classifying Bank Products: Payment, Financing, Guarantee and Risk-Mitigation Instruments",
+     "anchor": "ch51",
+     "sections": [
+      {
+       "num": "51.1",
+       "title": "Four functions",
+       "anchor": "s51-1",
+       "page": 31
+      },
+      {
+       "num": "51.2",
+       "title": "Master classification table",
+       "anchor": "s51-2",
+       "page": 31
+      }
+     ],
+     "page": 31
+    }
+   ],
+   "page": 6
+  },
+  {
+   "kind": "part",
+   "num": "VII",
+   "title": "International Trade and Trade Finance",
+   "title_ar": "التجارة الدولية وتمويل التجارة",
+   "anchor": "v4-part-VII",
+   "chapters": [
+    {
+     "num": 52,
+     "title": "Anatomy of an International Transaction and Its Participants",
+     "anchor": "ch52",
+     "sections": [
+      {
+       "num": "52.1",
+       "title": "The participants",
+       "anchor": "s52-1",
+       "page": 36
+      },
+      {
+       "num": "52.2",
+       "title": "The sequence of a transaction",
+       "anchor": "s52-2",
+       "page": 37
+      },
+      {
+       "num": "52.3",
+       "title": "The four flows",
+       "anchor": "s52-3",
+       "page": 37
+      }
+     ],
+     "page": 36
+    },
+    {
+     "num": 53,
+     "title": "Incoterms® 2020 in Depth",
+     "anchor": "ch53",
+     "sections": [
+      {
+       "num": "53.1",
+       "title": "What Incoterms do and do not cover",
+       "anchor": "s53-1",
+       "page": 39
+      },
+      {
+       "num": "53.2",
+       "title": "The eleven rules",
+       "anchor": "s53-2",
+       "page": 39
+      },
+      {
+       "num": "53.3",
+       "title": "Two families and two critical points",
+       "anchor": "s53-3",
+       "page": 40
+      },
+      {
+       "num": "53.4",
+       "title": "Costs: who pays what (typical container shipment)",
+       "anchor": "s53-4",
+       "page": 40
+      },
+      {
+       "num": "53.5",
+       "title": "Choosing a rule",
+       "anchor": "s53-5",
+       "page": 41
+      }
+     ],
+     "page": 39
+    },
+    {
+     "num": 54,
+     "title": "International Trade Documents",
+     "anchor": "ch54",
+     "sections": [
+      {
+       "num": "54.1",
+       "title": "Document map",
+       "anchor": "s54-1",
+       "page": 43
+      },
+      {
+       "num": "54.2",
+       "title": "The commercial invoice",
+       "anchor": "s54-2",
+       "page": 44
+      },
+      {
+       "num": "54.3",
+       "title": "The packing list",
+       "anchor": "s54-3",
+       "page": 44
+      },
+      {
+       "num": "54.4",
+       "title": "The bill of lading",
+       "anchor": "s54-4",
+       "page": 44
+      },
+      {
+       "num": "54.5",
+       "title": "Air waybill, road and rail documents",
+       "anchor": "s54-5",
+       "page": 45
+      },
+      {
+       "num": "54.6",
+       "title": "Certificate of origin",
+       "anchor": "s54-6",
+       "page": 45
+      },
+      {
+       "num": "54.7",
+       "title": "Insurance document",
+       "anchor": "s54-7",
+       "page": 45
+      },
+      {
+       "num": "54.8",
+       "title": "Inspection certificates",
+       "anchor": "s54-8",
+       "page": 46
+      },
+      {
+       "num": "54.9",
+       "title": "Customs and regulatory documents",
+       "anchor": "s54-9",
+       "page": 46
+      }
+     ],
+     "page": 43
+    },
+    {
+     "num": 55,
+     "title": "Customs Clearance, Valuation, Duties and Taxes",
+     "anchor": "ch55",
+     "sections": [
+      {
+       "num": "55.1",
+       "title": "The three questions customs asks",
+       "anchor": "s55-1",
+       "page": 47
+      },
+      {
+       "num": "55.2",
+       "title": "Classification: the Harmonized System",
+       "anchor": "s55-2",
+       "page": 47
+      },
+      {
+       "num": "55.3",
+       "title": "Customs valuation",
+       "anchor": "s55-3",
+       "page": 47
+      },
+      {
+       "num": "55.4",
+       "title": "Duties and import taxes",
+       "anchor": "s55-4",
+       "page": 48
+      },
+      {
+       "num": "55.5",
+       "title": "Origin and preferential trade",
+       "anchor": "s55-5",
+       "page": 48
+      },
+      {
+       "num": "55.6",
+       "title": "Customs procedures and special regimes",
+       "anchor": "s55-6",
+       "page": 48
+      },
+      {
+       "num": "55.7",
+       "title": "The customs broker’s role",
+       "anchor": "s55-7",
+       "page": 49
+      }
+     ],
+     "page": 47
+    },
+    {
+     "num": 56,
+     "title": "Payment Methods in International Trade: Advance Payment, Open Account, Collections, Letters of Credit and Guarantees",
+     "anchor": "ch56",
+     "sections": [
+      {
+       "num": "56.1",
+       "title": "The risk ladder",
+       "anchor": "s56-1",
+       "page": 50
+      },
+      {
+       "num": "56.2",
+       "title": "Advance payment",
+       "anchor": "s56-2",
+       "page": 50
+      },
+      {
+       "num": "56.3",
+       "title": "Open account",
+       "anchor": "s56-3",
+       "page": 50
+      },
+      {
+       "num": "56.4",
+       "title": "Documentary collections (URC 522)",
+       "anchor": "s56-4",
+       "page": 51
+      },
+      {
+       "num": "56.5",
+       "title": "Letters of credit (UCP 600)",
+       "anchor": "s56-5",
+       "page": 51
+      },
+      {
+       "num": "56.6",
+       "title": "Choosing a payment method",
+       "anchor": "s56-6",
+       "page": 54
+      }
+     ],
+     "page": 50
+    },
+    {
+     "num": 57,
+     "title": "Discrepancies, Disputes, Cargo Claims, Demurrage and Trade Risk Protection",
+     "anchor": "ch57",
+     "sections": [
+      {
+       "num": "57.1",
+       "title": "Documentary discrepancies",
+       "anchor": "s57-1",
+       "page": 55
+      },
+      {
+       "num": "57.2",
+       "title": "Payment disputes and remedies",
+       "anchor": "s57-2",
+       "page": 56
+      },
+      {
+       "num": "57.3",
+       "title": "Cargo claims",
+       "anchor": "s57-3",
+       "page": 56
+      },
+      {
+       "num": "57.4",
+       "title": "Demurrage and detention",
+       "anchor": "s57-4",
+       "page": 56
+      },
+      {
+       "num": "57.5",
+       "title": "Trade credit insurance",
+       "anchor": "s57-5",
+       "page": 57
+      },
+      {
+       "num": "57.6",
+       "title": "Export credit agencies (ECAs)",
+       "anchor": "s57-6",
+       "page": 57
+      },
+      {
+       "num": "57.7",
+       "title": "Trade-based financial crime",
+       "anchor": "s57-7",
+       "page": 57
+      }
+     ],
+     "page": 55
+    },
+    {
+     "num": 58,
+     "title": "Complete Trade Transaction Simulations",
+     "anchor": "ch58",
+     "sections": [
+      {
+       "num": "58.1",
+       "title": "Simulation 1 — A $5,000 first order from China to Lebanon",
+       "anchor": "s58-1",
+       "page": 59
+      },
+      {
+       "num": "58.2",
+       "title": "Simulation 2 — A $480,000 import under a usance letter of credit (UAE)",
+       "anchor": "s58-2",
+       "page": 61
+      },
+      {
+       "num": "58.3",
+       "title": "Simulation 3 — A $25 million export contract with ECA-backed financing",
+       "anchor": "s58-3",
+       "page": 64
+      }
+     ],
+     "page": 59
+    }
+   ],
+   "page": 34
+  },
+  {
+   "kind": "part",
+   "num": "XVIII",
+   "title": "Financial Markets, FX and Treasury",
+   "title_ar": "الأسواق المالية والصرف الأجنبي والخزينة",
+   "anchor": "v4-part-XVIII",
+   "chapters": [
+    {
+     "num": 59,
+     "title": "Foreign Exchange Markets: Quotes, Spot, Forwards and Swaps",
+     "anchor": "ch59",
+     "sections": [
+      {
+       "num": "59.1",
+       "title": "Market structure",
+       "anchor": "s59-1",
+       "page": 70
+      },
+      {
+       "num": "59.2",
+       "title": "Quotation conventions",
+       "anchor": "s59-2",
+       "page": 70
+      },
+      {
+       "num": "59.3",
+       "title": "Spot",
+       "anchor": "s59-3",
+       "page": 70
+      },
+      {
+       "num": "59.4",
+       "title": "Forwards",
+       "anchor": "s59-4",
+       "page": 71
+      },
+      {
+       "num": "59.5",
+       "title": "FX swaps and cross-currency swaps",
+       "anchor": "s59-5",
+       "page": 71
+      },
+      {
+       "num": "59.6",
+       "title": "Options",
+       "anchor": "s59-6",
+       "page": 71
+      }
+     ],
+     "page": 70
+    },
+    {
+     "num": 60,
+     "title": "Corporate Treasury Management",
+     "anchor": "ch60",
+     "sections": [
+      {
+       "num": "60.1",
+       "title": "Treasury functions",
+       "anchor": "s60-1",
+       "page": 73
+      },
+      {
+       "num": "60.2",
+       "title": "Liquidity forecasting",
+       "anchor": "s60-2",
+       "page": 73
+      },
+      {
+       "num": "60.3",
+       "title": "Cash concentration, pooling and netting",
+       "anchor": "s60-3",
+       "page": 73
+      },
+      {
+       "num": "60.4",
+       "title": "Funding and interest-rate risk",
+       "anchor": "s60-4",
+       "page": 74
+      },
+      {
+       "num": "60.5",
+       "title": "Bank relationship and fee management",
+       "anchor": "s60-5",
+       "page": 74
+      },
+      {
+       "num": "60.6",
+       "title": "Payment timing",
+       "anchor": "s60-6",
+       "page": 75
+      },
+      {
+       "num": "60.7",
+       "title": "Treasury policy",
+       "anchor": "s60-7",
+       "page": 75
+      },
+      {
+       "num": "60.8",
+       "title": "Treasury vs speculation vs investment management",
+       "anchor": "s60-8",
+       "page": 75
+      }
+     ],
+     "page": 73
+    },
+    {
+     "num": 61,
+     "title": "Managing Currency Risk in International Trade",
+     "anchor": "ch61",
+     "sections": [
+      {
+       "num": "61.1",
+       "title": "Three kinds of exposure",
+       "anchor": "s61-1",
+       "page": 77
+      },
+      {
+       "num": "61.2",
+       "title": "Case A: an importer paying EUR",
+       "anchor": "s61-2",
+       "page": 77
+      },
+      {
+       "num": "61.3",
+       "title": "Case B: an exporter receiving EUR (pegged-currency exporter)",
+       "anchor": "s61-3",
+       "page": 78
+      },
+      {
+       "num": "61.4",
+       "title": "Layered hedging and budget rates",
+       "anchor": "s61-4",
+       "page": 78
+      },
+      {
+       "num": "61.5",
+       "title": "Natural hedges and commercial tools",
+       "anchor": "s61-5",
+       "page": 78
+      },
+      {
+       "num": "61.6",
+       "title": "Hedge accounting (introduction)",
+       "anchor": "s61-6",
+       "page": 79
+      }
+     ],
+     "page": 77
+    }
+   ],
+   "page": 69
+  }
+ ],
+ "terms": [],
+ "index": {},
+ "main": {}
+}
