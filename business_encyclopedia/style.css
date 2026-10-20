@@ -1,0 +1,200 @@
+/* The Complete Business Knowledge Encyclopedia — print stylesheet (A4).
+   Palette: navy #0B2545 / #13315C, restrained green #2E7D5B, greys. */
+:root { --navy:#0B2545; --navy2:#13315C; --green:#2E7D5B; --green-l:#EAF4EF;
+        --grey:#5F6B76; --grey-l:#F3F5F7; --rule:#CBD2D9; --amber:#9A6B00; --amber-l:#FFF7E6;
+        --red:#8E2C2C; --red-l:#FBEDED; --blue-l:#EDF2F9; }
+
+@page {
+  size: A4; margin: 22mm 19mm 20mm 19mm;
+  @top-left { content: "__HEADER_LEFT__"; font: 7.5pt "Noto Sans"; color: var(--grey); }
+  @top-right { content: string(chn) string(chap); font: 7.5pt "Noto Sans"; color: var(--grey); }
+  @bottom-center { content: counter(page); font: 8pt "Noto Sans"; color: var(--navy); }
+  @bottom-left { content: "The Complete Business Knowledge Encyclopedia"; font: 6.5pt "Noto Sans"; color: #9AA5B1; }
+}
+@page cover { margin: 0; @top-left { content: none } @top-right { content: none }
+              @bottom-center { content: none } @bottom-left { content: none } }
+@page partpage { @top-right { content: none } }
+
+html { font-family: "Noto Serif", "Noto Naskh Arabic", serif; font-size: 9.6pt; line-height: 1.45;
+       color: #1D2630; background: white; }
+body { margin: 0; }
+p { margin: 0 0 0.55em 0; text-align: justify; hyphens: auto; orphans: 2; widows: 2; }
+a { color: var(--navy2); text-decoration: none; }
+strong { color: #0E1E33; }
+.kw { color: var(--navy); }
+
+/* Arabic */
+.ar { font-family: "Noto Naskh Arabic", "Noto Serif", serif; font-size: 1.08em; unicode-bidi: isolate; direction: rtl; }
+[dir="rtl"] { direction: rtl; text-align: right; font-family: "Noto Naskh Arabic", "Noto Serif", serif; }
+p[dir="rtl"], li[dir="rtl"], td[dir="rtl"], th[dir="rtl"] { font-size: 1.06em; line-height: 1.6; }
+[dir="rtl"] .ar { font-size: 1em; }
+.box-ar p, .box-ar li { font-size: 1.06em; line-height: 1.65; text-align: right; }
+
+/* Headings */
+h1, h2, h3, h4, h5 { font-family: "Noto Sans", "Noto Sans Arabic", sans-serif; color: var(--navy);
+                     break-after: avoid; line-height: 1.25; }
+h1.chapter { break-before: page; margin: 0 0 14pt 0; padding: 0 0 8pt 0; border-bottom: 2.5pt solid var(--navy);
+             bookmark-level: 2; }
+h1.chapter .chnum { string-set: chn content() " · "; }
+h1.chapter .chtitle { string-set: chap content(); }
+h1.chapter .chnum { display: block; font-size: 9.5pt; letter-spacing: 1.5pt; text-transform: uppercase;
+                    color: var(--green); font-weight: 600; margin-bottom: 3pt; }
+h1.chapter .chtitle { display: block; font-size: 20pt; font-weight: 700; }
+h1.front { break-before: page; font-size: 20pt; border-bottom: 2.5pt solid var(--navy); padding-bottom: 6pt;
+           bookmark-level: 1; string-set: chn "", chap content(); }
+h2 { font-size: 13.5pt; margin: 18pt 0 6pt 0; padding-bottom: 2pt; border-bottom: 0.8pt solid var(--rule);
+     bookmark-level: 3; }
+h2 .secnum { color: var(--green); margin-right: 4pt; }
+h3 { font-size: 11pt; margin: 13pt 0 4pt 0; color: var(--navy2); bookmark-level: none; }
+h4 { font-size: 9.8pt; margin: 10pt 0 3pt 0; color: var(--navy2); bookmark-level: none; }
+h5 { font-size: 9.2pt; margin: 8pt 0 2pt 0; color: var(--grey); bookmark-level: none; }
+h1[dir="rtl"], h2[dir="rtl"], h3[dir="rtl"], h4[dir="rtl"] { font-family: "Noto Sans Arabic", "Noto Sans", sans-serif; }
+
+ul, ol { margin: 0.2em 0 0.6em 0; padding-left: 1.4em; }
+[dir="rtl"] ul, [dir="rtl"] ol, ul[dir="rtl"], ol[dir="rtl"] { padding-left: 0; padding-right: 1.4em; }
+li { margin-bottom: 0.18em; }
+li > p { margin-bottom: 0.2em; }
+blockquote { margin: 0.5em 0 0.7em 0; padding: 4pt 10pt; border-left: 2.5pt solid var(--green);
+             background: var(--grey-l); font-style: italic; }
+hr { border: none; border-top: 0.6pt solid var(--rule); margin: 10pt 0; }
+code { font-family: "DejaVu Sans Mono", monospace; font-size: 0.86em; background: var(--grey-l); padding: 0 2pt; }
+pre { font-family: "DejaVu Sans Mono", monospace; font-size: 7.4pt; line-height: 1.35; background: #F6F8FA;
+      border: 0.6pt solid var(--rule); border-left: 2.5pt solid var(--navy2); padding: 6pt 8pt;
+      white-space: pre-wrap; overflow-wrap: anywhere; margin: 0.4em 0 0.8em 0; }
+pre code { background: none; padding: 0; font-size: 1em; }
+
+/* Tables */
+table { width: 100%; border-collapse: collapse; margin: 0.4em 0 0.9em 0; font-size: 8.4pt; line-height: 1.35;
+        font-family: "Noto Sans", "Noto Sans Arabic", sans-serif; }
+th, td { border: 0.5pt solid var(--rule); padding: 3pt 4.5pt; vertical-align: top; text-align: left;
+         overflow-wrap: break-word; hyphens: auto; }
+thead th { background: var(--navy); color: white; font-weight: 600; }
+tbody tr:nth-child(even) td { background: #F7F9FB; }
+td[dir="rtl"], th[dir="rtl"] { text-align: right; font-family: "Noto Naskh Arabic", "Noto Sans", sans-serif; }
+thead th[dir="rtl"] { font-family: "Noto Sans Arabic", sans-serif; }
+tr { break-inside: avoid; }
+
+/* Boxes */
+.box { margin: 0.6em 0 0.9em 0; padding: 6pt 9pt 4pt 9pt; border: 0.6pt solid var(--rule);
+       border-left: 3pt solid var(--navy2); background: var(--grey-l); }
+.box > p:last-child { margin-bottom: 0.3em; }
+.box-label { font-family: "Noto Sans", "Noto Sans Arabic", sans-serif; font-size: 7.6pt; font-weight: 700;
+             text-transform: uppercase; letter-spacing: 0.8pt; color: var(--navy2); margin-bottom: 3pt; }
+.box-title { text-transform: none; letter-spacing: 0; font-size: 9pt; color: #1D2630; }
+.box-def { border-left-color: var(--green); background: var(--green-l); break-inside: avoid; }
+.box-def .box-label { color: var(--green); }
+.box-formula { border: 0.8pt solid var(--navy2); border-left: 3pt solid var(--navy); background: var(--blue-l); break-inside: avoid; }
+.box-formula p { text-align: left; }
+.box-warn { border-left-color: var(--red); background: var(--red-l); }
+.box-warn .box-label { color: var(--red); }
+.box-tip, .box-pro { border-left-color: var(--amber); background: var(--amber-l); }
+.box-tip .box-label, .box-pro .box-label { color: var(--amber); }
+.box-summary, .box-obj { border-left-color: var(--green); background: white; border-color: var(--green); }
+.box-summary .box-label, .box-obj .box-label { color: var(--green); }
+.box-exercise, .box-review { border-left-color: var(--navy); background: white; }
+.box-answer { border-left-color: var(--green); background: #F4FAF6; }
+.box-answer .box-label { color: var(--green); }
+.box-case { border-left-color: var(--navy); background: #F5F7FA; }
+.box-example { background: white; }
+.box-note { background: white; border-left-color: var(--grey); }
+.box-framework { border-left-color: var(--navy); background: var(--blue-l); }
+.box-dialog { background: white; border-left-color: var(--green); }
+.box-dialog p { text-align: left; margin-bottom: 0.35em; }
+.box-ar { border-left: 0.6pt solid var(--rule); border-right: 3pt solid var(--green); background: #F7FBF8; }
+.box-ar .box-label { font-family: "Noto Sans Arabic", sans-serif; font-size: 8.4pt; letter-spacing: 0; color: var(--green); }
+.box table { background: white; }
+
+/* Fictional document templates */
+.box-doc { border: 1pt solid var(--navy); background: white; padding: 0; border-left-width: 1pt; }
+.doc-banner { background: var(--navy); color: white; font: 700 7pt "Noto Sans"; letter-spacing: 1pt;
+              padding: 3pt 8pt; text-align: center; }
+.doc-title { font: 700 10.5pt "Noto Sans"; color: var(--navy); padding: 6pt 9pt 0 9pt; }
+.doc-body { padding: 4pt 9pt 6pt 9pt; font-size: 8.8pt; }
+.doc-body table { font-size: 8pt; }
+
+/* Term cards */
+.term { margin: 0.5em 0 0.8em 0; border: 0.6pt solid var(--rule); border-top: 2.5pt solid var(--navy);
+        break-inside: avoid; }
+.term-head { background: var(--grey-l); padding: 4pt 8pt; font-family: "Noto Sans", sans-serif; }
+.term-en { font-weight: 700; font-size: 11pt; color: var(--navy); }
+.term-acr { color: var(--green); font-weight: 700; font-size: 9.5pt; }
+.term-ar { float: right; font-family: "Noto Naskh Arabic", sans-serif; font-size: 12pt; font-weight: 700; color: var(--green); }
+table.term-body { margin: 0; font-family: "Noto Serif", "Noto Naskh Arabic", serif; font-size: 8.8pt; }
+table.term-body th { width: 21%; background: white; color: var(--grey); font: 600 7.4pt "Noto Sans";
+                     text-transform: uppercase; letter-spacing: 0.4pt; border: none; border-top: 0.4pt solid #E3E7EB; }
+table.term-body td { border: none; border-top: 0.4pt solid #E3E7EB; background: white !important; }
+table.term-body tr.tf-ar td { font-size: 9.8pt; line-height: 1.6; background: #F7FBF8 !important; }
+table.term-body tr.tf-ar th { font-family: "Noto Sans Arabic", sans-serif; text-transform: none; font-size: 8.4pt; }
+table.term-body tr.tf-say td { font-style: italic; color: var(--navy2); }
+table.term-body tr.tf-vs td { color: var(--red); }
+
+/* Cover */
+.cover { page: cover; height: 297mm; width: 210mm; box-sizing: border-box; padding: 26mm 22mm 18mm 22mm;
+         background: var(--navy); color: white; position: relative; break-after: page; }
+.cover-top { font: 700 10pt "Noto Sans"; letter-spacing: 2.5pt; color: #BFD8CB; border-bottom: 1pt solid var(--green);
+             padding-bottom: 6pt; }
+.cover-ar { font: 700 15pt "Noto Naskh Arabic"; color: #DCE7F2; margin-top: 6pt; text-align: right; }
+.cover-vol { margin-top: 38mm; font: 600 13pt "Noto Sans"; letter-spacing: 4pt; text-transform: uppercase; color: #7FC3A0; }
+.cover-title { font: 700 30pt "Noto Sans"; line-height: 1.15; margin-top: 6pt; color: white; }
+.cover-title-ar { font: 700 19pt "Noto Naskh Arabic"; color: #DCE7F2; margin-top: 8pt; }
+.cover-sub { margin-top: 14pt; font: italic 10.5pt "Noto Serif"; color: #C9D3DE; max-width: 150mm; text-align: left; }
+.cover-scope { margin-top: 16mm; border-left: 3pt solid var(--green); padding-left: 10pt; }
+.cover-scope .cs-h { font: 700 8.5pt "Noto Sans"; letter-spacing: 1.5pt; text-transform: uppercase; color: #7FC3A0; }
+.cover-scope ul { margin: 4pt 0 0 0; padding-left: 1.1em; font: 10pt "Noto Sans"; color: white; }
+.cover-foot { position: absolute; bottom: 16mm; left: 22mm; right: 22mm; font: 8pt "Noto Sans"; color: #9FB0C2;
+              border-top: 0.6pt solid #2C4A70; padding-top: 6pt; }
+.notice h2 { bookmark-level: none; }
+.notice li { margin-bottom: 0.45em; text-align: justify; }
+.notice .trademark { font-size: 7.6pt; color: var(--grey); margin-top: 10pt; }
+.vmap tr.cur td { background: var(--green-l) !important; font-weight: 700; }
+
+/* Part opener */
+.part-open { page: partpage; break-before: page; }
+.part-num { font: 700 11pt "Noto Sans"; letter-spacing: 3pt; text-transform: uppercase; color: var(--green);
+            border-top: 4pt solid var(--navy); padding-top: 10pt; }
+.part-title { font: 700 26pt "Noto Sans"; color: var(--navy); line-height: 1.15; margin-top: 4pt;
+              bookmark-level: 1; bookmark-label: content(); }
+.part-ar { font: 700 16pt "Noto Naskh Arabic"; color: var(--green); margin: 6pt 0 12pt 0; }
+.part-intro { font-size: 9.8pt; }
+.part-chapters { margin-top: 10pt; padding: 8pt 10pt; background: var(--grey-l); border-left: 3pt solid var(--navy); }
+.part-chapters h4 { margin: 0 0 4pt 0; bookmark-level: none; }
+.part-chapters ul { list-style: none; padding: 0; margin: 0; font-family: "Noto Sans"; font-size: 8.8pt; }
+.part-chapters a::after { content: leader('.') " " target-counter(attr(href), page); }
+.pc-num { color: var(--green); font-weight: 700; margin-right: 4pt; }
+
+/* TOC */
+.toc-title { break-before: page; font-size: 22pt; border-bottom: 2.5pt solid var(--navy); bookmark-level: 1;
+             string-set: chn "", chap "Contents"; }
+.toc-list { list-style: none; padding: 0; margin: 0; font-family: "Noto Sans", "Noto Sans Arabic", sans-serif; }
+.toc-list a { color: inherit; }
+.toc .toc-list a::after { content: leader('.') " " target-counter(attr(href), page); color: var(--navy); }
+.toc-front { font-weight: 600; font-size: 9.5pt; margin-top: 4pt; }
+.toc-part { font-weight: 700; font-size: 10.5pt; color: var(--navy); margin-top: 10pt; padding-top: 4pt;
+            border-top: 1pt solid var(--navy); break-after: avoid; }
+.toc-ar { font-family: "Noto Naskh Arabic"; font-weight: 400; color: var(--green); font-size: 9.5pt; margin-left: 6pt; }
+.toc-ch { font-weight: 600; font-size: 9.2pt; margin-top: 3pt; color: #1D2630; }
+.toc-sec { font-size: 8pt; color: var(--grey); padding-left: 22pt; }
+.toc-n { display: inline-block; min-width: 20pt; color: var(--green); font-weight: 600; }
+.toc-sec .toc-n { min-width: 26pt; font-weight: 400; }
+.mt-pg { float: right; color: var(--navy); font-weight: 400; font-size: 8pt; }
+.mt-file { display: block; font-size: 7.5pt; color: var(--grey); font-weight: 400; }
+
+/* Index */
+.ix-note { font-size: 8pt; color: var(--grey); }
+.ix-cols { column-count: 2; column-gap: 8mm; font-family: "Noto Sans", sans-serif; font-size: 7.8pt; }
+.ix-letter { font-size: 11pt; color: var(--green); margin: 8pt 0 2pt 0; break-after: avoid; bookmark-level: none; }
+ul.ix { list-style: none; padding: 0; margin: 0; }
+ul.ix li { margin: 0 0 1pt 0; padding-left: 8pt; text-indent: -8pt; }
+.ix-key { color: #1D2630; }
+a.ix-main { font-weight: 700; }
+
+/* Master volume */
+table.gtable { font-size: 7.6pt; }
+table.gtable td.g-en { width: 24%; }
+table.gtable td.g-ar { width: 20%; font-size: 9pt; }
+table.gtable td.g-loc { width: 10%; white-space: nowrap; }
+tr.g-letter td { background: var(--navy) !important; color: white; font-weight: 700; font-size: 9pt; }
+.thematic h3 { font-size: 10pt; border-bottom: 0.5pt solid var(--rule); }
+.th-list { font-size: 8.2pt; text-align: left; line-height: 1.7; }
+table.loctable { font-size: 7.8pt; }
+.loc-secs { color: var(--grey); font-size: 7.2pt; }
