@@ -3,7 +3,7 @@
  "title": "How Businesses Work — Accounting and Financial Statements",
  "title_ar": "كيف تعمل الشركات — المحاسبة والقوائم المالية",
  "file": "Volume_02_How_Businesses_Work_Accounting_And_Financial_Statements.pdf",
- "pages": 61,
+ "pages": 63,
  "toc": [
   {
    "kind": "part",
@@ -607,6 +607,1071 @@
   }
  ],
  "terms": [],
- "index": {},
- "main": {}
+ "index": {
+  "Profit / Net income": [
+   5,
+   10,
+   12,
+   13,
+   17,
+   18,
+   19
+  ],
+  "Exit": [
+   5,
+   6,
+   8
+  ],
+  "Revenue": [
+   5,
+   9,
+   10,
+   12,
+   13,
+   14,
+   16
+  ],
+  "Guarantee (bank)": [
+   5,
+   17,
+   38,
+   58
+  ],
+  "MVP (Minimum viable product)": [
+   6
+  ],
+  "Seed / Series A, B": [
+   6
+  ],
+  "Trade finance": [
+   6,
+   7,
+   20,
+   21,
+   22
+  ],
+  "Equity": [
+   6,
+   8,
+   18,
+   19,
+   20,
+   21,
+   22
+  ],
+  "Working capital": [
+   6,
+   14,
+   16,
+   18,
+   21,
+   22,
+   45
+  ],
+  "Retained earnings": [
+   6,
+   28,
+   30,
+   41,
+   42
+  ],
+  "Divestment": [
+   6
+  ],
+  "Liquidation": [
+   6,
+   8,
+   24,
+   25
+  ],
+  "Insolvency / bankruptcy": [
+   6,
+   8,
+   23,
+   24,
+   25
+  ],
+  "B2B / B2C / B2G": [
+   6,
+   7,
+   9,
+   10,
+   11,
+   12
+  ],
+  "Positioning": [
+   7
+  ],
+  "HS code": [
+   7,
+   8
+  ],
+  "HS (HS code)": [
+   7,
+   8
+  ],
+  "Ideal customer profile (ICP)": [
+   7
+  ],
+  "CEO (Chief Executive Officer)": [
+   7,
+   15,
+   59
+  ],
+  "ROI (Return on investment)": [
+   7
+  ],
+  "Procurement": [
+   7,
+   8,
+   9,
+   13,
+   14,
+   16,
+   22
+  ],
+  "Compliance": [
+   7,
+   9,
+   13,
+   58,
+   60
+  ],
+  "DoA (Delegation of authority)": [
+   8,
+   14,
+   15,
+   58
+  ],
+  "ERP (Enterprise resource planning)": [
+   8,
+   13,
+   14,
+   58,
+   60
+  ],
+  "CRM": [
+   8,
+   13
+  ],
+  "BI (Business intelligence)": [
+   8,
+   29
+  ],
+  "Capital structure": [
+   8,
+   24,
+   54
+  ],
+  "Overdraft": [
+   8,
+   16,
+   18,
+   46,
+   51
+  ],
+  "Tariff": [
+   8
+  ],
+  "Lead": [
+   8,
+   22
+  ],
+  "Cash flow": [
+   9,
+   17,
+   21,
+   22,
+   26,
+   32,
+   38
+  ],
+  "Business model": [
+   9,
+   23
+  ],
+  "Value proposition": [
+   9
+  ],
+  "Margin": [
+   9,
+   10,
+   11,
+   13,
+   15,
+   16,
+   18
+  ],
+  "Demurrage": [
+   9
+  ],
+  "Total cost of ownership (TCO)": [
+   9
+  ],
+  "Receivership / administration": [
+   9
+  ],
+  "Premium": [
+   9,
+   10,
+   31
+  ],
+  "Premium / differential": [
+   9,
+   10,
+   31
+  ],
+  "SaaS (Software as a service)": [
+   10,
+   20,
+   21,
+   22,
+   32
+  ],
+  "Churn": [
+   10,
+   21
+  ],
+  "Cloud computing": [
+   10
+  ],
+  "Commission": [
+   10,
+   16,
+   33,
+   34
+  ],
+  "Spread": [
+   10,
+   20,
+   32
+  ],
+  "Milestone": [
+   10
+  ],
+  "Operating profit": [
+   10,
+   12,
+   16,
+   40,
+   43
+  ],
+  "Markup": [
+   10
+  ],
+  "Arbitrage": [
+   10
+  ],
+  "Payment terms": [
+   11,
+   13,
+   15,
+   16,
+   32
+  ],
+  "Volume discount / rebate": [
+   11,
+   12,
+   34
+  ],
+  "Depreciation": [
+   11,
+   21,
+   27,
+   28,
+   30,
+   32,
+   34,
+   36
+  ],
+  "Leverage": [
+   11,
+   19,
+   22,
+   40,
+   49,
+   54,
+   56
+  ],
+  "Utilisation": [
+   12,
+   13,
+   15,
+   20
+  ],
+  "TEU / FEU": [
+   12,
+   21
+  ],
+  "Prepayment": [
+   12,
+   14,
+   32,
+   34
+  ],
+  "Exclusivity": [
+   12,
+   24,
+   25
+  ],
+  "Value chain": [
+   13
+  ],
+  "Win rate": [
+   13
+  ],
+  "Pipeline": [
+   13,
+   17
+  ],
+  "CAC (Customer acquisition cost)": [
+   13,
+   20,
+   21,
+   22
+  ],
+  "Supply chain": [
+   13
+  ],
+  "Lead time": [
+   13
+  ],
+  "Inventory turnover": [
+   13,
+   21
+  ],
+  "WMS / TMS": [
+   13
+  ],
+  "Liquidity": [
+   13,
+   21,
+   54
+  ],
+  "Liquidity (market)": [
+   13,
+   21,
+   54
+  ],
+  "Bad debt / ECL": [
+   13,
+   36
+  ],
+  "Turnover": [
+   13,
+   20,
+   54,
+   56
+  ],
+  "Uptime": [
+   14
+  ],
+  "Quotation": [
+   14
+  ],
+  "Reconciliation": [
+   14,
+   30,
+   58
+  ],
+  "RFP / RFQ / RFI": [
+   14
+  ],
+  "Purchase order (PO)": [
+   14
+  ],
+  "Headroom": [
+   15,
+   16,
+   18,
+   19
+  ],
+  "Inflation": [
+   15,
+   18,
+   21,
+   59
+  ],
+  "Onboarding": [
+   15
+  ],
+  "COGS (Cost of goods sold)": [
+   16,
+   18,
+   19,
+   35,
+   38,
+   41,
+   42,
+   46
+  ],
+  "Liquidated damages (LDs)": [
+   16,
+   21
+  ],
+  "Gross profit": [
+   17,
+   19,
+   21,
+   22,
+   34,
+   40,
+   43,
+   54
+  ],
+  "Liability": [
+   17,
+   18,
+   21,
+   25,
+   28,
+   31,
+   32,
+   34
+  ],
+  "Long / short position": [
+   18,
+   22
+  ],
+  "Diversification": [
+   18,
+   23
+  ],
+  "Diversification (corporate)": [
+   18,
+   23
+  ],
+  "Term loan": [
+   18
+  ],
+  "Bullet / balloon": [
+   18
+  ],
+  "Covenant": [
+   18,
+   24,
+   48
+  ],
+  "Devaluation": [
+   18
+  ],
+  "Hedging": [
+   18,
+   24
+  ],
+  "Escalation": [
+   18
+  ],
+  "Unit economics": [
+   19
+  ],
+  "Insured / insurer": [
+   19
+  ],
+  "Penalty": [
+   19
+  ],
+  "Yield": [
+   20,
+   55
+  ],
+  "RCF (Revolving credit facility)": [
+   20
+  ],
+  "Asset": [
+   20,
+   22,
+   28,
+   32,
+   34,
+   37,
+   38
+  ],
+  "NPL (Non-performing loan)": [
+   20,
+   21
+  ],
+  "ROE (Return on equity)": [
+   20,
+   45,
+   55,
+   56
+  ],
+  "KPI (Key performance indicator)": [
+   20
+  ],
+  "Overheads": [
+   21,
+   35,
+   50
+  ],
+  "Mitigation": [
+   21
+  ],
+  "EBITDA": [
+   21,
+   22,
+   38,
+   39,
+   43,
+   48,
+   49
+  ],
+  "EBIT (Operating profit)": [
+   21,
+   43,
+   54,
+   55,
+   56
+  ],
+  "EBIT": [
+   21,
+   43,
+   54,
+   55,
+   56
+  ],
+  "3PL (Third-party logistics)": [
+   21
+  ],
+  "Deferred revenue": [
+   21,
+   28,
+   30,
+   33,
+   34
+  ],
+  "CLV / LTV (Customer lifetime value)": [
+   21
+  ],
+  "LTV": [
+   21
+  ],
+  "FCF (Free cash flow)": [
+   21,
+   55,
+   56
+  ],
+  "Return on equity": [
+   21,
+   22
+  ],
+  "IFRS / IAS": [
+   21,
+   26,
+   29,
+   32,
+   34,
+   35,
+   36
+  ],
+  "Crack spread": [
+   22
+  ],
+  "Sanctions": [
+   22,
+   23
+  ],
+  "Credit risk": [
+   22,
+   51,
+   53
+  ],
+  "Freight forwarder": [
+   22
+  ],
+  "Representative office": [
+   23
+  ],
+  "Branch": [
+   23
+  ],
+  "Joint venture (JV)": [
+   23,
+   47
+  ],
+  "Subsidiary": [
+   23,
+   25,
+   38,
+   47,
+   49
+  ],
+  "Due diligence": [
+   23,
+   24,
+   59
+  ],
+  "Market share": [
+   24
+  ],
+  "Vertical integration": [
+   24
+  ],
+  "Confidentiality / NDA": [
+   24
+  ],
+  "Letter of intent (LOI)": [
+   24
+  ],
+  "Conditions precedent": [
+   24
+  ],
+  "Post-merger integration (PMI)": [
+   24
+  ],
+  "Outsourcing": [
+   24
+  ],
+  "Headcount": [
+   24,
+   58
+  ],
+  "Portfolio": [
+   24
+  ],
+  "Holding company": [
+   24,
+   47
+  ],
+  "Collateral": [
+   25
+  ],
+  "Claim": [
+   25,
+   38
+  ],
+  "Trial balance (TB)": [
+   26,
+   30
+  ],
+  "Listed / unlisted company": [
+   26,
+   59
+  ],
+  "US GAAP": [
+   26,
+   34,
+   35,
+   36,
+   37,
+   38,
+   41
+  ],
+  "Chart of accounts (CoA)": [
+   27,
+   28
+  ],
+  "General ledger (GL)": [
+   27,
+   29,
+   30
+  ],
+  "Materiality": [
+   27,
+   59
+  ],
+  "Going concern": [
+   27,
+   59,
+   60
+  ],
+  "Basis": [
+   27,
+   52,
+   59
+  ],
+  "Impairment": [
+   27,
+   35,
+   36,
+   37,
+   48
+  ],
+  "Share capital": [
+   28,
+   29,
+   30,
+   41,
+   42
+  ],
+  "Cost of goods sold": [
+   29,
+   30,
+   34,
+   43
+  ],
+  "Cost centre / profit centre": [
+   29,
+   51
+  ],
+  "Journal entry": [
+   29
+  ],
+  "Month-end close": [
+   30
+  ],
+  "Incoterms": [
+   32,
+   33
+  ],
+  "Licence": [
+   32
+  ],
+  "Accrued expense": [
+   32,
+   34
+  ],
+  "Consideration": [
+   32,
+   34
+  ],
+  "Voyage / time charter": [
+   33
+  ],
+  "Accrued income": [
+   34
+  ],
+  "Goodwill": [
+   35,
+   37,
+   40,
+   47,
+   48
+  ],
+  "Deferred tax": [
+   35,
+   38,
+   40
+  ],
+  "FIFO / weighted average": [
+   35,
+   38,
+   48
+  ],
+  "Net realisable value (NRV)": [
+   35
+  ],
+  "Policy": [
+   35,
+   40,
+   49
+  ],
+  "Provision": [
+   36,
+   37,
+   39
+  ],
+  "Factoring": [
+   36
+  ],
+  "Residual value": [
+   36
+  ],
+  "Net book value (NBV)": [
+   36
+  ],
+  "Present value (PV)": [
+   37,
+   38
+  ],
+  "Contingent liability": [
+   37,
+   39
+  ],
+  "Bank guarantee": [
+   38,
+   60
+  ],
+  "Net debt": [
+   38,
+   45,
+   49,
+   54,
+   56
+  ],
+  "NI (Net income)": [
+   41,
+   46,
+   55
+  ],
+  "Dividend": [
+   41,
+   42,
+   55
+  ],
+  "Net income": [
+   42,
+   43,
+   45,
+   49,
+   54,
+   55,
+   56
+  ],
+  "Free cash flow": [
+   45
+  ],
+  "Amortisation": [
+   45
+  ],
+  "Consolidation": [
+   47
+  ],
+  "Non-controlling interest (NCI)": [
+   47
+  ],
+  "Restatement": [
+   48
+  ],
+  "Off-balance-sheet": [
+   49
+  ],
+  "Benchmark": [
+   51
+  ],
+  "Synergy": [
+   53
+  ],
+  "Proxy": [
+   54
+  ],
+  "DSCR": [
+   54,
+   56
+  ],
+  "Productivity": [
+   55
+  ],
+  "WACC (Weighted average cost of capital)": [
+   55
+  ],
+  "EV (Enterprise value)": [
+   55
+  ],
+  "Beta (β)": [
+   56
+  ],
+  "Alpha": [
+   56
+  ],
+  "Audit opinion": [
+   58,
+   59
+  ],
+  "Segregation of duties": [
+   58,
+   60
+  ],
+  "Whistleblowing": [
+   58
+  ],
+  "Business cycle": [
+   58
+  ],
+  "Change management": [
+   58
+  ],
+  "Three lines model": [
+   60
+  ],
+  "Budget owner": [
+   60
+  ],
+  "Advance payment": [
+   60
+  ]
+ },
+ "main": {
+  "Profit / Net income": [],
+  "Exit": [],
+  "Revenue": [],
+  "Guarantee (bank)": [],
+  "MVP (Minimum viable product)": [],
+  "Seed / Series A, B": [],
+  "Trade finance": [],
+  "Equity": [],
+  "Working capital": [],
+  "Retained earnings": [],
+  "Divestment": [],
+  "Liquidation": [],
+  "Insolvency / bankruptcy": [],
+  "B2B / B2C / B2G": [],
+  "Positioning": [],
+  "HS code": [],
+  "HS (HS code)": [],
+  "Ideal customer profile (ICP)": [],
+  "CEO (Chief Executive Officer)": [],
+  "ROI (Return on investment)": [],
+  "Procurement": [],
+  "Compliance": [],
+  "DoA (Delegation of authority)": [],
+  "ERP (Enterprise resource planning)": [],
+  "CRM": [],
+  "BI (Business intelligence)": [],
+  "Capital structure": [],
+  "Overdraft": [],
+  "Tariff": [],
+  "Lead": [],
+  "Cash flow": [],
+  "Business model": [],
+  "Value proposition": [],
+  "Margin": [],
+  "Demurrage": [],
+  "Total cost of ownership (TCO)": [],
+  "Receivership / administration": [],
+  "Premium": [],
+  "Premium / differential": [],
+  "SaaS (Software as a service)": [],
+  "Churn": [],
+  "Cloud computing": [],
+  "Commission": [],
+  "Spread": [],
+  "Milestone": [],
+  "Operating profit": [],
+  "Markup": [],
+  "Arbitrage": [],
+  "Payment terms": [],
+  "Volume discount / rebate": [],
+  "Depreciation": [],
+  "Leverage": [],
+  "Utilisation": [],
+  "TEU / FEU": [],
+  "Prepayment": [],
+  "Exclusivity": [],
+  "Value chain": [],
+  "Win rate": [],
+  "Pipeline": [],
+  "CAC (Customer acquisition cost)": [],
+  "Supply chain": [],
+  "Lead time": [],
+  "Inventory turnover": [],
+  "WMS / TMS": [],
+  "Liquidity": [],
+  "Liquidity (market)": [],
+  "Bad debt / ECL": [],
+  "Turnover": [],
+  "Uptime": [],
+  "Quotation": [],
+  "Reconciliation": [],
+  "RFP / RFQ / RFI": [],
+  "Purchase order (PO)": [],
+  "Headroom": [],
+  "Inflation": [],
+  "Onboarding": [],
+  "COGS (Cost of goods sold)": [],
+  "Liquidated damages (LDs)": [],
+  "Gross profit": [],
+  "Liability": [],
+  "Long / short position": [],
+  "Diversification": [],
+  "Diversification (corporate)": [],
+  "Term loan": [],
+  "Bullet / balloon": [],
+  "Covenant": [],
+  "Devaluation": [],
+  "Hedging": [],
+  "Escalation": [],
+  "Unit economics": [],
+  "Insured / insurer": [],
+  "Penalty": [],
+  "Yield": [],
+  "RCF (Revolving credit facility)": [],
+  "Asset": [],
+  "NPL (Non-performing loan)": [],
+  "ROE (Return on equity)": [],
+  "KPI (Key performance indicator)": [],
+  "Overheads": [],
+  "Mitigation": [],
+  "EBITDA": [],
+  "EBIT (Operating profit)": [],
+  "EBIT": [],
+  "3PL (Third-party logistics)": [],
+  "Deferred revenue": [],
+  "CLV / LTV (Customer lifetime value)": [],
+  "LTV": [],
+  "FCF (Free cash flow)": [],
+  "Return on equity": [],
+  "IFRS / IAS": [],
+  "Crack spread": [],
+  "Sanctions": [],
+  "Credit risk": [],
+  "Freight forwarder": [],
+  "Representative office": [],
+  "Branch": [],
+  "Joint venture (JV)": [],
+  "Subsidiary": [],
+  "Due diligence": [],
+  "Market share": [],
+  "Vertical integration": [],
+  "Confidentiality / NDA": [],
+  "Letter of intent (LOI)": [],
+  "Conditions precedent": [],
+  "Post-merger integration (PMI)": [],
+  "Outsourcing": [],
+  "Headcount": [],
+  "Portfolio": [],
+  "Holding company": [],
+  "Collateral": [],
+  "Claim": [],
+  "Trial balance (TB)": [],
+  "Listed / unlisted company": [],
+  "US GAAP": [],
+  "Chart of accounts (CoA)": [],
+  "General ledger (GL)": [],
+  "Materiality": [],
+  "Going concern": [],
+  "Basis": [],
+  "Impairment": [],
+  "Share capital": [],
+  "Cost of goods sold": [],
+  "Cost centre / profit centre": [],
+  "Journal entry": [],
+  "Month-end close": [],
+  "Incoterms": [],
+  "Licence": [],
+  "Accrued expense": [],
+  "Consideration": [],
+  "Voyage / time charter": [],
+  "Accrued income": [],
+  "Goodwill": [],
+  "Deferred tax": [],
+  "FIFO / weighted average": [],
+  "Net realisable value (NRV)": [],
+  "Policy": [],
+  "Provision": [],
+  "Factoring": [],
+  "Residual value": [],
+  "Net book value (NBV)": [],
+  "Present value (PV)": [],
+  "Contingent liability": [],
+  "Bank guarantee": [],
+  "Net debt": [],
+  "NI (Net income)": [],
+  "Dividend": [],
+  "Net income": [],
+  "Free cash flow": [],
+  "Amortisation": [],
+  "Consolidation": [],
+  "Non-controlling interest (NCI)": [],
+  "Restatement": [],
+  "Off-balance-sheet": [],
+  "Benchmark": [],
+  "Synergy": [],
+  "Proxy": [],
+  "DSCR": [],
+  "Productivity": [],
+  "WACC (Weighted average cost of capital)": [],
+  "EV (Enterprise value)": [],
+  "Beta (β)": [],
+  "Alpha": [],
+  "Audit opinion": [],
+  "Segregation of duties": [],
+  "Whistleblowing": [],
+  "Business cycle": [],
+  "Change management": [],
+  "Three lines model": [],
+  "Budget owner": [],
+  "Advance payment": []
+ }
 }

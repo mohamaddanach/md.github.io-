@@ -3,7 +3,7 @@
  "title": "Investment, Capital Markets, Commodities and Market Intelligence",
  "title_ar": "الاستثمار وأسواق رأس المال والسلع وقراءة الأسواق",
  "file": "Volume_06_Investment_Capital_Markets_Commodities_And_Market_Intelligence.pdf",
- "pages": 53,
+ "pages": 54,
  "toc": [
   {
    "kind": "part",
@@ -645,6 +645,806 @@
   }
  ],
  "terms": [],
- "index": {},
- "main": {}
+ "index": {
+  "Equity": [
+   6,
+   7,
+   8,
+   10,
+   16,
+   21
+  ],
+  "Portfolio": [
+   6,
+   16,
+   17,
+   18,
+   19,
+   25,
+   46
+  ],
+  "Market capitalisation": [
+   6,
+   10
+  ],
+  "Dividend": [
+   6,
+   10,
+   11
+  ],
+  "Duration": [
+   6,
+   13,
+   14,
+   19,
+   25
+  ],
+  "Yield": [
+   6,
+   10,
+   11,
+   13,
+   14
+  ],
+  "Venture capital (VC)": [
+   6,
+   16
+  ],
+  "Diversification": [
+   6,
+   18,
+   25,
+   29,
+   47
+  ],
+  "Diversification (corporate)": [
+   6,
+   18,
+   25,
+   29,
+   47
+  ],
+  "Speculation": [
+   6,
+   20,
+   21,
+   22,
+   30,
+   44,
+   51,
+   52
+  ],
+  "Hedging": [
+   6,
+   17,
+   20,
+   21,
+   22,
+   27,
+   28,
+   29
+  ],
+  "Arbitrage": [
+   6,
+   16,
+   17,
+   20,
+   21,
+   22,
+   25,
+   27
+  ],
+  "Due diligence": [
+   6,
+   8,
+   23,
+   29,
+   39
+  ],
+  "Market structure": [
+   7
+  ],
+  "Liquidity": [
+   7,
+   8,
+   9,
+   10,
+   14,
+   15,
+   17,
+   18
+  ],
+  "Liquidity (market)": [
+   7,
+   8,
+   9,
+   10,
+   14,
+   15,
+   17,
+   18
+  ],
+  "Counterparty risk": [
+   7,
+   20,
+   22,
+   30
+  ],
+  "Spread": [
+   8,
+   9,
+   14,
+   21,
+   27,
+   28,
+   29
+  ],
+  "IFRS / IAS": [
+   8,
+   46
+  ],
+  "Lead": [
+   8,
+   36,
+   50
+  ],
+  "Exit": [
+   8,
+   11,
+   23
+  ],
+  "Broker": [
+   8,
+   40
+  ],
+  "Commission": [
+   9,
+   27,
+   40
+  ],
+  "Long / short position": [
+   10,
+   16,
+   20,
+   22
+  ],
+  "Market cap (Market capitalisation)": [
+   10,
+   23
+  ],
+  "Leverage": [
+   10,
+   11,
+   17,
+   19,
+   22,
+   24,
+   45,
+   46
+  ],
+  "EV (Enterprise value)": [
+   10,
+   11,
+   23,
+   46
+  ],
+  "EBITDA": [
+   10,
+   11,
+   23,
+   45,
+   46,
+   52
+  ],
+  "Working capital": [
+   10,
+   30,
+   38,
+   45
+  ],
+  "EBIT (Operating profit)": [
+   10
+  ],
+  "EBIT": [
+   10
+  ],
+  "Revenue": [
+   10,
+   23,
+   40,
+   41,
+   42,
+   45,
+   46
+  ],
+  "FCF (Free cash flow)": [
+   10,
+   11,
+   24,
+   46
+  ],
+  "Net debt": [
+   11,
+   23,
+   45
+  ],
+  "Risk tolerance": [
+   11,
+   18
+  ],
+  "Policy": [
+   11,
+   19,
+   22,
+   44,
+   45,
+   47,
+   48,
+   49
+  ],
+  "Cost of equity (Ke)": [
+   11
+  ],
+  "WACC (Weighted average cost of capital)": [
+   11,
+   24,
+   47
+  ],
+  "ROE (Return on equity)": [
+   11,
+   46
+  ],
+  "Yield curve": [
+   13,
+   14
+  ],
+  "Par / face value": [
+   13
+  ],
+  "Coupon": [
+   13
+  ],
+  "Discount rate": [
+   13
+  ],
+  "Present value (PV)": [
+   13
+  ],
+  "Premium": [
+   13,
+   20,
+   21,
+   22,
+   27,
+   28
+  ],
+  "Premium / differential": [
+   13,
+   20,
+   21,
+   22,
+   26,
+   27,
+   28
+  ],
+  "Cash flow": [
+   13,
+   45,
+   47
+  ],
+  "Asset": [
+   14,
+   16,
+   17,
+   18,
+   21,
+   25,
+   46
+  ],
+  "Liability": [
+   14,
+   29
+  ],
+  "Benchmark": [
+   14,
+   16,
+   17,
+   19,
+   26,
+   28,
+   30
+  ],
+  "Basis": [
+   14,
+   21,
+   22,
+   25,
+   27,
+   28,
+   29
+  ],
+  "Recession": [
+   15
+  ],
+  "NAV": [
+   16,
+   17
+  ],
+  "GP (Gross profit)": [
+   16,
+   17
+  ],
+  "IRR (Internal rate of return)": [
+   16,
+   17
+  ],
+  "MOIC": [
+   16,
+   17
+  ],
+  "Profit / Net income": [
+   17,
+   21,
+   26,
+   30,
+   40,
+   41,
+   42
+  ],
+  "Supply and demand": [
+   17,
+   27,
+   50
+  ],
+  "Drawdown": [
+   18,
+   19
+  ],
+  "Volatility": [
+   18,
+   19,
+   21,
+   22,
+   30,
+   35
+  ],
+  "Risk-free rate": [
+   18
+  ],
+  "FIFO / weighted average": [
+   18
+  ],
+  "Sharpe ratio": [
+   18,
+   19
+  ],
+  "Beta (β)": [
+   18,
+   19
+  ],
+  "CAPM": [
+   18,
+   19
+  ],
+  "Tolerance (e.g., ±10% MOLOO)": [
+   18,
+   28,
+   34,
+   38
+  ],
+  "Compliance": [
+   19,
+   23,
+   27,
+   29
+  ],
+  "Listed / unlisted company": [
+   19,
+   23
+  ],
+  "Alpha": [
+   19
+  ],
+  "Collateral": [
+   20,
+   22,
+   27,
+   28,
+   29,
+   30
+  ],
+  "Margin": [
+   20,
+   22,
+   23,
+   27,
+   28,
+   29
+  ],
+  "Mark-to-market": [
+   20
+  ],
+  "Liquidity risk": [
+   20
+  ],
+  "Trade-off": [
+   22
+  ],
+  "Track record": [
+   23,
+   49,
+   50,
+   51
+  ],
+  "Off-balance-sheet": [
+   23
+  ],
+  "Attribution": [
+   23
+  ],
+  "Free cash flow": [
+   24,
+   45
+  ],
+  "FY (Fiscal year)": [
+   24
+  ],
+  "Bull / bear market": [
+   24
+  ],
+  "Utilisation": [
+   25
+  ],
+  "Credit risk": [
+   25,
+   46
+  ],
+  "Physical trading": [
+   26,
+   30,
+   43
+  ],
+  "KYC (Know your customer)": [
+   27,
+   29,
+   30
+  ],
+  "Specifications": [
+   27,
+   28,
+   38
+  ],
+  "B/L (Bill of lading)": [
+   28,
+   32,
+   33
+  ],
+  "Pricing period": [
+   28
+  ],
+  "Crack spread": [
+   28,
+   32
+  ],
+  "API (Application programming interface)": [
+   28,
+   32
+  ],
+  "Voyage / time charter": [
+   29,
+   40
+  ],
+  "Arbitration": [
+   29
+  ],
+  "Trade finance": [
+   29
+  ],
+  "Prepayment": [
+   29
+  ],
+  "Insured / insurer": [
+   29
+  ],
+  "Claim": [
+   29,
+   40,
+   42,
+   51,
+   52
+  ],
+  "Damages": [
+   29
+  ],
+  "Demurrage": [
+   29,
+   30,
+   32,
+   34,
+   40,
+   42
+  ],
+  "Sanctions": [
+   29,
+   30,
+   32,
+   38
+  ],
+  "Political risk insurance": [
+   29
+  ],
+  "Operational risk": [
+   30
+  ],
+  "Bill of lading": [
+   30
+  ],
+  "Assay": [
+   32,
+   36
+  ],
+  "Pipeline": [
+   33,
+   46,
+   48
+  ],
+  "Sanctions screening": [
+   34
+  ],
+  "Tender": [
+   34,
+   40,
+   42
+  ],
+  "Deliverable": [
+   36
+  ],
+  "AML (Anti-money laundering)": [
+   36
+  ],
+  "AML / CFT": [
+   36
+  ],
+  "Penalty": [
+   37
+  ],
+  "Supply chain": [
+   39
+  ],
+  "Overheads": [
+   40
+  ],
+  "Force majeure": [
+   41
+  ],
+  "Documentary collection": [
+   42
+  ],
+  "Open account": [
+   43
+  ],
+  "Bank guarantee": [
+   43
+  ],
+  "Inflation": [
+   44,
+   46,
+   48,
+   49
+  ],
+  "Goodwill": [
+   45
+  ],
+  "CEO (Chief Executive Officer)": [
+   45,
+   52
+  ],
+  "Net income": [
+   45,
+   47
+  ],
+  "Covenant": [
+   46
+  ],
+  "Headroom": [
+   46
+  ],
+  "Reconciliation": [
+   46,
+   52
+  ],
+  "Conversion rate": [
+   46
+  ],
+  "Business model": [
+   46
+  ],
+  "NPL (Non-performing loan)": [
+   46,
+   47
+  ],
+  "Market risk": [
+   46
+  ],
+  "Consideration": [
+   46
+  ],
+  "Dilution": [
+   46
+  ],
+  "Shareholder": [
+   46
+  ],
+  "Cost of debt (Kd)": [
+   47
+  ],
+  "Monetary policy": [
+   48
+  ],
+  "Policy rate": [
+   48
+  ],
+  "Basis point": [
+   48
+  ],
+  "Pivot": [
+   48
+  ],
+  "Fiscal policy": [
+   49
+  ],
+  "Tariff": [
+   49
+  ],
+  "Receivership / administration": [
+   50
+  ],
+  "D&D (Demurrage and detention)": [
+   51
+  ],
+  "Market share": [
+   52
+  ]
+ },
+ "main": {
+  "Equity": [],
+  "Portfolio": [],
+  "Market capitalisation": [],
+  "Dividend": [],
+  "Duration": [],
+  "Yield": [],
+  "Venture capital (VC)": [],
+  "Diversification": [],
+  "Diversification (corporate)": [],
+  "Speculation": [],
+  "Hedging": [],
+  "Arbitrage": [],
+  "Due diligence": [],
+  "Market structure": [],
+  "Liquidity": [],
+  "Liquidity (market)": [],
+  "Counterparty risk": [],
+  "Spread": [],
+  "IFRS / IAS": [],
+  "Lead": [],
+  "Exit": [],
+  "Broker": [],
+  "Commission": [],
+  "Long / short position": [],
+  "Market cap (Market capitalisation)": [],
+  "Leverage": [],
+  "EV (Enterprise value)": [],
+  "EBITDA": [],
+  "Working capital": [],
+  "EBIT (Operating profit)": [],
+  "EBIT": [],
+  "Revenue": [],
+  "FCF (Free cash flow)": [],
+  "Net debt": [],
+  "Risk tolerance": [],
+  "Policy": [],
+  "Cost of equity (Ke)": [],
+  "WACC (Weighted average cost of capital)": [],
+  "ROE (Return on equity)": [],
+  "Yield curve": [],
+  "Par / face value": [],
+  "Coupon": [],
+  "Discount rate": [],
+  "Present value (PV)": [],
+  "Premium": [],
+  "Premium / differential": [],
+  "Cash flow": [],
+  "Asset": [],
+  "Liability": [],
+  "Benchmark": [],
+  "Basis": [],
+  "Recession": [],
+  "NAV": [],
+  "GP (Gross profit)": [],
+  "IRR (Internal rate of return)": [],
+  "MOIC": [],
+  "Profit / Net income": [],
+  "Supply and demand": [],
+  "Drawdown": [],
+  "Volatility": [],
+  "Risk-free rate": [],
+  "FIFO / weighted average": [],
+  "Sharpe ratio": [],
+  "Beta (β)": [],
+  "CAPM": [],
+  "Tolerance (e.g., ±10% MOLOO)": [],
+  "Compliance": [],
+  "Listed / unlisted company": [],
+  "Alpha": [],
+  "Collateral": [],
+  "Margin": [],
+  "Mark-to-market": [],
+  "Liquidity risk": [],
+  "Trade-off": [],
+  "Track record": [],
+  "Off-balance-sheet": [],
+  "Attribution": [],
+  "Free cash flow": [],
+  "FY (Fiscal year)": [],
+  "Bull / bear market": [],
+  "Utilisation": [],
+  "Credit risk": [],
+  "Physical trading": [],
+  "KYC (Know your customer)": [],
+  "Specifications": [],
+  "B/L (Bill of lading)": [],
+  "Pricing period": [],
+  "Crack spread": [],
+  "API (Application programming interface)": [],
+  "Voyage / time charter": [],
+  "Arbitration": [],
+  "Trade finance": [],
+  "Prepayment": [],
+  "Insured / insurer": [],
+  "Claim": [],
+  "Damages": [],
+  "Demurrage": [],
+  "Sanctions": [],
+  "Political risk insurance": [],
+  "Operational risk": [],
+  "Bill of lading": [],
+  "Assay": [],
+  "Pipeline": [],
+  "Sanctions screening": [],
+  "Tender": [],
+  "Deliverable": [],
+  "AML (Anti-money laundering)": [],
+  "AML / CFT": [],
+  "Penalty": [],
+  "Supply chain": [],
+  "Overheads": [],
+  "Force majeure": [],
+  "Documentary collection": [],
+  "Open account": [],
+  "Bank guarantee": [],
+  "Inflation": [],
+  "Goodwill": [],
+  "CEO (Chief Executive Officer)": [],
+  "Net income": [],
+  "Covenant": [],
+  "Headroom": [],
+  "Reconciliation": [],
+  "Conversion rate": [],
+  "Business model": [],
+  "NPL (Non-performing loan)": [],
+  "Market risk": [],
+  "Consideration": [],
+  "Dilution": [],
+  "Shareholder": [],
+  "Cost of debt (Kd)": [],
+  "Monetary policy": [],
+  "Policy rate": [],
+  "Basis point": [],
+  "Pivot": [],
+  "Fiscal policy": [],
+  "Tariff": [],
+  "Receivership / administration": [],
+  "D&D (Demurrage and detention)": [],
+  "Market share": []
+ }
 }

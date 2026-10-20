@@ -3,7 +3,7 @@
  "title": "Professional Practice — Communication, Deals and Advanced Thinking",
  "title_ar": "الممارسة المهنية — التواصل والصفقات والتفكير المتقدم",
  "file": "Volume_08_Professional_Practice_Communication_Deals_And_Advanced_Thinking.pdf",
- "pages": 67,
+ "pages": 68,
  "toc": [
   {
    "kind": "part",
@@ -609,6 +609,991 @@
   }
  ],
  "terms": [],
- "index": {},
- "main": {}
+ "index": {
+  "Executive / non-executive director": [
+   5,
+   8,
+   20
+  ],
+  "Lead": [
+   6,
+   10
+  ],
+  "Bottom line": [
+   6
+  ],
+  "Bullet / balloon": [
+   6
+  ],
+  "Long / short position": [
+   6,
+   32,
+   36,
+   44,
+   58,
+   60
+  ],
+  "Quotation": [
+   7,
+   19,
+   35
+  ],
+  "Incoterms® 2020": [
+   7,
+   18,
+   28,
+   29,
+   38
+  ],
+  "Guarantee (bank)": [
+   7,
+   12,
+   25,
+   31,
+   36
+  ],
+  "B/L (Bill of lading)": [
+   7,
+   23,
+   38
+  ],
+  "Specifications": [
+   7,
+   19,
+   29
+  ],
+  "Commercial invoice": [
+   7,
+   29,
+   38
+  ],
+  "Packing list": [
+   7,
+   29,
+   38
+  ],
+  "Bill of lading": [
+   7,
+   29
+  ],
+  "Letter of credit": [
+   7,
+   36,
+   38
+  ],
+  "Deadline": [
+   7,
+   12,
+   14,
+   15,
+   16
+  ],
+  "Authorised signatory": [
+   7
+  ],
+  "ERP (Enterprise resource planning)": [
+   8,
+   50,
+   52,
+   60
+  ],
+  "Chart of accounts (CoA)": [
+   8
+  ],
+  "NPV (Net present value)": [
+   8,
+   11,
+   21,
+   51,
+   63,
+   65
+  ],
+  "IRR (Internal rate of return)": [
+   8,
+   21,
+   46,
+   51,
+   54,
+   65
+  ],
+  "Due diligence": [
+   8,
+   17,
+   21,
+   50,
+   58
+  ],
+  "Margin": [
+   8,
+   9,
+   11,
+   16,
+   17,
+   22,
+   23,
+   25
+  ],
+  "Markup": [
+   9
+  ],
+  "Demurrage": [
+   9,
+   12,
+   18,
+   23,
+   24,
+   30,
+   34,
+   43
+  ],
+  "Agenda / minutes": [
+   10,
+   11,
+   15,
+   20
+  ],
+  "Hedging": [
+   10,
+   12,
+   37,
+   42,
+   43
+  ],
+  "Overdraft": [
+   11,
+   26,
+   36,
+   39,
+   45
+  ],
+  "Freight forwarder": [
+   11,
+   29
+  ],
+  "Relationship manager (RM)": [
+   11,
+   36
+  ],
+  "RCF (Revolving credit facility)": [
+   11,
+   39
+  ],
+  "Covenant": [
+   11,
+   18,
+   23,
+   36,
+   40,
+   50,
+   51,
+   64
+  ],
+  "Escalation": [
+   12,
+   19,
+   51
+  ],
+  "Cash flow": [
+   12,
+   17,
+   21,
+   26,
+   50,
+   54
+  ],
+  "Exchange rate": [
+   12
+  ],
+  "Broker": [
+   12,
+   42,
+   53
+  ],
+  "Anchoring": [
+   13
+  ],
+  "Payment terms": [
+   13,
+   18,
+   19,
+   22,
+   28,
+   64
+  ],
+  "Liability": [
+   13,
+   22,
+   35,
+   49
+  ],
+  "Concession": [
+   13,
+   60,
+   61
+  ],
+  "Volume discount / rebate": [
+   13,
+   59
+  ],
+  "Basis": [
+   16,
+   40,
+   42,
+   44,
+   49,
+   54
+  ],
+  "Ballpark figure": [
+   16
+  ],
+  "Hurdle rate": [
+   17
+  ],
+  "Payback period": [
+   17
+  ],
+  "Liquidity": [
+   17,
+   39,
+   43,
+   46,
+   64
+  ],
+  "Liquidity (market)": [
+   17,
+   39,
+   43,
+   46,
+   64
+  ],
+  "Free cash flow": [
+   17
+  ],
+  "Leverage": [
+   17,
+   18,
+   19,
+   37,
+   39,
+   45,
+   49,
+   54
+  ],
+  "Headroom": [
+   18,
+   26,
+   38,
+   39,
+   45
+  ],
+  "Waiver": [
+   18,
+   23,
+   24,
+   40
+  ],
+  "Compliance": [
+   18,
+   39,
+   46,
+   48
+  ],
+  "KYC (Know your customer)": [
+   18,
+   43
+  ],
+  "Onboarding": [
+   18
+  ],
+  "Credit committee": [
+   18,
+   23,
+   36
+  ],
+  "Counterparty risk": [
+   18,
+   22
+  ],
+  "RFP / RFQ / RFI": [
+   18
+  ],
+  "Lead time": [
+   18,
+   54
+  ],
+  "Free time": [
+   18,
+   24,
+   35
+  ],
+  "D&D (Demurrage and detention)": [
+   18,
+   35
+  ],
+  "HS code": [
+   18,
+   29,
+   35
+  ],
+  "HS (HS code)": [
+   18,
+   29,
+   35
+  ],
+  "Incoterms": [
+   18,
+   28
+  ],
+  "Value proposition": [
+   19
+  ],
+  "Positioning": [
+   19,
+   56,
+   60
+  ],
+  "Procurement": [
+   19,
+   25,
+   38,
+   49
+  ],
+  "Tender": [
+   19,
+   30,
+   37
+  ],
+  "Claim": [
+   19,
+   43
+  ],
+  "Working capital": [
+   19,
+   29,
+   33,
+   35,
+   48,
+   64
+  ],
+  "Risk appetite": [
+   20
+  ],
+  "Profit / Net income": [
+   21,
+   26,
+   35,
+   43,
+   44,
+   52,
+   60,
+   61
+  ],
+  "Revenue": [
+   22,
+   31,
+   33,
+   35,
+   36,
+   39,
+   44,
+   47
+  ],
+  "Insured / insurer": [
+   23,
+   29,
+   31,
+   38,
+   42,
+   49,
+   52,
+   53
+  ],
+  "Policy": [
+   23,
+   43,
+   47
+  ],
+  "Track record": [
+   23,
+   43
+  ],
+  "Demurrage and detention": [
+   24
+  ],
+  "Goodwill": [
+   24
+  ],
+  "CEO (Chief Executive Officer)": [
+   25,
+   26,
+   52,
+   59
+  ],
+  "EBITDA": [
+   25,
+   36,
+   39,
+   46,
+   49,
+   52,
+   57,
+   64
+  ],
+  "IFRS / IAS": [
+   28,
+   41,
+   51
+  ],
+  "Landed cost": [
+   29,
+   33,
+   35,
+   64
+  ],
+  "Documentary collection": [
+   29
+  ],
+  "Penalty": [
+   29
+  ],
+  "Arbitration": [
+   29,
+   31,
+   33,
+   43
+  ],
+  "Certificate of origin (CO)": [
+   29,
+   38
+  ],
+  "Safety stock": [
+   30
+  ],
+  "Prepayment": [
+   31,
+   53
+  ],
+  "Open account": [
+   31,
+   33
+  ],
+  "Exclusivity": [
+   31,
+   32,
+   59
+  ],
+  "Factoring": [
+   32
+  ],
+  "Depreciation": [
+   32,
+   44,
+   50
+  ],
+  "Operating profit": [
+   32,
+   33
+  ],
+  "Inflation": [
+   32,
+   44
+  ],
+  "Insolvency / bankruptcy": [
+   32,
+   33,
+   58
+  ],
+  "Indemnity": [
+   32,
+   49,
+   53
+  ],
+  "Bonded warehouse": [
+   32
+  ],
+  "Force majeure": [
+   32
+  ],
+  "Licence": [
+   33,
+   47,
+   48,
+   52,
+   55,
+   61
+  ],
+  "Spread": [
+   33,
+   42,
+   51,
+   61
+  ],
+  "Devaluation": [
+   33
+  ],
+  "Gross profit": [
+   34,
+   49,
+   53,
+   57
+  ],
+  "Overheads": [
+   34,
+   49
+  ],
+  "Credit risk": [
+   35,
+   64
+  ],
+  "Unit economics": [
+   35,
+   64
+  ],
+  "Revolving credit facility": [
+   36,
+   39
+  ],
+  "Net debt": [
+   36,
+   39,
+   46,
+   49,
+   55
+  ],
+  "SKU": [
+   36
+  ],
+  "Assignment": [
+   37
+  ],
+  "Turnover": [
+   37
+  ],
+  "Negative pledge": [
+   37,
+   40
+  ],
+  "Dividend": [
+   37,
+   47
+  ],
+  "Asset": [
+   37,
+   40,
+   55,
+   58
+  ],
+  "Collateral": [
+   37,
+   58
+  ],
+  "Tolerance (e.g., ±10% MOLOO)": [
+   38
+  ],
+  "Commission": [
+   38,
+   45,
+   54,
+   57
+  ],
+  "Opportunity cost": [
+   39,
+   56,
+   57,
+   59,
+   64
+  ],
+  "Term sheet": [
+   39
+  ],
+  "Tenor": [
+   39
+  ],
+  "Commitment fee": [
+   39
+  ],
+  "Utilisation": [
+   39,
+   45
+  ],
+  "Equity": [
+   40,
+   46,
+   49,
+   53,
+   54,
+   57,
+   63
+  ],
+  "KPI (Key performance indicator)": [
+   40,
+   47
+  ],
+  "Voyage / time charter": [
+   42
+  ],
+  "Premium": [
+   42,
+   44,
+   49,
+   53
+  ],
+  "Premium / differential": [
+   42,
+   44,
+   49,
+   53
+  ],
+  "Pricing period": [
+   42
+  ],
+  "Laytime and demurrage (charter party)": [
+   42
+  ],
+  "Liquidity risk": [
+   43
+  ],
+  "Volatility": [
+   43
+  ],
+  "Segregation of duties": [
+   44
+  ],
+  "Speculation": [
+   44
+  ],
+  "Shareholder": [
+   46
+  ],
+  "MOIC": [
+   46,
+   55
+  ],
+  "Non-compete": [
+   46,
+   49
+  ],
+  "EV (Enterprise value)": [
+   46,
+   49,
+   54,
+   63,
+   65
+  ],
+  "WACC (Weighted average cost of capital)": [
+   46,
+   63
+  ],
+  "Conditions precedent": [
+   47,
+   49
+  ],
+  "Exit": [
+   47,
+   54,
+   61
+  ],
+  "CPs (Conditions precedent)": [
+   47
+  ],
+  "B2B / B2C / B2G": [
+   47,
+   61
+  ],
+  "Convertible note / SAFE": [
+   47
+  ],
+  "Venture capital (VC)": [
+   47
+  ],
+  "Dilution": [
+   47
+  ],
+  "Liquidation preference": [
+   48
+  ],
+  "FIFO / weighted average": [
+   48
+  ],
+  "Independent director": [
+   48
+  ],
+  "Enterprise value": [
+   49,
+   52
+  ],
+  "Consolidation": [
+   49
+  ],
+  "Upselling / cross-selling": [
+   49,
+   61
+  ],
+  "COGS (Cost of goods sold)": [
+   49
+  ],
+  "Discount rate": [
+   49,
+   50,
+   65
+  ],
+  "Term loan": [
+   49,
+   51
+  ],
+  "Synergy": [
+   50
+  ],
+  "DD (Due diligence)": [
+   50
+  ],
+  "Tariff": [
+   50,
+   54
+  ],
+  "Turnkey": [
+   50
+  ],
+  "SaaS (Software as a service)": [
+   52,
+   55
+  ],
+  "Business model": [
+   52
+  ],
+  "Churn": [
+   52,
+   55
+  ],
+  "CAC (Customer acquisition cost)": [
+   53
+  ],
+  "Business interruption": [
+   53
+  ],
+  "BI (Business intelligence)": [
+   53
+  ],
+  "Deductible": [
+   54
+  ],
+  "Reinsurance": [
+   54
+  ],
+  "Underinsurance / average": [
+   54
+  ],
+  "Underwriting": [
+   54
+  ],
+  "Portfolio": [
+   54,
+   65
+  ],
+  "Risk transfer": [
+   55
+  ],
+  "Total cost of ownership (TCO)": [
+   57
+  ],
+  "Balanced scorecard": [
+   57
+  ],
+  "Limited liability": [
+   58
+  ],
+  "3PL (Third-party logistics)": [
+   58
+  ],
+  "Economies of scale": [
+   61
+  ],
+  "Trade finance": [
+   61
+  ],
+  "Porter’s Five Forces": [
+   61
+  ],
+  "BATNA": [
+   62,
+   64
+  ]
+ },
+ "main": {
+  "Executive / non-executive director": [],
+  "Lead": [],
+  "Bottom line": [],
+  "Bullet / balloon": [],
+  "Long / short position": [],
+  "Quotation": [],
+  "Incoterms® 2020": [],
+  "Guarantee (bank)": [],
+  "B/L (Bill of lading)": [],
+  "Specifications": [],
+  "Commercial invoice": [],
+  "Packing list": [],
+  "Bill of lading": [],
+  "Letter of credit": [],
+  "Deadline": [],
+  "Authorised signatory": [],
+  "ERP (Enterprise resource planning)": [],
+  "Chart of accounts (CoA)": [],
+  "NPV (Net present value)": [],
+  "IRR (Internal rate of return)": [],
+  "Due diligence": [],
+  "Margin": [],
+  "Markup": [],
+  "Demurrage": [],
+  "Agenda / minutes": [],
+  "Hedging": [],
+  "Overdraft": [],
+  "Freight forwarder": [],
+  "Relationship manager (RM)": [],
+  "RCF (Revolving credit facility)": [],
+  "Covenant": [],
+  "Escalation": [],
+  "Cash flow": [],
+  "Exchange rate": [],
+  "Broker": [],
+  "Anchoring": [],
+  "Payment terms": [],
+  "Liability": [],
+  "Concession": [],
+  "Volume discount / rebate": [],
+  "Basis": [],
+  "Ballpark figure": [],
+  "Hurdle rate": [],
+  "Payback period": [],
+  "Liquidity": [],
+  "Liquidity (market)": [],
+  "Free cash flow": [],
+  "Leverage": [],
+  "Headroom": [],
+  "Waiver": [],
+  "Compliance": [],
+  "KYC (Know your customer)": [],
+  "Onboarding": [],
+  "Credit committee": [],
+  "Counterparty risk": [],
+  "RFP / RFQ / RFI": [],
+  "Lead time": [],
+  "Free time": [],
+  "D&D (Demurrage and detention)": [],
+  "HS code": [],
+  "HS (HS code)": [],
+  "Incoterms": [],
+  "Value proposition": [],
+  "Positioning": [],
+  "Procurement": [],
+  "Tender": [],
+  "Claim": [],
+  "Working capital": [],
+  "Risk appetite": [],
+  "Profit / Net income": [],
+  "Revenue": [],
+  "Insured / insurer": [],
+  "Policy": [],
+  "Track record": [],
+  "Demurrage and detention": [],
+  "Goodwill": [],
+  "CEO (Chief Executive Officer)": [],
+  "EBITDA": [],
+  "IFRS / IAS": [],
+  "Landed cost": [],
+  "Documentary collection": [],
+  "Penalty": [],
+  "Arbitration": [],
+  "Certificate of origin (CO)": [],
+  "Safety stock": [],
+  "Prepayment": [],
+  "Open account": [],
+  "Exclusivity": [],
+  "Factoring": [],
+  "Depreciation": [],
+  "Operating profit": [],
+  "Inflation": [],
+  "Insolvency / bankruptcy": [],
+  "Indemnity": [],
+  "Bonded warehouse": [],
+  "Force majeure": [],
+  "Licence": [],
+  "Spread": [],
+  "Devaluation": [],
+  "Gross profit": [],
+  "Overheads": [],
+  "Credit risk": [],
+  "Unit economics": [],
+  "Revolving credit facility": [],
+  "Net debt": [],
+  "SKU": [],
+  "Assignment": [],
+  "Turnover": [],
+  "Negative pledge": [],
+  "Dividend": [],
+  "Asset": [],
+  "Collateral": [],
+  "Tolerance (e.g., ±10% MOLOO)": [],
+  "Commission": [],
+  "Opportunity cost": [],
+  "Term sheet": [],
+  "Tenor": [],
+  "Commitment fee": [],
+  "Utilisation": [],
+  "Equity": [],
+  "KPI (Key performance indicator)": [],
+  "Voyage / time charter": [],
+  "Premium": [],
+  "Premium / differential": [],
+  "Pricing period": [],
+  "Laytime and demurrage (charter party)": [],
+  "Liquidity risk": [],
+  "Volatility": [],
+  "Segregation of duties": [],
+  "Speculation": [],
+  "Shareholder": [],
+  "MOIC": [],
+  "Non-compete": [],
+  "EV (Enterprise value)": [],
+  "WACC (Weighted average cost of capital)": [],
+  "Conditions precedent": [],
+  "Exit": [],
+  "CPs (Conditions precedent)": [],
+  "B2B / B2C / B2G": [],
+  "Convertible note / SAFE": [],
+  "Venture capital (VC)": [],
+  "Dilution": [],
+  "Liquidation preference": [],
+  "FIFO / weighted average": [],
+  "Independent director": [],
+  "Enterprise value": [],
+  "Consolidation": [],
+  "Upselling / cross-selling": [],
+  "COGS (Cost of goods sold)": [],
+  "Discount rate": [],
+  "Term loan": [],
+  "Synergy": [],
+  "DD (Due diligence)": [],
+  "Tariff": [],
+  "Turnkey": [],
+  "SaaS (Software as a service)": [],
+  "Business model": [],
+  "Churn": [],
+  "CAC (Customer acquisition cost)": [],
+  "Business interruption": [],
+  "BI (Business intelligence)": [],
+  "Deductible": [],
+  "Reinsurance": [],
+  "Underinsurance / average": [],
+  "Underwriting": [],
+  "Portfolio": [],
+  "Risk transfer": [],
+  "Total cost of ownership (TCO)": [],
+  "Balanced scorecard": [],
+  "Limited liability": [],
+  "3PL (Third-party logistics)": [],
+  "Economies of scale": [],
+  "Trade finance": [],
+  "Porter’s Five Forces": [],
+  "BATNA": []
+ }
 }

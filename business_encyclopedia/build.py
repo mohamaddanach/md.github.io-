@@ -230,8 +230,11 @@ def chapter_map():
             for f in entry[4]:
                 p = SRC / f
                 if p.exists():
+                    in_code = False
                     for line in p.read_text(encoding="utf-8").split("\n"):
-                        if line.startswith("# "):
+                        if line.lstrip().startswith("```"):
+                            in_code = not in_code
+                        if not in_code and line.startswith("# "):
                             n += 1
                             titles.append((n, line[2:].strip(), vol["num"]))
     return titles
@@ -467,6 +470,12 @@ def page_shell(title, body, header_left):
             f'<style>{css}</style></head><body>{body}</body></html>')
 
 
+def fix_list_starts(h):
+    """WeasyPrint ignores <ol start>; express it as a list-item counter reset."""
+    return re.sub(r'<ol start="(\d+)">',
+                  lambda m: f'<ol style="counter-reset: list-item {int(m.group(1)) - 1}">', h)
+
+
 def fix_direction(h):
     """Mark blocks whose first letter is Arabic as RTL; wrap inline Arabic runs."""
     def mark(m):
@@ -498,12 +507,12 @@ def anchor_pages(doc):
 
 def render(title, header_left, body_without_index, make_index, out_pdf, keep_html=False):
     t = time.time()
-    html1 = page_shell(title, fix_direction(body_without_index), header_left)
+    html1 = page_shell(title, fix_direction(fix_list_starts(body_without_index)), header_left)
     doc = HTML(string=html1, base_url=str(ROOT)).render()
     pages = anchor_pages(doc)
     extra = make_index(pages)
     if extra:
-        html2 = page_shell(title, fix_direction(body_without_index + extra), header_left)
+        html2 = page_shell(title, fix_direction(fix_list_starts(body_without_index + extra)), header_left)
         doc = HTML(string=html2, base_url=str(ROOT)).render()
     else:
         html2 = html1
@@ -516,8 +525,74 @@ def render(title, header_left, body_without_index, make_index, out_pdf, keep_htm
     return pages, len(doc.pages)
 
 
+AUTO_SKIP = {"IT", "US", "OR", "AS", "AT", "IN", "ON", "NO", "AM", "PM", "ID", "CO", "AR", "AP", "PR", "TB"}
+AUTO_SKIP_WORDS = {"average", "spot", "close", "sales", "top line"}
+AUTO_MAX_PER_VOLUME = 8
+
+
+def auto_vocabulary():
+    """Index keys defined in Volume 1, with the text patterns that should point to them."""
+    p = BUILD / "vol01.json"
+    if not p.exists():
+        return []
+    vocab = []
+    for key in json.loads(p.read_text(encoding="utf-8"))["index"]:
+        base = re.sub(r"\s*\(.*?\)", "", key).strip()
+        for part in (x.strip() for x in base.split(" / ")):
+            if len(part) < 2 or part in AUTO_SKIP or part.lower() in AUTO_SKIP_WORDS:
+                continue
+            exact = part.isupper() or len(part) < 4
+            vocab.append((key, part, exact))
+    return vocab
+
+
+def auto_index(body, ctx, vocab):
+    """Anchor the first mention of each Volume 1 term in every section of later volumes."""
+    if not vocab:
+        return body
+    ci = [v for v in vocab if not v[2]]
+    cs = [v for v in vocab if v[2]]
+    alt = lambda vs: "|".join(re.escape(v[1]) for v in sorted(vs, key=lambda v: -len(v[1])))
+    rx_ci = re.compile(r"(?<![\w-])(" + alt(ci) + r")(?![\w-])", re.I)
+    rx_cs = re.compile(r"(?<![\w-])(" + alt(cs) + r")(?![\w-])")
+    keys_ci, keys_cs = {}, {}
+    for k, part, exact in vocab:
+        (keys_cs if exact else keys_ci).setdefault(part if exact else part.lower(), []).append(k)
+    count, seen_in_section = {}, set()
+
+    def block(m):
+        nonlocal seen_in_section
+        tag, attrs, inner = m.group(1), m.group(2) or "", m.group(3)
+        if tag == "h2":
+            seen_in_section = set()
+        if 'href="#' in inner or "<pre" in inner:
+            return m.group(0)
+        text = strip_tags(inner)
+        found = [keys_ci.get(x.lower(), []) for x in rx_ci.findall(text)]
+        found += [keys_cs.get(x, []) for x in rx_cs.findall(text)]
+        new = []
+        for ks in found:
+            for k in ks:
+                if k in seen_in_section or count.get(k, 0) >= AUTO_MAX_PER_VOLUME or k in new:
+                    continue
+                new.append(k)
+        if not new:
+            return m.group(0)
+        aid = ctx.anchor("a")
+        for k in new:
+            seen_in_section.add(k)
+            count[k] = count.get(k, 0) + 1
+            ctx.add_index(k, aid, "auto")
+        return f'<{tag}{attrs}><span id="{aid}"></span>{inner}</{tag}>'
+
+    return re.sub(r"<(h2|h3|p|li|td|dd)(\s[^>]*)?>(.*?)</\1>",
+                  block, body, flags=re.S)
+
+
 def build_volume(vol, parsed, keep_html):
     body, toc, ctx, _ = parsed
+    if vol["num"] != 1:
+        body = auto_index(body, ctx, auto_vocabulary())
     title = f'{M.BOOK_TITLE} — Volume {vol["num"]}: {vol["title"]}'
     full = cover_html(vol) + toc_html(toc, vol["num"]) + body
     out = OUT / f'Volume_{vol["num"]:02d}_{slug(vol["title"]).title().replace("-", "_")}.pdf'

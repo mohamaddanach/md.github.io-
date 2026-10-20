@@ -1,0 +1,2306 @@
+{
+ "num": 9,
+ "title": "Document Library, Master Reference, Exercises and Learning Roadmap",
+ "title_ar": "مكتبة الوثائق والمراجع الرئيسية والتمارين وخطة التعلّم",
+ "file": "Volume_09_Document_Library_Master_Reference_Exercises_And_Learning_Roadmap.pdf",
+ "pages": 81,
+ "toc": [
+  {
+   "kind": "part",
+   "num": "DL",
+   "title": "The Professional Business Document Library",
+   "title_ar": "مكتبة وثائق الأعمال المهنية",
+   "anchor": "v9-part-DL",
+   "chapters": [
+    {
+     "num": 126,
+     "title": "Planning, Financial and Management Documents",
+     "anchor": "ch126",
+     "sections": [
+      {
+       "num": "126.1",
+       "title": "Business plan",
+       "anchor": "s126-1",
+       "page": 6
+      },
+      {
+       "num": "126.2",
+       "title": "Financial forecast",
+       "anchor": "s126-2",
+       "page": 6
+      },
+      {
+       "num": "126.3",
+       "title": "Annual budget",
+       "anchor": "s126-3",
+       "page": 7
+      },
+      {
+       "num": "126.4",
+       "title": "Management report",
+       "anchor": "s126-4",
+       "page": 8
+      },
+      {
+       "num": "126.5",
+       "title": "Income statement, balance sheet and cash flow statement",
+       "anchor": "s126-5",
+       "page": 8
+      },
+      {
+       "num": "126.6",
+       "title": "Financial model",
+       "anchor": "s126-6",
+       "page": 10
+      },
+      {
+       "num": "126.7",
+       "title": "Project budget",
+       "anchor": "s126-7",
+       "page": 10
+      },
+      {
+       "num": "126.8",
+       "title": "Board presentation",
+       "anchor": "s126-8",
+       "page": 11
+      },
+      {
+       "num": "126.9",
+       "title": "Risk register",
+       "anchor": "s126-9",
+       "page": 11
+      },
+      {
+       "num": "126.10",
+       "title": "Meeting minutes",
+       "anchor": "s126-10",
+       "page": 12
+      },
+      {
+       "num": "126.11",
+       "title": "Professional business email",
+       "anchor": "s126-11",
+       "page": 12
+      }
+     ],
+     "page": 6
+    },
+    {
+     "num": 127,
+     "title": "Commercial and Trade Documents",
+     "anchor": "ch127",
+     "sections": [
+      {
+       "num": "127.1",
+       "title": "Purchase order",
+       "anchor": "s127-1",
+       "page": 13
+      },
+      {
+       "num": "127.2",
+       "title": "Request for quotation",
+       "anchor": "s127-2",
+       "page": 13
+      },
+      {
+       "num": "127.3",
+       "title": "Supplier quotation",
+       "anchor": "s127-3",
+       "page": 14
+      },
+      {
+       "num": "127.4",
+       "title": "Procurement comparison sheet",
+       "anchor": "s127-4",
+       "page": 14
+      },
+      {
+       "num": "127.5",
+       "title": "Sales proposal",
+       "anchor": "s127-5",
+       "page": 14
+      },
+      {
+       "num": "127.6",
+       "title": "Sales contract (supply of goods)",
+       "anchor": "s127-6",
+       "page": 14
+      },
+      {
+       "num": "127.7",
+       "title": "Distribution agreement",
+       "anchor": "s127-7",
+       "page": 15
+      },
+      {
+       "num": "127.8",
+       "title": "Non-disclosure agreement",
+       "anchor": "s127-8",
+       "page": 15
+      },
+      {
+       "num": "127.9",
+       "title": "Commercial invoice",
+       "anchor": "s127-9",
+       "page": 16
+      },
+      {
+       "num": "127.10",
+       "title": "Packing list",
+       "anchor": "s127-10",
+       "page": 16
+      },
+      {
+       "num": "127.11",
+       "title": "Bill of lading",
+       "anchor": "s127-11",
+       "page": 16
+      },
+      {
+       "num": "127.12",
+       "title": "Certificate of origin",
+       "anchor": "s127-12",
+       "page": 17
+      },
+      {
+       "num": "127.13",
+       "title": "Insurance certificate",
+       "anchor": "s127-13",
+       "page": 18
+      },
+      {
+       "num": "127.14",
+       "title": "Shipment cost calculation",
+       "anchor": "s127-14",
+       "page": 18
+      },
+      {
+       "num": "127.15",
+       "title": "Commodity trade profit-and-loss statement",
+       "anchor": "s127-15",
+       "page": 19
+      }
+     ],
+     "page": 13
+    },
+    {
+     "num": 128,
+     "title": "Banking, Credit and Investment Documents",
+     "anchor": "ch128",
+     "sections": [
+      {
+       "num": "128.1",
+       "title": "Letter of credit application",
+       "anchor": "s128-1",
+       "page": 21
+      },
+      {
+       "num": "128.2",
+       "title": "Illustrative letter of credit (SWIFT MT700-style fields)",
+       "anchor": "s128-2",
+       "page": 22
+      },
+      {
+       "num": "128.3",
+       "title": "Documentary collection instructions",
+       "anchor": "s128-3",
+       "page": 23
+      },
+      {
+       "num": "128.4",
+       "title": "Credit application (to a bank or supplier)",
+       "anchor": "s128-4",
+       "page": 24
+      },
+      {
+       "num": "128.5",
+       "title": "Credit analysis memorandum",
+       "anchor": "s128-5",
+       "page": 24
+      },
+      {
+       "num": "128.6",
+       "title": "Loan term sheet",
+       "anchor": "s128-6",
+       "page": 24
+      },
+      {
+       "num": "128.7",
+       "title": "Commercial loan proposal",
+       "anchor": "s128-7",
+       "page": 25
+      },
+      {
+       "num": "128.8",
+       "title": "Investment memorandum",
+       "anchor": "s128-8",
+       "page": 25
+      },
+      {
+       "num": "128.9",
+       "title": "Business valuation report",
+       "anchor": "s128-9",
+       "page": 26
+      },
+      {
+       "num": "128.10",
+       "title": "Due diligence checklist",
+       "anchor": "s128-10",
+       "page": 27
+      }
+     ],
+     "page": 21
+    }
+   ],
+   "page": 5
+  },
+  {
+   "kind": "part",
+   "num": "XXIII",
+   "title": "Master Reference Materials",
+   "title_ar": "المواد المرجعية الرئيسية",
+   "anchor": "v9-part-XXIII",
+   "chapters": [
+    {
+     "num": 129,
+     "title": "Acronyms, Calculations and Financial Ratios",
+     "anchor": "ch129",
+     "sections": [
+      {
+       "num": "129.1",
+       "title": "Directory of financial and commercial acronyms",
+       "anchor": "s129-1",
+       "page": 30
+      },
+      {
+       "num": "129.2",
+       "title": "Guide to common business calculations",
+       "anchor": "s129-2",
+       "page": 36
+      },
+      {
+       "num": "129.3",
+       "title": "Guide to essential financial ratios",
+       "anchor": "s129-3",
+       "page": 37
+      }
+     ],
+     "page": 30
+    },
+    {
+     "num": 130,
+     "title": "Guides to Documents, Bank Products and Contracts",
+     "anchor": "ch130",
+     "sections": [
+      {
+       "num": "130.1",
+       "title": "Guide to international trade documents",
+       "anchor": "s130-1",
+       "page": 38
+      },
+      {
+       "num": "130.2",
+       "title": "Guide to major banking products and instruments",
+       "anchor": "s130-2",
+       "page": 39
+      },
+      {
+       "num": "130.3",
+       "title": "Guide to common commercial contracts",
+       "anchor": "s130-3",
+       "page": 39
+      },
+      {
+       "num": "130.4",
+       "title": "Comparison guide for frequently confused concepts",
+       "anchor": "s130-4",
+       "page": 40
+      }
+     ],
+     "page": 38
+    },
+    {
+     "num": 131,
+     "title": "Guides to Departments, Job Titles, Institutions, Standards and Risks",
+     "anchor": "ch131",
+     "sections": [
+      {
+       "num": "131.1",
+       "title": "Guide to business departments",
+       "anchor": "s131-1",
+       "page": 41
+      },
+      {
+       "num": "131.2",
+       "title": "Guide to business job titles",
+       "anchor": "s131-2",
+       "page": 42
+      },
+      {
+       "num": "131.3",
+       "title": "Guide to international business institutions",
+       "anchor": "s131-3",
+       "page": 43
+      },
+      {
+       "num": "131.4",
+       "title": "Guide to international standards and rule sets",
+       "anchor": "s131-4",
+       "page": 44
+      },
+      {
+       "num": "131.5",
+       "title": "Guide to business risks",
+       "anchor": "s131-5",
+       "page": 45
+      }
+     ],
+     "page": 41
+    },
+    {
+     "num": 132,
+     "title": "Communication Terminology, Transaction Checklist and Learning Resources",
+     "anchor": "ch132",
+     "sections": [
+      {
+       "num": "132.1",
+       "title": "Guide to professional communication terminology",
+       "anchor": "s132-1",
+       "page": 47
+      },
+      {
+       "num": "132.2",
+       "title": "Master transaction checklist",
+       "anchor": "s132-2",
+       "page": 48
+      },
+      {
+       "num": "132.3",
+       "title": "Recommended textbooks and learning resources",
+       "anchor": "s132-3",
+       "page": 49
+      },
+      {
+       "num": "132.4",
+       "title": "Official sources",
+       "anchor": "s132-4",
+       "page": 50
+      },
+      {
+       "num": "132.5",
+       "title": "Structured concept index",
+       "anchor": "s132-5",
+       "page": 51
+      },
+      {
+       "num": "132.6",
+       "title": "Personal knowledge assessment framework",
+       "anchor": "s132-6",
+       "page": 51
+      }
+     ],
+     "page": 47
+    }
+   ],
+   "page": 29
+  },
+  {
+   "kind": "part",
+   "num": "EX",
+   "title": "Exercise Bank and Solutions",
+   "title_ar": "بنك التمارين والحلول",
+   "anchor": "v9-part-EX",
+   "chapters": [
+    {
+     "num": 133,
+     "title": "Exercise Bank I: Terminology, Calculations, Accounting, Company Analysis and Business Models",
+     "anchor": "ch133",
+     "sections": [
+      {
+       "num": "133.1",
+       "title": "Set 1 — Business terminology",
+       "anchor": "s133-1",
+       "page": 54
+      },
+      {
+       "num": "133.2",
+       "title": "Set 2 — Business calculations",
+       "anchor": "s133-2",
+       "page": 55
+      },
+      {
+       "num": "133.3",
+       "title": "Set 3 — Accounting",
+       "anchor": "s133-3",
+       "page": 55
+      },
+      {
+       "num": "133.4",
+       "title": "Set 4 — Company analysis",
+       "anchor": "s133-4",
+       "page": 56
+      },
+      {
+       "num": "133.5",
+       "title": "Set 5 — Business model analysis",
+       "anchor": "s133-5",
+       "page": 57
+      }
+     ],
+     "page": 54
+    },
+    {
+     "num": 134,
+     "title": "Exercise Bank II: Banking, Trade Finance, Import-Export, Contracts and Negotiation",
+     "anchor": "ch134",
+     "sections": [
+      {
+       "num": "134.1",
+       "title": "Set 6 — Banking and credit",
+       "anchor": "s134-1",
+       "page": 59
+      },
+      {
+       "num": "134.2",
+       "title": "Set 7 — Trade finance",
+       "anchor": "s134-2",
+       "page": 59
+      },
+      {
+       "num": "134.3",
+       "title": "Set 8 — Import and export operations",
+       "anchor": "s134-3",
+       "page": 60
+      },
+      {
+       "num": "134.4",
+       "title": "Set 9 — Contracts",
+       "anchor": "s134-4",
+       "page": 61
+      },
+      {
+       "num": "134.5",
+       "title": "Set 10 — Negotiation",
+       "anchor": "s134-5",
+       "page": 61
+      }
+     ],
+     "page": 59
+    },
+    {
+     "num": 135,
+     "title": "Exercise Bank III: Investment, Risk, Management Decisions, Email Writing and Meetings",
+     "anchor": "ch135",
+     "sections": [
+      {
+       "num": "135.1",
+       "title": "Set 11 — Investment",
+       "anchor": "s135-1",
+       "page": 63
+      },
+      {
+       "num": "135.2",
+       "title": "Set 12 — Risk management",
+       "anchor": "s135-2",
+       "page": 63
+      },
+      {
+       "num": "135.3",
+       "title": "Set 13 — Management decisions",
+       "anchor": "s135-3",
+       "page": 64
+      },
+      {
+       "num": "135.4",
+       "title": "Set 14 — Business email writing",
+       "anchor": "s135-4",
+       "page": 65
+      },
+      {
+       "num": "135.5",
+       "title": "Set 15 — Meeting simulations",
+       "anchor": "s135-5",
+       "page": 66
+      }
+     ],
+     "page": 63
+    }
+   ],
+   "page": 53
+  },
+  {
+   "kind": "part",
+   "num": "RM",
+   "title": "Learning Roadmap and Final Assessment",
+   "title_ar": "خطة التعلّم والتقييم النهائي",
+   "anchor": "v9-part-RM",
+   "chapters": [
+    {
+     "num": 136,
+     "title": "The Six-Month Learning Roadmap",
+     "anchor": "ch136",
+     "sections": [
+      {
+       "num": "136.1",
+       "title": "Design of the programme",
+       "anchor": "s136-1",
+       "page": 69
+      },
+      {
+       "num": "136.2",
+       "title": "Month 1 — The language and the map of business",
+       "anchor": "s136-2",
+       "page": 69
+      },
+      {
+       "num": "136.3",
+       "title": "Month 2 — How businesses work and how they are measured",
+       "anchor": "s136-3",
+       "page": 70
+      },
+      {
+       "num": "136.4",
+       "title": "Month 3 — Analysis, corporate finance and economics",
+       "anchor": "s136-4",
+       "page": 70
+      },
+      {
+       "num": "136.5",
+       "title": "Month 4 — Banking, international trade and treasury",
+       "anchor": "s136-5",
+       "page": 70
+      },
+      {
+       "num": "136.6",
+       "title": "Month 5 — Commerce, operations, markets and risk",
+       "anchor": "s136-6",
+       "page": 71
+      },
+      {
+       "num": "136.7",
+       "title": "Month 6 — Law, management, technology, communication and integration",
+       "anchor": "s136-7",
+       "page": 72
+      },
+      {
+       "num": "136.8",
+       "title": "Capstone project",
+       "anchor": "s136-8",
+       "page": 72
+      },
+      {
+       "num": "136.9",
+       "title": "Reviews and self-assessments",
+       "anchor": "s136-9",
+       "page": 73
+      }
+     ],
+     "page": 69
+    },
+    {
+     "num": 137,
+     "title": "Final Assessment",
+     "anchor": "ch137",
+     "sections": [
+      {
+       "num": "137.1",
+       "title": "Instructions",
+       "anchor": "s137-1",
+       "page": 74
+      },
+      {
+       "num": "137.2",
+       "title": "Questions",
+       "anchor": "s137-2",
+       "page": 74
+      },
+      {
+       "num": "137.3",
+       "title": "Answer key",
+       "anchor": "s137-3",
+       "page": 75
+      }
+     ],
+     "page": 74
+    }
+   ],
+   "page": 68
+  }
+ ],
+ "terms": [],
+ "index": {
+  "Insured / insurer": [
+   5,
+   18,
+   38,
+   64
+  ],
+  "Agenda / minutes": [
+   5,
+   11,
+   12,
+   27,
+   47,
+   66,
+   69,
+   73
+  ],
+  "Cash flow": [
+   6,
+   7,
+   8,
+   10,
+   24,
+   25,
+   31
+  ],
+  "Risk register": [
+   6,
+   11,
+   41,
+   71,
+   72,
+   75
+  ],
+  "Executive / non-executive director": [
+   6,
+   11,
+   14,
+   25,
+   26,
+   31,
+   47,
+   49
+  ],
+  "Business model": [
+   6,
+   57,
+   70
+  ],
+  "Go-to-market (GTM)": [
+   6
+  ],
+  "Working capital": [
+   6,
+   7,
+   10,
+   27,
+   36,
+   37,
+   48,
+   54
+  ],
+  "Traction": [
+   6
+  ],
+  "Value proposition": [
+   6
+  ],
+  "Differentiation": [
+   6
+  ],
+  "Unit economics": [
+   6
+  ],
+  "Revenue": [
+   6,
+   7,
+   8,
+   10,
+   12,
+   27,
+   30
+  ],
+  "CAC (Customer acquisition cost)": [
+   6,
+   31,
+   36,
+   41,
+   57
+  ],
+  "CLV / LTV (Customer lifetime value)": [
+   6,
+   31,
+   36,
+   57
+  ],
+  "LTV": [
+   6,
+   31,
+   36,
+   57
+  ],
+  "Mitigation": [
+   6
+  ],
+  "Liquidity": [
+   7,
+   33,
+   37,
+   39,
+   41,
+   44,
+   45,
+   54
+  ],
+  "Liquidity (market)": [
+   7,
+   33,
+   37,
+   39,
+   41,
+   44,
+   45,
+   54
+  ],
+  "Covenant": [
+   7,
+   8,
+   11,
+   24,
+   25,
+   40,
+   54,
+   59
+  ],
+  "Margin": [
+   7,
+   12,
+   18,
+   22,
+   24,
+   34,
+   36,
+   37
+  ],
+  "Gross profit": [
+   7,
+   8,
+   37,
+   56,
+   58,
+   75,
+   77
+  ],
+  "EBITDA": [
+   7,
+   11,
+   25,
+   32,
+   37,
+   54,
+   56
+  ],
+  "Free cash flow": [
+   7,
+   32
+  ],
+  "Cost centre / profit centre": [
+   7
+  ],
+  "Headcount": [
+   7,
+   10
+  ],
+  "COGS (Cost of goods sold)": [
+   7,
+   31,
+   76
+  ],
+  "Budget owner": [
+   8
+  ],
+  "FTE (full-time equivalent)": [
+   8,
+   32
+  ],
+  "Operating profit": [
+   8,
+   34
+  ],
+  "Profit / Net income": [
+   8,
+   10,
+   34,
+   37,
+   54,
+   55,
+   56
+  ],
+  "Net income": [
+   8,
+   37,
+   56,
+   74
+  ],
+  "Equity": [
+   8,
+   26,
+   31,
+   36,
+   37,
+   39,
+   59,
+   63
+  ],
+  "Depreciation": [
+   8,
+   10,
+   32,
+   54,
+   56,
+   74
+  ],
+  "Share capital": [
+   9
+  ],
+  "Retained earnings": [
+   9
+  ],
+  "Compliance": [
+   9,
+   13,
+   14,
+   15,
+   27,
+   30,
+   38,
+   41
+  ],
+  "Asset class": [
+   10
+  ],
+  "NPV (Net present value)": [
+   10,
+   11,
+   34,
+   36,
+   64,
+   66,
+   70
+  ],
+  "IRR (Internal rate of return)": [
+   10,
+   11,
+   25,
+   33,
+   36,
+   66,
+   70
+  ],
+  "CRM": [
+   11,
+   31
+  ],
+  "Change management": [
+   11
+  ],
+  "Cloud computing": [
+   11
+  ],
+  "Company secretary": [
+   11,
+   42
+  ],
+  "CEO (Chief Executive Officer)": [
+   11,
+   31,
+   42
+  ],
+  "Board of directors": [
+   11
+  ],
+  "Capital expenditure": [
+   11,
+   76
+  ],
+  "Drawdown": [
+   11,
+   25
+  ],
+  "Leverage": [
+   11,
+   25,
+   36,
+   37,
+   44,
+   54,
+   57,
+   59
+  ],
+  "Market risk": [
+   11
+  ],
+  "KRI": [
+   11,
+   33
+  ],
+  "Tender": [
+   12,
+   59
+  ],
+  "Deadline": [
+   12,
+   47,
+   65,
+   76
+  ],
+  "Purchase order (PO)": [
+   13,
+   34
+  ],
+  "Quotation": [
+   13,
+   14,
+   34,
+   38,
+   40,
+   51
+  ],
+  "Procurement": [
+   13,
+   14,
+   18,
+   33,
+   41,
+   42
+  ],
+  "Commercial invoice": [
+   13,
+   16,
+   20,
+   21,
+   23,
+   38,
+   40
+  ],
+  "Packing list": [
+   13,
+   16,
+   20,
+   23,
+   38,
+   65
+  ],
+  "Bill of lading": [
+   13,
+   16,
+   30,
+   38,
+   65,
+   74
+  ],
+  "Certificate of origin (CO)": [
+   13,
+   17,
+   21,
+   23,
+   31,
+   38
+  ],
+  "Accounts payable": [
+   13,
+   30
+  ],
+  "Incoterms": [
+   13,
+   14,
+   16,
+   18,
+   20,
+   21,
+   23
+  ],
+  "Payment terms": [
+   13,
+   14,
+   48,
+   61
+  ],
+  "Incoterms® 2020": [
+   13,
+   15,
+   21,
+   44,
+   49,
+   60,
+   75
+  ],
+  "Guarantee (bank)": [
+   13,
+   15,
+   24,
+   30,
+   48,
+   54
+  ],
+  "B/L (Bill of lading)": [
+   13,
+   14,
+   15,
+   16,
+   19,
+   21,
+   22
+  ],
+  "DoA (Delegation of authority)": [
+   13,
+   32
+  ],
+  "Specifications": [
+   13,
+   14
+  ],
+  "Basis": [
+   14,
+   18,
+   20,
+   24,
+   36,
+   38,
+   76
+  ],
+  "Lead time": [
+   14
+  ],
+  "Tolerance (e.g., ±10% MOLOO)": [
+   14,
+   21,
+   22,
+   48
+  ],
+  "Landed cost": [
+   14,
+   18,
+   36,
+   48,
+   51,
+   60,
+   62,
+   72
+  ],
+  "Force majeure": [
+   14,
+   32,
+   48,
+   61
+  ],
+  "Sanctions": [
+   14,
+   27,
+   46,
+   48,
+   50
+  ],
+  "Limitation of liability": [
+   14
+  ],
+  "Anti-bribery": [
+   15,
+   27
+  ],
+  "Liability": [
+   15,
+   39,
+   48,
+   56,
+   61,
+   75
+  ],
+  "Arbitration": [
+   15,
+   43
+  ],
+  "Exclusivity": [
+   15,
+   40
+  ],
+  "Listed / unlisted company": [
+   15,
+   17,
+   70,
+   72
+  ],
+  "Confidentiality / NDA": [
+   16,
+   34,
+   40
+  ],
+  "HS code": [
+   16,
+   17,
+   19
+  ],
+  "HS (HS code)": [
+   16,
+   17,
+   19,
+   33
+  ],
+  "Consignee / shipper": [
+   16,
+   17,
+   20,
+   38,
+   54
+  ],
+  "Notify party": [
+   16
+  ],
+  "Voyage / time charter": [
+   16,
+   18
+  ],
+  "Policy": [
+   18,
+   37,
+   43,
+   50,
+   59,
+   64
+  ],
+  "Endorsement": [
+   18
+  ],
+  "Customs value": [
+   18,
+   44
+  ],
+  "D&D (Demurrage and detention)": [
+   18,
+   31
+  ],
+  "Notarisation / legalisation / apostille": [
+   19
+  ],
+  "Customs broker": [
+   19
+  ],
+  "Tariff": [
+   19,
+   43,
+   50
+  ],
+  "Hedging": [
+   19,
+   25,
+   28,
+   39,
+   48,
+   64,
+   74,
+   76
+  ],
+  "Demurrage": [
+   19,
+   40,
+   74,
+   76
+  ],
+  "Letter of credit": [
+   21,
+   22,
+   33,
+   54
+  ],
+  "Documentary collection": [
+   21,
+   23,
+   39,
+   59
+  ],
+  "Term sheet": [
+   21,
+   24,
+   27
+  ],
+  "Due diligence": [
+   21,
+   26,
+   27,
+   31
+  ],
+  "Transhipment": [
+   21,
+   22
+  ],
+  "Trade finance": [
+   21,
+   30,
+   42,
+   43,
+   49,
+   51,
+   59
+  ],
+  "Tenor": [
+   23,
+   24,
+   25,
+   38,
+   76
+  ],
+  "IBAN / SWIFT BIC": [
+   23,
+   33
+  ],
+  "Authorised signatory": [
+   24
+  ],
+  "Conditions precedent": [
+   24,
+   26
+  ],
+  "Headroom": [
+   24,
+   41,
+   59,
+   77
+  ],
+  "Term loan": [
+   25,
+   39,
+   59,
+   76
+  ],
+  "Bullet / balloon": [
+   25
+  ],
+  "Assignment": [
+   25
+  ],
+  "Net debt": [
+   25,
+   27,
+   36,
+   37,
+   55,
+   57,
+   59,
+   63
+  ],
+  "DSCR": [
+   25,
+   32,
+   37,
+   59,
+   74,
+   76
+  ],
+  "KYC (Know your customer)": [
+   25,
+   33,
+   43,
+   48
+  ],
+  "Exit": [
+   25,
+   40
+  ],
+  "MOIC": [
+   25,
+   33
+  ],
+  "DD (Due diligence)": [
+   26,
+   32
+  ],
+  "Going concern": [
+   26
+  ],
+  "Reconciliation": [
+   26
+  ],
+  "WACC (Weighted average cost of capital)": [
+   26,
+   36,
+   37,
+   70
+  ],
+  "Cap table": [
+   27
+  ],
+  "Churn": [
+   27,
+   36,
+   41,
+   57
+  ],
+  "Pipeline": [
+   27,
+   41
+  ],
+  "Utilisation": [
+   27,
+   41
+  ],
+  "Supply chain": [
+   27,
+   41,
+   42,
+   45,
+   50,
+   51,
+   64
+  ],
+  "Cybersecurity": [
+   27,
+   42
+  ],
+  "Data protection": [
+   27
+  ],
+  "AML (Anti-money laundering)": [
+   27,
+   30,
+   39,
+   43,
+   44,
+   46,
+   50
+  ],
+  "AML / CFT": [
+   27,
+   30,
+   39,
+   43,
+   44,
+   46,
+   50
+  ],
+  "Independent inspector": [
+   27
+  ],
+  "Waiver": [
+   27
+  ],
+  "Negative pledge": [
+   28,
+   54,
+   74
+  ],
+  "Prepayment": [
+   28
+  ],
+  "Credit memo / credit proposal": [
+   29,
+   70,
+   72
+  ],
+  "STR / SAR": [
+   30
+  ],
+  "Anti-money laundering": [
+   30
+  ],
+  "Accounts receivable": [
+   30,
+   56,
+   65
+  ],
+  "Advance payment": [
+   30,
+   59
+  ],
+  "API (Application programming interface)": [
+   30
+  ],
+  "Application programming interface": [
+   30
+  ],
+  "SaaS (Software as a service)": [
+   30,
+   40,
+   57
+  ],
+  "US GAAP": [
+   30,
+   43,
+   44
+  ],
+  "AUM": [
+   30
+  ],
+  "Air waybill (AWB)": [
+   30,
+   38
+  ],
+  "B2B / B2C / B2G": [
+   30
+  ],
+  "BATNA": [
+   30,
+   61
+  ],
+  "Business continuity plan (BCP)": [
+   30
+  ],
+  "BG / LG (Bank guarantee)": [
+   30
+  ],
+  "Bank guarantee": [
+   30,
+   39,
+   59
+  ],
+  "BI (Business intelligence)": [
+   30
+  ],
+  "Business intelligence": [
+   30
+  ],
+  "Business interruption": [
+   30
+  ],
+  "Fintech": [
+   30
+  ],
+  "bp (Basis point)": [
+   30
+  ],
+  "Basis point": [
+   30,
+   74
+  ],
+  "Customer acquisition cost": [
+   31
+  ],
+  "CAPEX (Capital expenditure)": [
+   31
+  ],
+  "OPEX (Operating expenditure)": [
+   31
+  ],
+  "Operating expenditure": [
+   31
+  ],
+  "CAPM": [
+   31,
+   36
+  ],
+  "Asset": [
+   31,
+   37,
+   39,
+   40,
+   54,
+   59
+  ],
+  "Capital adequacy ratio (CAR)": [
+   31
+  ],
+  "CDD / EDD": [
+   31
+  ],
+  "Chart of accounts (CoA)": [
+   31
+  ],
+  "Cost of goods sold": [
+   31,
+   56
+  ],
+  "CPI / PPI": [
+   31
+  ],
+  "ERP (Enterprise resource planning)": [
+   31,
+   36
+  ],
+  "Enterprise resource planning": [
+   31
+  ],
+  "Demurrage and detention": [
+   31
+  ],
+  "Delegation of authority": [
+   32,
+   49
+  ],
+  "Delegation of authority (DoA)": [
+   32,
+   49
+  ],
+  "Credit risk": [
+   32,
+   42
+  ],
+  "EBIT (Operating profit)": [
+   32,
+   36,
+   37,
+   56,
+   76
+  ],
+  "EBIT": [
+   32,
+   36,
+   37,
+   56,
+   76
+  ],
+  "Amortisation": [
+   32,
+   54
+  ],
+  "Bad debt / ECL": [
+   32,
+   56,
+   76
+  ],
+  "EOQ": [
+   32,
+   36
+  ],
+  "EV (Enterprise value)": [
+   32,
+   36,
+   37,
+   63,
+   75,
+   76
+  ],
+  "Enterprise value": [
+   32
+  ],
+  "FATF": [
+   32,
+   43,
+   44,
+   50
+  ],
+  "FCF (Free cash flow)": [
+   32,
+   36,
+   37
+  ],
+  "FCL / LCL": [
+   32,
+   60
+  ],
+  "FM (Force majeure)": [
+   32
+  ],
+  "GDP (Gross domestic product)": [
+   32
+  ],
+  "Gross domestic product": [
+   32
+  ],
+  "IFRS / IAS": [
+   33,
+   37,
+   43,
+   44,
+   50
+  ],
+  "Internal rate of return": [
+   33
+  ],
+  "KPI (Key performance indicator)": [
+   33,
+   72
+  ],
+  "OKR (Objectives and key results)": [
+   33
+  ],
+  "Key performance indicator": [
+   33
+  ],
+  "Objectives and key results": [
+   33
+  ],
+  "Know your customer": [
+   33
+  ],
+  "Liquidated damages (LDs)": [
+   33,
+   61
+  ],
+  "MoU (Memorandum of understanding)": [
+   33
+  ],
+  "Letter of intent (LOI)": [
+   33
+  ],
+  "Memorandum of understanding": [
+   33
+  ],
+  "Discount rate": [
+   33
+  ],
+  "NAV": [
+   34
+  ],
+  "NPL (Non-performing loan)": [
+   34,
+   37
+  ],
+  "Non-performing loan": [
+   34
+  ],
+  "Net promoter score (NPS)": [
+   34
+  ],
+  "Net present value": [
+   34
+  ],
+  "PEP": [
+   34,
+   48
+  ],
+  "PMF (Product-market fit)": [
+   34
+  ],
+  "Product-market fit": [
+   34
+  ],
+  "RACI": [
+   34,
+   49
+  ],
+  "RCF (Revolving credit facility)": [
+   34,
+   39,
+   54
+  ],
+  "Revolving credit facility": [
+   34,
+   55,
+   59,
+   76
+  ],
+  "RFP / RFQ / RFI": [
+   34
+  ],
+  "ROE (Return on equity)": [
+   34,
+   37
+  ],
+  "ROI (Return on investment)": [
+   34
+  ],
+  "RPA": [
+   35
+  ],
+  "IaaS / PaaS": [
+   35
+  ],
+  "Convertible note / SAFE": [
+   35
+  ],
+  "SKU": [
+   35
+  ],
+  "SLA": [
+   35
+  ],
+  "SPV (Special purpose vehicle)": [
+   35
+  ],
+  "Special purpose vehicle": [
+   35
+  ],
+  "Total cost of ownership (TCO)": [
+   35,
+   48
+  ],
+  "TEU / FEU": [
+   35
+  ],
+  "Ultimate beneficial owner (UBO)": [
+   35,
+   54
+  ],
+  "Venture capital (VC)": [
+   35
+  ],
+  "Indemnity": [
+   36
+  ],
+  "Weighted average cost of capital": [
+   36
+  ],
+  "WC (Working capital)": [
+   36
+  ],
+  "WMS / TMS": [
+   36
+  ],
+  "YTD (Year-to-date)": [
+   36
+  ],
+  "Yield": [
+   36,
+   37,
+   41,
+   63,
+   75
+  ],
+  "Markup": [
+   36,
+   54,
+   55,
+   74,
+   76
+  ],
+  "Reorder point": [
+   36
+  ],
+  "Safety stock": [
+   36,
+   45
+  ],
+  "Portfolio": [
+   36,
+   63,
+   64
+  ],
+  "Volatility": [
+   36,
+   63
+  ],
+  "GP (Gross profit)": [
+   36,
+   77
+  ],
+  "Shareholder": [
+   37
+  ],
+  "Productivity": [
+   37
+  ],
+  "Goodwill": [
+   37
+  ],
+  "Turnover": [
+   37,
+   41
+  ],
+  "Market cap (Market capitalisation)": [
+   37
+  ],
+  "Dividend": [
+   37,
+   63
+  ],
+  "Solvency": [
+   37,
+   54
+  ],
+  "Loss ratio": [
+   37
+  ],
+  "Underwriting": [
+   37,
+   39,
+   45
+  ],
+  "Broker": [
+   38,
+   76
+  ],
+  "Warehouse receipt": [
+   38
+  ],
+  "Overdraft": [
+   39,
+   59
+  ],
+  "Residual value": [
+   39,
+   56
+  ],
+  "Factoring": [
+   39,
+   74
+  ],
+  "Dilution": [
+   39
+  ],
+  "Country risk": [
+   39,
+   43,
+   60
+  ],
+  "Syndicated loan": [
+   39
+  ],
+  "Commission": [
+   40,
+   57
+  ],
+  "Licence": [
+   40
+  ],
+  "Duration": [
+   40
+  ],
+  "CPs (Conditions precedent)": [
+   40
+  ],
+  "Joint venture (JV)": [
+   40
+  ],
+  "Charter party": [
+   40
+  ],
+  "Risk transfer": [
+   40
+  ],
+  "Premium": [
+   40,
+   60,
+   64
+  ],
+  "Premium / differential": [
+   40,
+   60,
+   64
+  ],
+  "Collateral": [
+   40,
+   48,
+   54
+  ],
+  "Forecast accuracy (MAPE)": [
+   41
+  ],
+  "Win rate": [
+   41
+  ],
+  "Lead": [
+   41,
+   51
+  ],
+  "Uptime": [
+   42
+  ],
+  "Chief Executive Officer": [
+   42
+  ],
+  "Relationship manager (RM)": [
+   42,
+   66
+  ],
+  "Monetary policy": [
+   44
+  ],
+  "Basel III": [
+   44
+  ],
+  "Corporate governance": [
+   45
+  ],
+  "Marine cargo insurance": [
+   45
+  ],
+  "Diversification": [
+   45,
+   63
+  ],
+  "Diversification (corporate)": [
+   45,
+   63
+  ],
+  "Segregation of duties": [
+   45,
+   64
+  ],
+  "Ransomware": [
+   46
+  ],
+  "Escalation": [
+   47
+  ],
+  "Stakeholder": [
+   47
+  ],
+  "Deliverable": [
+   47
+  ],
+  "Bottom line": [
+   47
+  ],
+  "Track record": [
+   48
+  ],
+  "Competitive advantage": [
+   49
+  ],
+  "Lean / Six Sigma": [
+   49
+  ],
+  "Board resolution": [
+   54
+  ],
+  "Long / short position": [
+   54
+  ],
+  "Arbitrage": [
+   55
+  ],
+  "Deferred revenue": [
+   56,
+   74
+  ],
+  "Rule of thumb": [
+   58
+  ],
+  "Open account": [
+   59
+  ],
+  "Damages": [
+   61,
+   77
+  ],
+  "ZOPA": [
+   61
+  ],
+  "Par / face value": [
+   63
+  ],
+  "Coupon": [
+   63
+  ],
+  "FIFO / weighted average": [
+   63
+  ],
+  "Claim": [
+   63
+  ],
+  "Subsidiary": [
+   66,
+   75,
+   77
+  ],
+  "Performance review": [
+   66
+  ],
+  "Trial balance (TB)": [
+   70
+  ],
+  "TVM (Time value of money)": [
+   70
+  ],
+  "Dashboard": [
+   72
+  ],
+  "Consolidation": [
+   72
+  ],
+  "Speculation": [
+   74,
+   76
+  ],
+  "Free time": [
+   75
+  ],
+  "Risk appetite": [
+   77
+  ]
+ },
+ "main": {
+  "Insured / insurer": [],
+  "Agenda / minutes": [],
+  "Cash flow": [],
+  "Risk register": [],
+  "Executive / non-executive director": [],
+  "Business model": [],
+  "Go-to-market (GTM)": [],
+  "Working capital": [],
+  "Traction": [],
+  "Value proposition": [],
+  "Differentiation": [],
+  "Unit economics": [],
+  "Revenue": [],
+  "CAC (Customer acquisition cost)": [],
+  "CLV / LTV (Customer lifetime value)": [],
+  "LTV": [],
+  "Mitigation": [],
+  "Liquidity": [],
+  "Liquidity (market)": [],
+  "Covenant": [],
+  "Margin": [],
+  "Gross profit": [],
+  "EBITDA": [],
+  "Free cash flow": [],
+  "Cost centre / profit centre": [],
+  "Headcount": [],
+  "COGS (Cost of goods sold)": [],
+  "Budget owner": [],
+  "FTE (full-time equivalent)": [],
+  "Operating profit": [],
+  "Profit / Net income": [],
+  "Net income": [],
+  "Equity": [],
+  "Depreciation": [],
+  "Share capital": [],
+  "Retained earnings": [],
+  "Compliance": [],
+  "Asset class": [],
+  "NPV (Net present value)": [],
+  "IRR (Internal rate of return)": [],
+  "CRM": [],
+  "Change management": [],
+  "Cloud computing": [],
+  "Company secretary": [],
+  "CEO (Chief Executive Officer)": [],
+  "Board of directors": [],
+  "Capital expenditure": [],
+  "Drawdown": [],
+  "Leverage": [],
+  "Market risk": [],
+  "KRI": [],
+  "Tender": [],
+  "Deadline": [],
+  "Purchase order (PO)": [],
+  "Quotation": [],
+  "Procurement": [],
+  "Commercial invoice": [],
+  "Packing list": [],
+  "Bill of lading": [],
+  "Certificate of origin (CO)": [],
+  "Accounts payable": [],
+  "Incoterms": [],
+  "Payment terms": [],
+  "Incoterms® 2020": [],
+  "Guarantee (bank)": [],
+  "B/L (Bill of lading)": [],
+  "DoA (Delegation of authority)": [],
+  "Specifications": [],
+  "Basis": [],
+  "Lead time": [],
+  "Tolerance (e.g., ±10% MOLOO)": [],
+  "Landed cost": [],
+  "Force majeure": [],
+  "Sanctions": [],
+  "Limitation of liability": [],
+  "Anti-bribery": [],
+  "Liability": [],
+  "Arbitration": [],
+  "Exclusivity": [],
+  "Listed / unlisted company": [],
+  "Confidentiality / NDA": [],
+  "HS code": [],
+  "HS (HS code)": [],
+  "Consignee / shipper": [],
+  "Notify party": [],
+  "Voyage / time charter": [],
+  "Policy": [],
+  "Endorsement": [],
+  "Customs value": [],
+  "D&D (Demurrage and detention)": [],
+  "Notarisation / legalisation / apostille": [],
+  "Customs broker": [],
+  "Tariff": [],
+  "Hedging": [],
+  "Demurrage": [],
+  "Letter of credit": [],
+  "Documentary collection": [],
+  "Term sheet": [],
+  "Due diligence": [],
+  "Transhipment": [],
+  "Trade finance": [],
+  "Tenor": [],
+  "IBAN / SWIFT BIC": [],
+  "Authorised signatory": [],
+  "Conditions precedent": [],
+  "Headroom": [],
+  "Term loan": [],
+  "Bullet / balloon": [],
+  "Assignment": [],
+  "Net debt": [],
+  "DSCR": [],
+  "KYC (Know your customer)": [],
+  "Exit": [],
+  "MOIC": [],
+  "DD (Due diligence)": [],
+  "Going concern": [],
+  "Reconciliation": [],
+  "WACC (Weighted average cost of capital)": [],
+  "Cap table": [],
+  "Churn": [],
+  "Pipeline": [],
+  "Utilisation": [],
+  "Supply chain": [],
+  "Cybersecurity": [],
+  "Data protection": [],
+  "AML (Anti-money laundering)": [],
+  "AML / CFT": [],
+  "Independent inspector": [],
+  "Waiver": [],
+  "Negative pledge": [],
+  "Prepayment": [],
+  "Credit memo / credit proposal": [],
+  "STR / SAR": [],
+  "Anti-money laundering": [],
+  "Accounts receivable": [],
+  "Advance payment": [],
+  "API (Application programming interface)": [],
+  "Application programming interface": [],
+  "SaaS (Software as a service)": [],
+  "US GAAP": [],
+  "AUM": [],
+  "Air waybill (AWB)": [],
+  "B2B / B2C / B2G": [],
+  "BATNA": [],
+  "Business continuity plan (BCP)": [],
+  "BG / LG (Bank guarantee)": [],
+  "Bank guarantee": [],
+  "BI (Business intelligence)": [],
+  "Business intelligence": [],
+  "Business interruption": [],
+  "Fintech": [],
+  "bp (Basis point)": [],
+  "Basis point": [],
+  "Customer acquisition cost": [],
+  "CAPEX (Capital expenditure)": [],
+  "OPEX (Operating expenditure)": [],
+  "Operating expenditure": [],
+  "CAPM": [],
+  "Asset": [],
+  "Capital adequacy ratio (CAR)": [],
+  "CDD / EDD": [],
+  "Chart of accounts (CoA)": [],
+  "Cost of goods sold": [],
+  "CPI / PPI": [],
+  "ERP (Enterprise resource planning)": [],
+  "Enterprise resource planning": [],
+  "Demurrage and detention": [],
+  "Delegation of authority": [],
+  "Delegation of authority (DoA)": [],
+  "Credit risk": [],
+  "EBIT (Operating profit)": [],
+  "EBIT": [],
+  "Amortisation": [],
+  "Bad debt / ECL": [],
+  "EOQ": [],
+  "EV (Enterprise value)": [],
+  "Enterprise value": [],
+  "FATF": [],
+  "FCF (Free cash flow)": [],
+  "FCL / LCL": [],
+  "FM (Force majeure)": [],
+  "GDP (Gross domestic product)": [],
+  "Gross domestic product": [],
+  "IFRS / IAS": [],
+  "Internal rate of return": [],
+  "KPI (Key performance indicator)": [],
+  "OKR (Objectives and key results)": [],
+  "Key performance indicator": [],
+  "Objectives and key results": [],
+  "Know your customer": [],
+  "Liquidated damages (LDs)": [],
+  "MoU (Memorandum of understanding)": [],
+  "Letter of intent (LOI)": [],
+  "Memorandum of understanding": [],
+  "Discount rate": [],
+  "NAV": [],
+  "NPL (Non-performing loan)": [],
+  "Non-performing loan": [],
+  "Net promoter score (NPS)": [],
+  "Net present value": [],
+  "PEP": [],
+  "PMF (Product-market fit)": [],
+  "Product-market fit": [],
+  "RACI": [],
+  "RCF (Revolving credit facility)": [],
+  "Revolving credit facility": [],
+  "RFP / RFQ / RFI": [],
+  "ROE (Return on equity)": [],
+  "ROI (Return on investment)": [],
+  "RPA": [],
+  "IaaS / PaaS": [],
+  "Convertible note / SAFE": [],
+  "SKU": [],
+  "SLA": [],
+  "SPV (Special purpose vehicle)": [],
+  "Special purpose vehicle": [],
+  "Total cost of ownership (TCO)": [],
+  "TEU / FEU": [],
+  "Ultimate beneficial owner (UBO)": [],
+  "Venture capital (VC)": [],
+  "Indemnity": [],
+  "Weighted average cost of capital": [],
+  "WC (Working capital)": [],
+  "WMS / TMS": [],
+  "YTD (Year-to-date)": [],
+  "Yield": [],
+  "Markup": [],
+  "Reorder point": [],
+  "Safety stock": [],
+  "Portfolio": [],
+  "Volatility": [],
+  "GP (Gross profit)": [],
+  "Shareholder": [],
+  "Productivity": [],
+  "Goodwill": [],
+  "Turnover": [],
+  "Market cap (Market capitalisation)": [],
+  "Dividend": [],
+  "Solvency": [],
+  "Loss ratio": [],
+  "Underwriting": [],
+  "Broker": [],
+  "Warehouse receipt": [],
+  "Overdraft": [],
+  "Residual value": [],
+  "Factoring": [],
+  "Dilution": [],
+  "Country risk": [],
+  "Syndicated loan": [],
+  "Commission": [],
+  "Licence": [],
+  "Duration": [],
+  "CPs (Conditions precedent)": [],
+  "Joint venture (JV)": [],
+  "Charter party": [],
+  "Risk transfer": [],
+  "Premium": [],
+  "Premium / differential": [],
+  "Collateral": [],
+  "Forecast accuracy (MAPE)": [],
+  "Win rate": [],
+  "Lead": [],
+  "Uptime": [],
+  "Chief Executive Officer": [],
+  "Relationship manager (RM)": [],
+  "Monetary policy": [],
+  "Basel III": [],
+  "Corporate governance": [],
+  "Marine cargo insurance": [],
+  "Diversification": [],
+  "Diversification (corporate)": [],
+  "Segregation of duties": [],
+  "Ransomware": [],
+  "Escalation": [],
+  "Stakeholder": [],
+  "Deliverable": [],
+  "Bottom line": [],
+  "Track record": [],
+  "Competitive advantage": [],
+  "Lean / Six Sigma": [],
+  "Board resolution": [],
+  "Long / short position": [],
+  "Arbitrage": [],
+  "Deferred revenue": [],
+  "Rule of thumb": [],
+  "Open account": [],
+  "Damages": [],
+  "ZOPA": [],
+  "Par / face value": [],
+  "Coupon": [],
+  "FIFO / weighted average": [],
+  "Claim": [],
+  "Subsidiary": [],
+  "Performance review": [],
+  "Trial balance (TB)": [],
+  "TVM (Time value of money)": [],
+  "Dashboard": [],
+  "Consolidation": [],
+  "Speculation": [],
+  "Free time": [],
+  "Risk appetite": []
+ }
+}

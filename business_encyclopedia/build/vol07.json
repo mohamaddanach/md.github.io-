@@ -3,7 +3,7 @@
  "title": "Law, Entrepreneurship, Management and Technology",
  "title_ar": "القانون وريادة الأعمال والإدارة والتكنولوجيا",
  "file": "Volume_07_Law_Entrepreneurship_Management_And_Technology.pdf",
- "pages": 65,
+ "pages": 67,
  "toc": [
   {
    "kind": "part",
@@ -751,6 +751,1133 @@
   }
  ],
  "terms": [],
- "index": {},
- "main": {}
+ "index": {
+  "Insolvency / bankruptcy": [
+   6,
+   8,
+   12,
+   17,
+   19
+  ],
+  "Corporate governance": [
+   6,
+   8
+  ],
+  "Shareholder": [
+   6,
+   8,
+   14,
+   19
+  ],
+  "Intellectual property (IP)": [
+   6,
+   10,
+   11,
+   14,
+   15,
+   51
+  ],
+  "Compliance": [
+   6,
+   8,
+   10,
+   14,
+   17,
+   18,
+   19,
+   27
+  ],
+  "Anti-bribery": [
+   6,
+   10,
+   17,
+   18,
+   19
+  ],
+  "Sanctions": [
+   6,
+   10,
+   17,
+   18,
+   19
+  ],
+  "Data protection": [
+   6,
+   10,
+   14,
+   17,
+   18,
+   54
+  ],
+  "Limited liability": [
+   7,
+   9
+  ],
+  "Listed / unlisted company": [
+   7,
+   8
+  ],
+  "Branch": [
+   7,
+   38
+  ],
+  "Holding company": [
+   7
+  ],
+  "SPV (Special purpose vehicle)": [
+   7
+  ],
+  "Liability": [
+   7,
+   11,
+   13,
+   14,
+   17,
+   19
+  ],
+  "Exit": [
+   7,
+   9,
+   14,
+   20,
+   24,
+   26,
+   27
+  ],
+  "Executive / non-executive director": [
+   8,
+   27,
+   39,
+   42,
+   43,
+   44
+  ],
+  "CEO (Chief Executive Officer)": [
+   8,
+   39,
+   41
+  ],
+  "Company secretary": [
+   8
+  ],
+  "Receivership / administration": [
+   8,
+   17
+  ],
+  "Delegation of authority": [
+   8,
+   38
+  ],
+  "Delegation of authority (DoA)": [
+   8,
+   38
+  ],
+  "Escalation": [
+   8,
+   17,
+   34
+  ],
+  "Non-compete": [
+   8,
+   13,
+   14
+  ],
+  "Dividend": [
+   9
+  ],
+  "Policy": [
+   9
+  ],
+  "Arbitration": [
+   9,
+   12,
+   13,
+   17,
+   19
+  ],
+  "Vesting": [
+   9,
+   27
+  ],
+  "Asset": [
+   9,
+   17
+  ],
+  "Independent director": [
+   9
+  ],
+  "Offer and acceptance": [
+   10
+  ],
+  "Consideration": [
+   10
+  ],
+  "Notarisation / legalisation / apostille": [
+   10
+  ],
+  "Conditions precedent": [
+   10,
+   11
+  ],
+  "Limitation of liability": [
+   10,
+   11,
+   58
+  ],
+  "Confidentiality / NDA": [
+   10,
+   11,
+   13,
+   14,
+   51
+  ],
+  "Force majeure": [
+   10,
+   12,
+   13,
+   19
+  ],
+  "Assignment": [
+   10,
+   14,
+   15,
+   28
+  ],
+  "Entire agreement": [
+   10
+  ],
+  "Waiver": [
+   10
+  ],
+  "Severability": [
+   10
+  ],
+  "Representations and warranties": [
+   10
+  ],
+  "Specifications": [
+   11,
+   12,
+   14
+  ],
+  "Damages": [
+   11
+  ],
+  "Claim": [
+   11,
+   19
+  ],
+  "Profit / Net income": [
+   11,
+   23
+  ],
+  "Revenue": [
+   11,
+   20,
+   23,
+   24,
+   25
+  ],
+  "Exclusion": [
+   11
+  ],
+  "EBITDA": [
+   11,
+   29,
+   38,
+   44
+  ],
+  "Licence": [
+   11,
+   15,
+   58,
+   59,
+   60
+  ],
+  "Mitigation": [
+   12
+  ],
+  "Material breach": [
+   12
+  ],
+  "Long / short position": [
+   13,
+   15
+  ],
+  "Exclusivity": [
+   13,
+   14,
+   27
+  ],
+  "Lead": [
+   13,
+   32,
+   45
+  ],
+  "Incoterms": [
+   14
+  ],
+  "FM (Force majeure)": [
+   14
+  ],
+  "CPs (Conditions precedent)": [
+   14
+  ],
+  "Commission": [
+   14,
+   16,
+   18,
+   19,
+   23,
+   30
+  ],
+  "Indemnity": [
+   14
+  ],
+  "Duration": [
+   14
+  ],
+  "Joint venture (JV)": [
+   14
+  ],
+  "Governing law and jurisdiction": [
+   15
+  ],
+  "Credit risk": [
+   16,
+   57
+  ],
+  "Margin": [
+   16,
+   23,
+   29,
+   35,
+   38,
+   39
+  ],
+  "Goodwill": [
+   17
+  ],
+  "Liquidation": [
+   17,
+   26,
+   28
+  ],
+  "Collateral": [
+   17
+  ],
+  "Due diligence": [
+   18,
+   19,
+   25,
+   27,
+   28,
+   44
+  ],
+  "Whistleblowing": [
+   18
+  ],
+  "AML (Anti-money laundering)": [
+   18,
+   56,
+   57
+  ],
+  "AML / CFT": [
+   18,
+   56,
+   57
+  ],
+  "Basis": [
+   18,
+   26
+  ],
+  "Tender": [
+   19
+  ],
+  "SaaS (Software as a service)": [
+   19,
+   23,
+   29,
+   31,
+   53
+  ],
+  "Core business": [
+   19,
+   44
+  ],
+  "Business model": [
+   20,
+   27,
+   36
+  ],
+  "Unit economics": [
+   20,
+   21,
+   27,
+   29,
+   31
+  ],
+  "Bootstrapping": [
+   20,
+   25
+  ],
+  "Venture capital (VC)": [
+   20,
+   25
+  ],
+  "Product-market fit": [
+   20,
+   22,
+   25,
+   27,
+   31
+  ],
+  "Dilution": [
+   20,
+   25,
+   26,
+   28
+  ],
+  "Cash flow": [
+   20,
+   21,
+   27,
+   38
+  ],
+  "CAC (Customer acquisition cost)": [
+   20,
+   21,
+   22,
+   23,
+   24,
+   29,
+   30
+  ],
+  "Value proposition": [
+   21
+  ],
+  "CLV / LTV (Customer lifetime value)": [
+   21,
+   23,
+   29,
+   31
+  ],
+  "LTV": [
+   21,
+   23,
+   29,
+   31
+  ],
+  "MVP (Minimum viable product)": [
+   21,
+   25
+  ],
+  "Letter of intent (LOI)": [
+   21
+  ],
+  "B2B / B2C / B2G": [
+   21,
+   22,
+   29,
+   30
+  ],
+  "PMF (Product-market fit)": [
+   22
+  ],
+  "Broker": [
+   22
+  ],
+  "Churn": [
+   23,
+   24,
+   27,
+   29,
+   31,
+   50
+  ],
+  "Gross profit": [
+   23,
+   29,
+   39,
+   44
+  ],
+  "Liquidity": [
+   23,
+   27,
+   31
+  ],
+  "Liquidity (market)": [
+   23,
+   27,
+   31
+  ],
+  "Equity": [
+   25,
+   28,
+   30
+  ],
+  "Seed / Series A, B": [
+   25,
+   26,
+   29
+  ],
+  "Go-to-market (GTM)": [
+   25,
+   27
+  ],
+  "Working capital": [
+   25,
+   39
+  ],
+  "Liquidation preference": [
+   25,
+   27
+  ],
+  "Convertible note / SAFE": [
+   25,
+   28
+  ],
+  "IRR (Internal rate of return)": [
+   26
+  ],
+  "Cap table": [
+   26,
+   27,
+   28
+  ],
+  "Term sheet": [
+   27
+  ],
+  "FIFO / weighted average": [
+   27
+  ],
+  "Pitch deck": [
+   27
+  ],
+  "Traction": [
+   27
+  ],
+  "Differentiation": [
+   27,
+   35,
+   36
+  ],
+  "Mission / vision": [
+   27,
+   35,
+   36,
+   42
+  ],
+  "Pipeline": [
+   27,
+   38,
+   48
+  ],
+  "Scalability": [
+   27,
+   53
+  ],
+  "CRM": [
+   27,
+   46,
+   47,
+   48,
+   49,
+   53
+  ],
+  "Leverage": [
+   28
+  ],
+  "Machine learning": [
+   29,
+   46,
+   50
+  ],
+  "OCR": [
+   29,
+   50,
+   53,
+   62
+  ],
+  "API (Application programming interface)": [
+   29,
+   54,
+   57,
+   58
+  ],
+  "Demurrage": [
+   30
+  ],
+  "3PL (Third-party logistics)": [
+   30,
+   40
+  ],
+  "Inflation": [
+   31
+  ],
+  "Onboarding": [
+   31
+  ],
+  "Scenario planning": [
+   32,
+   35
+  ],
+  "SWOT (SWOT analysis)": [
+   32,
+   35,
+   36
+  ],
+  "PESTLE (PESTLE analysis)": [
+   32,
+   35
+  ],
+  "Stakeholder management": [
+   32,
+   41
+  ],
+  "Post-merger integration (PMI)": [
+   32,
+   44
+  ],
+  "Procurement": [
+   33,
+   36,
+   38,
+   44,
+   47
+  ],
+  "Accounts payable": [
+   33,
+   62
+  ],
+  "Hedging": [
+   34
+  ],
+  "ERP (Enterprise resource planning)": [
+   34,
+   42,
+   44,
+   47,
+   48,
+   53
+  ],
+  "RACI": [
+   34,
+   42
+  ],
+  "Competitive advantage": [
+   35,
+   36
+  ],
+  "EBIT (Operating profit)": [
+   35,
+   38
+  ],
+  "EBIT": [
+   35,
+   38
+  ],
+  "Value chain": [
+   35
+  ],
+  "Porter’s Five Forces": [
+   35
+  ],
+  "Portfolio": [
+   36,
+   59
+  ],
+  "Diversification": [
+   36
+  ],
+  "Diversification (corporate)": [
+   36
+  ],
+  "Cost leadership": [
+   36
+  ],
+  "Factoring": [
+   36
+  ],
+  "Balanced scorecard": [
+   38
+  ],
+  "COGS (Cost of goods sold)": [
+   38,
+   48
+  ],
+  "Supply chain": [
+   38
+  ],
+  "Capital structure": [
+   38
+  ],
+  "Objectives and key results": [
+   38
+  ],
+  "Budget owner": [
+   38
+  ],
+  "Cost centre / profit centre": [
+   38
+  ],
+  "Net debt": [
+   38
+  ],
+  "Covenant": [
+   38,
+   39
+  ],
+  "Headroom": [
+   38,
+   39
+  ],
+  "YTD (Year-to-date)": [
+   39
+  ],
+  "NPV (Net present value)": [
+   39,
+   59
+  ],
+  "Payment terms": [
+   39,
+   52
+  ],
+  "Utilisation": [
+   40
+  ],
+  "Agenda / minutes": [
+   40,
+   41
+  ],
+  "Volatility": [
+   40,
+   56
+  ],
+  "Productivity": [
+   40
+  ],
+  "Opportunity cost": [
+   40
+  ],
+  "Project charter": [
+   42
+  ],
+  "Critical path": [
+   42
+  ],
+  "EV (Enterprise value)": [
+   42,
+   43,
+   44
+  ],
+  "CPI / PPI": [
+   42,
+   43,
+   60
+  ],
+  "Change management": [
+   42,
+   59
+  ],
+  "Anchoring": [
+   42
+  ],
+  "Lean / Six Sigma": [
+   42
+  ],
+  "WMS / TMS": [
+   43,
+   47
+  ],
+  "Digital transformation": [
+   44,
+   58,
+   59
+  ],
+  "Synergy": [
+   44
+  ],
+  "Consolidation": [
+   44,
+   59
+  ],
+  "Upselling / cross-selling": [
+   44
+  ],
+  "BI (Business intelligence)": [
+   46,
+   47,
+   48,
+   61
+  ],
+  "Data governance": [
+   46,
+   50,
+   51
+  ],
+  "Cybersecurity": [
+   46,
+   53,
+   54
+  ],
+  "RPA": [
+   46,
+   53
+  ],
+  "Fintech": [
+   46,
+   56,
+   57,
+   64
+  ],
+  "ROI (Return on investment)": [
+   46,
+   59
+  ],
+  "Enterprise resource planning": [
+   47
+  ],
+  "General ledger (GL)": [
+   47
+  ],
+  "Reconciliation": [
+   47,
+   48,
+   49,
+   53,
+   54
+  ],
+  "Data warehouse / lake": [
+   47,
+   48
+  ],
+  "Purchase order (PO)": [
+   48
+  ],
+  "Master data": [
+   48,
+   51,
+   64
+  ],
+  "Chart of accounts (CoA)": [
+   48
+  ],
+  "Data quality": [
+   48,
+   50,
+   51,
+   64
+  ],
+  "Business intelligence": [
+   48
+  ],
+  "ETL": [
+   48
+  ],
+  "Landed cost": [
+   49
+  ],
+  "Generative AI": [
+   50,
+   51
+  ],
+  "ML (Machine learning)": [
+   50,
+   51
+  ],
+  "Regression": [
+   50
+  ],
+  "Bad debt / ECL": [
+   50
+  ],
+  "Cloud computing": [
+   53
+  ],
+  "IaaS / PaaS": [
+   53
+  ],
+  "MFA": [
+   54
+  ],
+  "Segmentation (analytics)": [
+   54,
+   63
+  ],
+  "Ransomware": [
+   54
+  ],
+  "Tolerance (e.g., ±10% MOLOO)": [
+   54
+  ],
+  "Discount rate": [
+   56
+  ],
+  "Open banking": [
+   56
+  ],
+  "KYC (Know your customer)": [
+   56,
+   57
+  ],
+  "Customer acquisition cost": [
+   57
+  ],
+  "AUM": [
+   57
+  ],
+  "Underwriting": [
+   57
+  ],
+  "Tokenisation": [
+   57
+  ],
+  "Payment gateway": [
+   57
+  ],
+  "Return on investment": [
+   58
+  ],
+  "RFP / RFQ / RFI": [
+   58
+  ],
+  "Total cost of ownership (TCO)": [
+   58
+  ],
+  "Headcount": [
+   59
+  ],
+  "SLA": [
+   60
+  ],
+  "Forecast accuracy (MAPE)": [
+   63
+  ],
+  "SKU": [
+   63
+  ],
+  "Year-to-date": [
+   64
+  ],
+  "Spread": [
+   64
+  ]
+ },
+ "main": {
+  "Insolvency / bankruptcy": [],
+  "Corporate governance": [],
+  "Shareholder": [],
+  "Intellectual property (IP)": [],
+  "Compliance": [],
+  "Anti-bribery": [],
+  "Sanctions": [],
+  "Data protection": [],
+  "Limited liability": [],
+  "Listed / unlisted company": [],
+  "Branch": [],
+  "Holding company": [],
+  "SPV (Special purpose vehicle)": [],
+  "Liability": [],
+  "Exit": [],
+  "Executive / non-executive director": [],
+  "CEO (Chief Executive Officer)": [],
+  "Company secretary": [],
+  "Receivership / administration": [],
+  "Delegation of authority": [],
+  "Delegation of authority (DoA)": [],
+  "Escalation": [],
+  "Non-compete": [],
+  "Dividend": [],
+  "Policy": [],
+  "Arbitration": [],
+  "Vesting": [],
+  "Asset": [],
+  "Independent director": [],
+  "Offer and acceptance": [],
+  "Consideration": [],
+  "Notarisation / legalisation / apostille": [],
+  "Conditions precedent": [],
+  "Limitation of liability": [],
+  "Confidentiality / NDA": [],
+  "Force majeure": [],
+  "Assignment": [],
+  "Entire agreement": [],
+  "Waiver": [],
+  "Severability": [],
+  "Representations and warranties": [],
+  "Specifications": [],
+  "Damages": [],
+  "Claim": [],
+  "Profit / Net income": [],
+  "Revenue": [],
+  "Exclusion": [],
+  "EBITDA": [],
+  "Licence": [],
+  "Mitigation": [],
+  "Material breach": [],
+  "Long / short position": [],
+  "Exclusivity": [],
+  "Lead": [],
+  "Incoterms": [],
+  "FM (Force majeure)": [],
+  "CPs (Conditions precedent)": [],
+  "Commission": [],
+  "Indemnity": [],
+  "Duration": [],
+  "Joint venture (JV)": [],
+  "Governing law and jurisdiction": [],
+  "Credit risk": [],
+  "Margin": [],
+  "Goodwill": [],
+  "Liquidation": [],
+  "Collateral": [],
+  "Due diligence": [],
+  "Whistleblowing": [],
+  "AML (Anti-money laundering)": [],
+  "AML / CFT": [],
+  "Basis": [],
+  "Tender": [],
+  "SaaS (Software as a service)": [],
+  "Core business": [],
+  "Business model": [],
+  "Unit economics": [],
+  "Bootstrapping": [],
+  "Venture capital (VC)": [],
+  "Product-market fit": [],
+  "Dilution": [],
+  "Cash flow": [],
+  "CAC (Customer acquisition cost)": [],
+  "Value proposition": [],
+  "CLV / LTV (Customer lifetime value)": [],
+  "LTV": [],
+  "MVP (Minimum viable product)": [],
+  "Letter of intent (LOI)": [],
+  "B2B / B2C / B2G": [],
+  "PMF (Product-market fit)": [],
+  "Broker": [],
+  "Churn": [],
+  "Gross profit": [],
+  "Liquidity": [],
+  "Liquidity (market)": [],
+  "Equity": [],
+  "Seed / Series A, B": [],
+  "Go-to-market (GTM)": [],
+  "Working capital": [],
+  "Liquidation preference": [],
+  "Convertible note / SAFE": [],
+  "IRR (Internal rate of return)": [],
+  "Cap table": [],
+  "Term sheet": [],
+  "FIFO / weighted average": [],
+  "Pitch deck": [],
+  "Traction": [],
+  "Differentiation": [],
+  "Mission / vision": [],
+  "Pipeline": [],
+  "Scalability": [],
+  "CRM": [],
+  "Leverage": [],
+  "Machine learning": [],
+  "OCR": [],
+  "API (Application programming interface)": [],
+  "Demurrage": [],
+  "3PL (Third-party logistics)": [],
+  "Inflation": [],
+  "Onboarding": [],
+  "Scenario planning": [],
+  "SWOT (SWOT analysis)": [],
+  "PESTLE (PESTLE analysis)": [],
+  "Stakeholder management": [],
+  "Post-merger integration (PMI)": [],
+  "Procurement": [],
+  "Accounts payable": [],
+  "Hedging": [],
+  "ERP (Enterprise resource planning)": [],
+  "RACI": [],
+  "Competitive advantage": [],
+  "EBIT (Operating profit)": [],
+  "EBIT": [],
+  "Value chain": [],
+  "Porter’s Five Forces": [],
+  "Portfolio": [],
+  "Diversification": [],
+  "Diversification (corporate)": [],
+  "Cost leadership": [],
+  "Factoring": [],
+  "Balanced scorecard": [],
+  "COGS (Cost of goods sold)": [],
+  "Supply chain": [],
+  "Capital structure": [],
+  "Objectives and key results": [],
+  "Budget owner": [],
+  "Cost centre / profit centre": [],
+  "Net debt": [],
+  "Covenant": [],
+  "Headroom": [],
+  "YTD (Year-to-date)": [],
+  "NPV (Net present value)": [],
+  "Payment terms": [],
+  "Utilisation": [],
+  "Agenda / minutes": [],
+  "Volatility": [],
+  "Productivity": [],
+  "Opportunity cost": [],
+  "Project charter": [],
+  "Critical path": [],
+  "EV (Enterprise value)": [],
+  "CPI / PPI": [],
+  "Change management": [],
+  "Anchoring": [],
+  "Lean / Six Sigma": [],
+  "WMS / TMS": [],
+  "Digital transformation": [],
+  "Synergy": [],
+  "Consolidation": [],
+  "Upselling / cross-selling": [],
+  "BI (Business intelligence)": [],
+  "Data governance": [],
+  "Cybersecurity": [],
+  "RPA": [],
+  "Fintech": [],
+  "ROI (Return on investment)": [],
+  "Enterprise resource planning": [],
+  "General ledger (GL)": [],
+  "Reconciliation": [],
+  "Data warehouse / lake": [],
+  "Purchase order (PO)": [],
+  "Master data": [],
+  "Chart of accounts (CoA)": [],
+  "Data quality": [],
+  "Business intelligence": [],
+  "ETL": [],
+  "Landed cost": [],
+  "Generative AI": [],
+  "ML (Machine learning)": [],
+  "Regression": [],
+  "Bad debt / ECL": [],
+  "Cloud computing": [],
+  "IaaS / PaaS": [],
+  "MFA": [],
+  "Segmentation (analytics)": [],
+  "Ransomware": [],
+  "Tolerance (e.g., ±10% MOLOO)": [],
+  "Discount rate": [],
+  "Open banking": [],
+  "KYC (Know your customer)": [],
+  "Customer acquisition cost": [],
+  "AUM": [],
+  "Underwriting": [],
+  "Tokenisation": [],
+  "Payment gateway": [],
+  "Return on investment": [],
+  "RFP / RFQ / RFI": [],
+  "Total cost of ownership (TCO)": [],
+  "Headcount": [],
+  "SLA": [],
+  "Forecast accuracy (MAPE)": [],
+  "SKU": [],
+  "Year-to-date": [],
+  "Spread": []
+ }
 }

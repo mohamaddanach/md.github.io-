@@ -3,7 +3,7 @@
  "title": "Corporate Finance, Economics and Business Mathematics",
  "title_ar": "تمويل الشركات والاقتصاد ورياضيات الأعمال",
  "file": "Volume_03_Corporate_Finance_Economics_And_Business_Mathematics.pdf",
- "pages": 64,
+ "pages": 66,
  "toc": [
   {
    "kind": "part",
@@ -715,6 +715,763 @@
   ],
   "Simple forecasting: moving average, trend and error": [
    63
+  ],
+  "Capital structure": [
+   5,
+   13,
+   14,
+   29
+  ],
+  "Working capital": [
+   5,
+   9,
+   10,
+   11,
+   16,
+   17
+  ],
+  "Dividend": [
+   5,
+   13,
+   15,
+   61
+  ],
+  "Policy": [
+   5,
+   15,
+   16,
+   31,
+   37,
+   40,
+   49
+  ],
+  "Payment terms": [
+   5,
+   7
+  ],
+  "NPV (Net present value)": [
+   5,
+   7,
+   9,
+   10,
+   11,
+   21
+  ],
+  "IRR (Internal rate of return)": [
+   5,
+   7,
+   9,
+   10,
+   11,
+   29,
+   30
+  ],
+  "Liquidity": [
+   5,
+   11,
+   15,
+   16,
+   18,
+   19,
+   23,
+   24
+  ],
+  "Liquidity (market)": [
+   5,
+   11,
+   15,
+   16,
+   18,
+   19,
+   23,
+   24
+  ],
+  "Future value (FV)": [
+   6
+  ],
+  "Discount rate": [
+   6,
+   9,
+   10,
+   11,
+   23,
+   27
+  ],
+  "Credit risk": [
+   6,
+   8,
+   16,
+   23
+  ],
+  "Inflation": [
+   7,
+   9,
+   11,
+   20,
+   23,
+   31,
+   35
+  ],
+  "Basis": [
+   7,
+   12,
+   38,
+   52,
+   55,
+   60,
+   63
+  ],
+  "Overdraft": [
+   7,
+   17,
+   20,
+   39
+  ],
+  "Present value (PV)": [
+   7,
+   9,
+   10
+  ],
+  "Cash flow": [
+   7,
+   10,
+   12,
+   14,
+   16,
+   18,
+   19,
+   20
+  ],
+  "Revenue": [
+   9,
+   16,
+   18,
+   19,
+   20,
+   21,
+   22
+  ],
+  "Operating profit": [
+   9
+  ],
+  "Tax shield": [
+   9,
+   14
+  ],
+  "Depreciation": [
+   9,
+   10,
+   12,
+   20,
+   27,
+   35,
+   40,
+   42
+  ],
+  "Overheads": [
+   9
+  ],
+  "WACC (Weighted average cost of capital)": [
+   9,
+   10,
+   11,
+   14,
+   15,
+   26,
+   27
+  ],
+  "FCF (Free cash flow)": [
+   9
+  ],
+  "EBIT (Operating profit)": [
+   9,
+   10,
+   12,
+   22,
+   23,
+   25,
+   57,
+   61
+  ],
+  "EBIT": [
+   9,
+   10,
+   12,
+   22,
+   23,
+   25,
+   57,
+   61
+  ],
+  "EBITDA": [
+   10,
+   15,
+   23,
+   25,
+   26,
+   27,
+   28
+  ],
+  "Equity": [
+   11,
+   13,
+   14,
+   15,
+   20,
+   23,
+   25
+  ],
+  "Proxy": [
+   11
+  ],
+  "Cost of equity (Ke)": [
+   13,
+   14
+  ],
+  "Cost of debt (Kd)": [
+   13,
+   14,
+   29
+  ],
+  "Opportunity cost": [
+   13,
+   30,
+   33
+  ],
+  "Country risk": [
+   13,
+   43
+  ],
+  "Premium": [
+   13,
+   25,
+   28,
+   30,
+   42,
+   43,
+   45,
+   55
+  ],
+  "Premium / differential": [
+   13,
+   25,
+   28,
+   30,
+   42,
+   43,
+   45,
+   55
+  ],
+  "ERP (Enterprise resource planning)": [
+   13
+  ],
+  "Risk-free rate": [
+   13
+  ],
+  "Yield": [
+   13,
+   29,
+   30
+  ],
+  "Equity risk premium": [
+   13
+  ],
+  "Beta (β)": [
+   13,
+   15
+  ],
+  "Leverage": [
+   13,
+   14,
+   15,
+   22,
+   27,
+   29
+  ],
+  "Asset": [
+   13,
+   15,
+   29,
+   37,
+   44
+  ],
+  "Margin": [
+   13,
+   19,
+   21,
+   22,
+   30,
+   35,
+   36,
+   39
+  ],
+  "Coupon": [
+   13
+  ],
+  "Claim": [
+   14,
+   30
+  ],
+  "Dilution": [
+   14,
+   28,
+   61
+  ],
+  "Collateral": [
+   14,
+   17,
+   23,
+   37,
+   38
+  ],
+  "Track record": [
+   14
+  ],
+  "Listed / unlisted company": [
+   14,
+   15,
+   28,
+   43
+  ],
+  "Trade-off": [
+   14
+  ],
+  "Net debt": [
+   15,
+   25,
+   26,
+   27,
+   28,
+   57,
+   61,
+   63
+  ],
+  "Headroom": [
+   15,
+   18,
+   23,
+   36
+  ],
+  "Subordinated debt": [
+   15
+  ],
+  "Shareholder": [
+   15
+  ],
+  "Solvency": [
+   15
+  ],
+  "Holding company": [
+   15
+  ],
+  "ROE (Return on equity)": [
+   15,
+   58
+  ],
+  "Profit / Net income": [
+   16,
+   20,
+   22,
+   23,
+   25,
+   27,
+   29
+  ],
+  "Lean / Six Sigma": [
+   16
+  ],
+  "Risk transfer": [
+   16,
+   17
+  ],
+  "Factoring": [
+   16,
+   17
+  ],
+  "EOQ": [
+   17,
+   18
+  ],
+  "Safety stock": [
+   17
+  ],
+  "Damages": [
+   17
+  ],
+  "Supply chain": [
+   17,
+   38
+  ],
+  "Revolving credit facility": [
+   17
+  ],
+  "COGS (Cost of goods sold)": [
+   18,
+   21,
+   39,
+   41,
+   57,
+   62
+  ],
+  "Best practice": [
+   19,
+   20
+  ],
+  "CEO (Chief Executive Officer)": [
+   19
+  ],
+  "Market share": [
+   19
+  ],
+  "Utilisation": [
+   19
+  ],
+  "Headcount": [
+   19,
+   20
+  ],
+  "Productivity": [
+   19,
+   32,
+   33,
+   36
+  ],
+  "Regression": [
+   19
+  ],
+  "SKU": [
+   19
+  ],
+  "Pipeline": [
+   19
+  ],
+  "B2B / B2C / B2G": [
+   19
+  ],
+  "Churn": [
+   19
+  ],
+  "Net income": [
+   20,
+   25,
+   27,
+   29,
+   45,
+   58,
+   61
+  ],
+  "Covenant": [
+   20,
+   21,
+   23,
+   29,
+   45,
+   58
+  ],
+  "BI (Business intelligence)": [
+   21
+  ],
+  "WC (Working capital)": [
+   21
+  ],
+  "Broker": [
+   22
+  ],
+  "Recession": [
+   23,
+   32,
+   43,
+   44
+  ],
+  "Market risk": [
+   23
+  ],
+  "Hedging": [
+   23,
+   40,
+   44,
+   62
+  ],
+  "Liquidity risk": [
+   23
+  ],
+  "Spread": [
+   23,
+   54
+  ],
+  "Operational risk": [
+   23
+  ],
+  "Enterprise value": [
+   25
+  ],
+  "Consideration": [
+   25,
+   27,
+   28
+  ],
+  "EV (Enterprise value)": [
+   25,
+   26,
+   27,
+   29,
+   30,
+   61
+  ],
+  "Business model": [
+   25
+  ],
+  "Market cap (Market capitalisation)": [
+   25,
+   27
+  ],
+  "Exit": [
+   26,
+   29,
+   30
+  ],
+  "Free cash flow": [
+   26,
+   29
+  ],
+  "GDP (Gross domestic product)": [
+   27,
+   31,
+   35,
+   36,
+   38,
+   43,
+   45
+  ],
+  "Procurement": [
+   28,
+   33
+  ],
+  "Upselling / cross-selling": [
+   28
+  ],
+  "Rule of thumb": [
+   29
+  ],
+  "MOIC": [
+   29,
+   30,
+   61
+  ],
+  "Synergy": [
+   30
+  ],
+  "Sanctions": [
+   31,
+   32,
+   40,
+   43,
+   44,
+   46
+  ],
+  "Balance of payments": [
+   31,
+   40,
+   41
+  ],
+  "Supply and demand": [
+   32
+  ],
+  "Equilibrium": [
+   32
+  ],
+  "Elasticity of demand": [
+   32
+  ],
+  "Tariff": [
+   32,
+   34,
+   41,
+   44
+  ],
+  "Long / short position": [
+   33,
+   36,
+   38,
+   40,
+   57
+  ],
+  "Economies of scale": [
+   33
+  ],
+  "Marginal cost": [
+   33
+  ],
+  "Gross domestic product": [
+   35
+  ],
+  "CPI / PPI": [
+   35,
+   43
+  ],
+  "Unemployment rate": [
+   36
+  ],
+  "Quota": [
+   36
+  ],
+  "Monetary policy": [
+   36,
+   37,
+   40,
+   46
+  ],
+  "Duration": [
+   36
+  ],
+  "Escalation": [
+   36
+  ],
+  "Fiscal policy": [
+   37,
+   38
+  ],
+  "Policy rate": [
+   37,
+   45
+  ],
+  "Quantitative easing (QE)": [
+   37
+  ],
+  "Exchange rate": [
+   37,
+   41
+  ],
+  "Hurdle rate": [
+   38
+  ],
+  "Yield curve": [
+   38
+  ],
+  "Lead": [
+   38
+  ],
+  "Gross profit": [
+   39,
+   48,
+   50
+  ],
+  "Volatility": [
+   40
+  ],
+  "Devaluation": [
+   40,
+   43
+  ],
+  "Capital controls": [
+   40
+  ],
+  "Arbitrage": [
+   41
+  ],
+  "Portfolio": [
+   41
+  ],
+  "Customs value": [
+   41,
+   59
+  ],
+  "Landed cost": [
+   41,
+   44,
+   47,
+   49,
+   59,
+   63
+  ],
+  "Licence": [
+   41
+  ],
+  "Rules of origin": [
+   42
+  ],
+  "Sovereign risk": [
+   43
+  ],
+  "Arbitration": [
+   43
+  ],
+  "Currency peg": [
+   45
+  ],
+  "Counterparty risk": [
+   45
+  ],
+  "Market structure": [
+   45
+  ],
+  "Business cycle": [
+   45
+  ],
+  "Diversification": [
+   46
+  ],
+  "Diversification (corporate)": [
+   46
+  ],
+  "Markup": [
+   47,
+   49,
+   51
+  ],
+  "Commission": [
+   47,
+   49,
+   50,
+   52
+  ],
+  "Amortisation": [
+   47
+  ],
+  "FIFO / weighted average": [
+   51
+  ],
+  "Trade finance": [
+   52
+  ],
+  "Bullet / balloon": [
+   53
+  ],
+  "Quotation": [
+   54
+  ],
+  "STR / SAR": [
+   54
+  ],
+  "Term loan": [
+   56
+  ],
+  "DSCR": [
+   57
+  ],
+  "NI (Net income)": [
+   58
+  ],
+  "Demurrage": [
+   59
+  ],
+  "FCL / LCL": [
+   60
+  ],
+  "Residual value": [
+   60
+  ],
+  "Open account": [
+   62
+  ],
+  "Indemnity": [
+   62
+  ],
+  "Forecast accuracy (MAPE)": [
+   63
+  ],
+  "Tender": [
+   63
   ]
  },
  "main": {
@@ -798,6 +1555,167 @@
   ],
   "Simple forecasting: moving average, trend and error": [
    63
-  ]
+  ],
+  "Capital structure": [],
+  "Working capital": [],
+  "Dividend": [],
+  "Policy": [],
+  "Payment terms": [],
+  "NPV (Net present value)": [],
+  "IRR (Internal rate of return)": [],
+  "Liquidity": [],
+  "Liquidity (market)": [],
+  "Future value (FV)": [],
+  "Discount rate": [],
+  "Credit risk": [],
+  "Inflation": [],
+  "Basis": [],
+  "Overdraft": [],
+  "Present value (PV)": [],
+  "Cash flow": [],
+  "Revenue": [],
+  "Operating profit": [],
+  "Tax shield": [],
+  "Depreciation": [],
+  "Overheads": [],
+  "WACC (Weighted average cost of capital)": [],
+  "FCF (Free cash flow)": [],
+  "EBIT (Operating profit)": [],
+  "EBIT": [],
+  "EBITDA": [],
+  "Equity": [],
+  "Proxy": [],
+  "Cost of equity (Ke)": [],
+  "Cost of debt (Kd)": [],
+  "Opportunity cost": [],
+  "Country risk": [],
+  "Premium": [],
+  "Premium / differential": [],
+  "ERP (Enterprise resource planning)": [],
+  "Risk-free rate": [],
+  "Yield": [],
+  "Equity risk premium": [],
+  "Beta (β)": [],
+  "Leverage": [],
+  "Asset": [],
+  "Margin": [],
+  "Coupon": [],
+  "Claim": [],
+  "Dilution": [],
+  "Collateral": [],
+  "Track record": [],
+  "Listed / unlisted company": [],
+  "Trade-off": [],
+  "Net debt": [],
+  "Headroom": [],
+  "Subordinated debt": [],
+  "Shareholder": [],
+  "Solvency": [],
+  "Holding company": [],
+  "ROE (Return on equity)": [],
+  "Profit / Net income": [],
+  "Lean / Six Sigma": [],
+  "Risk transfer": [],
+  "Factoring": [],
+  "EOQ": [],
+  "Safety stock": [],
+  "Damages": [],
+  "Supply chain": [],
+  "Revolving credit facility": [],
+  "COGS (Cost of goods sold)": [],
+  "Best practice": [],
+  "CEO (Chief Executive Officer)": [],
+  "Market share": [],
+  "Utilisation": [],
+  "Headcount": [],
+  "Productivity": [],
+  "Regression": [],
+  "SKU": [],
+  "Pipeline": [],
+  "B2B / B2C / B2G": [],
+  "Churn": [],
+  "Net income": [],
+  "Covenant": [],
+  "BI (Business intelligence)": [],
+  "WC (Working capital)": [],
+  "Broker": [],
+  "Recession": [],
+  "Market risk": [],
+  "Hedging": [],
+  "Liquidity risk": [],
+  "Spread": [],
+  "Operational risk": [],
+  "Enterprise value": [],
+  "Consideration": [],
+  "EV (Enterprise value)": [],
+  "Business model": [],
+  "Market cap (Market capitalisation)": [],
+  "Exit": [],
+  "Free cash flow": [],
+  "GDP (Gross domestic product)": [],
+  "Procurement": [],
+  "Upselling / cross-selling": [],
+  "Rule of thumb": [],
+  "MOIC": [],
+  "Synergy": [],
+  "Sanctions": [],
+  "Balance of payments": [],
+  "Supply and demand": [],
+  "Equilibrium": [],
+  "Elasticity of demand": [],
+  "Tariff": [],
+  "Long / short position": [],
+  "Economies of scale": [],
+  "Marginal cost": [],
+  "Gross domestic product": [],
+  "CPI / PPI": [],
+  "Unemployment rate": [],
+  "Quota": [],
+  "Monetary policy": [],
+  "Duration": [],
+  "Escalation": [],
+  "Fiscal policy": [],
+  "Policy rate": [],
+  "Quantitative easing (QE)": [],
+  "Exchange rate": [],
+  "Hurdle rate": [],
+  "Yield curve": [],
+  "Lead": [],
+  "Gross profit": [],
+  "Volatility": [],
+  "Devaluation": [],
+  "Capital controls": [],
+  "Arbitrage": [],
+  "Portfolio": [],
+  "Customs value": [],
+  "Landed cost": [],
+  "Licence": [],
+  "Rules of origin": [],
+  "Sovereign risk": [],
+  "Arbitration": [],
+  "Currency peg": [],
+  "Counterparty risk": [],
+  "Market structure": [],
+  "Business cycle": [],
+  "Diversification": [],
+  "Diversification (corporate)": [],
+  "Markup": [],
+  "Commission": [],
+  "Amortisation": [],
+  "FIFO / weighted average": [],
+  "Trade finance": [],
+  "Bullet / balloon": [],
+  "Quotation": [],
+  "STR / SAR": [],
+  "Term loan": [],
+  "DSCR": [],
+  "NI (Net income)": [],
+  "Demurrage": [],
+  "FCL / LCL": [],
+  "Residual value": [],
+  "Open account": [],
+  "Indemnity": [],
+  "Forecast accuracy (MAPE)": [],
+  "Tender": []
  }
 }

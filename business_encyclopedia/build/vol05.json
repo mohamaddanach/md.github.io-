@@ -3,7 +3,7 @@
  "title": "Commercial Operations — Sales, Supply Chain, Insurance and Risk",
  "title_ar": "العمليات التجارية — المبيعات وسلاسل الإمداد والتأمين والمخاطر",
  "file": "Volume_05_Commercial_Operations_Sales_Supply_Chain_Insurance_And_Risk.pdf",
- "pages": 59,
+ "pages": 60,
  "toc": [
   {
    "kind": "part",
@@ -716,6 +716,981 @@
   }
  ],
  "terms": [],
- "index": {},
- "main": {}
+ "index": {
+  "Revenue": [
+   6,
+   11,
+   14,
+   22,
+   23,
+   24,
+   26
+  ],
+  "B2B / B2C / B2G": [
+   6,
+   8,
+   13,
+   25,
+   27,
+   29
+  ],
+  "Segmentation (analytics)": [
+   6,
+   7,
+   29,
+   55
+  ],
+  "Positioning": [
+   6,
+   7,
+   8
+  ],
+  "Value proposition": [
+   6,
+   8,
+   27
+  ],
+  "Margin": [
+   6,
+   10,
+   11,
+   17,
+   20,
+   22,
+   24,
+   25
+  ],
+  "CRM": [
+   6,
+   13,
+   23,
+   24,
+   27
+  ],
+  "Tender": [
+   7,
+   30
+  ],
+  "Profit / Net income": [
+   7,
+   17,
+   23,
+   26,
+   27,
+   29,
+   48,
+   49
+  ],
+  "API (Application programming interface)": [
+   7
+  ],
+  "Compliance": [
+   7,
+   8,
+   21,
+   26,
+   29,
+   31,
+   39
+  ],
+  "Agenda / minutes": [
+   8,
+   13,
+   14,
+   16,
+   25
+  ],
+  "Demurrage": [
+   8,
+   13,
+   14,
+   16,
+   18,
+   22,
+   36
+  ],
+  "Premium": [
+   8,
+   31,
+   47,
+   48,
+   49,
+   50,
+   58
+  ],
+  "Premium / differential": [
+   8,
+   31,
+   47,
+   48,
+   49,
+   50,
+   58
+  ],
+  "Reconciliation": [
+   9
+  ],
+  "Month-end close": [
+   9
+  ],
+  "Churn": [
+   10,
+   11,
+   25
+  ],
+  "CAC (Customer acquisition cost)": [
+   10,
+   11,
+   25,
+   27
+  ],
+  "CLV / LTV (Customer lifetime value)": [
+   10,
+   11,
+   27
+  ],
+  "LTV": [
+   10,
+   11,
+   27
+  ],
+  "Procurement": [
+   10,
+   14,
+   21,
+   25,
+   28,
+   29,
+   30,
+   39
+  ],
+  "Win rate": [
+   10,
+   25
+  ],
+  "Gross profit": [
+   11,
+   22,
+   51
+  ],
+  "Onboarding": [
+   11,
+   13,
+   26
+  ],
+  "Cohort analysis": [
+   11
+  ],
+  "ROI (Return on investment)": [
+   13
+  ],
+  "Term sheet": [
+   13
+  ],
+  "Concession": [
+   13,
+   17,
+   20
+  ],
+  "Prospect": [
+   13,
+   16
+  ],
+  "Lead": [
+   14,
+   20,
+   29,
+   40,
+   49
+  ],
+  "STR / SAR": [
+   14,
+   16,
+   18,
+   42,
+   44
+  ],
+  "Executive / non-executive director": [
+   15,
+   18
+  ],
+  "Payment terms": [
+   15,
+   17,
+   18,
+   21,
+   25,
+   26,
+   30
+  ],
+  "Deadline": [
+   15,
+   21
+  ],
+  "Deliverable": [
+   15
+  ],
+  "Long / short position": [
+   16,
+   36,
+   37,
+   51
+  ],
+  "Penalty": [
+   16,
+   43
+  ],
+  "Liquidated damages (LDs)": [
+   16,
+   31
+  ],
+  "Quotation": [
+   16,
+   28,
+   30
+  ],
+  "Discount rate": [
+   17
+  ],
+  "Differentiation": [
+   17
+  ],
+  "Prepayment": [
+   17,
+   19,
+   20
+  ],
+  "Exclusivity": [
+   17,
+   19,
+   20,
+   22,
+   25,
+   26,
+   31
+  ],
+  "Commission": [
+   17,
+   25,
+   26,
+   49
+  ],
+  "KPI (Key performance indicator)": [
+   18
+  ],
+  "B/L (Bill of lading)": [
+   18,
+   30,
+   36,
+   39,
+   40,
+   41,
+   42,
+   43
+  ],
+  "Volume discount / rebate": [
+   18,
+   22
+  ],
+  "Limitation of liability": [
+   18,
+   31
+  ],
+  "Inflation": [
+   18,
+   49
+  ],
+  "Credit risk": [
+   18,
+   26,
+   55
+  ],
+  "Spread": [
+   19,
+   46
+  ],
+  "BATNA": [
+   20,
+   21,
+   27
+  ],
+  "Anchoring": [
+   20
+  ],
+  "Free time": [
+   22,
+   36,
+   40,
+   45
+  ],
+  "Liability": [
+   22,
+   37,
+   49,
+   51,
+   53,
+   56,
+   57
+  ],
+  "Key account management": [
+   23
+  ],
+  "KAM (Key account management)": [
+   23
+  ],
+  "Pipeline": [
+   23,
+   25,
+   33,
+   36
+  ],
+  "Data quality": [
+   24,
+   34
+  ],
+  "Quota": [
+   24
+  ],
+  "Receivership / administration": [
+   24
+  ],
+  "Mitigation": [
+   24,
+   29,
+   40
+  ],
+  "Sales cycle": [
+   25
+  ],
+  "Confidentiality / NDA": [
+   25,
+   26,
+   31
+  ],
+  "Anti-bribery": [
+   26,
+   29,
+   30,
+   31
+  ],
+  "Due diligence": [
+   26
+  ],
+  "Exit": [
+   26,
+   31,
+   53
+  ],
+  "Sanctions": [
+   26,
+   29,
+   31,
+   40,
+   51,
+   57
+  ],
+  "Arbitration": [
+   26,
+   43
+  ],
+  "Supply chain": [
+   28,
+   54,
+   55
+  ],
+  "Landed cost": [
+   28,
+   30,
+   31,
+   42,
+   44,
+   45
+  ],
+  "Working capital": [
+   28,
+   34,
+   40
+  ],
+  "RFP / RFQ / RFI": [
+   28,
+   30
+  ],
+  "Safety stock": [
+   28,
+   29,
+   31,
+   33,
+   34,
+   40
+  ],
+  "Turnover": [
+   28,
+   34,
+   35,
+   55
+  ],
+  "Demurrage and detention": [
+   28,
+   39,
+   40
+  ],
+  "Leverage": [
+   29,
+   32
+  ],
+  "Consolidation": [
+   29
+  ],
+  "Utilisation": [
+   29,
+   32
+  ],
+  "Incoterms": [
+   29,
+   31,
+   33,
+   39,
+   53,
+   57
+  ],
+  "Country risk": [
+   30
+  ],
+  "Incoterms® 2020": [
+   30,
+   43
+  ],
+  "Lead time": [
+   30,
+   31,
+   33,
+   34,
+   42,
+   45
+  ],
+  "HS code": [
+   30
+  ],
+  "HS (HS code)": [
+   30,
+   39,
+   43,
+   45
+  ],
+  "Guarantee (bank)": [
+   30,
+   32
+  ],
+  "Specifications": [
+   31,
+   43
+  ],
+  "Force majeure": [
+   31
+  ],
+  "Intellectual property (IP)": [
+   31
+  ],
+  "Advance payment": [
+   31
+  ],
+  "Open account": [
+   31,
+   57
+  ],
+  "Counterparty risk": [
+   32
+  ],
+  "Policy": [
+   32,
+   48,
+   49,
+   50,
+   54,
+   56
+  ],
+  "EOQ": [
+   33,
+   34,
+   35
+  ],
+  "Regression": [
+   33
+  ],
+  "Machine learning": [
+   33
+  ],
+  "SKU": [
+   33,
+   44
+  ],
+  "ROP (Reorder point)": [
+   33,
+   34
+  ],
+  "FCL / LCL": [
+   34,
+   36,
+   38
+  ],
+  "Inventory turnover": [
+   34
+  ],
+  "COGS (Cost of goods sold)": [
+   34
+  ],
+  "Write-off": [
+   34
+  ],
+  "WMS / TMS": [
+   34
+  ],
+  "3PL (Third-party logistics)": [
+   34,
+   56
+  ],
+  "Charter party": [
+   36
+  ],
+  "Air waybill (AWB)": [
+   36
+  ],
+  "TEU / FEU": [
+   36
+  ],
+  "Consignee / shipper": [
+   36,
+   37,
+   38
+  ],
+  "Voyage / time charter": [
+   36
+  ],
+  "Productivity": [
+   37
+  ],
+  "Commercial invoice": [
+   39,
+   45
+  ],
+  "Packing list": [
+   39,
+   45
+  ],
+  "Certificate of origin (CO)": [
+   39,
+   45
+  ],
+  "Broker": [
+   39,
+   44,
+   54
+  ],
+  "Power of attorney (POA)": [
+   39
+  ],
+  "Power of attorney": [
+   39
+  ],
+  "D&D (Demurrage and detention)": [
+   40
+  ],
+  "Liquidity": [
+   40,
+   41
+  ],
+  "Liquidity (market)": [
+   40,
+   41
+  ],
+  "Insolvency / bankruptcy": [
+   40,
+   56,
+   57
+  ],
+  "Diversification": [
+   40
+  ],
+  "Diversification (corporate)": [
+   40
+  ],
+  "Scenario planning": [
+   40
+  ],
+  "Freight rate (e.g., $/t, Worldscale)": [
+   40,
+   45
+  ],
+  "Hedging": [
+   40,
+   53,
+   54,
+   56,
+   57
+  ],
+  "Risk appetite": [
+   41,
+   53
+  ],
+  "Bank guarantee": [
+   41
+  ],
+  "Indemnity": [
+   41,
+   48,
+   49,
+   51,
+   56,
+   58
+  ],
+  "Purchase order (PO)": [
+   42,
+   43
+  ],
+  "Customs value": [
+   43
+  ],
+  "Basis": [
+   43,
+   45
+  ],
+  "Tariff": [
+   43
+  ],
+  "Customs broker": [
+   44,
+   46
+  ],
+  "Pro forma invoice": [
+   45
+  ],
+  "Insured / insurer": [
+   47,
+   48,
+   49,
+   54
+  ],
+  "All risks": [
+   47,
+   51,
+   54,
+   56,
+   57,
+   58
+  ],
+  "Underwriting": [
+   47,
+   49
+  ],
+  "Reinsurance": [
+   47,
+   49
+  ],
+  "Utmost good faith": [
+   48
+  ],
+  "Subrogation": [
+   48,
+   49,
+   50
+  ],
+  "Sum insured": [
+   48
+  ],
+  "Deductible": [
+   48,
+   49,
+   50,
+   56
+  ],
+  "Loss adjuster": [
+   49
+  ],
+  "Underinsurance / average": [
+   49
+  ],
+  "Takaful": [
+   49
+  ],
+  "Claim": [
+   50
+  ],
+  "Waiver": [
+   50
+  ],
+  "Endorsement": [
+   50
+  ],
+  "Named perils": [
+   51
+  ],
+  "Business interruption": [
+   51,
+   58
+  ],
+  "BI (Business intelligence)": [
+   51,
+   54,
+   55,
+   56,
+   57,
+   58
+  ],
+  "Inherent / residual risk": [
+   51
+  ],
+  "P&I": [
+   51
+  ],
+  "Trade credit insurance": [
+   51,
+   56,
+   57
+  ],
+  "Political risk insurance": [
+   52,
+   57
+  ],
+  "Devaluation": [
+   52
+  ],
+  "Impairment": [
+   52,
+   57
+  ],
+  "Ransomware": [
+   52,
+   55
+  ],
+  "PESTLE (PESTLE analysis)": [
+   53
+  ],
+  "Outsourcing": [
+   53
+  ],
+  "Licence": [
+   54
+  ],
+  "Heat map": [
+   54,
+   55
+  ],
+  "Risk register": [
+   54
+  ],
+  "Bad debt / ECL": [
+   54
+  ],
+  "Three lines model": [
+   54
+  ],
+  "Escalation": [
+   55
+  ],
+  "KRI": [
+   55
+  ],
+  "ERP (Enterprise resource planning)": [
+   55
+  ],
+  "MFA": [
+   55
+  ],
+  "Market risk": [
+   56
+  ],
+  "Equity": [
+   57
+  ],
+  "Collateral": [
+   57
+  ],
+  "KYC (Know your customer)": [
+   57
+  ],
+  "Assignment": [
+   58
+  ],
+  "Market share": [
+   58
+  ]
+ },
+ "main": {
+  "Revenue": [],
+  "B2B / B2C / B2G": [],
+  "Segmentation (analytics)": [],
+  "Positioning": [],
+  "Value proposition": [],
+  "Margin": [],
+  "CRM": [],
+  "Tender": [],
+  "Profit / Net income": [],
+  "API (Application programming interface)": [],
+  "Compliance": [],
+  "Agenda / minutes": [],
+  "Demurrage": [],
+  "Premium": [],
+  "Premium / differential": [],
+  "Reconciliation": [],
+  "Month-end close": [],
+  "Churn": [],
+  "CAC (Customer acquisition cost)": [],
+  "CLV / LTV (Customer lifetime value)": [],
+  "LTV": [],
+  "Procurement": [],
+  "Win rate": [],
+  "Gross profit": [],
+  "Onboarding": [],
+  "Cohort analysis": [],
+  "ROI (Return on investment)": [],
+  "Term sheet": [],
+  "Concession": [],
+  "Prospect": [],
+  "Lead": [],
+  "STR / SAR": [],
+  "Executive / non-executive director": [],
+  "Payment terms": [],
+  "Deadline": [],
+  "Deliverable": [],
+  "Long / short position": [],
+  "Penalty": [],
+  "Liquidated damages (LDs)": [],
+  "Quotation": [],
+  "Discount rate": [],
+  "Differentiation": [],
+  "Prepayment": [],
+  "Exclusivity": [],
+  "Commission": [],
+  "KPI (Key performance indicator)": [],
+  "B/L (Bill of lading)": [],
+  "Volume discount / rebate": [],
+  "Limitation of liability": [],
+  "Inflation": [],
+  "Credit risk": [],
+  "Spread": [],
+  "BATNA": [],
+  "Anchoring": [],
+  "Free time": [],
+  "Liability": [],
+  "Key account management": [],
+  "KAM (Key account management)": [],
+  "Pipeline": [],
+  "Data quality": [],
+  "Quota": [],
+  "Receivership / administration": [],
+  "Mitigation": [],
+  "Sales cycle": [],
+  "Confidentiality / NDA": [],
+  "Anti-bribery": [],
+  "Due diligence": [],
+  "Exit": [],
+  "Sanctions": [],
+  "Arbitration": [],
+  "Supply chain": [],
+  "Landed cost": [],
+  "Working capital": [],
+  "RFP / RFQ / RFI": [],
+  "Safety stock": [],
+  "Turnover": [],
+  "Demurrage and detention": [],
+  "Leverage": [],
+  "Consolidation": [],
+  "Utilisation": [],
+  "Incoterms": [],
+  "Country risk": [],
+  "Incoterms® 2020": [],
+  "Lead time": [],
+  "HS code": [],
+  "HS (HS code)": [],
+  "Guarantee (bank)": [],
+  "Specifications": [],
+  "Force majeure": [],
+  "Intellectual property (IP)": [],
+  "Advance payment": [],
+  "Open account": [],
+  "Counterparty risk": [],
+  "Policy": [],
+  "EOQ": [],
+  "Regression": [],
+  "Machine learning": [],
+  "SKU": [],
+  "ROP (Reorder point)": [],
+  "FCL / LCL": [],
+  "Inventory turnover": [],
+  "COGS (Cost of goods sold)": [],
+  "Write-off": [],
+  "WMS / TMS": [],
+  "3PL (Third-party logistics)": [],
+  "Charter party": [],
+  "Air waybill (AWB)": [],
+  "TEU / FEU": [],
+  "Consignee / shipper": [],
+  "Voyage / time charter": [],
+  "Productivity": [],
+  "Commercial invoice": [],
+  "Packing list": [],
+  "Certificate of origin (CO)": [],
+  "Broker": [],
+  "Power of attorney (POA)": [],
+  "Power of attorney": [],
+  "D&D (Demurrage and detention)": [],
+  "Liquidity": [],
+  "Liquidity (market)": [],
+  "Insolvency / bankruptcy": [],
+  "Diversification": [],
+  "Diversification (corporate)": [],
+  "Scenario planning": [],
+  "Freight rate (e.g., $/t, Worldscale)": [],
+  "Hedging": [],
+  "Risk appetite": [],
+  "Bank guarantee": [],
+  "Indemnity": [],
+  "Purchase order (PO)": [],
+  "Customs value": [],
+  "Basis": [],
+  "Tariff": [],
+  "Customs broker": [],
+  "Pro forma invoice": [],
+  "Insured / insurer": [],
+  "All risks": [],
+  "Underwriting": [],
+  "Reinsurance": [],
+  "Utmost good faith": [],
+  "Subrogation": [],
+  "Sum insured": [],
+  "Deductible": [],
+  "Loss adjuster": [],
+  "Underinsurance / average": [],
+  "Takaful": [],
+  "Claim": [],
+  "Waiver": [],
+  "Endorsement": [],
+  "Named perils": [],
+  "Business interruption": [],
+  "BI (Business intelligence)": [],
+  "Inherent / residual risk": [],
+  "P&I": [],
+  "Trade credit insurance": [],
+  "Political risk insurance": [],
+  "Devaluation": [],
+  "Impairment": [],
+  "Ransomware": [],
+  "PESTLE (PESTLE analysis)": [],
+  "Outsourcing": [],
+  "Licence": [],
+  "Heat map": [],
+  "Risk register": [],
+  "Bad debt / ECL": [],
+  "Three lines model": [],
+  "Escalation": [],
+  "KRI": [],
+  "ERP (Enterprise resource planning)": [],
+  "MFA": [],
+  "Market risk": [],
+  "Equity": [],
+  "Collateral": [],
+  "KYC (Know your customer)": [],
+  "Assignment": [],
+  "Market share": []
+ }
 }
