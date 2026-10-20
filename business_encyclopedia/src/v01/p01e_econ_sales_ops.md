@@ -479,7 +479,7 @@ vs: Container D&D (liner shipping) vs vessel demurrage (bulk/tanker charter part
 | Open account | الحساب المفتوح | Goods shipped before payment, which is due at an agreed date. |
 | Advance payment | الدفع المقدم | Buyer pays before shipment. |
 
-:::exercise Practice: Chapters 6–8
+:::exercise Practice questions
 1. Your company’s revenue grew 7% while inflation was 9%. Describe the real change.
 2. A price increase of 5% leads to a 12% fall in volume. Is demand elastic? What happens to revenue?
 3. Monthly marketing spend $60k brings 40 customers; average gross profit per customer is $150/month with 2.5% monthly churn. Compute CAC, LTV and LTV/CAC.
@@ -487,7 +487,7 @@ vs: Container D&D (liner shipping) vs vessel demurrage (bulk/tanker charter part
 5. Under FOB Ningbo, a container falls into the sea during loading before it is on board. Whose risk? Under CIF Jebel Ali, the vessel sinks mid-voyage. Whose risk, and who holds the insurance?
 :::
 
-:::answer Answers: Chapters 6–8
+:::answer Answers to the practice questions
 1. Real growth ≈ 1.07 ÷ 1.09 − 1 = **−1.8%**: in real terms the business shrank.
 2. Elasticity = −12% ÷ 5% = −2.4 → **elastic**. Revenue ≈ 1.05 × 0.88 − 1 = **−7.6%**.
 3. CAC = 60,000 ÷ 40 = **$1,500**; LTV ≈ 150 ÷ 0.025 = **$6,000**; LTV/CAC = **4.0** (healthy if the churn estimate is reliable).

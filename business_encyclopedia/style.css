@@ -198,3 +198,15 @@ tr.g-letter td { background: var(--navy) !important; color: white; font-weight: 
 .th-list { font-size: 8.2pt; text-align: left; line-height: 1.7; }
 table.loctable { font-size: 7.8pt; }
 .loc-secs { color: var(--grey); font-size: 7.2pt; }
+
+/* Calculation cards (Part XX) */
+.calc { margin: 0.5em 0 0.9em 0; border: 0.6pt solid var(--rule); border-top: 2.5pt solid var(--green); break-inside: avoid; }
+.calc-head { background: var(--green-l); padding: 4pt 8pt; font: 700 10.5pt "Noto Sans"; color: var(--navy); }
+table.calc-body { margin: 0; font-family: "Noto Serif", "Noto Naskh Arabic", serif; font-size: 8.8pt; }
+table.calc-body th { width: 19%; background: white; color: var(--grey); font: 600 7.4pt "Noto Sans";
+                     text-transform: uppercase; letter-spacing: 0.4pt; border: none; border-top: 0.4pt solid #E3E7EB; }
+table.calc-body td { border: none; border-top: 0.4pt solid #E3E7EB; background: white !important; }
+table.calc-body tr.cf-f td { background: var(--blue-l) !important; font-family: "Noto Sans", sans-serif; font-weight: 600; color: var(--navy); }
+table.calc-body tr.cf-ar td { font-size: 9.8pt; line-height: 1.6; background: #F7FBF8 !important; }
+table.calc-body tr.cf-ar th { font-family: "Noto Sans Arabic", sans-serif; text-transform: none; font-size: 8.4pt; }
+table.calc-body tr.cf-err td { color: var(--red); }

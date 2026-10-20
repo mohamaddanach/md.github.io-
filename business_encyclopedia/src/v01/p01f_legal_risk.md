@@ -321,14 +321,14 @@ vs: Subrogation (insurer recovers) vs contribution (sharing between insurers).
 | Political risk insurance | تأمين المخاطر السياسية | Covers expropriation, currency inconvertibility, political violence. |
 | Takaful | التكافل | Sharia-compliant cooperative insurance model. |
 
-:::exercise Practice: Chapter 9
+:::exercise Practice questions
 1. A supplier proposes: “Supplier’s total liability shall not exceed the fees paid in the previous 3 months.” Your annual contract is $1.2m. Why might you object, and what would you propose?
 2. Identify the risk type: (a) customer goes bankrupt owing $300k; (b) euro strengthens before an EUR payment; (c) employee pays a fake invoice; (d) a new law bans your product.
 3. A cargo worth $200k CIF is insured at 110% with a $2k deductible. Damage of $30k occurs. What does the insurer pay? If it were insured at only $150k, what might happen?
 4. What is the difference between force majeure and hardship?
 :::
 
-:::answer Answers: Chapter 9
+:::answer Answers to the practice questions
 1. Three months’ fees ≈ $300k may be far below the losses a failure could cause (e.g., data breach, business disruption). Propose a cap of 12 months’ fees (or a fixed amount) with carve-outs for data protection, confidentiality, IP indemnities, fraud and wilful misconduct, and check the supplier’s insurance.
 2. (a) Credit/counterparty risk; (b) market (FX) risk; (c) operational risk (fraud/process); (d) regulatory/legal (and strategic) risk.
 3. Insurer pays 30,000 − 2,000 = **$28,000**. If underinsured (sum insured below value), many policies apply average: payment reduced in proportion (sum insured ÷ actual value), e.g., 150 ÷ 220 × loss — check the policy wording.

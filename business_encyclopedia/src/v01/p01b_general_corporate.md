@@ -314,14 +314,14 @@ vs: Share capital ≠ total equity (equity also includes retained earnings and r
 تختلف تسمية الكيانات القانونية بين الدول العربية: «الشركة ذات المسؤولية المحدودة»، و«شركة المساهمة العامة/الخاصة»، و«شركة التضامن»، و«شركة التوصية البسيطة». كما تختلف الوثائق التأسيسية: «عقد التأسيس» و«النظام الأساسي». يجب دائماً الرجوع إلى قانون الشركات المحلي في كل بلد، لأن الحقوق والالتزامات تختلف من دولة إلى أخرى.
 :::
 
-:::exercise Chapter 2 practice
+:::exercise Practice questions
 1. A bank asks for “certified articles, a board resolution and UBO declaration”. Explain why it needs each.
 2. Your manager says the target company has a “$12m run rate”. What two questions do you ask?
 3. Classify: (a) a 35% stake with two board seats in a company; (b) a 100%-owned company created only to own one ship; (c) a 55% stake.
 4. A shareholder of an LLC asks whether he is personally liable for the company’s $500k unpaid supplier invoices. What is the general answer and what exceptions should he check?
 :::
 
-:::answer Chapter 2 answers
+:::answer Answers to the practice questions
 1. Articles: confirm the company exists, its powers and who can bind it. Board resolution: proves the board authorised the transaction and named signatories. UBO declaration: KYC/AML requirement to identify natural persons who own or control the company.
 2. (a) Which period is annualised (one month? one quarter?) and is it seasonal? (b) How does it compare with actual last-twelve-months revenue, and is any of it one-off?
 3. (a) Likely an associate (significant influence) — or a JV if control is shared by agreement; (b) an SPV and a wholly owned subsidiary; (c) a subsidiary (control), subject to voting agreements.

@@ -260,7 +260,7 @@ use: In acquisitions, the headline price is often EV (“cash-free, debt-free”
 ex: Market cap $500m + debt $200m − cash $50m = EV $650m.
 say: “We agreed an EV of $120m on a cash-free, debt-free basis; the equity cheque depends on closing net debt.”
 rel: Equity value; net debt; EV/EBITDA; market capitalisation.
-vs: EV (whole business) vs equity value (shareholders’ part). See Chapter 34.
+vs: EV (whole business) vs equity value (shareholders’ part). See {{ch:Business Valuation}}.
 :::
 
 :::term Net debt | صافي الدين | 
@@ -428,7 +428,7 @@ vs: Hedging reduces an existing exposure; speculation creates a new exposure to 
 | AUM | الأصول تحت الإدارة | Assets managed by a fund manager. |
 | NAV | صافي قيمة الأصول | Net asset value of a fund (per unit/share). |
 
-:::exercise Practice: Chapters 3–4
+:::exercise Practice questions
 1. A customer prepays $24,000 for a 12-month maintenance contract on 1 April. What is deferred revenue at 30 June?
 2. Distinguish provision, contingent liability and reserve with one example each.
 3. A company has market cap $800m, debt $300m and cash $100m. What is EV? If EBITDA is $100m, what is EV/EBITDA?
@@ -436,7 +436,7 @@ vs: Hedging reduces an existing exposure; speculation creates a new exposure to 
 5. WACC: equity 70% at 15%, debt 30% at 8% pre-tax, tax rate 25%. Compute WACC.
 :::
 
-:::answer Answers: Chapters 3–4
+:::answer Answers to the practice questions
 1. Three months earned ($6,000) → deferred revenue = **$18,000**.
 2. Provision: warranty claims expected on products sold (probable, estimable — recognised). Contingent liability: a lawsuit the lawyers think is possible but not probable (disclosed only). Reserve: part of equity, e.g., a statutory reserve required by company law (not a liability).
 3. EV = 800 + 300 − 100 = **$1,000m**; EV/EBITDA = **10.0×**.

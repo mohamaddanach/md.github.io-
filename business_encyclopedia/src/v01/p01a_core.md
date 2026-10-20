@@ -320,7 +320,7 @@ Cedar Line earned $680,000 of net income, yet its debt rose by $1.2m. The bridge
 | **Change in cash** | **(320,000)** | Cash fell from $0.72m to $0.40m (assumed) |
 
 :::tip What a banker sees here
-A credit officer reading these numbers would say: “Profitable, but growth is being funded by debt because DSO has stretched and inventory is building. I want to see the receivables ageing, any concentration in the two hotel chains, and whether inventory includes slow-moving stock.” This is the most common pattern of distress in growing trading companies — Chapter 17 analyses it in depth.
+A credit officer reading these numbers would say: “Profitable, but growth is being funded by debt because DSO has stretched and inventory is building. I want to see the receivables ageing, any concentration in the two hotel chains, and whether inventory includes slow-moving stock.” This is the most common pattern of distress in growing trading companies — {{ch:Why Profitable Businesses Fail}} analyses it in depth.
 :::
 
 :::ar لماذا تنفد السيولة من شركة رابحة؟
@@ -353,7 +353,7 @@ A credit officer reading these numbers would say: “Profitable, but growth is b
 | ROI | (Gain − cost) ÷ cost | Ratio | Project sponsors | No time period |
 | ROE | NI ÷ avg equity | Ratio | Shareholders | Boosted by leverage |
 
-:::exercise Chapter 1 practice
+:::exercise Practice questions
 1. A distributor buys a product for $64 and sells it for $80. Compute the markup and the margin.
 2. Company A has revenue of $50m, EBITDA of $10m, D&A of $4m, interest of $2m and tax of $1m. Compute EBIT, profit before tax, net income and the EBITDA margin.
 3. During a year, a company’s net income is $2m, D&A $1m, receivables increase by $3m, inventory decreases by $0.5m and payables increase by $0.2m. What is operating cash flow? What would you tell the CEO?
@@ -361,7 +361,7 @@ A credit officer reading these numbers would say: “Profitable, but growth is b
 5. Company B has ROE of 24% and Company C has ROE of 15%. Under what circumstances could C be the better-run business?
 :::
 
-:::answer Chapter 1 answers
+:::answer Answers to the practice questions
 1. Profit = $16. Markup = 16 ÷ 64 = **25%**. Margin = 16 ÷ 80 = **20%**. Check: margin = 0.25 ÷ 1.25 = 0.20.
 2. EBIT = 10 − 4 = **$6m**; PBT = 6 − 2 = **$4m**; net income = 4 − 1 = **$3m**; EBITDA margin = 10 ÷ 50 = **20%**.
 3. OCF = 2 + 1 − 3 + 0.5 + 0.2 = **$0.7m**. Message: profit converted to cash at only 35% (0.7 ÷ 2) because receivables grew by $3m. Ask why — new large customers on long terms? Overdue invoices? Review credit terms and collections before increasing sales further.

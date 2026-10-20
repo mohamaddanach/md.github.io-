@@ -125,12 +125,48 @@ def render_term(arg, body, ctx):
             f'<table class="term-body">{"".join(rows)}</table></div>')
 
 
+CALC_FIELDS = [
+    ("f", "Formula"), ("en", "Plain English"), ("ar", "بالعربية"), ("simple", "Simple example"),
+    ("biz", "Business example"), ("sol", "Worked solution"), ("err", "Common mistakes"),
+]
+
+
+def keep_lines(text):
+    """Formula text: honour line breaks and wide gaps between formulas."""
+    text = re.sub(r"(?<=\S) {3,}(?=\S)", "  \n", text)
+    return re.sub(r"(?<=\S)\n(?=\S)", "  \n", text)
+
+
+def render_calc(arg, body, ctx):
+    fields, cur = {}, None
+    for line in body.split("\n"):
+        m = re.match(r"^(\w+):\s?(.*)$", line)
+        if m and m.group(1) in dict(CALC_FIELDS):
+            cur = m.group(1)
+            fields[cur] = m.group(2)
+        elif cur:
+            fields[cur] += "\n" + line
+    aid = ctx.anchor("c")
+    ctx.add_index(arg, aid, "term")
+    rows = []
+    for key, label in CALC_FIELDS:
+        if fields.get(key, "").strip():
+            raw = fields[key].strip()
+            val = inline_md(keep_lines(raw) if key == "f" else raw, ctx)
+            attr = ' dir="rtl"' if key == "ar" else ""
+            rows.append(f'<tr class="cf-{key}"><th>{label}</th><td{attr}>{val}</td></tr>')
+    return (f'<div class="calc" id="{aid}"><div class="calc-head">{H.escape(arg)}</div>'
+            f'<table class="calc-body">{"".join(rows)}</table></div>')
+
+
 def render_box(kind, arg, body, ctx):
     if kind == "term":
         return render_term(arg, body, ctx)
+    if kind == "calc":
+        return render_calc(arg, body, ctx)
     label = BOX_LABELS.get(kind, kind.title())
     title = inline_md(arg, ctx) if arg else ""
-    inner = md_to_html(body, ctx)
+    inner = md_to_html(keep_lines(body) if kind == "formula" else body, ctx)
     if kind == "ar":
         head = f'<div class="box-label">{label}{(" — " + title) if title else ""}</div>'
         return f'<div class="box box-ar" dir="rtl">{head}{inner}</div>'
@@ -175,7 +211,41 @@ def index_tables(h, ctx):
     return re.sub(r"<table>.*?</table>", table, h, flags=re.S)
 
 
+def chapter_map():
+    """Global chapter numbers from the raw sources, for {{ch:Title fragment}} references."""
+    titles, n = [], 0
+    for vol in M.VOLUMES:
+        for entry in vol["entries"]:
+            if entry[0] != "part":
+                continue
+            for f in entry[4]:
+                p = SRC / f
+                if p.exists():
+                    for line in p.read_text(encoding="utf-8").split("\n"):
+                        if line.startswith("# "):
+                            n += 1
+                            titles.append((n, line[2:].strip(), vol["num"]))
+    return titles
+
+
+CHAPTERS = []
+
+
+def resolve_refs(text, vol_num):
+    def ref(m):
+        frag = m.group(1).strip().lower()
+        hits = [t for t in CHAPTERS if frag in t[1].lower()]
+        if len(hits) != 1:
+            print(f"  ! chapter reference '{m.group(1)}' matched {len(hits)} chapters")
+            return f"Chapter ?? ({m.group(1)})"
+        n, title, v = hits[0]
+        where = "" if v == vol_num else f" (Volume {v})"
+        return f'<a href="#ch{n}">Chapter {n}</a>{where}' if v == vol_num else f"Chapter {n}{where}"
+    return re.sub(r"\{\{ch:([^}]+)\}\}", ref, text)
+
+
 def md_to_html(text, ctx):
+    text = resolve_refs(text, ctx.vol)
     lines = text.split("\n")
     out, blocks, i = [], [], 0
     while i < len(lines):
@@ -573,6 +643,7 @@ def main():
     OUT.mkdir(exist_ok=True)
     BUILD.mkdir(exist_ok=True)
     want = set(a.volumes) or {v["num"] for v in M.VOLUMES} | {10}
+    CHAPTERS.extend(chapter_map())
     chap = 0
     for vol in M.VOLUMES:
         print(f"Volume {vol['num']}: {vol['title']}")

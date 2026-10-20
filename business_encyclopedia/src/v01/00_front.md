@@ -36,7 +36,7 @@ The collection has **ten volumes** containing **twenty-three parts** plus a docu
 
 ### Learning sequence
 
-The order of volumes is the recommended learning order with two exceptions. First, **Part XX (Business Mathematics)** sits in Volume 3 next to corporate finance, but you should use it as a workbook from the first week: whenever a chapter uses a formula, the full worked treatment is in Part XX. Second, **Part XVII (Communication)** is in Volume 8 but its phrasebook (Chapter 116) is worth reading early and revisiting weekly. The six-month roadmap in Volume 9 schedules both.
+The order of volumes is the recommended learning order with two exceptions. First, **Part XX (Business Mathematics)** sits in Volume 3 next to corporate finance, but you should use it as a workbook from the first week: whenever a chapter uses a formula, the full worked treatment is in Part XX. Second, **Part XVII (Communication)** is in Volume 8 but its phrasebook ({{ch:Phrasebook}}) is worth reading early and revisiting weekly. The six-month roadmap in Volume 9 schedules both.
 
 ### Handling overlaps
 
@@ -203,4 +203,4 @@ Throughout the collection you will see contrasts between how a **graduate** and 
 5. **Second-order effects.** A price cut increases volume, which increases inventory, which consumes cash, which requires borrowing, which increases interest cost and covenant pressure.
 6. **Precise language.** They distinguish revenue from cash, a guarantee from collateral, a quotation from an offer, an estimate from a fact.
 
-Keep these six habits in mind as you read. Chapter 125 returns to them in depth.
+Keep these six habits in mind as you read. {{ch:Professional Mindset}} returns to them in depth.

@@ -470,7 +470,7 @@ vs: Vessel demurrage (charter party) vs container demurrage (liner terminal char
 | Warehouse receipt | إيصال المستودع | Document evidencing goods held in storage. |
 | Crack spread | هامش التكرير | Refined product prices minus crude price. |
 
-:::exercise Practice: Chapters 10–12
+:::exercise Practice questions
 1. Write one objective and three key results for a procurement team that wants to cut landed costs.
 2. Which Five Forces would you emphasise when assessing a new container trucking business in a port city?
 3. A startup raises $3m at $9m pre-money. Founders owned 100% before. What do the founders own after? If the investor insists the 10% option pool be created pre-money, what do founders own?
@@ -478,7 +478,7 @@ vs: Vessel demurrage (charter party) vs container demurrage (liner terminal char
 5. Explain why a hedge with futures may not perfectly protect a physical trader.
 :::
 
-:::answer Answers: Chapters 10–12
+:::answer Answers to the practice questions
 1. Objective: “Make our supply chain cost-competitive.” KR1: reduce average landed cost per unit by 6% by Q4; KR2: qualify two alternative suppliers for the top 10 SKUs; KR3: cut demurrage and detention charges by 50%.
 2. Rivalry (many small truckers, price competition), buyer power (shipping lines and large forwarders), threat of entry (low capital barriers), supplier power (fuel, drivers, port access). Substitutes are limited (rail, if available).
 3. Post-money $12m; investor 25%; founders **75%**. With the pool pre-money: pool 10% of post-money ($1.2m) comes from the pre-money; founders = 100% − 25% − 10% = **65%**.

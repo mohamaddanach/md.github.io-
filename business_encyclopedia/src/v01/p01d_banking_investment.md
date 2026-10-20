@@ -194,14 +194,14 @@ vs: NPL (bad loan) vs watch-list loan (early warning, still performing).
 | AML / CFT | مكافحة غسل الأموال وتمويل الإرهاب | Anti-money laundering / countering financing of terrorism. |
 | Sanctions screening | الفحص مقابل قوائم العقوبات | Checking names, vessels, goods and countries against sanctions lists. |
 
-:::exercise Practice: Chapter 5
+:::exercise Practice questions
 1. A borrower has a $10m RCF, drawn $4m. Margin 2.0% over 3M SOFR (4.3%), commitment fee 35% of margin on undrawn. What is the annual cost?
 2. Explain to a non-banker the difference between collateral and a guarantee.
 3. A client wants a 10-year term loan to finance inventory. What is wrong with this request?
 4. A covenant requires interest cover ≥ 4.0×. EBIT is $6m, interest $1.6m. Is the covenant met? How much can EBIT fall before a breach?
 :::
 
-:::answer Answers: Chapter 5
+:::answer Answers to the practice questions
 1. Drawn interest: 4m × 6.3% = $252,000. Commitment fee: 6m × 0.70% = $42,000. Total ≈ **$294,000** (plus any arrangement fee amortisation).
 2. Collateral is an asset the lender can take and sell (property, cash, shares). A guarantee is a promise by another person or bank to pay if the borrower does not. Collateral’s value depends on the asset; a guarantee’s value depends on the guarantor’s creditworthiness.
 3. Mismatch: inventory turns over within months; it should be financed with short-term working-capital lines that are repaid as goods are sold. Long-term debt for short-term assets wastes interest and hides poor inventory management.

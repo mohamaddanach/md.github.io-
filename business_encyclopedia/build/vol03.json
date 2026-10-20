@@ -1,0 +1,803 @@
+{
+ "num": 3,
+ "title": "Corporate Finance, Economics and Business Mathematics",
+ "title_ar": "تمويل الشركات والاقتصاد ورياضيات الأعمال",
+ "file": "Volume_03_Corporate_Finance_Economics_And_Business_Mathematics.pdf",
+ "pages": 64,
+ "toc": [
+  {
+   "kind": "part",
+   "num": "IV",
+   "title": "Corporate Finance and Financial Management",
+   "title_ar": "تمويل الشركات والإدارة المالية",
+   "anchor": "v3-part-IV",
+   "chapters": [
+    {
+     "num": 27,
+     "title": "Time Value of Money",
+     "anchor": "ch27",
+     "sections": [
+      {
+       "num": "27.1",
+       "title": "Core relationships",
+       "anchor": "s27-1",
+       "page": 6
+      },
+      {
+       "num": "27.2",
+       "title": "Annuities and perpetuities",
+       "anchor": "s27-2",
+       "page": 6
+      },
+      {
+       "num": "27.3",
+       "title": "Nominal, effective and real rates",
+       "anchor": "s27-3",
+       "page": 7
+      },
+      {
+       "num": "27.4",
+       "title": "The cost of payment terms",
+       "anchor": "s27-4",
+       "page": 7
+      },
+      {
+       "num": "27.5",
+       "title": "Spreadsheet and code tools",
+       "anchor": "s27-5",
+       "page": 7
+      }
+     ],
+     "page": 6
+    },
+    {
+     "num": 28,
+     "title": "Capital Budgeting: NPV, IRR and Investment Decisions",
+     "anchor": "ch28",
+     "sections": [
+      {
+       "num": "28.1",
+       "title": "The decision rule",
+       "anchor": "s28-1",
+       "page": 9
+      },
+      {
+       "num": "28.2",
+       "title": "Estimating incremental cash flows",
+       "anchor": "s28-2",
+       "page": 9
+      },
+      {
+       "num": "28.3",
+       "title": "Worked example: a cold-storage warehouse (fictional)",
+       "anchor": "s28-3",
+       "page": 9
+      },
+      {
+       "num": "28.4",
+       "title": "NPV vs IRR: when they disagree",
+       "anchor": "s28-4",
+       "page": 10
+      },
+      {
+       "num": "28.5",
+       "title": "Other criteria",
+       "anchor": "s28-5",
+       "page": 11
+      },
+      {
+       "num": "28.6",
+       "title": "Practical complications",
+       "anchor": "s28-6",
+       "page": 11
+      }
+     ],
+     "page": 9
+    },
+    {
+     "num": 29,
+     "title": "Cost of Capital, Capital Structure and Dividend Policy",
+     "anchor": "ch29",
+     "sections": [
+      {
+       "num": "29.1",
+       "title": "The cost of capital",
+       "anchor": "s29-1",
+       "page": 13
+      },
+      {
+       "num": "29.2",
+       "title": "Capital structure: debt or equity?",
+       "anchor": "s29-2",
+       "page": 14
+      },
+      {
+       "num": "29.3",
+       "title": "Dividend policy and returning cash",
+       "anchor": "s29-3",
+       "page": 15
+      }
+     ],
+     "page": 13
+    },
+    {
+     "num": 30,
+     "title": "Working Capital and Cash Management",
+     "anchor": "ch30",
+     "sections": [
+      {
+       "num": "30.1",
+       "title": "Why working capital deserves senior attention",
+       "anchor": "s30-1",
+       "page": 16
+      },
+      {
+       "num": "30.2",
+       "title": "Working-capital policies",
+       "anchor": "s30-2",
+       "page": 16
+      },
+      {
+       "num": "30.3",
+       "title": "Receivables management",
+       "anchor": "s30-3",
+       "page": 16
+      },
+      {
+       "num": "30.4",
+       "title": "Inventory management",
+       "anchor": "s30-4",
+       "page": 17
+      },
+      {
+       "num": "30.5",
+       "title": "Payables management",
+       "anchor": "s30-5",
+       "page": 17
+      },
+      {
+       "num": "30.6",
+       "title": "Financing working capital",
+       "anchor": "s30-6",
+       "page": 17
+      },
+      {
+       "num": "30.7",
+       "title": "Cash management and the 13-week cash flow forecast",
+       "anchor": "s30-7",
+       "page": 18
+      }
+     ],
+     "page": 16
+    },
+    {
+     "num": 31,
+     "title": "Financial Planning, Forecasting and Modelling",
+     "anchor": "ch31",
+     "sections": [
+      {
+       "num": "31.1",
+       "title": "Planning horizons",
+       "anchor": "s31-1",
+       "page": 19
+      },
+      {
+       "num": "31.2",
+       "title": "Forecasting methods",
+       "anchor": "s31-2",
+       "page": 19
+      },
+      {
+       "num": "31.3",
+       "title": "How much external funding does growth need?",
+       "anchor": "s31-3",
+       "page": 19
+      },
+      {
+       "num": "31.4",
+       "title": "The three-statement model",
+       "anchor": "s31-4",
+       "page": 20
+      },
+      {
+       "num": "31.5",
+       "title": "Code alongside spreadsheets",
+       "anchor": "s31-5",
+       "page": 21
+      }
+     ],
+     "page": 19
+    },
+    {
+     "num": 32,
+     "title": "Leverage, Break-even, Sensitivity and Scenario Analysis",
+     "anchor": "ch32",
+     "sections": [
+      {
+       "num": "32.1",
+       "title": "Break-even analysis",
+       "anchor": "s32-1",
+       "page": 22
+      },
+      {
+       "num": "32.2",
+       "title": "Operating, financial and total leverage",
+       "anchor": "s32-2",
+       "page": 22
+      },
+      {
+       "num": "32.3",
+       "title": "Sensitivity analysis",
+       "anchor": "s32-3",
+       "page": 22
+      },
+      {
+       "num": "32.4",
+       "title": "Scenario analysis",
+       "anchor": "s32-4",
+       "page": 23
+      },
+      {
+       "num": "32.5",
+       "title": "Financial risk categories",
+       "anchor": "s32-5",
+       "page": 23
+      }
+     ],
+     "page": 22
+    },
+    {
+     "num": 33,
+     "title": "Business Valuation",
+     "anchor": "ch33",
+     "sections": [
+      {
+       "num": "33.1",
+       "title": "What is being valued?",
+       "anchor": "s33-1",
+       "page": 25
+      },
+      {
+       "num": "33.2",
+       "title": "Approach 1: Trading comparables (“comps”)",
+       "anchor": "s33-2",
+       "page": 25
+      },
+      {
+       "num": "33.3",
+       "title": "Approach 2: Precedent transactions",
+       "anchor": "s33-3",
+       "page": 25
+      },
+      {
+       "num": "33.4",
+       "title": "Approach 3: Discounted cash flow (DCF)",
+       "anchor": "s33-4",
+       "page": 26
+      },
+      {
+       "num": "33.5",
+       "title": "Triangulation: the “football field”",
+       "anchor": "s33-5",
+       "page": 26
+      },
+      {
+       "num": "33.6",
+       "title": "Valuing private companies",
+       "anchor": "s33-6",
+       "page": 27
+      }
+     ],
+     "page": 25
+    },
+    {
+     "num": 34,
+     "title": "Mergers, Acquisitions and Corporate Restructuring: The Financial View",
+     "anchor": "ch34",
+     "sections": [
+      {
+       "num": "34.1",
+       "title": "Value creation in an acquisition",
+       "anchor": "s34-1",
+       "page": 28
+      },
+      {
+       "num": "34.2",
+       "title": "Deal structures and consideration",
+       "anchor": "s34-2",
+       "page": 28
+      },
+      {
+       "num": "34.3",
+       "title": "Accretion and dilution",
+       "anchor": "s34-3",
+       "page": 28
+      },
+      {
+       "num": "34.4",
+       "title": "Leveraged buyouts (LBOs)",
+       "anchor": "s34-4",
+       "page": 29
+      },
+      {
+       "num": "34.5",
+       "title": "Financing an acquisition",
+       "anchor": "s34-5",
+       "page": 29
+      },
+      {
+       "num": "34.6",
+       "title": "Corporate restructuring: the financial mechanics",
+       "anchor": "s34-6",
+       "page": 29
+      }
+     ],
+     "page": 28
+    }
+   ],
+   "page": 5
+  },
+  {
+   "kind": "part",
+   "num": "V",
+   "title": "Economics and the Macroeconomic Business Environment",
+   "title_ar": "الاقتصاد وبيئة الأعمال الكلية",
+   "anchor": "v3-part-V",
+   "chapters": [
+    {
+     "num": 35,
+     "title": "Microeconomics for Business: Markets, Prices and Competition",
+     "anchor": "ch35",
+     "sections": [
+      {
+       "num": "35.1",
+       "title": "Supply, demand and equilibrium",
+       "anchor": "s35-1",
+       "page": 32
+      },
+      {
+       "num": "35.2",
+       "title": "Elasticity",
+       "anchor": "s35-2",
+       "page": 32
+      },
+      {
+       "num": "35.3",
+       "title": "Production, productivity and costs",
+       "anchor": "s35-3",
+       "page": 33
+      },
+      {
+       "num": "35.4",
+       "title": "Market structures",
+       "anchor": "s35-4",
+       "page": 33
+      }
+     ],
+     "page": 32
+    },
+    {
+     "num": 36,
+     "title": "Macroeconomics: Growth, Inflation, Employment and the Business Cycle",
+     "anchor": "ch36",
+     "sections": [
+      {
+       "num": "36.1",
+       "title": "Gross domestic product",
+       "anchor": "s36-1",
+       "page": 35
+      },
+      {
+       "num": "36.2",
+       "title": "Inflation",
+       "anchor": "s36-2",
+       "page": 35
+      },
+      {
+       "num": "36.3",
+       "title": "Employment and wages",
+       "anchor": "s36-3",
+       "page": 36
+      },
+      {
+       "num": "36.4",
+       "title": "Business cycles and recessions",
+       "anchor": "s36-4",
+       "page": 36
+      },
+      {
+       "num": "36.5",
+       "title": "Economic growth in the long run",
+       "anchor": "s36-5",
+       "page": 36
+      }
+     ],
+     "page": 35
+    },
+    {
+     "num": 37,
+     "title": "Money, Interest Rates, Central Banks and Government Finance",
+     "anchor": "ch37",
+     "sections": [
+      {
+       "num": "37.1",
+       "title": "Central banks and their mandates",
+       "anchor": "s37-1",
+       "page": 37
+      },
+      {
+       "num": "37.2",
+       "title": "How monetary policy works",
+       "anchor": "s37-2",
+       "page": 37
+      },
+      {
+       "num": "37.3",
+       "title": "Interest rates and company decisions",
+       "anchor": "s37-3",
+       "page": 37
+      },
+      {
+       "num": "37.4",
+       "title": "The yield curve",
+       "anchor": "s37-4",
+       "page": 38
+      },
+      {
+       "num": "37.5",
+       "title": "Fiscal policy and government debt",
+       "anchor": "s37-5",
+       "page": 38
+      },
+      {
+       "num": "37.6",
+       "title": "Money, credit and banks",
+       "anchor": "s37-6",
+       "page": 38
+      }
+     ],
+     "page": 37
+    },
+    {
+     "num": 38,
+     "title": "Exchange Rates, the Balance of Payments and International Trade Policy",
+     "anchor": "ch38",
+     "sections": [
+      {
+       "num": "38.1",
+       "title": "Exchange-rate regimes",
+       "anchor": "s38-1",
+       "page": 40
+      },
+      {
+       "num": "38.2",
+       "title": "What moves exchange rates",
+       "anchor": "s38-2",
+       "page": 40
+      },
+      {
+       "num": "38.3",
+       "title": "The balance of payments",
+       "anchor": "s38-3",
+       "page": 41
+      },
+      {
+       "num": "38.4",
+       "title": "Currency moves and company results",
+       "anchor": "s38-4",
+       "page": 41
+      },
+      {
+       "num": "38.5",
+       "title": "Tariffs and trade barriers",
+       "anchor": "s38-5",
+       "page": 41
+      }
+     ],
+     "page": 40
+    },
+    {
+     "num": 39,
+     "title": "Geopolitical, Sanctions, Country and Sovereign Risk — and How Macro Shocks Reach Companies",
+     "anchor": "ch39",
+     "sections": [
+      {
+       "num": "39.1",
+       "title": "Country risk and sovereign risk",
+       "anchor": "s39-1",
+       "page": 43
+      },
+      {
+       "num": "39.2",
+       "title": "Sanctions",
+       "anchor": "s39-2",
+       "page": 43
+      },
+      {
+       "num": "39.3",
+       "title": "Geopolitical risk in supply chains",
+       "anchor": "s39-3",
+       "page": 44
+      },
+      {
+       "num": "39.4",
+       "title": "A framework: how macro shocks reach the financial statements",
+       "anchor": "s39-4",
+       "page": 44
+      },
+      {
+       "num": "39.5",
+       "title": "Building a macro sensitivity for your business",
+       "anchor": "s39-5",
+       "page": 45
+      }
+     ],
+     "page": 43
+    }
+   ],
+   "page": 31
+  },
+  {
+   "kind": "part",
+   "num": "XX",
+   "title": "Business Mathematics and Commercial Calculations",
+   "title_ar": "رياضيات الأعمال والحسابات التجارية",
+   "anchor": "v3-part-XX",
+   "chapters": [
+    {
+     "num": 40,
+     "title": "Commercial Arithmetic: Percentages, Margins, Discounts, Commissions and Pricing",
+     "anchor": "ch40",
+     "sections": [
+      {
+       "num": "40.1",
+       "title": "Percentages and percentage points",
+       "anchor": "s40-1",
+       "page": 48
+      },
+      {
+       "num": "40.2",
+       "title": "Margins, markups and pricing",
+       "anchor": "s40-2",
+       "page": 49
+      },
+      {
+       "num": "40.3",
+       "title": "Discounts and commissions",
+       "anchor": "s40-3",
+       "page": 50
+      }
+     ],
+     "page": 48
+    },
+    {
+     "num": 41,
+     "title": "Interest, Loans and Foreign Exchange Calculations",
+     "anchor": "ch41",
+     "sections": [
+      {
+       "num": "41.1",
+       "title": "Interest",
+       "anchor": "s41-1",
+       "page": 52
+      },
+      {
+       "num": "41.2",
+       "title": "Loans",
+       "anchor": "s41-2",
+       "page": 53
+      },
+      {
+       "num": "41.3",
+       "title": "Foreign exchange",
+       "anchor": "s41-3",
+       "page": 54
+      }
+     ],
+     "page": 52
+    },
+    {
+     "num": 42,
+     "title": "Profitability, Working Capital and Financial Ratio Calculations",
+     "anchor": "ch42",
+     "sections": [],
+     "page": 56
+    },
+    {
+     "num": 43,
+     "title": "Trade Costs, Investment Returns, Valuation, Probability and Forecasting",
+     "anchor": "ch43",
+     "sections": [
+      {
+       "num": "43.1",
+       "title": "Landed cost and freight",
+       "anchor": "s43-1",
+       "page": 59
+      },
+      {
+       "num": "43.2",
+       "title": "Returns and valuation",
+       "anchor": "s43-2",
+       "page": 60
+      },
+      {
+       "num": "43.3",
+       "title": "Probability, sensitivity and forecasting",
+       "anchor": "s43-3",
+       "page": 62
+      }
+     ],
+     "page": 59
+    }
+   ],
+   "page": 47
+  }
+ ],
+ "terms": [],
+ "index": {
+  "Percentage change": [
+   48
+  ],
+  "Reverse percentage (tax-inclusive amounts)": [
+   48
+  ],
+  "Gross margin and markup": [
+   49
+  ],
+  "Price from a target margin": [
+   49
+  ],
+  "Chain (successive) discounts": [
+   50
+  ],
+  "Commission (flat, tiered, margin-based)": [
+   50
+  ],
+  "Blended (weighted average) margin and mix effect": [
+   51
+  ],
+  "Simple interest with day count": [
+   52
+  ],
+  "Compound growth and CAGR": [
+   52
+  ],
+  "Flat rate vs effective rate": [
+   53
+  ],
+  "Loan payment and amortisation schedule": [
+   53
+  ],
+  "Currency conversion and bid/ask": [
+   54
+  ],
+  "Cross rates": [
+   54
+  ],
+  "Forward rate from interest differentials": [
+   55
+  ],
+  "Contribution margin and multi-product break-even": [
+   56
+  ],
+  "Liquidity ratios": [
+   56
+  ],
+  "DSO, DIO, DPO and cash conversion cycle": [
+   57
+  ],
+  "Leverage and coverage ratios": [
+   57
+  ],
+  "Return ratios": [
+   58
+  ],
+  "Landed cost per unit": [
+   59
+  ],
+  "Chargeable weight and freight allocation": [
+   60
+  ],
+  "NPV and IRR (quick reference)": [
+   60
+  ],
+  "Holding-period return, annualised return and MOIC": [
+   61
+  ],
+  "Valuation from multiples": [
+   61
+  ],
+  "Expected value": [
+   62
+  ],
+  "Sensitivity of profit to a driver": [
+   62
+  ],
+  "Simple forecasting: moving average, trend and error": [
+   63
+  ]
+ },
+ "main": {
+  "Percentage change": [
+   48
+  ],
+  "Reverse percentage (tax-inclusive amounts)": [
+   48
+  ],
+  "Gross margin and markup": [
+   49
+  ],
+  "Price from a target margin": [
+   49
+  ],
+  "Chain (successive) discounts": [
+   50
+  ],
+  "Commission (flat, tiered, margin-based)": [
+   50
+  ],
+  "Blended (weighted average) margin and mix effect": [
+   51
+  ],
+  "Simple interest with day count": [
+   52
+  ],
+  "Compound growth and CAGR": [
+   52
+  ],
+  "Flat rate vs effective rate": [
+   53
+  ],
+  "Loan payment and amortisation schedule": [
+   53
+  ],
+  "Currency conversion and bid/ask": [
+   54
+  ],
+  "Cross rates": [
+   54
+  ],
+  "Forward rate from interest differentials": [
+   55
+  ],
+  "Contribution margin and multi-product break-even": [
+   56
+  ],
+  "Liquidity ratios": [
+   56
+  ],
+  "DSO, DIO, DPO and cash conversion cycle": [
+   57
+  ],
+  "Leverage and coverage ratios": [
+   57
+  ],
+  "Return ratios": [
+   58
+  ],
+  "Landed cost per unit": [
+   59
+  ],
+  "Chargeable weight and freight allocation": [
+   60
+  ],
+  "NPV and IRR (quick reference)": [
+   60
+  ],
+  "Holding-period return, annualised return and MOIC": [
+   61
+  ],
+  "Valuation from multiples": [
+   61
+  ],
+  "Expected value": [
+   62
+  ],
+  "Sensitivity of profit to a driver": [
+   62
+  ],
+  "Simple forecasting: moving average, trend and error": [
+   63
+  ]
+ }
+}
