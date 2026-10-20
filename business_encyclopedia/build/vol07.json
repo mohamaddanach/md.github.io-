@@ -1,0 +1,756 @@
+{
+ "num": 7,
+ "title": "Law, Entrepreneurship, Management and Technology",
+ "title_ar": "القانون وريادة الأعمال والإدارة والتكنولوجيا",
+ "file": "Volume_07_Law_Entrepreneurship_Management_And_Technology.pdf",
+ "pages": 65,
+ "toc": [
+  {
+   "kind": "part",
+   "num": "XII",
+   "title": "Business Law, Contracts and Corporate Governance",
+   "title_ar": "قانون الأعمال والعقود وحوكمة الشركات",
+   "anchor": "v7-part-XII",
+   "chapters": [
+    {
+     "num": 94,
+     "title": "Business Entities and Corporate Governance",
+     "anchor": "ch94",
+     "sections": [
+      {
+       "num": "94.1",
+       "title": "Business entities",
+       "anchor": "s94-1",
+       "page": 7
+      },
+      {
+       "num": "94.2",
+       "title": "Shareholders, directors and officers",
+       "anchor": "s94-2",
+       "page": 7
+      },
+      {
+       "num": "94.3",
+       "title": "Corporate governance",
+       "anchor": "s94-3",
+       "page": 8
+      },
+      {
+       "num": "94.4",
+       "title": "Shareholder agreements",
+       "anchor": "s94-4",
+       "page": 8
+      }
+     ],
+     "page": 7
+    },
+    {
+     "num": 95,
+     "title": "Contract Fundamentals and Key Clauses",
+     "anchor": "ch95",
+     "sections": [
+      {
+       "num": "95.1",
+       "title": "Formation",
+       "anchor": "s95-1",
+       "page": 10
+      },
+      {
+       "num": "95.2",
+       "title": "Structure of a commercial contract",
+       "anchor": "s95-2",
+       "page": 10
+      },
+      {
+       "num": "95.3",
+       "title": "Key clauses with fictional extracts",
+       "anchor": "s95-3",
+       "page": 10
+      },
+      {
+       "num": "95.4",
+       "title": "Reading a contract like a business professional",
+       "anchor": "s95-4",
+       "page": 12
+      }
+     ],
+     "page": 10
+    },
+    {
+     "num": 96,
+     "title": "Commercial Agreements and Intellectual Property",
+     "anchor": "ch96",
+     "sections": [
+      {
+       "num": "96.1",
+       "title": "Agreement guide",
+       "anchor": "s96-1",
+       "page": 14
+      },
+      {
+       "num": "96.2",
+       "title": "Intellectual property basics",
+       "anchor": "s96-2",
+       "page": 15
+      }
+     ],
+     "page": 14
+    },
+    {
+     "num": 97,
+     "title": "Disputes, Insolvency and Compliance",
+     "anchor": "ch97",
+     "sections": [
+      {
+       "num": "97.1",
+       "title": "Dispute resolution options",
+       "anchor": "s97-1",
+       "page": 17
+      },
+      {
+       "num": "97.2",
+       "title": "Insolvency and bankruptcy",
+       "anchor": "s97-2",
+       "page": 17
+      },
+      {
+       "num": "97.3",
+       "title": "Regulatory compliance",
+       "anchor": "s97-3",
+       "page": 18
+      },
+      {
+       "num": "97.4",
+       "title": "Conflicts of interest",
+       "anchor": "s97-4",
+       "page": 18
+      },
+      {
+       "num": "97.5",
+       "title": "Anti-bribery and corruption",
+       "anchor": "s97-5",
+       "page": 18
+      },
+      {
+       "num": "97.6",
+       "title": "Data protection",
+       "anchor": "s97-6",
+       "page": 18
+      }
+     ],
+     "page": 17
+    }
+   ],
+   "page": 6
+  },
+  {
+   "kind": "part",
+   "num": "XIII",
+   "title": "Entrepreneurship, Startups and Business Models",
+   "title_ar": "ريادة الأعمال والشركات الناشئة ونماذج الأعمال",
+   "anchor": "v7-part-XIII",
+   "chapters": [
+    {
+     "num": 98,
+     "title": "Opportunity, Validation and Product-Market Fit",
+     "anchor": "ch98",
+     "sections": [
+      {
+       "num": "98.1",
+       "title": "Is the idea commercially viable? A ten-question framework",
+       "anchor": "s98-1",
+       "page": 21
+      },
+      {
+       "num": "98.2",
+       "title": "Validation methods",
+       "anchor": "s98-2",
+       "page": 21
+      },
+      {
+       "num": "98.3",
+       "title": "Product-market fit (PMF)",
+       "anchor": "s98-3",
+       "page": 22
+      }
+     ],
+     "page": 21
+    },
+    {
+     "num": 99,
+     "title": "Startup Business Models and Unit Economics",
+     "anchor": "ch99",
+     "sections": [
+      {
+       "num": "99.1",
+       "title": "SaaS and subscriptions",
+       "anchor": "s99-1",
+       "page": 23
+      },
+      {
+       "num": "99.2",
+       "title": "Marketplaces",
+       "anchor": "s99-2",
+       "page": 23
+      },
+      {
+       "num": "99.3",
+       "title": "E-commerce and direct-to-consumer (D2C)",
+       "anchor": "s99-3",
+       "page": 23
+      },
+      {
+       "num": "99.4",
+       "title": "Franchising",
+       "anchor": "s99-4",
+       "page": 23
+      },
+      {
+       "num": "99.5",
+       "title": "Licensing and partnerships",
+       "anchor": "s99-5",
+       "page": 24
+      },
+      {
+       "num": "99.6",
+       "title": "Recurring revenue: why investors pay more",
+       "anchor": "s99-6",
+       "page": 24
+      }
+     ],
+     "page": 23
+    },
+    {
+     "num": 100,
+     "title": "Financing a Startup: From Bootstrapping to Exit",
+     "anchor": "ch100",
+     "sections": [
+      {
+       "num": "100.1",
+       "title": "Sources and stages",
+       "anchor": "s100-1",
+       "page": 25
+      },
+      {
+       "num": "100.2",
+       "title": "Instruments",
+       "anchor": "s100-2",
+       "page": 25
+      },
+      {
+       "num": "100.3",
+       "title": "Valuation of early-stage companies",
+       "anchor": "s100-3",
+       "page": 25
+      },
+      {
+       "num": "100.4",
+       "title": "Dilution and the cap table",
+       "anchor": "s100-4",
+       "page": 26
+      },
+      {
+       "num": "100.5",
+       "title": "Liquidation preferences: why terms matter more than headline valuation",
+       "anchor": "s100-5",
+       "page": 26
+      },
+      {
+       "num": "100.6",
+       "title": "Term sheet key terms",
+       "anchor": "s100-6",
+       "page": 27
+      },
+      {
+       "num": "100.7",
+       "title": "Pitch decks and business plans",
+       "anchor": "s100-7",
+       "page": 27
+      },
+      {
+       "num": "100.8",
+       "title": "Investor due diligence on startups",
+       "anchor": "s100-8",
+       "page": 27
+      },
+      {
+       "num": "100.9",
+       "title": "Scaling",
+       "anchor": "s100-9",
+       "page": 27
+      },
+      {
+       "num": "100.10",
+       "title": "Exits",
+       "anchor": "s100-10",
+       "page": 27
+      }
+     ],
+     "page": 25
+    },
+    {
+     "num": 101,
+     "title": "Startup Case Studies",
+     "anchor": "ch101",
+     "sections": [
+      {
+       "num": "101.1",
+       "title": "Case 1 — PortDocs: SaaS for customs brokers in the GCC (fictional)",
+       "anchor": "s101-1",
+       "page": 29
+      },
+      {
+       "num": "101.2",
+       "title": "Case 2 — Sahtein Kitchens: healthy meals by delivery (fictional, Beirut)",
+       "anchor": "s101-2",
+       "page": 30
+      }
+     ],
+     "page": 29
+    }
+   ],
+   "page": 20
+  },
+  {
+   "kind": "part",
+   "num": "XIV",
+   "title": "Management, Leadership and Corporate Strategy",
+   "title_ar": "الإدارة والقيادة واستراتيجية الشركات",
+   "anchor": "v7-part-XIV",
+   "chapters": [
+    {
+     "num": 102,
+     "title": "Organisations: Structures, Departments, Roles and Reporting Lines",
+     "anchor": "ch102",
+     "sections": [
+      {
+       "num": "102.1",
+       "title": "Structures",
+       "anchor": "s102-1",
+       "page": 33
+      },
+      {
+       "num": "102.2",
+       "title": "Reporting lines and spans of control",
+       "anchor": "s102-2",
+       "page": 33
+      },
+      {
+       "num": "102.3",
+       "title": "Centralisation vs decentralisation",
+       "anchor": "s102-3",
+       "page": 33
+      }
+     ],
+     "page": 33
+    },
+    {
+     "num": 103,
+     "title": "Strategy: Mission, Vision, Planning, Analytical Tools and Competitive Advantage",
+     "anchor": "ch103",
+     "sections": [
+      {
+       "num": "103.1",
+       "title": "Mission, vision, values and objectives",
+       "anchor": "s103-1",
+       "page": 35
+      },
+      {
+       "num": "103.2",
+       "title": "The strategic planning process",
+       "anchor": "s103-2",
+       "page": 35
+      },
+      {
+       "num": "103.3",
+       "title": "Analytical tools",
+       "anchor": "s103-3",
+       "page": 35
+      },
+      {
+       "num": "103.4",
+       "title": "Competitive advantage",
+       "anchor": "s103-4",
+       "page": 36
+      },
+      {
+       "num": "103.5",
+       "title": "Corporate strategy",
+       "anchor": "s103-5",
+       "page": 36
+      }
+     ],
+     "page": 35
+    },
+    {
+     "num": 104,
+     "title": "Performance Management: KPIs, OKRs, Budget Ownership, Management Reports and Decision-Making",
+     "anchor": "ch104",
+     "sections": [
+      {
+       "num": "104.1",
+       "title": "Designing KPIs",
+       "anchor": "s104-1",
+       "page": 38
+      },
+      {
+       "num": "104.2",
+       "title": "OKRs",
+       "anchor": "s104-2",
+       "page": 38
+      },
+      {
+       "num": "104.3",
+       "title": "Budget ownership",
+       "anchor": "s104-3",
+       "page": 38
+      },
+      {
+       "num": "104.4",
+       "title": "The management report",
+       "anchor": "s104-4",
+       "page": 38
+      },
+      {
+       "num": "104.5",
+       "title": "Making decisions with financial and operational information",
+       "anchor": "s104-5",
+       "page": 39
+      }
+     ],
+     "page": 38
+    },
+    {
+     "num": 105,
+     "title": "Leading People and Projects: Hiring, Delegation, Stakeholders, Conflict, Meetings, Project and Change Management, Operational Excellence",
+     "anchor": "ch105",
+     "sections": [
+      {
+       "num": "105.1",
+       "title": "Hiring",
+       "anchor": "s105-1",
+       "page": 41
+      },
+      {
+       "num": "105.2",
+       "title": "Delegation",
+       "anchor": "s105-2",
+       "page": 41
+      },
+      {
+       "num": "105.3",
+       "title": "Stakeholder management",
+       "anchor": "s105-3",
+       "page": 41
+      },
+      {
+       "num": "105.4",
+       "title": "Conflict resolution",
+       "anchor": "s105-4",
+       "page": 41
+      },
+      {
+       "num": "105.5",
+       "title": "Effective meetings",
+       "anchor": "s105-5",
+       "page": 41
+      },
+      {
+       "num": "105.6",
+       "title": "Executive reporting",
+       "anchor": "s105-6",
+       "page": 42
+      },
+      {
+       "num": "105.7",
+       "title": "Project management",
+       "anchor": "s105-7",
+       "page": 42
+      },
+      {
+       "num": "105.8",
+       "title": "Change management",
+       "anchor": "s105-8",
+       "page": 42
+      },
+      {
+       "num": "105.9",
+       "title": "Operational excellence",
+       "anchor": "s105-9",
+       "page": 42
+      }
+     ],
+     "page": 41
+    },
+    {
+     "num": 106,
+     "title": "Business Transformation, M&A and Post-Merger Integration",
+     "anchor": "ch106",
+     "sections": [
+      {
+       "num": "106.1",
+       "title": "Business transformation",
+       "anchor": "s106-1",
+       "page": 44
+      },
+      {
+       "num": "106.2",
+       "title": "Post-merger integration (PMI)",
+       "anchor": "s106-2",
+       "page": 44
+      }
+     ],
+     "page": 44
+    }
+   ],
+   "page": 32
+  },
+  {
+   "kind": "part",
+   "num": "XVI",
+   "title": "Technology, Data, AI and Digital Business",
+   "title_ar": "التكنولوجيا والبيانات والذكاء الاصطناعي والأعمال الرقمية",
+   "anchor": "v7-part-XVI",
+   "chapters": [
+    {
+     "num": 107,
+     "title": "The Enterprise Technology Landscape: ERP, CRM, Accounting, Banking and Supply-Chain Systems, and Business Intelligence",
+     "anchor": "ch107",
+     "sections": [
+      {
+       "num": "107.1",
+       "title": "The landscape",
+       "anchor": "s107-1",
+       "page": 47
+      },
+      {
+       "num": "107.2",
+       "title": "How an ERP reflects the business",
+       "anchor": "s107-2",
+       "page": 47
+      },
+      {
+       "num": "107.3",
+       "title": "CRM and the revenue process",
+       "anchor": "s107-3",
+       "page": 48
+      },
+      {
+       "num": "107.4",
+       "title": "Banking and treasury connectivity",
+       "anchor": "s107-4",
+       "page": 48
+      },
+      {
+       "num": "107.5",
+       "title": "Business intelligence",
+       "anchor": "s107-5",
+       "page": 48
+      }
+     ],
+     "page": 47
+    },
+    {
+     "num": 108,
+     "title": "Data, Analytics, AI and Machine Learning in Business; Data Governance",
+     "anchor": "ch108",
+     "sections": [
+      {
+       "num": "108.1",
+       "title": "From data to decisions",
+       "anchor": "s108-1",
+       "page": 50
+      },
+      {
+       "num": "108.2",
+       "title": "Machine learning use cases in finance and operations",
+       "anchor": "s108-2",
+       "page": 50
+      },
+      {
+       "num": "108.3",
+       "title": "Generative AI",
+       "anchor": "s108-3",
+       "page": 51
+      },
+      {
+       "num": "108.4",
+       "title": "Model risk management",
+       "anchor": "s108-4",
+       "page": 51
+      },
+      {
+       "num": "108.5",
+       "title": "Data governance",
+       "anchor": "s108-5",
+       "page": 51
+      }
+     ],
+     "page": 50
+    },
+    {
+     "num": 109,
+     "title": "Integration, Automation, Cloud, Cybersecurity and Technology Risk",
+     "anchor": "ch109",
+     "sections": [
+      {
+       "num": "109.1",
+       "title": "Integration",
+       "anchor": "s109-1",
+       "page": 53
+      },
+      {
+       "num": "109.2",
+       "title": "Automation",
+       "anchor": "s109-2",
+       "page": 53
+      },
+      {
+       "num": "109.3",
+       "title": "Cloud computing",
+       "anchor": "s109-3",
+       "page": 53
+      },
+      {
+       "num": "109.4",
+       "title": "Cybersecurity fundamentals",
+       "anchor": "s109-4",
+       "page": 54
+      },
+      {
+       "num": "109.5",
+       "title": "Technology risk",
+       "anchor": "s109-5",
+       "page": 54
+      }
+     ],
+     "page": 53
+    },
+    {
+     "num": 110,
+     "title": "Fintech, Digital Payments and Financial Technology Infrastructure",
+     "anchor": "ch110",
+     "sections": [
+      {
+       "num": "110.1",
+       "title": "The card payment ecosystem (four-party model)",
+       "anchor": "s110-1",
+       "page": 56
+      },
+      {
+       "num": "110.2",
+       "title": "Other payment methods",
+       "anchor": "s110-2",
+       "page": 56
+      },
+      {
+       "num": "110.3",
+       "title": "Fintech business models",
+       "anchor": "s110-3",
+       "page": 57
+      },
+      {
+       "num": "110.4",
+       "title": "Financial technology infrastructure",
+       "anchor": "s110-4",
+       "page": 57
+      },
+      {
+       "num": "110.5",
+       "title": "Regulation",
+       "anchor": "s110-5",
+       "page": 57
+      }
+     ],
+     "page": 56
+    },
+    {
+     "num": 111,
+     "title": "Buying and Implementing Technology: Procurement, Licensing, Budgets, IT ROI and Digital Transformation",
+     "anchor": "ch111",
+     "sections": [
+      {
+       "num": "111.1",
+       "title": "The selection process",
+       "anchor": "s111-1",
+       "page": 58
+      },
+      {
+       "num": "111.2",
+       "title": "Software licensing models",
+       "anchor": "s111-2",
+       "page": 58
+      },
+      {
+       "num": "111.3",
+       "title": "Contract points for technology deals",
+       "anchor": "s111-3",
+       "page": 58
+      },
+      {
+       "num": "111.4",
+       "title": "Technology project budgets",
+       "anchor": "s111-4",
+       "page": 59
+      },
+      {
+       "num": "111.5",
+       "title": "Measuring IT ROI",
+       "anchor": "s111-5",
+       "page": 59
+      },
+      {
+       "num": "111.6",
+       "title": "Digital transformation",
+       "anchor": "s111-6",
+       "page": 59
+      }
+     ],
+     "page": 58
+    },
+    {
+     "num": 112,
+     "title": "Hands-On: Solving Financial and Operational Problems with Code",
+     "anchor": "ch112",
+     "sections": [
+      {
+       "num": "112.1",
+       "title": "1. Automated monthly management reporting (Python, pandas)",
+       "anchor": "s112-1",
+       "page": 61
+      },
+      {
+       "num": "112.2",
+       "title": "2. Credit-risk scoring for customer limits (Python, scikit-learn)",
+       "anchor": "s112-2",
+       "page": 61
+      },
+      {
+       "num": "112.3",
+       "title": "3. Invoice data extraction and three-way match (Python)",
+       "anchor": "s112-3",
+       "page": 62
+      },
+      {
+       "num": "112.4",
+       "title": "4. Demand forecasting and reorder suggestions (Python)",
+       "anchor": "s112-4",
+       "page": 62
+      },
+      {
+       "num": "112.5",
+       "title": "5. Customer analytics in SQL (PostgreSQL syntax)",
+       "anchor": "s112-5",
+       "page": 63
+      }
+     ],
+     "page": 61
+    }
+   ],
+   "page": 46
+  }
+ ],
+ "terms": [],
+ "index": {},
+ "main": {}
+}
