@@ -1,0 +1,721 @@
+{
+ "num": 5,
+ "title": "Commercial Operations — Sales, Supply Chain, Insurance and Risk",
+ "title_ar": "العمليات التجارية — المبيعات وسلاسل الإمداد والتأمين والمخاطر",
+ "file": "Volume_05_Commercial_Operations_Sales_Supply_Chain_Insurance_And_Risk.pdf",
+ "pages": 59,
+ "toc": [
+  {
+   "kind": "part",
+   "num": "VIII",
+   "title": "Sales, Marketing and Commercial Strategy",
+   "title_ar": "المبيعات والتسويق والاستراتيجية التجارية",
+   "anchor": "v5-part-VIII",
+   "chapters": [
+    {
+     "num": 62,
+     "title": "Markets, Customers and Positioning",
+     "anchor": "ch62",
+     "sections": [
+      {
+       "num": "62.1",
+       "title": "Segmentation",
+       "anchor": "s62-1",
+       "page": 7
+      },
+      {
+       "num": "62.2",
+       "title": "Targeting",
+       "anchor": "s62-2",
+       "page": 7
+      },
+      {
+       "num": "62.3",
+       "title": "Positioning",
+       "anchor": "s62-3",
+       "page": 7
+      },
+      {
+       "num": "62.4",
+       "title": "Branding",
+       "anchor": "s62-4",
+       "page": 8
+      },
+      {
+       "num": "62.5",
+       "title": "Value propositions",
+       "anchor": "s62-5",
+       "page": 8
+      }
+     ],
+     "page": 7
+    },
+    {
+     "num": 63,
+     "title": "Customer Acquisition, Retention and Commercial Metrics",
+     "anchor": "ch63",
+     "sections": [
+      {
+       "num": "63.1",
+       "title": "Acquisition channels",
+       "anchor": "s63-1",
+       "page": 10
+      },
+      {
+       "num": "63.2",
+       "title": "The funnel and its metrics",
+       "anchor": "s63-2",
+       "page": 10
+      },
+      {
+       "num": "63.3",
+       "title": "Customer economics",
+       "anchor": "s63-3",
+       "page": 11
+      },
+      {
+       "num": "63.4",
+       "title": "Retention",
+       "anchor": "s63-4",
+       "page": 11
+      }
+     ],
+     "page": 10
+    },
+    {
+     "num": 64,
+     "title": "The B2B Sales Process: From Prospect to Signed Agreement",
+     "anchor": "ch64",
+     "sections": [
+      {
+       "num": "64.1",
+       "title": "The stages",
+       "anchor": "s64-1",
+       "page": 13
+      },
+      {
+       "num": "64.2",
+       "title": "Prospecting",
+       "anchor": "s64-2",
+       "page": 13
+      },
+      {
+       "num": "64.3",
+       "title": "Qualification",
+       "anchor": "s64-3",
+       "page": 14
+      },
+      {
+       "num": "64.4",
+       "title": "Discovery meetings",
+       "anchor": "s64-4",
+       "page": 14
+      },
+      {
+       "num": "64.5",
+       "title": "Proposals",
+       "anchor": "s64-5",
+       "page": 15
+      },
+      {
+       "num": "64.6",
+       "title": "Closing",
+       "anchor": "s64-6",
+       "page": 15
+      },
+      {
+       "num": "64.7",
+       "title": "Handover to delivery",
+       "anchor": "s64-7",
+       "page": 15
+      }
+     ],
+     "page": 13
+    },
+    {
+     "num": 65,
+     "title": "Pricing, Discounting and Commercial Proposals",
+     "anchor": "ch65",
+     "sections": [
+      {
+       "num": "65.1",
+       "title": "Price setting in practice",
+       "anchor": "s65-1",
+       "page": 17
+      },
+      {
+       "num": "65.2",
+       "title": "Discount governance",
+       "anchor": "s65-2",
+       "page": 17
+      },
+      {
+       "num": "65.3",
+       "title": "Payment terms as part of the price",
+       "anchor": "s65-3",
+       "page": 17
+      },
+      {
+       "num": "65.4",
+       "title": "Anatomy of a commercial proposal",
+       "anchor": "s65-4",
+       "page": 18
+      }
+     ],
+     "page": 17
+    },
+    {
+     "num": 66,
+     "title": "Negotiation in Practice",
+     "anchor": "ch66",
+     "sections": [
+      {
+       "num": "66.1",
+       "title": "Principles",
+       "anchor": "s66-1",
+       "page": 20
+      },
+      {
+       "num": "66.2",
+       "title": "Preparation sheet",
+       "anchor": "s66-2",
+       "page": 20
+      },
+      {
+       "num": "66.3",
+       "title": "Common tactics and responses",
+       "anchor": "s66-3",
+       "page": 20
+      },
+      {
+       "num": "66.4",
+       "title": "Cultural and regional considerations",
+       "anchor": "s66-4",
+       "page": 21
+      },
+      {
+       "num": "66.5",
+       "title": "Negotiation exercises",
+       "anchor": "s66-5",
+       "page": 21
+      }
+     ],
+     "page": 20
+    },
+    {
+     "num": 67,
+     "title": "Account Management, CRM, Sales Forecasting and Revenue Operations",
+     "anchor": "ch67",
+     "sections": [
+      {
+       "num": "67.1",
+       "title": "Key account management (KAM)",
+       "anchor": "s67-1",
+       "page": 23
+      },
+      {
+       "num": "67.2",
+       "title": "CRM systems",
+       "anchor": "s67-2",
+       "page": 23
+      },
+      {
+       "num": "67.3",
+       "title": "Sales forecasting",
+       "anchor": "s67-3",
+       "page": 23
+      },
+      {
+       "num": "67.4",
+       "title": "Revenue operations (RevOps)",
+       "anchor": "s67-4",
+       "page": 24
+      }
+     ],
+     "page": 23
+    },
+    {
+     "num": 68,
+     "title": "Channels and Go-to-Market: B2B, B2C, Enterprise, Distributors, Agents, Resellers and Partners",
+     "anchor": "ch68",
+     "sections": [
+      {
+       "num": "68.1",
+       "title": "B2B vs B2C vs enterprise",
+       "anchor": "s68-1",
+       "page": 25
+      },
+      {
+       "num": "68.2",
+       "title": "Indirect channels",
+       "anchor": "s68-2",
+       "page": 25
+      },
+      {
+       "num": "68.3",
+       "title": "Choosing direct or indirect",
+       "anchor": "s68-3",
+       "page": 26
+      },
+      {
+       "num": "68.4",
+       "title": "Managing channel partners",
+       "anchor": "s68-4",
+       "page": 26
+      }
+     ],
+     "page": 25
+    }
+   ],
+   "page": 6
+  },
+  {
+   "kind": "part",
+   "num": "IX",
+   "title": "Procurement, Logistics and Supply Chain",
+   "title_ar": "المشتريات والخدمات اللوجستية وسلاسل الإمداد",
+   "anchor": "v5-part-IX",
+   "chapters": [
+    {
+     "num": 69,
+     "title": "Procurement Strategy and Supplier Management",
+     "anchor": "ch69",
+     "sections": [
+      {
+       "num": "69.1",
+       "title": "From purchasing to strategic procurement",
+       "anchor": "s69-1",
+       "page": 29
+      },
+      {
+       "num": "69.2",
+       "title": "Category segmentation: the Kraljic matrix",
+       "anchor": "s69-2",
+       "page": 29
+      },
+      {
+       "num": "69.3",
+       "title": "Supplier identification and qualification",
+       "anchor": "s69-3",
+       "page": 29
+      },
+      {
+       "num": "69.4",
+       "title": "RFI, RFQ and RFP",
+       "anchor": "s69-4",
+       "page": 30
+      },
+      {
+       "num": "69.5",
+       "title": "Evaluating offers: the procurement comparison sheet",
+       "anchor": "s69-5",
+       "page": 30
+      },
+      {
+       "num": "69.6",
+       "title": "Supplier negotiations and contracts",
+       "anchor": "s69-6",
+       "page": 31
+      },
+      {
+       "num": "69.7",
+       "title": "Supplier payment terms and supply-chain finance",
+       "anchor": "s69-7",
+       "page": 31
+      },
+      {
+       "num": "69.8",
+       "title": "Supplier performance management",
+       "anchor": "s69-8",
+       "page": 31
+      }
+     ],
+     "page": 29
+    },
+    {
+     "num": 70,
+     "title": "Inventory Management and Warehousing",
+     "anchor": "ch70",
+     "sections": [
+      {
+       "num": "70.1",
+       "title": "Why inventory exists",
+       "anchor": "s70-1",
+       "page": 33
+      },
+      {
+       "num": "70.2",
+       "title": "Demand forecasting",
+       "anchor": "s70-2",
+       "page": 33
+      },
+      {
+       "num": "70.3",
+       "title": "Reorder points, safety stock and service levels",
+       "anchor": "s70-3",
+       "page": 33
+      },
+      {
+       "num": "70.4",
+       "title": "Order quantity",
+       "anchor": "s70-4",
+       "page": 34
+      },
+      {
+       "num": "70.5",
+       "title": "ABC and XYZ analysis",
+       "anchor": "s70-5",
+       "page": 34
+      },
+      {
+       "num": "70.6",
+       "title": "Inventory KPIs",
+       "anchor": "s70-6",
+       "page": 34
+      },
+      {
+       "num": "70.7",
+       "title": "Warehousing",
+       "anchor": "s70-7",
+       "page": 34
+      }
+     ],
+     "page": 33
+    },
+    {
+     "num": 71,
+     "title": "Transport Modes, Freight and Logistics Networks",
+     "anchor": "ch71",
+     "sections": [
+      {
+       "num": "71.1",
+       "title": "Comparing modes",
+       "anchor": "s71-1",
+       "page": 36
+      },
+      {
+       "num": "71.2",
+       "title": "Container shipping",
+       "anchor": "s71-2",
+       "page": 36
+      },
+      {
+       "num": "71.3",
+       "title": "Bulk shipping",
+       "anchor": "s71-3",
+       "page": 36
+      },
+      {
+       "num": "71.4",
+       "title": "Air cargo",
+       "anchor": "s71-4",
+       "page": 37
+      },
+      {
+       "num": "71.5",
+       "title": "Road and rail",
+       "anchor": "s71-5",
+       "page": 37
+      },
+      {
+       "num": "71.6",
+       "title": "Ports and terminals",
+       "anchor": "s71-6",
+       "page": 37
+      },
+      {
+       "num": "71.7",
+       "title": "Last-mile delivery",
+       "anchor": "s71-7",
+       "page": 37
+      },
+      {
+       "num": "71.8",
+       "title": "Freight forwarders and NVOCCs",
+       "anchor": "s71-8",
+       "page": 37
+      },
+      {
+       "num": "71.9",
+       "title": "Freight pricing: worked examples",
+       "anchor": "s71-9",
+       "page": 37
+      }
+     ],
+     "page": 36
+    },
+    {
+     "num": 72,
+     "title": "Customs, Demurrage, Supply-Chain Finance and Disruption Management",
+     "anchor": "ch72",
+     "sections": [
+      {
+       "num": "72.1",
+       "title": "Customs clearance in operations",
+       "anchor": "s72-1",
+       "page": 39
+      },
+      {
+       "num": "72.2",
+       "title": "Incoterms and cost allocation in supply-chain planning",
+       "anchor": "s72-2",
+       "page": 39
+      },
+      {
+       "num": "72.3",
+       "title": "Managing demurrage and detention (D&D)",
+       "anchor": "s72-3",
+       "page": 40
+      },
+      {
+       "num": "72.4",
+       "title": "Supplier payment terms and supply-chain finance",
+       "anchor": "s72-4",
+       "page": 40
+      },
+      {
+       "num": "72.5",
+       "title": "Disruption management and resilience",
+       "anchor": "s72-5",
+       "page": 40
+      }
+     ],
+     "page": 39
+    },
+    {
+     "num": 73,
+     "title": "Simulation: Importing from China into the Middle East",
+     "anchor": "ch73",
+     "sections": [
+      {
+       "num": "73.1",
+       "title": "Background",
+       "anchor": "s73-1",
+       "page": 42
+      },
+      {
+       "num": "73.2",
+       "title": "Step 1 — Supplier quotations (microwave example)",
+       "anchor": "s73-2",
+       "page": 42
+      },
+      {
+       "num": "73.3",
+       "title": "Step 2 — Purchase order and payment",
+       "anchor": "s73-3",
+       "page": 43
+      },
+      {
+       "num": "73.4",
+       "title": "Step 3 — Freight and insurance",
+       "anchor": "s73-4",
+       "page": 43
+      },
+      {
+       "num": "73.5",
+       "title": "Step 4 — Allocation of freight and insurance to products",
+       "anchor": "s73-5",
+       "page": 43
+      },
+      {
+       "num": "73.6",
+       "title": "Step 5 — Customs duty and VAT (illustrative rates)",
+       "anchor": "s73-6",
+       "page": 43
+      },
+      {
+       "num": "73.7",
+       "title": "Step 6 — Local costs",
+       "anchor": "s73-7",
+       "page": 44
+      },
+      {
+       "num": "73.8",
+       "title": "Step 7 — Landed cost by product",
+       "anchor": "s73-8",
+       "page": 44
+      },
+      {
+       "num": "73.9",
+       "title": "Step 8 — Pricing",
+       "anchor": "s73-9",
+       "page": 44
+      },
+      {
+       "num": "73.10",
+       "title": "Step 9 — Timeline",
+       "anchor": "s73-10",
+       "page": 45
+      },
+      {
+       "num": "73.11",
+       "title": "Step 10 — Sensitivity and risks",
+       "anchor": "s73-11",
+       "page": 45
+      }
+     ],
+     "page": 42
+    }
+   ],
+   "page": 28
+  },
+  {
+   "kind": "part",
+   "num": "XV",
+   "title": "Insurance and Risk Management",
+   "title_ar": "التأمين وإدارة المخاطر",
+   "anchor": "v5-part-XV",
+   "chapters": [
+    {
+     "num": 74,
+     "title": "Insurance Fundamentals",
+     "anchor": "ch74",
+     "sections": [
+      {
+       "num": "74.1",
+       "title": "How insurance works",
+       "anchor": "s74-1",
+       "page": 48
+      },
+      {
+       "num": "74.2",
+       "title": "Core principles (common-law tradition; local laws vary)",
+       "anchor": "s74-2",
+       "page": 48
+      },
+      {
+       "num": "74.3",
+       "title": "Anatomy of a policy",
+       "anchor": "s74-3",
+       "page": 48
+      },
+      {
+       "num": "74.4",
+       "title": "Pricing: premiums",
+       "anchor": "s74-4",
+       "page": 49
+      },
+      {
+       "num": "74.5",
+       "title": "Underwriting",
+       "anchor": "s74-5",
+       "page": 49
+      },
+      {
+       "num": "74.6",
+       "title": "Claims",
+       "anchor": "s74-6",
+       "page": 49
+      },
+      {
+       "num": "74.7",
+       "title": "Intermediaries and reinsurance",
+       "anchor": "s74-7",
+       "page": 49
+      }
+     ],
+     "page": 48
+    },
+    {
+     "num": 75,
+     "title": "Commercial Insurance Lines",
+     "anchor": "ch75",
+     "sections": [],
+     "page": 51
+    },
+    {
+     "num": 76,
+     "title": "Enterprise Risk Management, Risk Registers, Controls and Business Continuity",
+     "anchor": "ch76",
+     "sections": [
+      {
+       "num": "76.1",
+       "title": "Frameworks",
+       "anchor": "s76-1",
+       "page": 53
+      },
+      {
+       "num": "76.2",
+       "title": "The risk management process",
+       "anchor": "s76-2",
+       "page": 53
+      },
+      {
+       "num": "76.3",
+       "title": "Risk treatment options",
+       "anchor": "s76-3",
+       "page": 53
+      },
+      {
+       "num": "76.4",
+       "title": "Assessment: likelihood × impact",
+       "anchor": "s76-4",
+       "page": 53
+      },
+      {
+       "num": "76.5",
+       "title": "A risk register extract (fictional importer-distributor)",
+       "anchor": "s76-5",
+       "page": 54
+      },
+      {
+       "num": "76.6",
+       "title": "Internal controls and the three lines",
+       "anchor": "s76-6",
+       "page": 54
+      },
+      {
+       "num": "76.7",
+       "title": "Key risk indicators (KRIs)",
+       "anchor": "s76-7",
+       "page": 55
+      },
+      {
+       "num": "76.8",
+       "title": "Business continuity management",
+       "anchor": "s76-8",
+       "page": 55
+      }
+     ],
+     "page": 53
+    },
+    {
+     "num": 77,
+     "title": "Insurance and Risk Decisions for Four Businesses",
+     "anchor": "ch77",
+     "sections": [
+      {
+       "num": "77.1",
+       "title": "Case 1 — Importer-distributor of consumer electronics",
+       "anchor": "s77-1",
+       "page": 56
+      },
+      {
+       "num": "77.2",
+       "title": "Case 2 — Logistics company (trucking, warehousing, forwarding)",
+       "anchor": "s77-2",
+       "page": 56
+      },
+      {
+       "num": "77.3",
+       "title": "Case 3 — Manufacturer (plastics packaging)",
+       "anchor": "s77-3",
+       "page": 57
+      },
+      {
+       "num": "77.4",
+       "title": "Case 4 — International commodity trader (grains)",
+       "anchor": "s77-4",
+       "page": 57
+      }
+     ],
+     "page": 56
+    }
+   ],
+   "page": 47
+  }
+ ],
+ "terms": [],
+ "index": {},
+ "main": {}
+}
