@@ -1,0 +1,614 @@
+{
+ "num": 8,
+ "title": "Professional Practice — Communication, Deals and Advanced Thinking",
+ "title_ar": "الممارسة المهنية — التواصل والصفقات والتفكير المتقدم",
+ "file": "Volume_08_Professional_Practice_Communication_Deals_And_Advanced_Thinking.pdf",
+ "pages": 67,
+ "toc": [
+  {
+   "kind": "part",
+   "num": "XVII",
+   "title": "Business Communication and Professional Fluency",
+   "title_ar": "التواصل في الأعمال والطلاقة المهنية",
+   "anchor": "v8-part-XVII",
+   "chapters": [
+    {
+     "num": 113,
+     "title": "Professional Writing: Emails, Commercial Correspondence, Executive Summaries, Proposals and Reports",
+     "anchor": "ch113",
+     "sections": [
+      {
+       "num": "113.1",
+       "title": "Principles",
+       "anchor": "s113-1",
+       "page": 6
+      },
+      {
+       "num": "113.2",
+       "title": "Email structure",
+       "anchor": "s113-2",
+       "page": 6
+      },
+      {
+       "num": "113.3",
+       "title": "Templates",
+       "anchor": "s113-3",
+       "page": 7
+      },
+      {
+       "num": "113.4",
+       "title": "Executive summaries",
+       "anchor": "s113-4",
+       "page": 8
+      },
+      {
+       "num": "113.5",
+       "title": "Proposals and reports",
+       "anchor": "s113-5",
+       "page": 8
+      },
+      {
+       "num": "113.6",
+       "title": "Communicating costs and margins",
+       "anchor": "s113-6",
+       "page": 9
+      }
+     ],
+     "page": 6
+    },
+    {
+     "num": 114,
+     "title": "Meetings, Calls, Presentations and Networking",
+     "anchor": "ch114",
+     "sections": [
+      {
+       "num": "114.1",
+       "title": "Meeting etiquette",
+       "anchor": "s114-1",
+       "page": 10
+      },
+      {
+       "num": "114.2",
+       "title": "Telephone and video calls",
+       "anchor": "s114-2",
+       "page": 10
+      },
+      {
+       "num": "114.3",
+       "title": "Presentations",
+       "anchor": "s114-3",
+       "page": 10
+      },
+      {
+       "num": "114.4",
+       "title": "Introductions and networking",
+       "anchor": "s114-4",
+       "page": 10
+      },
+      {
+       "num": "114.5",
+       "title": "Asking intelligent questions",
+       "anchor": "s114-5",
+       "page": 11
+      },
+      {
+       "num": "114.6",
+       "title": "Explaining complex ideas clearly",
+       "anchor": "s114-6",
+       "page": 11
+      }
+     ],
+     "page": 10
+    },
+    {
+     "num": 115,
+     "title": "Difficult Conversations: Delays, Problems, Risks, Disagreement and Negotiation Language",
+     "anchor": "ch115",
+     "sections": [
+      {
+       "num": "115.1",
+       "title": "Communicating delays and problems",
+       "anchor": "s115-1",
+       "page": 12
+      },
+      {
+       "num": "115.2",
+       "title": "Discussing risks and uncertainty",
+       "anchor": "s115-2",
+       "page": 12
+      },
+      {
+       "num": "115.3",
+       "title": "Handling disagreement professionally",
+       "anchor": "s115-3",
+       "page": 12
+      },
+      {
+       "num": "115.4",
+       "title": "Escalation",
+       "anchor": "s115-4",
+       "page": 12
+      },
+      {
+       "num": "115.5",
+       "title": "Negotiation language",
+       "anchor": "s115-5",
+       "page": 13
+      }
+     ],
+     "page": 12
+    },
+    {
+     "num": 116,
+     "title": "The Professional Phrasebook: Expressions by Situation",
+     "anchor": "ch116",
+     "sections": [
+      {
+       "num": "116.1",
+       "title": "Opening and closing",
+       "anchor": "s116-1",
+       "page": 14
+      },
+      {
+       "num": "116.2",
+       "title": "Requests and follow-up",
+       "anchor": "s116-2",
+       "page": 14
+      },
+      {
+       "num": "116.3",
+       "title": "Agreeing, aligning and next steps",
+       "anchor": "s116-3",
+       "page": 15
+      },
+      {
+       "num": "116.4",
+       "title": "Disagreeing politely",
+       "anchor": "s116-4",
+       "page": 15
+      },
+      {
+       "num": "116.5",
+       "title": "Clarifying and asking questions",
+       "anchor": "s116-5",
+       "page": 16
+      },
+      {
+       "num": "116.6",
+       "title": "Numbers, costs and margins",
+       "anchor": "s116-6",
+       "page": 16
+      },
+      {
+       "num": "116.7",
+       "title": "Finance and investment",
+       "anchor": "s116-7",
+       "page": 17
+      },
+      {
+       "num": "116.8",
+       "title": "Banking and credit",
+       "anchor": "s116-8",
+       "page": 17
+      },
+      {
+       "num": "116.9",
+       "title": "International trade and logistics",
+       "anchor": "s116-9",
+       "page": 18
+      },
+      {
+       "num": "116.10",
+       "title": "Sales and client communication",
+       "anchor": "s116-10",
+       "page": 18
+      },
+      {
+       "num": "116.11",
+       "title": "Suppliers and procurement",
+       "anchor": "s116-11",
+       "page": 19
+      },
+      {
+       "num": "116.12",
+       "title": "Delays, problems and apologies",
+       "anchor": "s116-12",
+       "page": 19
+      },
+      {
+       "num": "116.13",
+       "title": "Risks and uncertainty",
+       "anchor": "s116-13",
+       "page": 20
+      },
+      {
+       "num": "116.14",
+       "title": "Management updates and reporting",
+       "anchor": "s116-14",
+       "page": 20
+      },
+      {
+       "num": "116.15",
+       "title": "Meetings, presentations and calls",
+       "anchor": "s116-15",
+       "page": 20
+      },
+      {
+       "num": "116.16",
+       "title": "Networking and introductions",
+       "anchor": "s116-16",
+       "page": 21
+      },
+      {
+       "num": "116.17",
+       "title": "Fourteen expressions explained",
+       "anchor": "s116-17",
+       "page": 21
+      }
+     ],
+     "page": 14
+    },
+    {
+     "num": 117,
+     "title": "Business Dialogues in English and Arabic",
+     "anchor": "ch117",
+     "sections": [
+      {
+       "num": "117.1",
+       "title": "Dialogue 1 — Banking: facility renewal",
+       "anchor": "s117-1",
+       "page": 23
+      },
+      {
+       "num": "117.2",
+       "title": "Dialogue 2 — International trade: L/C discrepancy",
+       "anchor": "s117-2",
+       "page": 23
+      },
+      {
+       "num": "117.3",
+       "title": "Dialogue 3 — Logistics: demurrage dispute",
+       "anchor": "s117-3",
+       "page": 24
+      },
+      {
+       "num": "117.4",
+       "title": "Dialogue 4 — Consulting: presenting findings",
+       "anchor": "s117-4",
+       "page": 25
+      },
+      {
+       "num": "117.5",
+       "title": "Dialogue 5 — Sales: discovery meeting with procurement",
+       "anchor": "s117-5",
+       "page": 25
+      },
+      {
+       "num": "117.6",
+       "title": "Dialogue 6 — Management: cash discussion",
+       "anchor": "s117-6",
+       "page": 26
+      }
+     ],
+     "page": 23
+    }
+   ],
+   "page": 5
+  },
+  {
+   "kind": "part",
+   "num": "XIX",
+   "title": "How Real Commercial Deals Are Structured",
+   "title_ar": "كيف تُهيكل الصفقات التجارية الحقيقية",
+   "anchor": "v8-part-XIX",
+   "chapters": [
+    {
+     "num": 118,
+     "title": "Trade and Supply Deals",
+     "anchor": "ch118",
+     "sections": [
+      {
+       "num": "118.1",
+       "title": "Case 1 — A distributor purchases medical gloves from an overseas supplier",
+       "anchor": "s118-1",
+       "page": 29
+      },
+      {
+       "num": "118.2",
+       "title": "Case 2 — An exporter negotiates a three-year supply contract",
+       "anchor": "s118-2",
+       "page": 31
+      },
+      {
+       "num": "118.3",
+       "title": "Case 7 — A manufacturer negotiates with a distributor",
+       "anchor": "s118-3",
+       "page": 32
+      },
+      {
+       "num": "118.4",
+       "title": "Case 11 — A logistics company calculates the profitability of a shipment",
+       "anchor": "s118-4",
+       "page": 34
+      }
+     ],
+     "page": 29
+    },
+    {
+     "num": 119,
+     "title": "Banking and Financing Deals",
+     "anchor": "ch119",
+     "sections": [
+      {
+       "num": "119.1",
+       "title": "Case 3 — A bank structures financing for an auto-parts importer",
+       "anchor": "s119-1",
+       "page": 36
+      },
+      {
+       "num": "119.2",
+       "title": "Case 4 — A construction company obtains a letter of credit",
+       "anchor": "s119-2",
+       "page": 38
+      },
+      {
+       "num": "119.3",
+       "title": "Case 5 — A company negotiates a revolving credit facility",
+       "anchor": "s119-3",
+       "page": 39
+      }
+     ],
+     "page": 36
+    },
+    {
+     "num": 120,
+     "title": "Commodity and Treasury Deals",
+     "anchor": "ch120",
+     "sections": [
+      {
+       "num": "120.1",
+       "title": "Case 6 — A trader purchases and resells a cargo of raw sugar",
+       "anchor": "s120-1",
+       "page": 42
+      },
+      {
+       "num": "120.2",
+       "title": "Case 13 — A company manages a currency exposure",
+       "anchor": "s120-2",
+       "page": 43
+      }
+     ],
+     "page": 42
+    },
+    {
+     "num": 121,
+     "title": "Investment, Corporate and Capital Deals",
+     "anchor": "ch121",
+     "sections": [
+      {
+       "num": "121.1",
+       "title": "Case 8 — A family office evaluates a minority stake in a private company",
+       "anchor": "s121-1",
+       "page": 46
+      },
+      {
+       "num": "121.2",
+       "title": "Case 9 — An entrepreneur raises startup capital",
+       "anchor": "s121-2",
+       "page": 47
+      },
+      {
+       "num": "121.3",
+       "title": "Case 10 — A company acquires a competitor",
+       "anchor": "s121-3",
+       "page": 49
+      },
+      {
+       "num": "121.4",
+       "title": "Case 12 — A business evaluates a capital investment: rooftop solar",
+       "anchor": "s121-4",
+       "page": 50
+      }
+     ],
+     "page": 46
+    },
+    {
+     "num": 122,
+     "title": "Technology and Insurance Deals",
+     "anchor": "ch122",
+     "sections": [
+      {
+       "num": "122.1",
+       "title": "Case 14 — A software company evaluates a SaaS business model",
+       "anchor": "s122-1",
+       "page": 52
+      },
+      {
+       "num": "122.2",
+       "title": "Case 15 — An insurer underwrites a commercial property and business interruption risk",
+       "anchor": "s122-2",
+       "page": 53
+      }
+     ],
+     "page": 52
+    }
+   ],
+   "page": 28
+  },
+  {
+   "kind": "part",
+   "num": "XXII",
+   "title": "Advanced Business Thinking",
+   "title_ar": "التفكير المتقدم في الأعمال",
+   "anchor": "v8-part-XXII",
+   "chapters": [
+    {
+     "num": 123,
+     "title": "Economic Thinking: Opportunity Cost, Incentives, Agency, Information and Transaction Costs",
+     "anchor": "ch123",
+     "sections": [
+      {
+       "num": "123.1",
+       "title": "Opportunity cost",
+       "anchor": "s123-1",
+       "page": 57
+      },
+      {
+       "num": "123.2",
+       "title": "Incentives",
+       "anchor": "s123-2",
+       "page": 57
+      },
+      {
+       "num": "123.3",
+       "title": "Principal–agent problems",
+       "anchor": "s123-3",
+       "page": 57
+      },
+      {
+       "num": "123.4",
+       "title": "Information asymmetry",
+       "anchor": "s123-4",
+       "page": 58
+      },
+      {
+       "num": "123.5",
+       "title": "Moral hazard",
+       "anchor": "s123-5",
+       "page": 58
+      },
+      {
+       "num": "123.6",
+       "title": "Adverse selection",
+       "anchor": "s123-6",
+       "page": 58
+      },
+      {
+       "num": "123.7",
+       "title": "Transaction costs",
+       "anchor": "s123-7",
+       "page": 58
+      }
+     ],
+     "page": 57
+    },
+    {
+     "num": 124,
+     "title": "Strategic Thinking: Positioning, Bargaining Power, Moats, Network Effects, Scale, Scope, Switching Costs and Industry Structure",
+     "anchor": "ch124",
+     "sections": [
+      {
+       "num": "124.1",
+       "title": "Competitive positioning",
+       "anchor": "s124-1",
+       "page": 60
+      },
+      {
+       "num": "124.2",
+       "title": "Bargaining power",
+       "anchor": "s124-2",
+       "page": 60
+      },
+      {
+       "num": "124.3",
+       "title": "Economic moats",
+       "anchor": "s124-3",
+       "page": 60
+      },
+      {
+       "num": "124.4",
+       "title": "Network effects",
+       "anchor": "s124-4",
+       "page": 60
+      },
+      {
+       "num": "124.5",
+       "title": "Economies of scale and scope",
+       "anchor": "s124-5",
+       "page": 61
+      },
+      {
+       "num": "124.6",
+       "title": "Switching costs",
+       "anchor": "s124-6",
+       "page": 61
+      },
+      {
+       "num": "124.7",
+       "title": "Industry structure",
+       "anchor": "s124-7",
+       "page": 61
+      },
+      {
+       "num": "124.8",
+       "title": "Competitive intelligence",
+       "anchor": "s124-8",
+       "page": 61
+      }
+     ],
+     "page": 60
+    },
+    {
+     "num": 125,
+     "title": "Decision-Making Under Uncertainty and the Professional Mindset",
+     "anchor": "ch125",
+     "sections": [
+      {
+       "num": "125.1",
+       "title": "Expected value — and its limits",
+       "anchor": "s125-1",
+       "page": 63
+      },
+      {
+       "num": "125.2",
+       "title": "Scenario analysis and decision trees",
+       "anchor": "s125-2",
+       "page": 63
+      },
+      {
+       "num": "125.3",
+       "title": "Risk-adjusted returns and capital allocation",
+       "anchor": "s125-3",
+       "page": 63
+      },
+      {
+       "num": "125.4",
+       "title": "Evaluating opportunities: a professional checklist",
+       "anchor": "s125-4",
+       "page": 64
+      },
+      {
+       "num": "125.5",
+       "title": "Strategic trade-offs",
+       "anchor": "s125-5",
+       "page": 64
+      },
+      {
+       "num": "125.6",
+       "title": "Negotiation leverage",
+       "anchor": "s125-6",
+       "page": 64
+      },
+      {
+       "num": "125.7",
+       "title": "Second-order effects",
+       "anchor": "s125-7",
+       "page": 64
+      },
+      {
+       "num": "125.8",
+       "title": "Graduate vs professional: a consolidated contrast",
+       "anchor": "s125-8",
+       "page": 64
+      }
+     ],
+     "page": 63
+    }
+   ],
+   "page": 56
+  }
+ ],
+ "terms": [],
+ "index": {},
+ "main": {}
+}

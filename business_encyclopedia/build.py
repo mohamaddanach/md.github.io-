@@ -132,9 +132,18 @@ CALC_FIELDS = [
 
 
 def keep_lines(text):
-    """Formula text: honour line breaks and wide gaps between formulas."""
+    """Honour single line breaks (and wide gaps) except in tables, lists and code."""
     text = re.sub(r"(?<=\S) {3,}(?=\S)", "  \n", text)
-    return re.sub(r"(?<=\S)\n(?=\S)", "  \n", text)
+    lines, out, in_code = text.split("\n"), [], False
+    for i, line in enumerate(lines):
+        if line.lstrip().startswith("```"):
+            in_code = not in_code
+        nxt = lines[i + 1] if i + 1 < len(lines) else ""
+        plain = (not in_code and line.strip() and nxt.strip()
+                 and not line.lstrip().startswith("|") and not nxt.lstrip().startswith(("|", "- ", "* ", "+ ", "```"))
+                 and not re.match(r"^\s*\d+\.\s", nxt))
+        out.append(line + "  " if plain and not line.endswith("  ") else line)
+    return "\n".join(out)
 
 
 def render_calc(arg, body, ctx):
@@ -166,7 +175,7 @@ def render_box(kind, arg, body, ctx):
         return render_calc(arg, body, ctx)
     label = BOX_LABELS.get(kind, kind.title())
     title = inline_md(arg, ctx) if arg else ""
-    inner = md_to_html(keep_lines(body) if kind == "formula" else body, ctx)
+    inner = md_to_html(keep_lines(body) if kind in ("formula", "dialog", "ar", "doc") else body, ctx)
     if kind == "ar":
         head = f'<div class="box-label">{label}{(" — " + title) if title else ""}</div>'
         return f'<div class="box box-ar" dir="rtl">{head}{inner}</div>'
