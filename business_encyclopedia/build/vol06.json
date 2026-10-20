@@ -1,0 +1,650 @@
+{
+ "num": 6,
+ "title": "Investment, Capital Markets, Commodities and Market Intelligence",
+ "title_ar": "الاستثمار وأسواق رأس المال والسلع وقراءة الأسواق",
+ "file": "Volume_06_Investment_Capital_Markets_Commodities_And_Market_Intelligence.pdf",
+ "pages": 53,
+ "toc": [
+  {
+   "kind": "part",
+   "num": "X",
+   "title": "Investment, Capital Markets and Asset Management",
+   "title_ar": "الاستثمار وأسواق رأس المال وإدارة الأصول",
+   "anchor": "v6-part-X",
+   "chapters": [
+    {
+     "num": 78,
+     "title": "Capital Markets: Structure, Primary and Secondary Markets, and IPOs",
+     "anchor": "ch78",
+     "sections": [
+      {
+       "num": "78.1",
+       "title": "Market structure",
+       "anchor": "s78-1",
+       "page": 7
+      },
+      {
+       "num": "78.2",
+       "title": "Market infrastructure",
+       "anchor": "s78-2",
+       "page": 7
+      },
+      {
+       "num": "78.3",
+       "title": "Order types and trading",
+       "anchor": "s78-3",
+       "page": 8
+      },
+      {
+       "num": "78.4",
+       "title": "Initial public offerings (IPOs)",
+       "anchor": "s78-4",
+       "page": 8
+      }
+     ],
+     "page": 7
+    },
+    {
+     "num": 79,
+     "title": "Equity Investing: Market Capitalisation, Valuation Multiples and Dividends",
+     "anchor": "ch79",
+     "sections": [
+      {
+       "num": "79.1",
+       "title": "Sources of equity returns",
+       "anchor": "s79-1",
+       "page": 10
+      },
+      {
+       "num": "79.2",
+       "title": "Market capitalisation and classification",
+       "anchor": "s79-2",
+       "page": 10
+      },
+      {
+       "num": "79.3",
+       "title": "Valuation multiples",
+       "anchor": "s79-3",
+       "page": 10
+      },
+      {
+       "num": "79.4",
+       "title": "Dividends",
+       "anchor": "s79-4",
+       "page": 11
+      },
+      {
+       "num": "79.5",
+       "title": "A structured approach to analysing a stock",
+       "anchor": "s79-5",
+       "page": 11
+      }
+     ],
+     "page": 10
+    },
+    {
+     "num": 80,
+     "title": "Fixed Income: Bond Pricing, Yields, Credit Ratings and the Yield Curve",
+     "anchor": "ch80",
+     "sections": [
+      {
+       "num": "80.1",
+       "title": "Bond terms",
+       "anchor": "s80-1",
+       "page": 13
+      },
+      {
+       "num": "80.2",
+       "title": "Pricing",
+       "anchor": "s80-2",
+       "page": 13
+      },
+      {
+       "num": "80.3",
+       "title": "Duration and convexity",
+       "anchor": "s80-3",
+       "page": 13
+      },
+      {
+       "num": "80.4",
+       "title": "Credit ratings and spreads",
+       "anchor": "s80-4",
+       "page": 14
+      },
+      {
+       "num": "80.5",
+       "title": "The yield curve",
+       "anchor": "s80-5",
+       "page": 14
+      },
+      {
+       "num": "80.6",
+       "title": "Sukuk",
+       "anchor": "s80-6",
+       "page": 14
+      }
+     ],
+     "page": 13
+    },
+    {
+     "num": 81,
+     "title": "Investment Funds and Asset Managers: Mutual Funds, ETFs, Private Equity, Venture Capital and Hedge Funds",
+     "anchor": "ch81",
+     "sections": [
+      {
+       "num": "81.1",
+       "title": "Comparison of vehicles",
+       "anchor": "s81-1",
+       "page": 16
+      },
+      {
+       "num": "81.2",
+       "title": "Key concepts",
+       "anchor": "s81-2",
+       "page": 16
+      },
+      {
+       "num": "81.3",
+       "title": "Investment mandates",
+       "anchor": "s81-3",
+       "page": 17
+      }
+     ],
+     "page": 16
+    },
+    {
+     "num": 82,
+     "title": "Portfolio Management: Risk, Return, Diversification and Asset Allocation",
+     "anchor": "ch82",
+     "sections": [
+      {
+       "num": "82.1",
+       "title": "Risk and return",
+       "anchor": "s82-1",
+       "page": 18
+      },
+      {
+       "num": "82.2",
+       "title": "Systematic and idiosyncratic risk",
+       "anchor": "s82-2",
+       "page": 18
+      },
+      {
+       "num": "82.3",
+       "title": "Asset allocation",
+       "anchor": "s82-3",
+       "page": 18
+      },
+      {
+       "num": "82.4",
+       "title": "Risk-adjusted performance measures",
+       "anchor": "s82-4",
+       "page": 19
+      },
+      {
+       "num": "82.5",
+       "title": "Value at risk (VaR)",
+       "anchor": "s82-5",
+       "page": 19
+      }
+     ],
+     "page": 18
+    },
+    {
+     "num": 83,
+     "title": "Derivatives: Forwards, Futures, Options and Swaps",
+     "anchor": "ch83",
+     "sections": [
+      {
+       "num": "83.1",
+       "title": "The four building blocks",
+       "anchor": "s83-1",
+       "page": 20
+      },
+      {
+       "num": "83.2",
+       "title": "Futures margining",
+       "anchor": "s83-2",
+       "page": 20
+      },
+      {
+       "num": "83.3",
+       "title": "Option payoffs",
+       "anchor": "s83-3",
+       "page": 20
+      },
+      {
+       "num": "83.4",
+       "title": "Swaps",
+       "anchor": "s83-4",
+       "page": 21
+      },
+      {
+       "num": "83.5",
+       "title": "Investing, trading, speculation, hedging and arbitrage",
+       "anchor": "s83-5",
+       "page": 21
+      },
+      {
+       "num": "83.6",
+       "title": "Market liquidity and volatility",
+       "anchor": "s83-6",
+       "page": 22
+      }
+     ],
+     "page": 20
+    },
+    {
+     "num": 84,
+     "title": "Investment Research, Due Diligence and a Fictional Investment Case",
+     "anchor": "ch84",
+     "sections": [
+      {
+       "num": "84.1",
+       "title": "The research process",
+       "anchor": "s84-1",
+       "page": 23
+      },
+      {
+       "num": "84.2",
+       "title": "Due diligence for investments",
+       "anchor": "s84-2",
+       "page": 23
+      },
+      {
+       "num": "84.3",
+       "title": "Fictional investment case: Gulf Cold Chain Holdings (listed)",
+       "anchor": "s84-3",
+       "page": 23
+      }
+     ],
+     "page": 23
+    }
+   ],
+   "page": 6
+  },
+  {
+   "kind": "part",
+   "num": "XI",
+   "title": "Commodities, Energy and Physical Trading",
+   "title_ar": "السلع والطاقة والتجارة الفعلية",
+   "anchor": "v6-part-XI",
+   "chapters": [
+    {
+     "num": 85,
+     "title": "How Physical Commodity Trading Works",
+     "anchor": "ch85",
+     "sections": [
+      {
+       "num": "85.1",
+       "title": "Participants",
+       "anchor": "s85-1",
+       "page": 27
+      },
+      {
+       "num": "85.2",
+       "title": "Where does a trader’s margin come from?",
+       "anchor": "s85-2",
+       "page": 27
+      },
+      {
+       "num": "85.3",
+       "title": "Pricing mechanisms",
+       "anchor": "s85-3",
+       "page": 27
+      },
+      {
+       "num": "85.4",
+       "title": "Spot, forward, futures, basis and spreads",
+       "anchor": "s85-4",
+       "page": 28
+      },
+      {
+       "num": "85.5",
+       "title": "Quality and quantity",
+       "anchor": "s85-5",
+       "page": 28
+      },
+      {
+       "num": "85.6",
+       "title": "Logistics, storage and inspection",
+       "anchor": "s85-6",
+       "page": 28
+      },
+      {
+       "num": "85.7",
+       "title": "Contracts",
+       "anchor": "s85-7",
+       "page": 29
+      },
+      {
+       "num": "85.8",
+       "title": "Hedging, financing and insurance",
+       "anchor": "s85-8",
+       "page": 29
+      },
+      {
+       "num": "85.9",
+       "title": "Delivery obligations",
+       "anchor": "s85-9",
+       "page": 29
+      },
+      {
+       "num": "85.10",
+       "title": "The main risks",
+       "anchor": "s85-10",
+       "page": 29
+      },
+      {
+       "num": "85.11",
+       "title": "Typical margins and their limits",
+       "anchor": "s85-11",
+       "page": 30
+      },
+      {
+       "num": "85.12",
+       "title": "Physical trading vs financial trading",
+       "anchor": "s85-12",
+       "page": 30
+      }
+     ],
+     "page": 27
+    },
+    {
+     "num": 86,
+     "title": "Energy: Crude Oil, Refined Products, Natural Gas, LNG and Coal",
+     "anchor": "ch86",
+     "sections": [
+      {
+       "num": "86.1",
+       "title": "Crude oil",
+       "anchor": "s86-1",
+       "page": 32
+      },
+      {
+       "num": "86.2",
+       "title": "Refined products",
+       "anchor": "s86-2",
+       "page": 32
+      },
+      {
+       "num": "86.3",
+       "title": "Natural gas and LNG",
+       "anchor": "s86-3",
+       "page": 32
+      },
+      {
+       "num": "86.4",
+       "title": "Coal",
+       "anchor": "s86-4",
+       "page": 33
+      }
+     ],
+     "page": 32
+    },
+    {
+     "num": 87,
+     "title": "Agricultural Commodities: Wheat, Corn, Sugar and Coffee",
+     "anchor": "ch87",
+     "sections": [
+      {
+       "num": "87.1",
+       "title": "Wheat",
+       "anchor": "s87-1",
+       "page": 34
+      },
+      {
+       "num": "87.2",
+       "title": "Corn (maize)",
+       "anchor": "s87-2",
+       "page": 34
+      },
+      {
+       "num": "87.3",
+       "title": "Sugar",
+       "anchor": "s87-3",
+       "page": 34
+      },
+      {
+       "num": "87.4",
+       "title": "Coffee",
+       "anchor": "s87-4",
+       "page": 35
+      }
+     ],
+     "page": 34
+    },
+    {
+     "num": 88,
+     "title": "Metals: Aluminium, Copper, Gold and Iron Ore",
+     "anchor": "ch88",
+     "sections": [
+      {
+       "num": "88.1",
+       "title": "Base metals and the LME",
+       "anchor": "s88-1",
+       "page": 36
+      },
+      {
+       "num": "88.2",
+       "title": "Aluminium",
+       "anchor": "s88-2",
+       "page": 36
+      },
+      {
+       "num": "88.3",
+       "title": "Copper",
+       "anchor": "s88-3",
+       "page": 36
+      },
+      {
+       "num": "88.4",
+       "title": "Gold",
+       "anchor": "s88-4",
+       "page": 36
+      },
+      {
+       "num": "88.5",
+       "title": "Iron ore",
+       "anchor": "s88-5",
+       "page": 37
+      }
+     ],
+     "page": 36
+    },
+    {
+     "num": 89,
+     "title": "Industrial Materials: Marble, Granite and Timber",
+     "anchor": "ch89",
+     "sections": [
+      {
+       "num": "89.1",
+       "title": "Marble and granite",
+       "anchor": "s89-1",
+       "page": 38
+      },
+      {
+       "num": "89.2",
+       "title": "Timber",
+       "anchor": "s89-2",
+       "page": 38
+      }
+     ],
+     "page": 38
+    },
+    {
+     "num": 90,
+     "title": "Commodity Deal Economics: Three Complete Trade P&Ls",
+     "anchor": "ch90",
+     "sections": [
+      {
+       "num": "90.1",
+       "title": "Deal 1 — Wheat cargo: Black Sea to North Africa",
+       "anchor": "s90-1",
+       "page": 40
+      },
+      {
+       "num": "90.2",
+       "title": "Deal 2 — Copper cathodes: back-to-back with a pricing-period mismatch",
+       "anchor": "s90-2",
+       "page": 41
+      },
+      {
+       "num": "90.3",
+       "title": "Deal 3 — Marble slabs from Turkey to Kuwait",
+       "anchor": "s90-3",
+       "page": 42
+      },
+      {
+       "num": "90.4",
+       "title": "Comparing the three deals",
+       "anchor": "s90-4",
+       "page": 42
+      }
+     ],
+     "page": 40
+    }
+   ],
+   "page": 26
+  },
+  {
+   "kind": "part",
+   "num": "XXI",
+   "title": "How to Read Business News and Reports",
+   "title_ar": "كيف تقرأ الأخبار والتقارير الاقتصادية",
+   "anchor": "v6-part-XXI",
+   "chapters": [
+    {
+     "num": 91,
+     "title": "Reading Company Reports: Annual Reports, Quarterly Earnings, Press Releases and Merger Announcements",
+     "anchor": "ch91",
+     "sections": [
+      {
+       "num": "91.1",
+       "title": "The annual report: a reading order",
+       "anchor": "s91-1",
+       "page": 45
+      },
+      {
+       "num": "91.2",
+       "title": "Quarterly earnings releases",
+       "anchor": "s91-2",
+       "page": 45
+      },
+      {
+       "num": "91.3",
+       "title": "Spotting spin",
+       "anchor": "s91-3",
+       "page": 46
+      },
+      {
+       "num": "91.4",
+       "title": "Reading bank financial statements",
+       "anchor": "s91-4",
+       "page": 46
+      },
+      {
+       "num": "91.5",
+       "title": "Merger and acquisition announcements",
+       "anchor": "s91-5",
+       "page": 46
+      }
+     ],
+     "page": 45
+    },
+    {
+     "num": 92,
+     "title": "Reading Macroeconomic Information: Central Banks, Rate Decisions, Inflation Reports, Forecasts and Government Policy",
+     "anchor": "ch92",
+     "sections": [
+      {
+       "num": "92.1",
+       "title": "Central-bank decisions and statements",
+       "anchor": "s92-1",
+       "page": 48
+      },
+      {
+       "num": "92.2",
+       "title": "Inflation reports",
+       "anchor": "s92-2",
+       "page": 48
+      },
+      {
+       "num": "92.3",
+       "title": "Economic forecasts",
+       "anchor": "s92-3",
+       "page": 49
+      },
+      {
+       "num": "92.4",
+       "title": "Government policy announcements",
+       "anchor": "s92-4",
+       "page": 49
+      },
+      {
+       "num": "92.5",
+       "title": "From macro news to business action",
+       "anchor": "s92-5",
+       "page": 49
+      }
+     ],
+     "page": 48
+    },
+    {
+     "num": 93,
+     "title": "Reading Research, Ratings, Industry, Commodity and Shipping Reports — and Separating Facts from Opinions",
+     "anchor": "ch93",
+     "sections": [
+      {
+       "num": "93.1",
+       "title": "Investment research",
+       "anchor": "s93-1",
+       "page": 50
+      },
+      {
+       "num": "93.2",
+       "title": "Credit-rating reports",
+       "anchor": "s93-2",
+       "page": 50
+      },
+      {
+       "num": "93.3",
+       "title": "Industry reports",
+       "anchor": "s93-3",
+       "page": 50
+      },
+      {
+       "num": "93.4",
+       "title": "Commodity market reports",
+       "anchor": "s93-4",
+       "page": 50
+      },
+      {
+       "num": "93.5",
+       "title": "Shipping and trade reports",
+       "anchor": "s93-5",
+       "page": 51
+      },
+      {
+       "num": "93.6",
+       "title": "Facts, estimates, claims, expectations and speculation",
+       "anchor": "s93-6",
+       "page": 51
+      },
+      {
+       "num": "93.7",
+       "title": "A reading checklist",
+       "anchor": "s93-7",
+       "page": 51
+      }
+     ],
+     "page": 50
+    }
+   ],
+   "page": 44
+  }
+ ],
+ "terms": [],
+ "index": {},
+ "main": {}
+}
