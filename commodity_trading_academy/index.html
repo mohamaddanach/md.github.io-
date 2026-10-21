@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Commodity Trading Academy</title>
+<meta name="description" content="Interactive virtual training environment for physical and financial commodity trading: gold, wheat, sugar and steel. All data simulated for education.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+<div id="app"><noscript>This training platform needs JavaScript enabled.</noscript></div>
+
+<!-- engine -->
+<script src="js/calc.js"></script>
+<script src="js/core.js"></script>
+<script src="js/progress.js"></script>
+<!-- content & datasets -->
+<script src="js/data/glossary.js"></script>
+<script src="js/data/questions.js"></script>
+<script src="js/data/lessons-foundations.js"></script>
+<script src="js/data/lessons-commodities.js"></script>
+<script src="js/data/lessons-advanced.js"></script>
+<script src="js/data/exercises.js"></script>
+<script src="js/data/cases.js"></script>
+<script src="js/data/markets.js"></script>
+<script src="js/data/documents.js"></script>
+<script src="js/data/sim-scenarios.js"></script>
+<!-- screens -->
+<script src="js/views/dashboard.js"></script>
+<script src="js/views/learning.js"></script>
+<script src="js/views/commodity.js"></script>
+<script src="js/views/global.js"></script>
+<script src="js/views/physical.js"></script>
+<script src="js/views/company.js"></script>
+<script src="js/views/futures.js"></script>
+<script src="js/views/analysis.js"></script>
+<script src="js/views/dealroom.js"></script>
+<script src="js/views/finance.js"></script>
+<script src="js/views/logistics.js"></script>
+<script src="js/views/risk.js"></script>
+<script src="js/views/quant.js"></script>
+<script src="js/views/records.js"></script>
+<script src="js/views/exams.js"></script>
+<script src="tests/calc.test.js"></script>
+<script>CTA.start();</script>
+</body>
+</html>
