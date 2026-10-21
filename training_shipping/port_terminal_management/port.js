@@ -2,7 +2,7 @@
 (function () {
   const L = TS.L;
   const PT = (window.PT = window.PT || {});
-  PT.lessons = []; PT.cases = []; PT.drills = []; PT.sims = []; PT.examBank = []; PT.glossary = []; PT.events = [];
+  PT.lessons = []; PT.ops = []; PT.cases = []; PT.drills = []; PT.sims = []; PT.examBank = []; PT.glossary = []; PT.events = [];
 
   /* ---------------- the virtual port (fictional) ---------------- */
   PT.port = {
@@ -59,6 +59,7 @@
     { n: 7, key: 'l7', track: true, icon: '🌾', title: L('Bulk & silo terminals', 'محطات السائبة والصوامع'), sub: L('Grain silos, storage quality, dust safety, bulk ship discharge, draft survey', 'صوامع الحبوب، جودة التخزين، سلامة الغبار، تفريغ السفن السائبة، مسح الغاطس') },
     { n: 8, key: 'l8', track: true, icon: '🛢', title: L('Other terminals & depots', 'المحطات الأخرى والمستودعات'), sub: L('Liquid bulk, ro-ro & cars, breakbulk & project cargo, advanced depot management', 'السوائل السائبة، الرورو والسيارات، البضائع العامة والمشاريع، إدارة المستودعات المتقدّمة') },
     { n: 9, key: 'l9', track: true, icon: '🏗', title: L('Port development', 'تطوير الموانئ'), sub: L('Master planning, forecasting, capacity, feasibility, PPP, project delivery, green & smart ports', 'التخطيط الرئيسي، التنبّؤ، الطاقة، الجدوى، الشراكة مع القطاع الخاص، تنفيذ المشاريع، الموانئ الخضراء والذكية') },
+    { n: 10, key: 'l10', track: true, icon: '⚙', title: L('Port services, intermodal & maritime law', 'خدمات الميناء والنقل المتعدّد والقانون البحري'), sub: L('Bunkering & ship supply, pilotage/towage/mooring, cruise terminals, rail & dry ports, B/L law & insurance, port tariffs & invoicing', 'تزويد الوقود والإمدادات، الإرشاد/القطر/الربط، محطات الركّاب، السكك والموانئ الجافة، قانون البوليصة والتأمين، تعرفات الميناء والفوترة') },
   ];
 
   /* ---------------- career ladder ---------------- */
@@ -71,12 +72,12 @@
     { xp: 4500, exams: 4, icon: '🛡', t: L('Duty / Shift Manager', 'مدير مناوبة'), d: L('Runs 24/7 operations, incidents, people and safety.', 'يدير العمليات على مدار الساعة والحوادث والفرق والسلامة.') },
     { xp: 6500, exams: 5, icon: '🎖', t: L('Senior Port Operations Manager', 'مدير عمليات ميناء أول'), d: L('Owns KPIs, budgets, contracts, crisis management and strategy.', 'مسؤول عن مؤشرات الأداء والميزانيات والعقود وإدارة الأزمات والاستراتيجية.') },
     { xp: 9000, exams: 7, icon: '🌐', t: L('Multi-terminal Operations Director', 'مدير عمليات متعدّد المحطات'), d: L('Runs container, bulk/silo, liquid and ro-ro terminals plus depots, and works with ship managers.', 'يدير محطات الحاويات والسائبة/الصوامع والسوائل والرورو مع المستودعات، ويعمل مع مديري السفن.') },
-    { xp: 12000, exams: 9, icon: '👑', t: L('Port Director & Development Lead', 'مدير الميناء وقائد التطوير'), d: L('Plans and finances port expansion, leads concessions and the long-term strategy.', 'يخطّط ويموّل توسعة الميناء، ويقود عقود الامتياز والاستراتيجية طويلة الأمد.') },
+    { xp: 13000, exams: 10, icon: '👑', t: L('Port Director & Development Lead', 'مدير الميناء وقائد التطوير'), d: L('Plans and finances port expansion, leads concessions and the long-term strategy.', 'يخطّط ويموّل توسعة الميناء، ويقود عقود الامتياز والاستراتيجية طويلة الأمد.') },
   ];
 
   /* ---------------- progress store ---------------- */
   const KEY = 'ptm_progress_v1';
-  const blank = () => ({ name: '', lessons: {}, cases: {}, sims: {}, drills: {}, exams: {}, events: [], started: new Date().toISOString() });
+  const blank = () => ({ name: '', lessons: {}, cases: {}, sims: {}, ops: {}, drills: {}, exams: {}, events: [], started: new Date().toISOString() });
   PT.load = () => {
     let p = null;
     try { p = JSON.parse(localStorage.getItem(KEY) || 'null'); } catch (e) { p = null; }
@@ -96,6 +97,7 @@
     Object.values(p.lessons).forEach((l) => { if (l.done) x += 30; });
     Object.values(p.cases).forEach((c) => { x += Math.round(c.best || 0); });
     Object.values(p.sims).forEach((s) => { x += Math.round(s.best || 0); });
+    Object.values(p.ops || {}).forEach((s) => { x += Math.round((s.best || 0) * 1.5); });
     Object.values(p.drills).forEach((d) => { x += (d.c || 0) * 5; });
     Object.values(p.exams).forEach((e) => { if (e.passed) x += 250; });
     return x;
@@ -114,6 +116,7 @@
       lessons: Object.values(p.lessons).filter((l) => l.done).length,
       cases: Object.values(p.cases).filter((c) => c.best != null).length,
       sims: Object.values(p.sims).filter((s) => s.best != null).length,
+      ops: Object.values(p.ops || {}).filter((s) => s.best != null).length,
       drills: dr, exams: PT.examsPassed(), xp: PT.xp(),
     };
   };

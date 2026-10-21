@@ -42,6 +42,8 @@
     renderTop();
   }
 
+  PT.ui = { head: (...a) => head(...a), lvlBadge: (n) => lvlBadge(n), award: (...a) => award(...a) };
+
   /* ---------------------------------------------------------- shell */
   const NAV = [
     { g: L('Overview', 'نظرة عامة') },
@@ -51,6 +53,8 @@
     { g: L('Learn', 'تعلّم') },
     { h: 'academy', i: '📚', l: L('Academy (lessons)', 'الأكاديمية (الدروس)'), c: () => `${Object.values(PT.P.lessons).filter((x) => x.done).length}/${PT.lessons.length}` },
     { h: 'glossary', i: '🔤', l: L('Glossary EN/AR', 'المعجم إنجليزي/عربي') },
+    { g: L('Work', 'العمل') },
+    { h: 'ops', i: '🖥', l: L('Operations desk (A→Z)', 'مكتب العمليات (من أ إلى ي)'), c: () => `${Object.keys(PT.P.ops || {}).length}/${PT.ops.length}` },
     { g: L('Practise', 'تدرّب') },
     { h: 'cases', i: '🎬', l: L('Virtual cases', 'الحالات الافتراضية'), c: () => `${Object.keys(PT.P.cases).length}/${PT.cases.length}` },
     { h: 'sims', i: '🕹', l: L('Simulators', 'المحاكيات'), c: () => `${Object.keys(PT.P.sims).length}/${PT.sims.length}` },
@@ -74,7 +78,7 @@
   }
   function renderSide() {
     const cur = route().v;
-    const map = { lesson: 'academy', case: 'cases', sim: 'sims', exam: 'exams', cert: 'exams' };
+    const map = { op: 'ops', lesson: 'academy', case: 'cases', sim: 'sims', exam: 'exams', cert: 'exams' };
     const on = map[cur] || cur;
     $('#ptSide').innerHTML = NAV.map((n) => n.g ? `<h5>${t(n.g)}</h5>` : `<a class="pt-nav ${on === n.h ? 'on' : ''}" href="#/${n.h}"><span class="i">${n.i}</span>${t(n.l)}${n.c ? `<span class="c">${n.c()}</span>` : ''}</a>`).join('') +
       `<h5>${t(L('More training', 'تدريب إضافي'))}</h5><a class="pt-nav" href="../index.html"><span class="i">⛴</span>${t(L('Freight forwarding academy', 'أكاديمية الشحن'))}</a>`;
@@ -89,7 +93,7 @@
     $('#ptSide').classList.remove('open');
     const main = $('#ptMain'); main.className = 'pt-main fade-in';
     const r = route();
-    const views = { '': vDash, path: vPath, port: vPort, academy: vAcademy, lesson: vLesson, glossary: vGlossary, cases: vCases, case: vCase, sims: vSims, sim: vSim, drills: vDrills, exams: vExams, exam: vExam, cert: vCert, profile: vProfile };
+    const views = { ops: PT.vOps, op: PT.vOp, '': vDash, path: vPath, port: vPort, academy: vAcademy, lesson: vLesson, glossary: vGlossary, cases: vCases, case: vCase, sims: vSims, sim: vSim, drills: vDrills, exams: vExams, exam: vExam, cert: vCert, profile: vProfile };
     (views[r.v] || vDash)(main, r.a);
     window.scrollTo(0, 0);
   }
@@ -100,6 +104,8 @@
     for (const lv of PT.levels) {
       const l = lessonsOf(lv.n).find((x) => !lessonDone(x.id));
       if (l) return { href: '#/lesson/' + l.id, label: t(l.title), kind: L('Next lesson', 'الدرس التالي'), icon: l.icon };
+      const op = PT.ops.find((x) => x.lvl === lv.n && !(PT.P.ops || {})[x.id]);
+      if (op) return { href: '#/op/' + op.id, label: t(op.title), kind: L('Next operation', 'العملية التالية'), icon: op.icon };
       const c = PT.cases.find((x) => x.lvl === lv.n && !PT.P.cases[x.id]);
       if (c) return { href: '#/case/' + c.id, label: t(c.title), kind: L('Next virtual case', 'الحالة الافتراضية التالية'), icon: c.icon };
       const s = PT.sims.find((x) => x.lvl === lv.n && !PT.P.sims[x.id]);
@@ -130,12 +136,13 @@
     main.innerHTML = `
       <section class="pt-hero">${ART}<span class="tagline">${t(L('From junior to senior', 'من مبتدئ إلى محترف'))}</span>
         <h1>${hello}</h1>
-        <p>${t(L('Run a virtual multi-terminal port — containers, grain silos, liquid bulk, ro-ro and depots — manage vessels and plan the port’s development: plan berths and cranes, stack the yard, check trucks at the gate, survey empties at the depot and handle real-life crises — with ' + PT.lessons.length + ' lessons, ' + PT.cases.length + ' virtual cases, ' + PT.sims.length + ' simulators and unlimited exercises in English and Arabic.', 'أدِر ميناءً افتراضيًا متعدّد المحطات — حاويات وصوامع حبوب وسوائل ورورو ومستودعات — وأدِر السفن وخطّط لتطوير الميناء: خطّط الأرصفة والرافعات، رصّ الساحة، افحص الشاحنات على البوابة، عاين الحاويات الفارغة في المستودع وتعامل مع أزمات حقيقية — مع ' + PT.lessons.length + ' درسًا و' + PT.cases.length + ' حالة افتراضية و' + PT.sims.length + ' محاكيات وتمارين غير محدودة بالعربية والإنجليزية.'))}</p>
-        <div class="row" style="margin-top:14px"><a class="btn" href="${ns.href}">${ns.icon} ${t(ns.kind)}: ${esc(ns.label)} →</a><a class="btn alt" href="#/path">${t(L('See the career path', 'شاهد المسار المهني'))}</a></div></section>
-      <div class="grid c4">
+        <p>${t(L('Run a virtual multi-terminal port — containers, grain silos, liquid bulk, ro-ro and depots — manage vessels and plan the port’s development: plan berths and cranes, stack the yard, check trucks at the gate, survey empties at the depot and handle real-life crises — with ' + PT.ops.length + ' complete A-to-Z operations, ' + PT.lessons.length + ' lessons, ' + PT.cases.length + ' virtual cases, ' + PT.sims.length + ' simulators and unlimited exercises in English and Arabic.', 'أدِر ميناءً افتراضيًا متعدّد المحطات — حاويات وصوامع حبوب وسوائل ورورو ومستودعات — وأدِر السفن وخطّط لتطوير الميناء: خطّط الأرصفة والرافعات، رصّ الساحة، افحص الشاحنات على البوابة، عاين الحاويات الفارغة في المستودع وتعامل مع أزمات حقيقية — مع ' + PT.ops.length + ' عملية كاملة من البداية للنهاية و' + PT.lessons.length + ' درسًا و' + PT.cases.length + ' حالة افتراضية و' + PT.sims.length + ' محاكيات وتمارين غير محدودة بالعربية والإنجليزية.'))}</p>
+        <div class="row" style="margin-top:14px"><a class="btn" href="${ns.href}">${ns.icon} ${t(ns.kind)}: ${esc(ns.label)} →</a><a class="btn alt" href="#/ops">🖥 ${t(L('Operations desk', 'مكتب العمليات'))}</a><a class="btn alt" href="#/path">${t(L('See the career path', 'شاهد المسار المهني'))}</a></div></section>
+      <div class="grid c3">
         <div class="tile"><span class="ic">${r.icon}</span><div class="k">${t(L('Current rank', 'الرتبة الحالية'))}</div><div class="v" style="font-size:1.05rem;margin:4px 0">${t(r.t)}</div><div class="bar"><i style="width:${pct * 100}%"></i></div><div class="s" style="margin-top:4px">${nx ? `${TS.num(s.xp, 0)} / ${TS.num(nx.xp, 0)} XP${nx.exams > s.exams ? ' · ' + t(L(`${nx.exams} exams needed`, `مطلوب ${nx.exams} امتحانات`)) : ''}` : t(L('Top rank reached', 'بلغت أعلى رتبة'))}</div></div>
         <div class="tile"><span class="ic">📚</span><div class="k">${t(L('Lessons', 'الدروس'))}</div><div class="v">${s.lessons}<small style="font-size:.9rem;color:var(--ink-3)">/${PT.lessons.length}</small></div><div class="s">${t(L('read + quiz passed', 'قراءة + نجاح في الاختبار'))}</div></div>
         <div class="tile red"><span class="ic">🎬</span><div class="k">${t(L('Cases & simulators', 'الحالات والمحاكيات'))}</div><div class="v">${s.cases + s.sims}<small style="font-size:.9rem;color:var(--ink-3)">/${PT.cases.length + PT.sims.length}</small></div><div class="s">${t(L('completed at least once', 'مكتملة مرة واحدة على الأقل'))}</div></div>
+        <div class="tile red"><span class="ic">🖥</span><div class="k">${t(L('Operations A→Z', 'العمليات من أ إلى ي'))}</div><div class="v">${s.ops}<small style="font-size:.9rem;color:var(--ink-3)">/${PT.ops.length}</small></div><div class="s">${t(L('complete work processes', 'عمليات عمل كاملة'))}</div></div>
         <div class="tile"><span class="ic">🧮</span><div class="k">${t(L('Exercises', 'التمارين'))}</div><div class="v">${s.drills.c}</div><div class="s">${s.drills.n ? Math.round(s.drills.c / s.drills.n * 100) + '% ' + t(L('accuracy', 'دقّة')) : t(L('no attempts yet', 'لا محاولات بعد'))}</div></div>
       </div>
       <div class="section-title"><h2>🛰 ${t(L('Terminal live board — CBCT', 'اللوحة الحيّة للمحطة — CBCT'))}</h2></div>
@@ -160,11 +167,12 @@
       [L('Weeks 13–15 (track)', 'الأسابيع 13–15 (مسار)'), L('Level 6 Vessel management: chartering & laytime, voyage speed desk simulator, cases: demurrage claim, PSC detention, speed or fuel.', 'المستوى 6 إدارة السفن: التأجير وزمن الرسو، محاكي مكتب سرعة الرحلة، الحالات: مطالبة الغرامة، الاحتجاز الرقابي، السرعة أم الوقود.')],
       [L('Weeks 16–18 (track)', 'الأسابيع 16–18 (مسار)'), L('Level 7 Bulk & silos + Level 8 other terminals: silo allocation simulator, cases: hot spot, smoking bearing, wheat discharge, tank overfill, heavy lift.', 'المستوى 7 السائبة والصوامع + المستوى 8 المحطات الأخرى: محاكي توزيع الصوامع، الحالات: البؤرة الساخنة، المحمل المدخّن، تفريغ القمح، فيضان الخزّان، الرفع الثقيل.')],
       [L('Weeks 19–21 (track)', 'الأسابيع 19–21 (مسار)'), L('Level 9 Port development: forecasting, capacity, NPV & PPP drills, 10-year development game, cases: expansion decision, concession bid. Pass all 9 exams.', 'المستوى 9 تطوير الموانئ: تمارين التنبّؤ والطاقة وصافي القيمة الحالية والشراكة، لعبة التطوير لـ 10 سنوات، الحالات: قرار التوسعة، عرض الامتياز. اجتز الامتحانات التسعة.')],
+      [L('Weeks 22–24 (work system)', 'الأسابيع 22–24 (نظام العمل)'), L('Level 10 services, intermodal & law. Run all A-to-Z operations on the Operations desk until each scores ≥ 85: vessel call, grain into silos, bunkering, import, export, tanker, car carrier, reefer, DG, ship services, heavy lift, depot, port costs, bulk export, new berth.', 'المستوى 10 الخدمات والنقل المتعدّد والقانون. نفّذ كل العمليات الكاملة في مكتب العمليات حتى تحصل كلّ منها على ≥ 85: زيارة سفينة، قمح إلى الصوامع، التزويد بالوقود، الاستيراد، التصدير، الناقلة، ناقلة السيارات، المبرّدات، الخطرة، خدمات السفن، الرفع الثقيل، المستودع، تكاليف الميناء، التصدير السائب، الرصيف الجديد.')],
       [L('On the job', 'في العمل'), L('Shadow a planner, then a duty manager. Keep a decision journal: situation, options, decision, result. Review it monthly with a mentor.', 'رافِق مخطّطًا ثم مديرًا مناوبًا. احتفظ بدفتر قرارات: الموقف، الخيارات، القرار، النتيجة. راجعه شهريًا مع مرشد.')],
     ];
     main.innerHTML = head(L('Career path', 'المسار المهني'), L('From trainee to senior port operations manager', 'من متدرّب إلى مدير عمليات ميناء أول'), L('Earn XP from lessons (30), cases & simulators (up to 100 each, best score), exercises (5 per correct answer) and exams (250). Higher ranks also need level exams.', 'اكسب نقاط XP من الدروس (30)، الحالات والمحاكيات (حتى 100 لكلّ منها، أفضل نتيجة)، التمارين (5 لكل إجابة صحيحة) والامتحانات (250). الرتب الأعلى تحتاج أيضًا امتحانات المستويات.')) +
       `<div class="grid c2" style="align-items:start"><div class="ladder">${PT.ranks.map((r, i) => `<div class="rung ${i < ri ? 'done' : i === ri ? 'cur' : ''}"><span class="n">${i < ri ? '✓' : r.icon}</span><div class="x"><b>${t(r.t)}</b><small>${t(r.d)}</small><small class="muted">${TS.num(r.xp, 0)} XP${r.exams ? ' · ' + r.exams + ' ' + t(L('exams', 'امتحانات')) : ''}</small></div>${i === ri ? `<span class="badge bad">${t(L('You', 'أنت'))}</span>` : ''}</div>`).join('')}</div>
-      <div><div class="card"><h3>📅 ${t(L('Suggested 21-week programme', 'برنامج مقترح لـ 21 أسبوعًا'))}</h3><ul class="timeline">${plan.map((p, i) => `<li class="${i < ex ? 'done' : ''}"><b>${t(p[0])}</b><br>${t(p[1])}</li>`).join('')}</ul></div>
+      <div><div class="card"><h3>📅 ${t(L('Suggested 24-week programme', 'برنامج مقترح لـ 24 أسبوعًا'))}</h3><ul class="timeline">${plan.map((p, i) => `<li class="${i < ex ? 'done' : ''}"><b>${t(p[0])}</b><br>${t(p[1])}</li>`).join('')}</ul></div>
       <div class="card"><h3>🧠 ${t(L('What makes a senior', 'ما الذي يصنع المحترف'))}</h3><ul class="keys">
         <li>${t(L('Thinks in systems: berth ↔ yard ↔ gate ↔ depot.', 'يفكّر كمنظومة: الرصيف ↔ الساحة ↔ البوابة ↔ المستودع.'))}</li>
         <li>${t(L('Looks 24–72 h ahead with leading indicators.', 'ينظر 24–72 ساعة للأمام بالمؤشرات الاستباقية.'))}</li>
@@ -191,7 +199,7 @@
   /* ---------------------------------------------------------- academy */
   function vAcademy(main) {
     main.innerHTML = head(L('Academy', 'الأكاديمية'), L(PT.lessons.length + ' lessons in ' + PT.levels.length + ' levels', PT.lessons.length + ' درسًا في ' + PT.levels.length + ' مستويات'), L('Each lesson: theory, formulas, worked examples, a senior tip and a quiz. A lesson is complete when you pass its quiz (≥ 75%).', 'كل درس: نظرية، معادلات، أمثلة محلولة، نصيحة محترف واختبار. يكتمل الدرس عند اجتياز اختباره (≥ 75%).')) +
-      PT.levels.map((lv) => `${lv.n === 1 ? `<div class="note"><strong>${t(L('Core programme — Levels 1–5', 'البرنامج الأساسي — المستويات 1–5'))}</strong>${t(L('Container terminal operations from junior to senior.', 'عمليات محطات الحاويات من مبتدئ إلى محترف.'))}</div>` : ''}${lv.n === 6 ? `<div class="note warn" style="margin-top:26px"><strong>${t(L('Specialisation tracks — Levels 6–9', 'المسارات التخصّصية — المستويات 6–9'))}</strong>${t(L('Vessel management, bulk & silo terminals, other terminals & depots, and port development.', 'إدارة السفن، محطات السائبة والصوامع، المحطات الأخرى والمستودعات، وتطوير الموانئ.'))}</div>` : ''}<div class="section-title"><h2>${lv.icon} ${t(L('Level', 'المستوى'))} ${lv.n} — ${t(lv.title)}</h2>${ring(levelProgress(lv.n))}</div>
+      PT.levels.map((lv) => `${lv.n === 1 ? `<div class="note"><strong>${t(L('Core programme — Levels 1–5', 'البرنامج الأساسي — المستويات 1–5'))}</strong>${t(L('Container terminal operations from junior to senior.', 'عمليات محطات الحاويات من مبتدئ إلى محترف.'))}</div>` : ''}${lv.n === 6 ? `<div class="note warn" style="margin-top:26px"><strong>${t(L('Specialisation tracks — Levels 6–10', 'المسارات التخصّصية — المستويات 6–10'))}</strong>${t(L('Vessel management, bulk & silo terminals, other terminals & depots, port development, and port services, intermodal & maritime law.', 'إدارة السفن، محطات السائبة والصوامع، المحطات الأخرى والمستودعات، تطوير الموانئ، وخدمات الميناء والنقل المتعدّد والقانون البحري.'))}</div>` : ''}<div class="section-title"><h2>${lv.icon} ${t(L('Level', 'المستوى'))} ${lv.n} — ${t(lv.title)}</h2>${ring(levelProgress(lv.n))}</div>
         <div class="grid c3">${lessonsOf(lv.n).map((l) => `<a class="link-card" href="#/lesson/${l.id}"><div class="mod"><div class="top"><div class="em">${l.icon}</div><h3>${t(l.title)}</h3></div><p>${t(l.sub)}</p><div class="foot">${lvlBadge(l.lvl)}<span class="badge">⏱ ${l.min} ${t(L('min', 'دقيقة'))}</span>${lessonDone(l.id) ? `<span class="badge ok">✓ ${t(L('Done', 'منجز'))}</span>` : ''}</div></div></a>`).join('')}
         <a class="link-card" href="#/exam/${lv.n}"><div class="mod" style="border-style:dashed"><div class="top"><div class="em">🎓</div><h3>${t(L('Level exam', 'امتحان المستوى'))} ${lv.n}</h3></div><p>${t(L('10 questions, pass mark 80%. Unlocks when all lessons of this level are done.', '10 أسئلة، علامة النجاح 80%. يُفتح عند إنجاز كل دروس هذا المستوى.'))}</p><div class="foot">${PT.P.exams[lv.n] && PT.P.exams[lv.n].passed ? `<span class="badge ok">✓ ${t(L('Passed', 'ناجح'))}</span>` : ''}</div></div></a></div>`).join('');
   }
@@ -372,7 +380,7 @@
         <div class="row" style="margin-top:12px"><button class="btn primary" id="pSave">${t(L('Save', 'حفظ'))}</button><button class="btn" id="pExp">⬇ ${t(L('Export progress', 'تصدير التقدّم'))}</button><label class="btn">⬆ ${t(L('Import', 'استيراد'))}<input type="file" id="pImp" accept="application/json" hidden></label><button class="btn ghost" id="pRst" style="color:var(--bad)">${t(L('Reset all', 'إعادة تعيين الكل'))}</button></div></div>
         <div class="card"><h3>${t(L('Summary', 'الملخّص'))}</h3><dl class="kv"><dt>XP</dt><dd>${TS.num(s.xp, 0)}</dd><dt>${t(L('Rank', 'الرتبة'))}</dt><dd>${t(PT.ranks[PT.rankIndex()].t)}</dd><dt>${t(L('Lessons', 'الدروس'))}</dt><dd>${s.lessons}/${PT.lessons.length}</dd><dt>${t(L('Cases', 'الحالات'))}</dt><dd>${s.cases}/${PT.cases.length}</dd><dt>${t(L('Simulators', 'المحاكيات'))}</dt><dd>${s.sims}/${PT.sims.length}</dd><dt>${t(L('Exercises correct', 'تمارين صحيحة'))}</dt><dd>${s.drills.c}/${s.drills.n}</dd><dt>${t(L('Exams', 'الامتحانات'))}</dt><dd>${s.exams}/${PT.levels.length}</dd></dl></div></div>
       <div class="card"><h3>${t(L('Scores by activity', 'النتائج حسب النشاط'))}</h3><div class="table-wrap"><table><thead><tr><th>${t(L('Activity', 'النشاط'))}</th><th class="num">${t(L('Best', 'الأفضل'))}</th><th class="num">${t(L('Runs', 'المحاولات'))}</th></tr></thead><tbody>
-        ${PT.cases.concat(PT.sims).filter((x) => PT.P.cases[x.id] || PT.P.sims[x.id]).map((x) => { const r = PT.P.cases[x.id] || PT.P.sims[x.id]; return `<tr><td>${x.icon} ${t(x.title)}</td><td class="num">${r.best}</td><td class="num">${r.runs}</td></tr>`; }).join('') || `<tr><td colspan="3" class="muted">${t(L('Nothing yet.', 'لا شيء بعد.'))}</td></tr>`}</tbody></table></div></div>`;
+        ${PT.ops.concat(PT.cases, PT.sims).filter((x) => (PT.P.ops || {})[x.id] || PT.P.cases[x.id] || PT.P.sims[x.id]).map((x) => { const r = (PT.P.ops || {})[x.id] || PT.P.cases[x.id] || PT.P.sims[x.id]; return `<tr><td>${x.icon} ${t(x.title)}</td><td class="num">${r.best}</td><td class="num">${r.runs}</td></tr>`; }).join('') || `<tr><td colspan="3" class="muted">${t(L('Nothing yet.', 'لا شيء بعد.'))}</td></tr>`}</tbody></table></div></div>`;
     $('#pSave', main).onclick = () => { PT.P.name = $('#pn', main).value.trim(); PT.save(); TS.toast(t(L('Saved', 'تم الحفظ')), 'ok'); render(); };
     $('#pExp', main).onclick = () => { const b = new Blob([JSON.stringify(PT.P, null, 2)], { type: 'application/json' }); const a = document.createElement('a'); a.href = URL.createObjectURL(b); a.download = 'port-master-progress.json'; document.body.appendChild(a); a.click(); a.remove(); };
     $('#pImp', main).onchange = (e) => { const f = e.target.files[0]; if (!f) return; const r = new FileReader(); r.onload = () => { try { const o = JSON.parse(r.result); if (!o || typeof o.lessons !== 'object') throw new Error(); PT.P = Object.assign(PT.P, o); PT.save(); TS.toast(t(L('Progress imported', 'تم استيراد التقدّم')), 'ok'); render(); } catch (err) { TS.toast(t(L('Invalid file', 'ملف غير صالح')), 'bad'); } }; r.readAsText(f); };

@@ -69,16 +69,27 @@ The Customs and Accounting pages list every shipment that has a hand-off for the
 
 > ⚠️ Training content. Lebanese rates, fees, exchange rates and procedures change often. The figures are realistic samples and the companies are fictional. Always confirm with Lebanese Customs, a licensed broker and your accountant.
 
-## Port Master Academy — ports, terminals, vessels & development (junior → senior)
+## Port Master Academy — virtual port work system + academy (junior → senior)
 
 Open `port_terminal_management/index.html`. A fictional multi-terminal port (Cedar Bay: container terminal CBCT, grain silo terminal, liquid bulk terminal, ro-ro/car terminal, multipurpose berth, empty depot) in English/Arabic with a navy & red maritime theme.
 
-**Core programme (levels 1–5, container terminal):** Foundations · Vessel operations · Yard & gate · Depots & equipment control · Senior management.
-**Specialisation tracks (levels 6–9):** Vessel management (ship management, ISM, chartering, laytime/demurrage, voyage economics, surveys/PSC, crew) · Bulk & silo terminals (silos, grain quality, dust-explosion safety, bulk discharge & draft survey) · Other terminals & depots (liquid bulk, ro-ro, breakbulk/heavy lift, advanced depot management) · Port development (master planning, forecasting, capacity, feasibility/NPV, PPP concessions, project delivery, green & smart ports).
+### 🖥 Operations desk — 15 complete operations from A to Z
+You work at the desk: messages arrive from agents, masters, customs, silos and suppliers; you pick the required **documents**, **calculate**, fill **orders/forms**, put actions in **sequence** and take **decisions**, while a live board tracks stock, fuel, time and cost and files every document. Each operation ends with a scored report.
 
-- **44 lessons** with formulas, worked examples, a senior tip and a quiz each.
-- **26 virtual cases** scored like a senior would judge them (berth conflicts, tides, crane failure, reefer/DG incidents, yard congestion, storms, ransomware, demurrage claims, PSC detention, slow steaming, silo hot spots, dust risk, tank overfill, heavy lifts, expansion strategy, concession bids…).
-- **9 simulators**: berth planner, crane split, yard stacking, gate desk, depot survey, 24 h control room, silo bin allocation, voyage speed desk, 10-year port development game.
-- **39 unlimited exercise types** with random numbers and full solutions; **9 level exams** with certificates; XP **career ladder** up to Port Director; **140-term EN/AR glossary**.
+1. Container vessel call (72 h notice → berth → pilot/tugs → cranes & labour → departure docs → GMPH)
+2. Wheat vessel into silos that already hold 5,000 t (documents, space, bins, unloading plan, wet hold & drying, draft survey, trucks, outturn)
+3. Bunkering at berth (fuel need, permits, supplier choice, bunkering sequence, VCF mass, BDN & protest)
+4. Import container release (D/O, customs, red lane, storage, appointment, gate-out, detention)
+5. Export container (food-grade empty, VGM, customs & EUR.1, gate-in, loading, B/L type)
+6. Diesel tanker discharge (tank ullage, ISGOTT checklist, rates, GSV)
+7. Car carrier discharge (parking capacity, gangs, EVs, damage survey, delivery)
+8. Pharma reefer cold chain · 9. Dangerous goods import · 10. Crew change, stores, fresh water & waste
+11. Heavy-lift project cargo · 12. Empty depot cycle · 13. Port costs PDA → FDA · 14. Fertiliser bulk export & laytime · 15. New berth project
+
+### 🎓 Academy — 10 levels
+Core (1–5, container terminal): Foundations · Vessel operations · Yard & gate · Depots & equipment · Senior management.
+Specialisations (6–10): Vessel management · Bulk & silo terminals · Other terminals & depots · Port development · Port services, intermodal & maritime law (bunkering, pilotage/towage/VTS, cruise, rail & dry ports, B/L law & insurance, tariffs & invoicing).
+
+- **50 lessons**, **26 virtual cases**, **9 simulators**, **45 unlimited exercise types**, **10 level exams** with certificates, XP **career ladder** up to Port Director, **150+ term EN/AR glossary**.
 
 Progress is stored in the browser (`ptm_progress_v1`).
