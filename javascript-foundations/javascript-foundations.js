@@ -1,1176 +1,1494 @@
 /******************************************************************************
- * JAVASCRIPT FOUNDATIONS — THE WHOLE COURSE IN ONE FILE
- * ----------------------------------------------------------------------------
- * Written for someone who already knows programming (C / Java / Python) and
- * only needs to know "how does JavaScript do it, and where does it bite?".
  *
- * HOW TO RUN
- *   node javascript-foundations.js                -> runs every section
- *   node javascript-foundations.js --interactive  -> also plays the
- *                                                    interactive assignments
- *   (or paste any section into the browser DevTools console / an online
- *    compiler such as https://onecompiler.com/javascript)
+ *   JAVASCRIPT FOUNDATIONS — THE WHOLE COURSE IN ONE APPLIED FILE
  *
- * TABLE OF CONTENTS (mirrors the course outline)
- *   1.   Computer Science Fundamentals (JS-specific view)
- *   2.0  Setup + first code execution
- *   2.1  Variables and constants
- *   2.2  Numbers, strings, booleans (+ null / undefined / typeof / coercion)
- *   2.3.1 Arithmetic operators
- *   2.3.2 Logical & comparison operators
- *   2.3.3 Complex operations (ternary, precedence, ??, ?., bitwise)
- *   2.4  Taking user input
- *   A1   Assignment: Temperature Converter
- *   3.1  If / else, nested conditions, switch
- *   3.2  While and do-while loops
- *   3.3  Arrays and array operations
- *   3.4  For loops and array processing (for, for...of, for...in, map/filter/reduce)
- *   3.5  Break, continue, labels, advanced loop control
- *   A3   Module 3 Assignment: Number Guessing Game
- *   4.1  Declaring and calling functions
- *   4.2  Parameters and return values
- *   4.3  Reusable code and scope (closures)
- *   4.4  Recursion
- *   A4   Module 4 Assignment: Grade Calculator
- *   X    Bonus: objects in 30 seconds + "gotchas" cheat sheet
+ *   For: someone who already knows programming and only needs
+ *        "how does JavaScript do it, and where does it bite?"
+ *
+ *   THE IDEA: instead of foo/bar examples, every lesson is applied to ONE
+ *   real project — a mini learning platform (like learn.se2.dev):
+ *   courses, lectures, students, a shopping cart, progress, grades.
+ *   The data below is the real "JavaScript Basics" section of your course.
+ *
+ *   HOW EVERY LESSON IS LAID OUT
+ *     WHAT     the concept in 1–3 lines
+ *     SYNTAX   the minimum you need to remember
+ *     APPLIED  real code on the platform
+ *     GOTCHA   where JS differs from Java / C / Python
+ *
+ *   HOW TO RUN
+ *     node javascript-foundations.js                → runs every lesson, prints results
+ *     node javascript-foundations.js --interactive  → also plays the 3 assignments
+ *     (or paste any lesson into the browser console, F12)
+ *
+ *   READING THE OUTPUT
+ *     Every result is printed as   label ............ → value
+ *     Strings are printed in "quotes" so you can tell "5" from 5.
+ *
+ *   CONTENTS
+ *     1     How JavaScript runs
+ *     2.0   First code execution
+ *     2.1   Variables and constants
+ *     2.2   Numbers, strings, booleans (+ null, undefined, conversion)
+ *     2.3.1 Arithmetic operators
+ *     2.3.2 Logical operators
+ *     2.3.3 Complex operations
+ *     2.4   Taking user input
+ *     A1    ASSIGNMENT: Temperature Converter
+ *     3.1   If / else, nested conditions, switch
+ *     3.2   While loops
+ *     3.3   Arrays and array operations
+ *     3.4   For loops and array processing
+ *     3.5   Break, continue, advanced loop control
+ *     A3    ASSIGNMENT: Number Guessing Game
+ *     4.1   Declaring and calling functions
+ *     4.2   Parameters and return values
+ *     4.3   Reusable code and scope (closures)
+ *     4.4   Recursion
+ *     A4    ASSIGNMENT: Grade Calculator
+ *     ★     Cheat sheet: the 20 JavaScript gotchas
+ *
  ******************************************************************************/
 
-"use strict"; // Opt-in to strict mode: turns silent mistakes into errors
-              // (e.g. assigning to an undeclared variable throws instead of
-              // silently creating a global). Always use it (ES modules & classes
-              // are strict automatically).
+"use strict"; // Turns silent mistakes into errors (e.g. typo'd variable names).
+              // Always put it at the top of plain scripts.
 
-// Tiny helper so the output is readable when you run the file.
-function section(title) {
-  console.log("\n" + "=".repeat(70) + "\n" + title + "\n" + "=".repeat(70));
+/* ---------- Output helpers (used by every lesson) ---------- */
+function lesson(title) {
+  console.log("\n" + "━".repeat(72) + "\n  " + title + "\n" + "━".repeat(72));
+}
+function show(label, value) {
+  const printable = typeof value === "string" ? JSON.stringify(value) : value;
+  console.log("  " + label.padEnd(40, " .") + " →", printable);
+}
+function note(text) {
+  console.log("  · " + text);
 }
 
-/* ============================================================================
- * 1. COMPUTER SCIENCE FUNDAMENTALS — THE JS VIEW
- * ============================================================================
- * - JavaScript (ECMAScript standard) is a high-level, dynamically typed,
- *   garbage-collected, multi-paradigm language (procedural + OOP + functional).
- * - It is JIT-compiled by an engine: V8 (Chrome, Node.js), SpiderMonkey
- *   (Firefox), JavaScriptCore (Safari). Source -> parse -> bytecode ->
- *   optimized machine code for hot paths.
- * - Runtimes: the BROWSER (has `window`, `document`, `alert`, `prompt`) and
- *   NODE.JS (has `process`, `require`, file system, no DOM).
- * - Single-threaded with an EVENT LOOP: one call stack; async work
- *   (timers, I/O, network) is handed off and its callback is queued back.
- * - Dynamically typed: variables have no type, VALUES do.
- * - Everything that isn't a primitive is an object (arrays and functions too).
- */
-section("1. CS Fundamentals");
-console.log("Running on Node", typeof process !== "undefined" ? process.version : "(browser)");
 
 /* ============================================================================
- * 2.0.1 SETUP  /  2.0.2 YOUR FIRST CODE EXECUTION
+ * THE PROJECT DATA — used throughout the file
  * ============================================================================
- * Options: browser DevTools console (F12), Node.js (`node file.js`), or an
- * online compiler. `console.log` is your print().
+ * An array of objects: the most common data shape in JavaScript (it's what
+ * you get from every API as JSON). Lectures with no video have duration null.
  */
-section("2.0 First code execution");
+const javascriptBasics = [
+  { id: 1, title: "2.0.1 Setup Online Compiler",       duration: "03:24", type: "video" },
+  { id: 2, title: "2.0.2 Your First Code Execution",   duration: "06:33", type: "video" },
+  { id: 3, title: "2.1 Variables and Constants",       duration: "48:38", type: "video" },
+  { id: 4, title: "2.2 Numbers, Strings, and Booleans",duration: "52:44", type: "video" },
+  { id: 5, title: "2.3.1 Arithmetic Operators",        duration: "23:31", type: "video" },
+  { id: 6, title: "2.3.2 Logical Operators",           duration: "20:19", type: "video" },
+  { id: 7, title: "2.3.3 Complex Operations",          duration: "24:43", type: "video" },
+  { id: 8, title: "2.4 Taking User Input",             duration: "43:55", type: "video" },
+  { id: 9, title: "Assignment: Temperature Converter", duration: null,    type: "assignment" },
+];
+
+
+/* ============================================================================
+ * 1. HOW JAVASCRIPT RUNS
+ * ============================================================================
+ * WHAT
+ *   - JS is dynamically typed: variables have no type, VALUES do.
+ *   - An ENGINE runs it (V8 in Chrome and Node.js). It is JIT-compiled.
+ *   - Two main environments:
+ *       Browser  → has window, document, alert(), prompt()   (front-end)
+ *       Node.js  → has process, files, network, require()      (back-end, CLI)
+ *   - Single-threaded with an EVENT LOOP: slow work (network, timers, input)
+ *     runs in the background and its callback/promise resumes later.
+ *     That's why reading user input below uses `await`.
+ *   - Everything that is not a primitive (number, string, boolean, null,
+ *     undefined, bigint, symbol) is an OBJECT — arrays and functions included.
+ */
+lesson("1. How JavaScript runs");
+show("Environment", typeof window === "undefined" ? "Node.js " + process.version : "Browser");
+
+// The event loop in 4 lines: synchronous code runs first, queued work after.
+setTimeout(() => note("(event loop) this timer callback ran AFTER all synchronous code"), 0);
+note("synchronous line — runs immediately");
+
+
+/* ============================================================================
+ * 2.0 FIRST CODE EXECUTION
+ * ============================================================================
+ * WHAT    console.log is your print(). It accepts any number of values.
+ * SYNTAX  console.log(a, b)   console.table(arrayOfObjects)   console.error(msg)
+ */
+lesson("2.0 First code execution");
 console.log("Hello, World!");
-console.log("Multiple", "args", 42, true);    // space-separated
-console.log("Formatted: %s is %d years", "Ali", 25); // printf-style
-console.error("This goes to stderr");          // also: console.warn, console.table
-console.table([{ lang: "JS", year: 1995 }, { lang: "Java", year: 1995 }]);
+console.log("Welcome to", "SE² Platform —", 4, "sections");
+console.table(javascriptBasics.slice(0, 3)); // prints arrays of objects as a table — great for debugging
+
 
 /* ============================================================================
  * 2.1 VARIABLES AND CONSTANTS
  * ============================================================================
- *            scope      re-assign  re-declare  hoisted?
- *   var     function      yes        yes       yes (initialized to undefined)
- *   let     block         yes        no        yes, but in "TDZ" until declared
- *   const   block         no         no        same as let
+ * WHAT
+ *   const → cannot be reassigned           ← use by DEFAULT
+ *   let   → can be reassigned              ← use when the value changes
+ *   var   → old, function-scoped, hoisted  ← never use in new code
  *
- * RULE: use `const` by default, `let` when you must reassign, never `var`.
+ * GOTCHA
+ *   const freezes the VARIABLE, not the OBJECT inside it.
+ *   let/const are block-scoped { }, var ignores blocks.
  */
-section("2.1 Variables and Constants");
+lesson("2.1 Variables and constants");
 
-let age = 25;          // can change
-age = 26;
-const PI = 3.14159;    // cannot be reassigned
-// PI = 3;             // TypeError: Assignment to constant variable.
+// APPLIED: app configuration and session state
+const APP_NAME = "SE² Platform";   // never changes → const, UPPER_SNAKE for config constants
+const MAX_LOGIN_ATTEMPTS = 3;
+let currentUser = null;            // nobody logged in yet → will change → let
+let unreadNotifications = 7;       // the red badge in your screenshot
 
-// const means the BINDING is constant, not the value. Objects stay mutable:
-const user = { name: "Mohamad" };
-user.name = "Mo";      // OK — mutating the object, not rebinding `user`
-// user = {};          // TypeError
-const frozen = Object.freeze({ x: 1 }); // shallow immutability if you need it
+currentUser = { name: "Mohamad", email: "mohamad@example.com", role: "student" }; // user logs in
+unreadNotifications = 0;                                                            // user opens bell
 
-// Block scope vs function scope
-if (true) {
-  var fnScoped = "var leaks out of blocks";
-  let blockScoped = "let stays inside";
+show("App", APP_NAME);
+show("Logged-in user", currentUser.name);
+show("Unread notifications", unreadNotifications);
+
+// const object: the binding is locked, the contents are not
+const settings = { theme: "dark", language: "en" };
+settings.theme = "light";          // ✅ allowed — mutating the object
+// settings = {};                  // ❌ TypeError: Assignment to constant variable
+show("Settings after change", settings);
+
+// Block scope: `let` lives only inside its { }
+if (currentUser) {
+  const welcome = `Welcome back, ${currentUser.name}`;
+  show("Inside the block", welcome);
 }
-console.log(fnScoped);                 // works
-// console.log(blockScoped);           // ReferenceError
+// console.log(welcome);           // ❌ ReferenceError — welcome doesn't exist out here
 
-// Hoisting
-console.log(hoisted);                  // undefined (declaration hoisted, not value)
-var hoisted = "now I have a value";
-// console.log(tdz);                   // ReferenceError: Cannot access before init (TDZ)
-// let tdz = 1;
+// Destructuring: unpack values into variables (you'll see this everywhere)
+const { name, role } = currentUser;               // from an object (by key name)
+const [firstLecture, secondLecture] = javascriptBasics; // from an array (by position)
+show("Destructured name / role", `${name} / ${role}`);
+show("First lecture title", firstLecture.title);
 
-// Multiple declarations, destructuring (very common in modern JS)
-let a = 1, b = 2;
-[a, b] = [b, a];                        // swap without temp
-const { name } = user;                  // pull property into a variable
-console.log({ age, PI, a, b, name });   // shorthand object -> prints names + values
+// Swap two variables without a temp
+let left = "A", right = "B";
+[left, right] = [right, left];
+show("Swapped", `${left} ${right}`);
 
-// Naming: camelCase for variables/functions, PascalCase for classes,
-// UPPER_SNAKE for true constants. Identifiers may contain letters, digits, _ and $
-// (cannot start with a digit). Case-sensitive.
 
 /* ============================================================================
  * 2.2 NUMBERS, STRINGS, AND BOOLEANS
  * ============================================================================
- * 7 primitive types: number, string, boolean, undefined, null, bigint, symbol.
- * Everything else is an object.
+ * WHAT
+ *   number  → ONE type for ints and decimals (64-bit float). No int/float split.
+ *   string  → text, immutable. 'single', "double" or `template ${expr}`.
+ *   boolean → true / false.
+ *   null      → "empty on purpose"       (you set it)
+ *   undefined → "no value assigned yet"  (JS sets it)
  */
-section("2.2 Numbers, Strings, Booleans");
+lesson("2.2 Numbers, strings, booleans");
 
-// ---------- NUMBERS ----------
-// ONE number type: IEEE-754 64-bit double. No separate int/float.
-console.log(7 / 2);                     // 3.5  (no integer division!)
-console.log(Math.trunc(7 / 2));         // 3    (integer division equivalent)
-console.log(0.1 + 0.2);                 // 0.30000000000000004 (float precision)
-console.log((0.1 + 0.2).toFixed(2));    // "0.30" (a STRING)
-console.log(Math.abs(0.1 + 0.2 - 0.3) < Number.EPSILON); // true: compare floats this way
-console.log(Number.MAX_SAFE_INTEGER);   // 9007199254740991 (2^53 - 1)
-console.log(10 / 0, -10 / 0);           // Infinity -Infinity (no exception!)
-console.log(0 / 0, "abc" * 2);         // NaN NaN ("Not a Number" — itself a number type)
-console.log(NaN === NaN);               // false! NaN is never equal to anything
-console.log(Number.isNaN(NaN));         // true  -> correct way to test
-console.log(1_000_000, 0xff, 0b1010, 0o17, 2e3); // separators, hex, binary, octal, exponent
-console.log(123456789012345678901234567890n * 2n); // BigInt: arbitrary precision ints (suffix n)
+// ---------- NUMBERS — APPLIED: pricing ----------
+const coursePrice = 49.99;
+const studentsEnrolled = 120;
+show("Revenue", coursePrice * studentsEnrolled);       // 5998.8
+show("7 / 2 (no integer division)", 7 / 2);            // 3.5 — not 3 like Java/C
+show("Math.trunc(7 / 2)", Math.trunc(7 / 2));          // 3
 
-// Parsing / converting
-console.log(Number("42"), Number("42px"), Number(""));  // 42 NaN 0
-console.log(parseInt("42px"), parseFloat("3.14abc"));   // 42 3.14 (parses prefix)
-console.log(parseInt("ff", 16));                        // 255 (always pass radix)
-console.log((255).toString(2), (3.14159).toFixed(2));   // "11111111" "3.14"
-console.log(Number.isInteger(5.0));                     // true
+// GOTCHA: floats are imprecise → never store money as decimals
+show("0.1 + 0.2", 0.1 + 0.2);                          // 0.30000000000000004
+// FIX: store money in CENTS (integers), format only for display
+const priceInCents = 4999;
+const totalCents = priceInCents * 3;
+show("3 × $49.99 (cents method)", `$${(totalCents / 100).toFixed(2)}`); // "$149.97"
 
-// ---------- STRINGS ----------
-// Immutable, UTF-16. Single, double quotes are identical; backticks = template literals.
-const first = "Mohamad";
-const greeting = `Hello ${first}, 2 + 3 = ${2 + 3}`; // interpolation of any expression
-const multiline = `line 1
-line 2`;                                            // multi-line allowed in backticks
-console.log(greeting);
-console.log(multiline);
+// Invalid math doesn't crash — it gives special values
+show("10 / 0", 10 / 0);                                // Infinity
+show('"abc" * 2', "abc" * 2);                          // NaN (Not a Number)
+show("NaN === NaN  (!)", NaN === NaN);                 // false → use Number.isNaN()
+show("Number.isNaN(NaN)", Number.isNaN(NaN));          // true
 
-const s = "JavaScript";
-console.log(s.length);                   // 10
-console.log(s[0], s.at(-1));             // "J" "t"   (at() supports negative index)
-console.log(s.toUpperCase(), s.toLowerCase());
-console.log(s.slice(0, 4), s.slice(-6)); // "Java" "Script"
-console.log(s.substring(4));             // "Script"
-console.log(s.indexOf("a"), s.lastIndexOf("a"), s.indexOf("z")); // 1 3 -1
-console.log(s.includes("Script"), s.startsWith("Java"), s.endsWith("x"));
-console.log("  pad  ".trim() + "|");     // "pad|" (also trimStart / trimEnd)
-console.log("a,b,c".split(","));         // ["a","b","c"]
-console.log("ha".repeat(3));             // "hahaha"
-console.log("5".padStart(3, "0"));       // "005"
-console.log("cat cat".replace("cat", "dog"), "cat cat".replaceAll("cat", "dog"));
-console.log("a" < "b", "Z" < "a");       // lexicographic by code unit: true true
-// s[0] = "X";  // silently ignored (strict mode: TypeError) — strings are immutable
+// Formatting numbers for users
+show("toFixed(2)", (1234.5).toFixed(2));               // "1234.50" (a string)
+show("toLocaleString", (1234567.891).toLocaleString("en-US", { style: "currency", currency: "USD" }));
 
-// ---------- BOOLEANS ----------
-const isAdult = age >= 18;               // true
-console.log(isAdult, typeof isAdult);
+// ---------- STRINGS — APPLIED: user & course text ----------
+const rawEmail = "  Mohamad.Danach@Gmail.COM ";
+const email = rawEmail.trim().toLowerCase();           // clean form input — chain methods
+show("Normalized email", email);
+show("Is it a gmail?", email.endsWith("@gmail.com"));
+show("Username part", email.slice(0, email.indexOf("@")));
 
-// TRUTHY / FALSY — critical in JS. Exactly these are falsy:
-//   false, 0, -0, 0n, "", null, undefined, NaN
-// EVERYTHING else is truthy — including "0", "false", [], {}  (unlike Python!)
-console.log(Boolean(""), Boolean("0"), Boolean([]), Boolean({}), !!0); // false true true true false
+const fullName = "Mohamad Danach";
+const initials = fullName.split(" ").map(word => word[0]).join("");
+show("Avatar initials (like 'MO' badge)", initials);   // "MD"
 
-// ---------- null vs undefined ----------
-let notAssigned;                          // undefined = "no value yet" (engine default)
-const empty = null;                       // null      = "intentionally nothing" (you set it)
-console.log(notAssigned, empty);
+// Template literals: the readable way to build strings
+const lectureCount = javascriptBasics.length;
+show("Section header", `JavaScript Basics • ${lectureCount} lectures`);
 
-// ---------- typeof ----------
-console.log(typeof 42, typeof "x", typeof true, typeof undefined, typeof 10n,
-            typeof Symbol(), typeof {}, typeof [], typeof null, typeof function () {});
-// number string boolean undefined bigint symbol object object object(!) function
-// typeof null === "object" is a famous historical bug. Use Array.isArray([]) for arrays.
+// URL slug from a course title (what the platform does for /courses/javascript-foundations)
+const courseTitle = "JavaScript Foundations!";
+const slug = courseTitle.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
+show("Course URL slug", slug);                         // "javascript-foundations"
 
-// ---------- TYPE COERCION & EQUALITY ----------
-console.log("5" + 3);   // "53"  -> + with a string concatenates
-console.log("5" - 3);   // 2     -> other math ops convert to number
-console.log("5" * "2"); // 10
-console.log(true + 1);  // 2
-console.log([] + {});   // "[object Object]"  — just don't
-console.log(5 == "5", 5 === "5");          // true false
-console.log(null == undefined, null === undefined); // true false
-console.log(0 == "", 0 == "0", "" == "0");  // true true false  (non-transitive!)
-// RULE: always use === and !== (strict, no coercion). Convert explicitly:
-console.log(String(42), Number("42"), Boolean(1), `${42}`, +"42");
+// Mask a card number at checkout
+const card = "4111111111111111";
+show("Masked card", card.slice(-4).padStart(card.length, "*"));
+
+// Truncate long titles for a sidebar ("Mohamad Mo..." in your screenshot)
+const truncate = (text, max) => (text.length > max ? text.slice(0, max - 3) + "..." : text);
+show("Truncated name", truncate("Mohamad Mohamad Danach", 12));
+
+// Most-used string methods (all return NEW strings — strings are immutable):
+// .length .toUpperCase() .toLowerCase() .trim() .includes() .startsWith() .endsWith()
+// .indexOf() .slice(start,end) .split(sep) .replace() .replaceAll() .padStart() .repeat() .at(-1)
+
+// ---------- BOOLEANS + TRUTHY/FALSY — APPLIED: form validation ----------
+// In an `if`, these 8 values count as false; EVERYTHING else counts as true:
+//    false  0  -0  0n  ""  null  undefined  NaN
+// GOTCHA vs Python: [] and {} are TRUTHY in JS. "0" and "false" are TRUTHY.
+const form = { username: "", age: 0, bio: "   " };
+show("username filled?", Boolean(form.username));     // false — empty string
+show("age filled? (0 is falsy!)", Boolean(form.age));  // false — careful, 0 may be valid
+show("bio filled? (spaces are truthy)", Boolean(form.bio)); // true — trim before checking
+show("bio really filled?", form.bio.trim() !== "");    // false
+show("empty array truthy?", Boolean([]));              // true — check arr.length instead
+
+// ---------- null vs undefined — APPLIED: optional profile data ----------
+const profile = { name: "Mohamad", phone: null };      // phone: user chose not to give it
+show("profile.phone (set to null)", profile.phone);
+show("profile.github (never set)", profile.github);    // undefined — no error!
+
+// ---------- typeof and conversion ----------
+show("typeof 42", typeof 42);
+show("typeof 'hi'", typeof "hi");
+show("typeof null  (historic bug)", typeof null);      // "object"
+show("typeof []", typeof []);                          // "object" → use Array.isArray
+show("Array.isArray([])", Array.isArray([]));
+
+// Form inputs are ALWAYS strings. Convert explicitly:
+const ageInput = "25";
+show('"25" + 1   (concatenates!)', ageInput + 1);      // "251"
+show('Number("25") + 1', Number(ageInput) + 1);        // 26
+show('Number("25px")', Number("25px"));                // NaN — strict
+show('parseInt("25px", 10)', parseInt("25px", 10));    // 25  — reads the leading number
+show('String(25)', String(25));
+
+// == vs ===   RULE: always use === (no type conversion)
+show('5 == "5"', 5 == "5");                            // true  (converts) — avoid
+show('5 === "5"', 5 === "5");                          // false (strict)  — use this
+
 
 /* ============================================================================
  * 2.3.1 ARITHMETIC OPERATORS
- * ============================================================================ */
-section("2.3.1 Arithmetic Operators");
-const x = 17, y = 5;
-console.log(x + y, x - y, x * y, x / y); // 22 12 85 3.4
-console.log(x % y);                      // 2   remainder (sign follows dividend: -17 % 5 = -2)
-console.log(((-17 % 5) + 5) % 5);        // 3   true mathematical modulo
-console.log(x ** 2, 2 ** 0.5);           // 289 1.414...  exponent (same as Math.pow)
+ * ============================================================================
+ * SYNTAX   +  -  *  /  %(remainder)  **(power)  ++  --  +=  -=  *=  /=
+ *          Math.round / floor / ceil / trunc / max / min / abs / random
+ */
+lesson("2.3.1 Arithmetic operators");
 
-let counter = 0;
-console.log(counter++);                  // 0  post-increment: returns old value
-console.log(++counter);                  // 2  pre-increment: returns new value
-counter += 10; counter -= 2; counter *= 3; counter /= 2; counter %= 7; counter **= 2;
-console.log(counter);                    // compound assignment operators
+// APPLIED 1: convert lecture durations ("mm:ss") to seconds and back
+function toSeconds(mmss) {
+  const [minutes, seconds] = mmss.split(":").map(Number); // "48:38" → [48, 38]
+  return minutes * 60 + seconds;
+}
+function formatHMS(totalSeconds) {
+  const h = Math.floor(totalSeconds / 3600);          // whole hours
+  const m = Math.floor((totalSeconds % 3600) / 60);   // leftover minutes
+  const s = totalSeconds % 60;                        // leftover seconds
+  const pad = n => String(n).padStart(2, "0");
+  return `${h}:${pad(m)}:${pad(s)}`;
+}
+show('"48:38" in seconds', toSeconds("48:38"));       // 2918
+show("2918 s formatted", formatHMS(2918));            // "0:48:38"
 
-// Unary
-console.log(-x, +"3", +true);            // -17 3 1  (unary + converts to number)
+// APPLIED 2: shopping cart with tax and discount
+const subtotal = 49.99 + 29.99;
+const discountRate = 0.2;   // 20% off
+const taxRate = 0.11;       // 11% VAT
+const afterDiscount = subtotal * (1 - discountRate);
+const total = afterDiscount * (1 + taxRate);
+show("Cart total", Math.round(total * 100) / 100);    // round to 2 decimals
 
-// Math object (static helpers)
-console.log(Math.round(2.5), Math.round(-2.5)); // 3 -2  (rounds half toward +∞)
-console.log(Math.floor(-2.5), Math.ceil(2.1), Math.trunc(-2.9)); // -3 3 -2
-console.log(Math.max(3, 9, 1), Math.min(...[4, 2, 8]));           // 9 2 (spread array)
-console.log(Math.sqrt(16), Math.cbrt(27), Math.abs(-4), Math.sign(-3));
-console.log(Math.floor(Math.random() * 6) + 1); // random int 1..6
-// randomInt(min, max) inclusive — you'll use this in the guessing game:
-const randomInt = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
+// APPLIED 3: progress bar percentage
+const completedLectures = 5;
+const progress = Math.round((completedLectures / javascriptBasics.length) * 100);
+show("Progress", `${progress}%`);
+
+// APPLIED 4: pagination — how many pages for 53 lectures, 10 per page?
+show("Pages needed", Math.ceil(53 / 10));             // 6 — ceil because the last page is partial
+
+// APPLIED 5: % (remainder) — alternate row colors, every-Nth logic
+for (let row = 1; row <= 4; row++) {
+  note(`row ${row} → ${row % 2 === 0 ? "dark" : "light"} background`);
+}
+
+// APPLIED 6: random — pick a random "tip of the day", generate a 6-digit code
+const tips = ["Use const by default", "Use ===", "Name things clearly"];
+show("Tip of the day", tips[Math.floor(Math.random() * tips.length)]);
+const randomInt = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min; // inclusive
+show("Verification code", randomInt(100000, 999999));
+
+// Increment / compound assignment
+let views = 0;
+views++;            // 1
+views += 10;        // 11
+views *= 2;         // 22
+show("Lecture views", views);
+// views++ returns the OLD value, ++views returns the NEW value:
+let x = 5;
+show("x++ (returns old)", x++);  // 5, x is now 6
+show("++x (returns new)", ++x);  // 7
+
+// GOTCHA: % keeps the sign of the left side
+show("-7 % 3", -7 % 3);                               // -1 (Python gives 2)
+show("Math.round(2.5) / Math.round(-2.5)", `${Math.round(2.5)} / ${Math.round(-2.5)}`); // 3 / -2
+
 
 /* ============================================================================
- * 2.3.2 LOGICAL (AND COMPARISON) OPERATORS
- * ============================================================================ */
-section("2.3.2 Logical Operators");
-// Comparison: <  >  <=  >=  ===  !==  (==, != exist but avoid them)
-console.log(3 > 2, 3 >= 3, "10" < "9", 10 < 9); // true true true(!string compare) false
+ * 2.3.2 LOGICAL OPERATORS
+ * ============================================================================
+ * SYNTAX   &&  (and)   ||  (or)   !  (not)
+ *          ??  (default only for null/undefined)
+ *          ?.  (safe property access)
+ *          comparison:  ===  !==  <  >  <=  >=
+ *
+ * GOTCHA   && and || return one of the OPERANDS, not always true/false:
+ *            a || b  → a if a is truthy, otherwise b
+ *            a && b  → a if a is falsy,  otherwise b
+ */
+lesson("2.3.2 Logical operators");
 
-// && || ! — BUT in JS they return one of the OPERANDS, not necessarily a boolean.
-//   a || b -> a if a is truthy, else b
-//   a && b -> a if a is falsy,  else b
-console.log(true && false, true || false, !true);  // false true false
-console.log("hi" || "default");     // "hi"
-console.log("" || "default");       // "default"
-console.log(0 && "never");          // 0
-console.log("a" && "b");            // "b"
+// APPLIED 1: access control — can this user watch a lecture?
+const viewer = { isLoggedIn: true, isEnrolled: false, isAdmin: false };
+const lectureIsFreePreview = true;
+const canWatch = viewer.isLoggedIn && (viewer.isEnrolled || lectureIsFreePreview || viewer.isAdmin);
+show("Can watch lecture?", canWatch);
+show("Show 'Buy course' button?", !viewer.isEnrolled && !viewer.isAdmin);
 
-// Short-circuit evaluation: right side runs only if needed
-const loggedIn = false;
-loggedIn && console.log("will NOT print");
-loggedIn || console.log("prints because left side is falsy");
+// APPLIED 2: default values
+const displayName = currentUser.nickname || currentUser.name || "Guest"; // first truthy wins
+show("Display name", displayName);
 
-// ?? (nullish coalescing): fallback ONLY for null/undefined, not 0 or ""
-const volume = 0;
-console.log(volume || 50);   // 50  (wrong — 0 is a valid volume!)
-console.log(volume ?? 50);   // 0   (correct)
+// GOTCHA: || treats 0 and "" as missing. Use ?? when 0 / "" are valid values.
+const savedVolume = 0;                // user muted the video on purpose
+show("volume with ||  (bug)", savedVolume || 50);  // 50 — wrong!
+show("volume with ??  (correct)", savedVolume ?? 50); // 0
 
-// Logical assignment
-let opts = { retries: 0 };
-opts.retries ||= 3;          // assigns if falsy        -> 3
-opts.timeout ??= 1000;       // assigns if null/undef   -> 1000
-opts.debug &&= "never";      // assigns if truthy       -> stays undefined
-console.log(opts);
+// APPLIED 3: optional chaining ?. — safe access to data that may be missing (API data)
+const apiUser = { name: "Sara", address: null };
+show("apiUser.address?.city", apiUser.address?.city);               // undefined, no crash
+show("with fallback", apiUser.address?.city ?? "City not set");
+// Without ?. → apiUser.address.city → TypeError: Cannot read properties of null
 
-// De Morgan works as usual: !(a && b) === (!a || !b)
+// APPLIED 4: short-circuit as a one-line "if"
+const isDebug = false;
+isDebug && console.log("debug info...");     // only runs when isDebug is true
+
+// Comparisons
+show('"10" < "9"   (string compare!)', "10" < "9"); // true — compares character by character
+show("10 < 9", 10 < 9);                             // false
+
 
 /* ============================================================================
  * 2.3.3 COMPLEX OPERATIONS
- * ============================================================================ */
-section("2.3.3 Complex Operations");
+ * ============================================================================
+ * WHAT     Combining operators: ternary, precedence, chaining multiple rules.
+ * SYNTAX   condition ? valueIfTrue : valueIfFalse    (an expression → returns a value)
+ * RULE     When in doubt about precedence, add parentheses.
+ */
+lesson("2.3.3 Complex operations");
 
-// Ternary: condition ? ifTrue : ifFalse  (an EXPRESSION — returns a value)
-const score = 73;
-const status = score >= 50 ? "pass" : "fail";
-const tier = score >= 90 ? "A" : score >= 80 ? "B" : score >= 70 ? "C" : "F"; // chainable, keep it short
-console.log(status, tier);
+// APPLIED 1: ternary for UI labels
+const enrolledCount = 1;
+show("Label", `${enrolledCount} ${enrolledCount === 1 ? "student" : "students"}`);
+const notificationBadge = unreadNotifications > 9 ? "9+" : unreadNotifications > 0 ? String(unreadNotifications) : "";
+show("Bell badge", notificationBadge);
 
-// Operator precedence (high -> low, abridged):
-//   ()  >  ?. [] call  >  ! unary+ - ++ -- typeof  >  **  >  * / %  >  + -
-//   >  < <= > >=  >  === !==  >  &&  >  ||  ??  >  ? :  >  = += ...  >  ,
-console.log(2 + 3 * 4 ** 2);        // 50  (** first, then *, then +)
-console.log((2 + 3) * 4);           // 20  parentheses win — use them for clarity
-console.log(-(2 ** 2));             // -4  (-2 ** 2 is a SyntaxError: ambiguous)
-// console.log(a || b ?? c);        // SyntaxError: must parenthesize when mixing ?? with ||/&&
+// APPLIED 2: shipping-fee rules combined into one expression
+//   free if order ≥ $100 OR user is premium; otherwise $5 local, $15 international
+function shippingFee(orderTotal, isPremium, isInternational) {
+  return orderTotal >= 100 || isPremium ? 0 : isInternational ? 15 : 5;
+}
+show("Shipping $120 local", shippingFee(120, false, false));
+show("Shipping $40 international", shippingFee(40, false, true));
+show("Shipping $40 premium", shippingFee(40, true, true));
 
-// Optional chaining ?. — stops and returns undefined instead of throwing
-const profile = { address: { city: "Beirut" } };
-console.log(profile.address?.city);      // "Beirut"
-console.log(profile.job?.title);         // undefined (no TypeError)
-console.log(profile.job?.title ?? "N/A");// "N/A"  (?. + ?? is a common combo)
-console.log(profile.greet?.());          // undefined — optional call
+// APPLIED 3: final price formula — precedence matters
+const base = 100, coupon = 10, vat = 0.11;
+show("base - coupon * (1 + vat)   ✗", base - coupon * (1 + vat));  // 88.9 — wrong order
+show("(base - coupon) * (1 + vat) ✓", (base - coupon) * (1 + vat)); // 99.9
+// Precedence (high → low): ()  →  !  →  **  →  * / %  →  + -  →  < >  →  === !==  →  &&  →  || ??  →  ?:  →  =
 
-// Bitwise (work on 32-bit ints): & | ^ ~ << >> >>>
-console.log(5 & 3, 5 | 3, 5 ^ 3, ~5, 1 << 4, -16 >> 2, -16 >>> 28); // 1 7 6 -6 16 -4 15
-console.log((n => (n & 1) === 0)(10));   // even check via bitwise
+// APPLIED 4: password strength — several conditions combined
+function passwordStrength(pw) {
+  const longEnough = pw.length >= 8;
+  const hasNumber = /\d/.test(pw);           // regex: contains a digit
+  const hasUpper = /[A-Z]/.test(pw);
+  const hasSymbol = /[^A-Za-z0-9]/.test(pw);
+  const score = longEnough + hasNumber + hasUpper + hasSymbol; // true counts as 1!
+  return score === 4 ? "strong" : score >= 2 ? "medium" : "weak";
+}
+show('passwordStrength("abc")', passwordStrength("abc"));
+show('passwordStrength("hello123")', passwordStrength("hello123"));
+show('passwordStrength("Hello123!")', passwordStrength("Hello123!"));
 
-// Comma operator & chained assignment (rare, but you'll see them)
-let p, q;
-p = q = 10;
-console.log(p, q);
+// Logical assignment operators — fill missing settings
+const userPrefs = { autoplay: false };
+userPrefs.speed ??= 1.0;        // set only if null/undefined
+userPrefs.autoplay ??= true;    // stays false — it's not null/undefined
+show("Prefs", userPrefs);
 
-// A "complex" expression combining everything:
-const cart = [{ price: 20, qty: 2 }, { price: 5, qty: 0 }];
-const hasDiscount = true;
-const total = cart.reduce((sum, it) => sum + it.price * it.qty, 0) * (hasDiscount ? 0.9 : 1);
-console.log(`Total: ${total.toFixed(2)}`); // 36.00
 
 /* ============================================================================
  * 2.4 TAKING USER INPUT
  * ============================================================================
- * BROWSER:
- *     const name = prompt("Your name?");      // returns a STRING, or null on Cancel
- *     const n = Number(prompt("A number?"));  // ALWAYS convert + validate
- *     alert("Hi " + name);  confirm("Sure?") // -> true/false
+ * BROWSER (synchronous, blocks the page):
+ *     const name = prompt("Your name?");   // string, or null if Cancel
+ *     const ok   = confirm("Delete?");     // true / false
+ *     alert("Saved!");
  *
- * NODE.JS: no prompt(). Use the built-in `readline` module (async).
- *   Below is a reusable `ask()` helper based on promises + async/await:
- *     const answer = await ask("Question? ");
- *   `await` pauses this async function until the user presses Enter, without
- *   blocking the event loop.
+ * NODE.JS (asynchronous): use the readline module + await (see ask() below).
+ *
+ * RULE: input is ALWAYS a string (or null). Always: trim → convert → validate.
  */
-section("2.4 Taking User Input");
+lesson("2.4 Taking user input");
 
-let rl = null, lines = null; // created lazily only in interactive mode
+// ask("Question? ") → Promise<string|null>. Use inside an async function: await ask(...)
+let rl = null, inputLines = null;
 function ask(question) {
   if (!rl) {
     const readline = require("readline");
     rl = readline.createInterface({ input: process.stdin });
-    lines = rl[Symbol.asyncIterator](); // buffers lines, so piped input works too
+    inputLines = rl[Symbol.asyncIterator]();   // buffers lines, so piped input works too
   }
   process.stdout.write(question);
-  return lines.next().then(r => (r.done ? null : r.value)); // null when input ends
+  return inputLines.next().then(r => (r.done ? null : r.value)); // null when input ends
 }
 
-// Validation pattern you'll use everywhere: input is a string -> convert -> check
+// Reusable validators — the "convert + validate" step
 function parseNumber(input) {
+  if (input === null || String(input).trim() === "") return null;
   const n = Number(String(input).trim());
-  if (String(input).trim() === "" || Number.isNaN(n)) return null; // invalid
-  return n;
+  return Number.isNaN(n) ? null : n;
 }
-console.log(parseNumber("42"), parseNumber(" 3.5 "), parseNumber("abc"), parseNumber("")); // 42 3.5 null null
+function parseIntInRange(input, min, max) {
+  const n = parseNumber(input);
+  return n !== null && Number.isInteger(n) && n >= min && n <= max ? n : null;
+}
+show('parseNumber(" 3.5 ")', parseNumber(" 3.5 "));
+show('parseNumber("abc")', parseNumber("abc"));
+show('parseIntInRange("150", 0, 120)', parseIntInRange("150", 0, 120)); // null — out of range
+show('parseIntInRange("25", 0, 120)', parseIntInRange("25", 0, 120));
+
 
 /* ============================================================================
- * ASSIGNMENT: TEMPERATURE CONVERTER
+ * A1. ASSIGNMENT — TEMPERATURE CONVERTER
  * ============================================================================
- *   C -> F : F = C * 9/5 + 32
- *   F -> C : C = (F - 32) * 5/9
- *   C -> K : K = C + 273.15
+ * Formulas:  F = C × 9/5 + 32      C = (F − 32) × 5/9      K = C + 273.15
+ * Design: pure conversion functions (easy to test) + a separate input layer.
  */
-section("Assignment: Temperature Converter");
+lesson("A1. Assignment: Temperature Converter");
 
-function celsiusToFahrenheit(c) { return c * 9 / 5 + 32; }
-function fahrenheitToCelsius(f) { return (f - 32) * 5 / 9; }
-function celsiusToKelvin(c)     { return c + 273.15; }
+const toCelsius = { C: v => v, F: v => (v - 32) * 5 / 9, K: v => v - 273.15 };
 
-function convertTemperature(value, unit) {
-  // Normalize input: accept "c", "C", " celsius " etc.
-  const u = String(unit).trim().toUpperCase()[0];
-  switch (u) {
-    case "C": return { C: value, F: celsiusToFahrenheit(value), K: celsiusToKelvin(value) };
-    case "F": { const c = fahrenheitToCelsius(value); return { C: c, F: value, K: celsiusToKelvin(c) }; }
-    case "K": { const c = value - 273.15;             return { C: c, F: celsiusToFahrenheit(c), K: value }; }
-    default:  return null; // unknown unit
-  }
+function convertTemperature(value, fromUnit) {
+  const unit = String(fromUnit).trim().toUpperCase().charAt(0); // "celsius" → "C"
+  if (!(unit in toCelsius)) return null;                        // unknown unit
+  const c = toCelsius[unit](value);
+  if (c < -273.15) return null;                                 // below absolute zero
+  return { C: c, F: c * 9 / 5 + 32, K: c + 273.15 };
 }
-
-function formatTemps(t) {
-  return `${t.C.toFixed(2)}°C = ${t.F.toFixed(2)}°F = ${t.K.toFixed(2)}K`;
+function describeTemperature(c) {
+  if (c <= 0) return "freezing 🥶";
+  if (c < 15) return "cold";
+  if (c < 25) return "pleasant";
+  if (c < 35) return "hot";
+  return "very hot 🔥";
 }
-console.log(formatTemps(convertTemperature(100, "C"))); // 100.00°C = 212.00°F = 373.15K
-console.log(formatTemps(convertTemperature(98.6, "f"))); // 37.00°C = ...
-console.log(convertTemperature(10, "X"));               // null
+function formatTemperature(t) {
+  return `${t.C.toFixed(1)}°C = ${t.F.toFixed(1)}°F = ${t.K.toFixed(1)}K (${describeTemperature(t.C)})`;
+}
+show("100 C", formatTemperature(convertTemperature(100, "C")));
+show("98.6 F", formatTemperature(convertTemperature(98.6, "fahrenheit")));
+show("0 K", formatTemperature(convertTemperature(0, "k")));
+show("-500 C (invalid)", convertTemperature(-500, "C"));
 
 async function temperatureConverterInteractive() {
   const value = parseNumber(await ask("Temperature value: "));
-  if (value === null) return console.log("Invalid number.");
-  const result = convertTemperature(value, await ask("Unit (C/F/K): "));
-  console.log(result ? formatTemps(result) : "Unknown unit.");
+  if (value === null) return console.log("❌ Not a valid number.");
+  const result = convertTemperature(value, (await ask("Unit (C/F/K): ")) ?? "");
+  console.log(result ? "✅ " + formatTemperature(result) : "❌ Unknown unit or below absolute zero.");
 }
 
-/* ============================================================================
- * 3.1 IF-ELSE AND NESTED CONDITIONS (+ switch)
- * ============================================================================ */
-section("3.1 If-Else and Nested Conditions");
 
-function classifyNumber(n) {
-  if (typeof n !== "number" || Number.isNaN(n)) {
-    return "not a number";
-  } else if (n === 0) {
-    return "zero";
-  } else if (n > 0) {
-    // nested condition
-    if (n % 2 === 0) return "positive even";
-    else return "positive odd";
+/* ============================================================================
+ * 3.1 IF-ELSE AND NESTED CONDITIONS  (+ switch)
+ * ============================================================================
+ * SYNTAX
+ *   if (cond) { ... } else if (cond2) { ... } else { ... }
+ *   switch (value) { case "a": ...; break; default: ... }   ← uses ===
+ *
+ * RULE  Prefer GUARD CLAUSES (return early) over deep nesting.
+ */
+lesson("3.1 If / else, nested conditions, switch");
+
+// APPLIED 1: login validation — nested version (hard to read)...
+function loginNested(user, password) {
+  if (user) {
+    if (!user.isBanned) {
+      if (user.password === password) {
+        return "✅ Welcome " + user.name;
+      } else {
+        return "❌ Wrong password";
+      }
+    } else {
+      return "❌ Account banned";
+    }
   } else {
-    return n % 2 === 0 ? "negative even" : "negative odd";
+    return "❌ User not found";
   }
 }
-console.log([7, -4, 0, NaN].map(classifyNumber));
-
-// Prefer GUARD CLAUSES (early return) over deep nesting:
-function canRentCar(person) {
-  if (!person) return false;
-  if (person.age < 21) return false;
-  if (!person.hasLicense) return false;
-  return true;
+// ...and the SAME logic with guard clauses (flat and clear) ✓
+function login(user, password) {
+  if (!user) return "❌ User not found";
+  if (user.isBanned) return "❌ Account banned";
+  if (user.password !== password) return "❌ Wrong password";
+  return "✅ Welcome " + user.name;
 }
-console.log(canRentCar({ age: 25, hasLicense: true }), canRentCar({ age: 19, hasLicense: true }));
+const dbUser = { name: "Mohamad", password: "s3cret", isBanned: false }; // (never store plain passwords in real apps)
+show("login(correct)", login(dbUser, "s3cret"));
+show("login(wrong)", login(dbUser, "1234"));
+show("login(no user)", login(undefined, "x"));
+show("nested version agrees?", loginNested(dbUser, "1234") === login(dbUser, "1234"));
 
-// Leap year — classic nested-logic exercise, shown as one boolean expression
-const isLeap = yr => (yr % 4 === 0 && yr % 100 !== 0) || yr % 400 === 0;
-console.log(isLeap(2024), isLeap(1900), isLeap(2000)); // true false true
+// APPLIED 2: if / else-if chain — score → letter grade (order matters: high to low)
+function letterFor(score) {
+  if (score >= 90) return "A";
+  else if (score >= 80) return "B";
+  else if (score >= 70) return "C";
+  else if (score >= 60) return "D";
+  else return "F";
+}
+show("letterFor(85)", letterFor(85));
 
-// switch uses STRICT (===) comparison. Don't forget `break` (fall-through!).
-function dayType(day) {
-  switch (day.toLowerCase()) {
-    case "saturday":
-    case "sunday":            // intentional fall-through: groups cases
-      return "weekend";
-    case "monday":
-    case "tuesday":
-    case "wednesday":
-    case "thursday":
-    case "friday":
-      return "weekday";
+// APPLIED 3: switch — permissions per role (fall-through groups cases)
+function permissionsFor(role) {
+  switch (role) {
+    case "admin":
+      return ["view", "edit", "delete", "manage-users"];
+    case "instructor":
+    case "teaching-assistant":                 // fall-through: shares the same result
+      return ["view", "edit"];
+    case "student":
+      return ["view"];
     default:
-      return "invalid day";
+      return [];
   }
 }
-console.log(dayType("Sunday"), dayType("friday"), dayType("funday"));
+show("permissionsFor('teaching-assistant')", permissionsFor("teaching-assistant"));
+// GOTCHA: if you use `case` without `return` or `break`, execution falls into the next case.
 
-// switch(true) trick for ranges:
-function bmiCategory(bmi) {
-  switch (true) {
-    case bmi < 18.5: return "underweight";
-    case bmi < 25:   return "normal";
-    case bmi < 30:   return "overweight";
-    default:         return "obese";
+// APPLIED 4: object lookup — often cleaner than switch for simple mappings
+const LECTURE_ICONS = { video: "🎬", assignment: "📝", quiz: "❓" };
+show("Icon for 'assignment'", LECTURE_ICONS["assignment"] ?? "📄");
+
+// APPLIED 5: nested conditions that really are nested — course access decision
+function accessMessage(user, course) {
+  if (course.isPublished) {
+    if (user.enrolledCourseIds.includes(course.id)) return "Continue learning";
+    return course.price === 0 ? "Enroll for free" : `Buy for $${course.price}`;
   }
+  return user.role === "admin" ? "Edit draft" : "Coming soon";
 }
-console.log(bmiCategory(22.3));
+const studentUser = { role: "student", enrolledCourseIds: [1] };
+show("Enrolled course", accessMessage(studentUser, { id: 1, isPublished: true, price: 49 }));
+show("Paid course", accessMessage(studentUser, { id: 2, isPublished: true, price: 49 }));
+show("Unpublished course", accessMessage(studentUser, { id: 3, isPublished: false, price: 0 }));
 
-// Object lookup — often cleaner than switch:
-const HTTP = { 200: "OK", 404: "Not Found", 500: "Server Error" };
-console.log(HTTP[404] ?? "Unknown");
-
-// 3.1.1 / 3.1.2 Practice & challenge: FizzBuzz (conditions + loop)
+// 3.1.1 / 3.1.2 Practice & Challenge — FizzBuzz, a classic interview warm-up
 const fizzBuzz = n => (n % 15 === 0 ? "FizzBuzz" : n % 3 === 0 ? "Fizz" : n % 5 === 0 ? "Buzz" : n);
-console.log(Array.from({ length: 15 }, (_, i) => fizzBuzz(i + 1)).join(" "));
+show("FizzBuzz 1..15", Array.from({ length: 15 }, (_, i) => fizzBuzz(i + 1)).join(" "));
+
 
 /* ============================================================================
- * 3.2 WHILE LOOPS (and do...while)
- * ============================================================================ */
-section("3.2 While Loops");
+ * 3.2 WHILE LOOPS
+ * ============================================================================
+ * WHAT    Repeat while a condition is true. Use when you DON'T know in advance
+ *         how many iterations (retries, input until valid, until a goal).
+ * SYNTAX  while (cond) { ... }          → may run 0 times
+ *         do { ... } while (cond);      → always runs at least once (menus, prompts)
+ * GOTCHA  Make sure something inside changes the condition → else infinite loop.
+ */
+lesson("3.2 While loops");
 
-// while: checks condition BEFORE each iteration (may run 0 times)
-let i = 1;
-while (i <= 5) {
-  process.stdout.write(i + " ");
-  i++;                            // forget this -> infinite loop
+// APPLIED 1: login with max 3 attempts (simulated typed passwords)
+const typedPasswords = ["1234", "password", "s3cret", "never-reached"];
+let attempt = 0;
+let loggedIn = false;
+while (attempt < MAX_LOGIN_ATTEMPTS && !loggedIn) {
+  const typed = typedPasswords[attempt];
+  attempt++;
+  loggedIn = typed === dbUser.password;
+  note(`attempt ${attempt}: "${typed}" → ${loggedIn ? "success" : "fail"}`);
 }
-console.log();
+show("Logged in?", loggedIn);
 
-// do...while: body runs AT LEAST once, condition checked after
-let attempts = 0;
+// APPLIED 2: savings goal — how many months to afford a $600 bootcamp saving $75/month?
+let saved = 0, months = 0;
+while (saved < 600) {
+  saved += 75;
+  months++;
+}
+show("Months to save $600", months);
+
+// APPLIED 3: compound growth — years for 1000 users to reach 10,000 at 40%/year
+let users = 1000, years = 0;
+while (users < 10000) {
+  users = Math.round(users * 1.4);
+  years++;
+}
+show("Years to 10k users", `${years} (users: ${users})`);
+
+// APPLIED 4: do...while — show a menu at least once (simulated choices)
+const menuChoices = ["1", "2", "0"];
+let choice, step = 0;
 do {
-  attempts++;
-} while (attempts < 3);
-console.log("attempts:", attempts);
+  choice = menuChoices[step++];
+  note(`menu shown → user picked ${choice}`);
+} while (choice !== "0");
 
-// Typical use: unknown number of iterations
-// 3.2.1 Practice: sum of digits
-function sumDigits(n) {
-  n = Math.abs(n);
+// 3.2.1 / 3.2.2 Practice & Challenge — digit problems (classic while-loop exercises)
+function sumOfDigits(n) {
   let sum = 0;
+  n = Math.abs(n);
   while (n > 0) {
-    sum += n % 10;
-    n = Math.floor(n / 10);
+    sum += n % 10;          // last digit
+    n = Math.floor(n / 10); // drop last digit
   }
   return sum;
 }
-console.log(sumDigits(98765)); // 35
-
-// 3.2.2 Challenge: reverse a number, check palindrome, Collatz steps, GCD
-function reverseNumber(n) {
-  let rev = 0;
-  while (n > 0) { rev = rev * 10 + (n % 10); n = Math.floor(n / 10); }
-  return rev;
+function reverseDigits(n) {
+  let reversed = 0;
+  while (n > 0) {
+    reversed = reversed * 10 + (n % 10);
+    n = Math.floor(n / 10);
+  }
+  return reversed;
 }
-const isPalindromeNumber = n => n === reverseNumber(n);
-
-function collatzSteps(n) {
-  let steps = 0;
-  while (n !== 1) { n = n % 2 === 0 ? n / 2 : 3 * n + 1; steps++; }
-  return steps;
-}
-
-function gcd(a, b) {             // Euclid's algorithm
+function gcd(a, b) {         // Euclid: used to simplify fractions / ratios
   while (b !== 0) [a, b] = [b, a % b];
   return a;
 }
-console.log(reverseNumber(1234), isPalindromeNumber(12321), collatzSteps(27), gcd(48, 18)); // 4321 true 111 6
+show("sumOfDigits(98765)", sumOfDigits(98765));
+show("reverseDigits(1234)", reverseDigits(1234));
+show("12321 is palindrome?", reverseDigits(12321) === 12321);
+show("Simplify 1920:1080 ratio", `${1920 / gcd(1920, 1080)}:${1080 / gcd(1920, 1080)}`); // 16:9
+
 
 /* ============================================================================
  * 3.3 ARRAYS  /  3.3.1 ARRAYS AND OPERATIONS
  * ============================================================================
- * JS arrays are dynamic, 0-indexed, can hold mixed types, and are OBJECTS
- * (passed/assigned by reference).
+ * WHAT    Ordered, dynamic list (grows/shrinks), 0-indexed, any types inside.
+ *         Arrays are objects → assigned/passed BY REFERENCE.
+ *
+ * CHEAT SHEET
+ *   change the array (mutating):   push pop shift unshift splice sort reverse fill
+ *   return something new:          slice concat map filter reduce find findIndex
+ *                                  includes indexOf join some every flat toSorted
  */
-section("3.3 Arrays");
+lesson("3.3 Arrays");
 
-const nums = [5, 3, 8, 1];
-const mixed = [1, "two", true, null, [3, 4], { five: 5 }];
-const zeros = new Array(3).fill(0);               // [0,0,0]
-const range = Array.from({ length: 5 }, (_, k) => k * 2); // [0,2,4,6,8]
-console.log(nums, mixed.length, zeros, range);
+// APPLIED: a student's watch list
+const watchList = ["2.1 Variables", "2.2 Types"];
+watchList.push("2.3 Operators");            // add to end
+watchList.unshift("2.0 Setup");             // add to start
+show("Watch list", watchList);
+show("Count", watchList.length);
+show("First / last", `${watchList[0]} / ${watchList.at(-1)}`);
+show("Index 99 (no error!)", watchList[99]); // undefined — no IndexOutOfBounds
 
-// Access
-console.log(nums[0], nums[nums.length - 1], nums.at(-1)); // 5 1 1
-console.log(nums[99]);                            // undefined (no IndexOutOfBounds!)
+const finished = watchList.shift();          // remove from start, returns it
+show("Finished & removed", finished);
+watchList.pop();                             // remove from end
+show("After shift + pop", watchList);
 
-// ---- MUTATING methods (change the original array) ----
-const arr = [1, 2, 3];
-arr.push(4, 5);       // add to end        -> returns new length
-arr.pop();            // remove from end   -> returns removed (5)
-arr.unshift(0);       // add to start
-arr.shift();          // remove from start
-console.log(arr);     // [1,2,3,4]
+// splice(start, deleteCount, ...itemsToInsert) — the Swiss-army knife
+const playlist = ["Intro", "Variables", "Loops", "Functions"];
+playlist.splice(2, 0, "Conditions");         // insert at index 2
+playlist.splice(playlist.indexOf("Intro"), 1); // remove "Intro" by value
+show("Playlist", playlist);
 
-const letters = ["a", "b", "c", "d", "e"];
-letters.splice(1, 2);             // remove 2 items at index 1 -> ["a","d","e"]
-letters.splice(1, 0, "X", "Y");   // insert at index 1          -> ["a","X","Y","d","e"]
-console.log(letters);
-letters.reverse();                // in-place
-console.log(letters);
+// Searching
+show("Has 'Loops'?", playlist.includes("Loops"));
+show("Index of 'Functions'", playlist.indexOf("Functions"));
+show("Index of 'Java'", playlist.indexOf("Java"));  // -1 = not found
+show("First lecture longer than 45 min",
+  javascriptBasics.find(l => l.duration && toSeconds(l.duration) > 45 * 60)?.title);
 
-// SORT GOTCHA: default sort compares as STRINGS
-console.log([10, 1, 5, 100].sort());               // [1, 10, 100, 5]  !!
-console.log([10, 1, 5, 100].sort((m, n) => m - n)); // [1, 5, 10, 100] ascending
-console.log(["b", "a", "C"].sort((m, n) => m.localeCompare(n)));
+// slice(start, end) — copy a part (end excluded). Pagination!
+const page = 2, perPage = 3;
+const pageItems = javascriptBasics.slice((page - 1) * perPage, page * perPage);
+show("Page 2 titles", pageItems.map(l => l.title));
 
-// ---- NON-mutating methods (return new arrays/values) ----
-console.log(nums.slice(1, 3));            // [3, 8] (end exclusive)
-console.log(nums.concat([9, 10]));        // [5,3,8,1,9,10]
-console.log([...nums, 9]);                // spread — same idea
-console.log(nums.indexOf(8), nums.includes(42));   // 2 false
-console.log(nums.join(" - "));            // "5 - 3 - 8 - 1"
-console.log(nums.toSorted((m, n) => m - n), nums); // ES2023: sorted copy, original intact
-console.log([1, [2, [3, [4]]]].flat(Infinity));    // [1,2,3,4]
+// GOTCHA 1: sort() compares as STRINGS by default
+const scores = [100, 25, 9, 80];
+show("[100,25,9,80].sort()  ✗", [...scores].sort());              // [100, 25, 80, 9]
+show("sort((a,b) => a-b)    ✓", [...scores].sort((a, b) => a - b)); // ascending
+show("sort((a,b) => b-a)    ✓", [...scores].sort((a, b) => b - a)); // descending
+// sort strings properly (accents / case aware):
+show("Names sorted", ["sara", "Omar", "lina"].sort((a, b) => a.localeCompare(b)));
 
-// REFERENCE semantics
-const original = [1, 2, 3];
-const alias = original;           // same array!
-const copy = [...original];       // shallow copy (also: original.slice(), Array.from)
-alias.push(99);
-console.log(original, copy);      // [1,2,3,99] [1,2,3]
-console.log([1, 2] === [1, 2]);   // false — compares references, not contents
-const deep = structuredClone([{ a: 1 }]); // deep copy
+// GOTCHA 2: arrays are references
+const original = ["a", "b"];
+const sameArray = original;          // NOT a copy — two names, one array
+const realCopy = [...original];      // spread = shallow copy
+sameArray.push("c");
+show("original (changed via alias)", original);
+show("realCopy (unchanged)", realCopy);
+show("[1,2] === [1,2]", [1, 2] === [1, 2]); // false — compares references
+// Deep copy (arrays of objects): structuredClone(value)
 
-// Destructuring
-const [firstNum, secondNum, ...rest] = nums;
-console.log(firstNum, secondNum, rest);   // 5 3 [8, 1]
+// Combine, unique, flatten
+const frontend = ["html", "css", "js"];
+const backend = ["js", "node", "sql"];
+const allSkills = [...frontend, ...backend];
+show("All skills (unique via Set)", [...new Set(allSkills)]);
+show("Common skills", frontend.filter(s => backend.includes(s)));
+show("Flatten [[1,2],[3,[4]]]", [[1, 2], [3, [4]]].flat(Infinity));
 
-// 2D arrays (matrix)
-const grid = [[1, 2, 3], [4, 5, 6]];
-console.log(grid[1][2]);                  // 6
-console.log(Array.isArray(grid));         // true
+// 2D array: a seating grid for a live session (rows × seats), true = taken
+const seats = [
+  [true, true, false],
+  [false, true, true],
+];
+show("Row 2, seat 1 taken?", seats[1][0]);
 
-// 3.3.1 Practice / 3.3.3 Challenge: find max, remove duplicates, second largest
-const findMax = list => list.reduce((m, v) => (v > m ? v : m), -Infinity);
-const unique = list => [...new Set(list)];          // Set = unique values
-const secondLargest = list => unique(list).sort((m, n) => n - m)[1];
-console.log(findMax([3, 9, 2]), unique([1, 1, 2, 3, 3]), secondLargest([4, 9, 9, 7])); // 9 [1,2,3] 7
+// 3.3.1 Practice / 3.3.3 Challenge
+const findMax = arr => arr.reduce((max, v) => (v > max ? v : max), -Infinity); // manual Math.max
+const secondHighest = arr => [...new Set(arr)].sort((a, b) => b - a)[1];
+const rotateLeft = (arr, k) => [...arr.slice(k % arr.length), ...arr.slice(0, k % arr.length)];
+show("findMax([3,9,2])", findMax([3, 9, 2]));
+show("secondHighest([4,9,9,7])", secondHighest([4, 9, 9, 7]));
+show("rotateLeft([1,2,3,4,5], 2)", rotateLeft([1, 2, 3, 4, 5], 2));
+
 
 /* ============================================================================
  * 3.4 FOR LOOPS AND ARRAY PROCESSING
- * ============================================================================ */
-section("3.4 For Loops and Array Processing");
+ * ============================================================================
+ * WHICH LOOP?
+ *   for (let i = 0; i < n; i++)  → need the index / custom steps
+ *   for (const item of array)    → just the values  (most common, supports break)
+ *   for (const key in object)    → keys of an OBJECT (don't use on arrays)
+ *   array.forEach(fn)            → run fn per item (can't break)
+ *   array.map / filter / reduce  → transform / select / combine  (modern JS style)
+ */
+lesson("3.4 For loops and array processing");
 
-const fruits = ["apple", "banana", "cherry"];
-
-// Classic C-style for — when you need the index or custom stepping
-for (let k = 0; k < fruits.length; k++) {
-  console.log(k, fruits[k]);
+// APPLIED 1: classic for — total duration of the section (should match the
+// platform's "9 lectures • 3:43:47" header from your screenshot)
+let totalSeconds = 0;
+for (let i = 0; i < javascriptBasics.length; i++) {
+  const lec = javascriptBasics[i];
+  if (lec.duration === null) continue;      // assignments have no video
+  totalSeconds += toSeconds(lec.duration);
 }
-for (let k = 10; k > 0; k -= 3) process.stdout.write(k + " "); // 10 7 4 1
-console.log();
+show("Section duration (for loop)", formatHMS(totalSeconds));
 
-// for...of — iterates VALUES of any iterable (arrays, strings, Sets, Maps)
-for (const fruit of fruits) console.log("of:", fruit);
-for (const ch of "hey") process.stdout.write(ch + "|");
-console.log();
-for (const [idx, fruit] of fruits.entries()) console.log(idx, fruit); // value + index
+// The SAME thing, modern style — filter + map + reduce
+const totalModern = javascriptBasics
+  .filter(lec => lec.duration !== null)     // keep videos only
+  .map(lec => toSeconds(lec.duration))      // lecture → seconds
+  .reduce((sum, sec) => sum + sec, 0);      // sum them (always give the start value!)
+show("Section duration (modern)", formatHMS(totalModern));
+show("Matches platform 3:43:47?", formatHMS(totalModern) === "3:43:47");
 
-// for...in — iterates KEYS of an object. DON'T use it on arrays.
-const car = { brand: "BMW", year: 2020 };
-for (const key in car) console.log(key, "=>", car[key]);
-// Modern alternatives: Object.keys(car), Object.values(car), Object.entries(car)
-for (const [key, val] of Object.entries(car)) console.log(`${key}: ${val}`);
-
-// forEach — callback per element (cannot break out of it!)
-fruits.forEach((fruit, idx) => console.log(`#${idx} ${fruit}`));
-
-// ---- Higher-order array methods: the JS way to process arrays ----
-const prices = [12, 45, 7, 30, 99];
-const doubled  = prices.map(p => p * 2);                  // transform each -> new array
-const cheap    = prices.filter(p => p < 40);              // keep matching -> new array
-const sum      = prices.reduce((acc, p) => acc + p, 0);   // fold to one value (always give initial!)
-const firstBig = prices.find(p => p > 40);                // first match or undefined
-const bigIndex = prices.findIndex(p => p > 40);           // index or -1
-const anyFree  = prices.some(p => p === 0);               // true if ANY passes
-const allPos   = prices.every(p => p > 0);                // true if ALL pass
-console.log({ doubled, cheap, sum, avg: sum / prices.length, firstBig, bigIndex, anyFree, allPos });
-
-// Chaining: total of prices > 10 after 10% tax
-const taxed = prices.filter(p => p > 10).map(p => p * 1.1).reduce((a, p) => a + p, 0);
-console.log(taxed.toFixed(2));
-
-// reduce to build an object: count word frequencies
-const words = "the cat and the hat and the bat".split(" ");
-const freq = words.reduce((acc, w) => { acc[w] = (acc[w] ?? 0) + 1; return acc; }, {});
-console.log(freq);
-
-// Nested loops: multiplication table
-for (let r = 1; r <= 3; r++) {
-  let row = "";
-  for (let c = 1; c <= 5; c++) row += String(r * c).padStart(4);
-  console.log(row);
+// APPLIED 2: for...of — print a numbered syllabus
+for (const lec of javascriptBasics.slice(0, 3)) {
+  note(`${LECTURE_ICONS[lec.type]} ${lec.title.padEnd(36)} ${lec.duration ?? "—"}`);
+}
+// need the index too? use .entries()
+for (const [index, lec] of javascriptBasics.slice(0, 2).entries()) {
+  note(`#${index + 1} ${lec.title}`);
 }
 
-// Closure-in-loop gotcha: `let` creates a fresh binding per iteration, `var` doesn't
-const fnsVar = [], fnsLet = [];
-for (var v = 0; v < 3; v++) fnsVar.push(() => v);
-for (let l = 0; l < 3; l++) fnsLet.push(() => l);
-console.log(fnsVar.map(f => f()), fnsLet.map(f => f())); // [3,3,3] [0,1,2]
+// APPLIED 3: for...in / Object.entries — loop over an object's properties
+const courseStats = { sections: 4, lectures: 35, hours: 12.5 };
+for (const [key, value] of Object.entries(courseStats)) {
+  note(`${key}: ${value}`);
+}
 
-// 3.4.1 / 3.4.2 Challenge: bubble sort, linear search, count vowels, primes
+// APPLIED 4: the big three, on platform data
+const longest = javascriptBasics
+  .filter(l => l.duration)
+  .reduce((best, l) => (toSeconds(l.duration) > toSeconds(best.duration) ? l : best));
+show("Longest lecture", `${longest.title} (${longest.duration})`);
+
+const shortTitles = javascriptBasics.map(l => l.title.split(" ")[0]);   // map: transform each
+show("Lecture numbers", shortTitles);
+
+const under30min = javascriptBasics.filter(l => l.duration && toSeconds(l.duration) < 30 * 60);
+show("Lectures under 30 min", under30min.length);
+
+show("Any assignment?", javascriptBasics.some(l => l.type === "assignment"));
+show("All have titles?", javascriptBasics.every(l => l.title.length > 0));
+
+// APPLIED 5: reduce to an object — group / count (super common in real code)
+const countByType = javascriptBasics.reduce((acc, l) => {
+  acc[l.type] = (acc[l.type] ?? 0) + 1;
+  return acc;
+}, {});
+show("Count by type", countByType);
+
+// APPLIED 6: cart totals with an array of objects
+const cart = [
+  { item: "JS Course", price: 49.99, qty: 1 },
+  { item: "React Course", price: 59.99, qty: 1 },
+  { item: "Stickers", price: 2.5, qty: 4 },
+];
+const cartTotal = cart.reduce((sum, line) => sum + line.price * line.qty, 0);
+show("Cart total", `$${cartTotal.toFixed(2)}`);
+show("Receipt lines", cart.map(l => `${l.qty} × ${l.item} = $${(l.price * l.qty).toFixed(2)}`));
+
+// APPLIED 7: nested for — weekly study calendar (days × time slots)
+const days = ["Mon", "Wed", "Fri"];
+const slots = ["09:00", "18:00"];
+for (const day of days) {
+  let row = day + ": ";
+  for (const slot of slots) row += `[${slot}] `;
+  note(row);
+}
+
+// GOTCHA: closures in loops — `let` creates a new variable per iteration, `var` doesn't
+const withVar = [], withLet = [];
+for (var v = 0; v < 3; v++) withVar.push(() => v);
+for (let l = 0; l < 3; l++) withLet.push(() => l);
+show("callbacks with var", withVar.map(f => f()));   // [3,3,3]
+show("callbacks with let", withLet.map(f => f()));   // [0,1,2]
+
+// 3.4.1 / 3.4.2 Practice & Challenge
 function bubbleSort(input) {
-  const a = [...input];                      // don't mutate caller's array
-  for (let end = a.length - 1; end > 0; end--) {
+  const arr = [...input];                     // don't mutate the caller's array
+  for (let end = arr.length - 1; end > 0; end--) {
     let swapped = false;
     for (let j = 0; j < end; j++) {
-      if (a[j] > a[j + 1]) { [a[j], a[j + 1]] = [a[j + 1], a[j]]; swapped = true; }
+      if (arr[j] > arr[j + 1]) {
+        [arr[j], arr[j + 1]] = [arr[j + 1], arr[j]];
+        swapped = true;
+      }
     }
-    if (!swapped) break;                     // already sorted
+    if (!swapped) break;                      // already sorted → stop early
   }
-  return a;
+  return arr;
 }
-const countVowels = str => [...str.toLowerCase()].filter(ch => "aeiou".includes(ch)).length;
-console.log(bubbleSort([5, 2, 9, 1, 5, 6]), countVowels("JavaScript Foundations"));
+const countVowels = text => [...text.toLowerCase()].filter(ch => "aeiou".includes(ch)).length;
+const wordFrequency = text =>
+  text.toLowerCase().match(/[a-z]+/g).reduce((acc, w) => ({ ...acc, [w]: (acc[w] ?? 0) + 1 }), {});
+show("bubbleSort([5,2,9,1])", bubbleSort([5, 2, 9, 1]));
+show("vowels in 'JavaScript'", countVowels("JavaScript"));
+show("wordFrequency", wordFrequency("to be or not to be"));
+
 
 /* ============================================================================
  * 3.5 BREAK, CONTINUE, AND ADVANCED LOOP CONTROL
- * ============================================================================ */
-section("3.5 Break, Continue, Advanced Loop Control");
+ * ============================================================================
+ * break       → exit the loop now
+ * continue    → skip to the next iteration
+ * label:      → name an outer loop so break/continue can target it
+ * some/every/find → array methods that stop early automatically
+ * GOTCHA: you cannot break out of forEach — use for...of instead.
+ */
+lesson("3.5 Break, continue, advanced loop control");
 
-// break — exit the loop immediately
-for (const n of [3, 7, 12, 5, 20]) {
-  if (n > 10) { console.log("first > 10:", n); break; }
-}
-
-// continue — skip the rest of this iteration
-const odds = [];
-for (let n = 1; n <= 10; n++) {
-  if (n % 2 === 0) continue;
-  odds.push(n);
-}
-console.log("odds:", odds);
-
-// Labels — break/continue an OUTER loop from an inner one
-outer: for (let r = 0; r < 3; r++) {
-  for (let c = 0; c < 3; c++) {
-    if (c === 1) continue outer;            // jump to next r
-    if (r === 2) break outer;               // leave both loops
-    console.log(`r=${r} c=${c}`);
+// APPLIED 1: break — "Resume" button: find the first lecture not yet completed
+const completedIds = new Set([1, 2, 3]);
+let resumeLecture = null;
+for (const lec of javascriptBasics) {
+  if (!completedIds.has(lec.id)) {
+    resumeLecture = lec;
+    break;                                    // found it — no need to check the rest
   }
 }
+show("Resume from", resumeLecture.title);
+show("Same with find()", javascriptBasics.find(l => !completedIds.has(l.id)).title);
 
-// Search in a 2D array with a label
-function findInMatrix(matrix, target) {
-  let pos = null;
-  search: for (let r = 0; r < matrix.length; r++) {
-    for (let c = 0; c < matrix[r].length; c++) {
-      if (matrix[r][c] === target) { pos = [r, c]; break search; }
+// APPLIED 2: continue — total only VIDEO time, skip assignments
+let videoSeconds = 0;
+for (const lec of javascriptBasics) {
+  if (lec.type !== "video") continue;         // skip this one, go to next
+  videoSeconds += toSeconds(lec.duration);
+}
+show("Video time", formatHMS(videoSeconds));
+
+// APPLIED 3: labeled break — search a lecture across ALL sections (nested data)
+const course = [
+  { section: "CS Fundamentals", lectures: ["1.1 How computers work", "1.2 Binary"] },
+  { section: "JavaScript Basics", lectures: ["2.1 Variables", "2.2 Types"] },
+  { section: "Conditional Logic and Loops", lectures: ["3.1 If-Else", "3.2 While Loops"] },
+];
+let foundAt = null;
+search: for (const sec of course) {
+  for (const title of sec.lectures) {
+    if (title.includes("While")) {
+      foundAt = `${sec.section} → ${title}`;
+      break search;                           // exits BOTH loops at once
     }
   }
-  return pos;
 }
-console.log(findInMatrix([[1, 2], [3, 4]], 4)); // [1, 1]
+show("Search 'While'", foundAt);
 
-// forEach can't break — use for...of, or some()/every() which stop early
-[1, 2, 3, 4].some(n => { console.log("visit", n); return n === 2; }); // stops at 2
+// APPLIED 4: retry loop with break — call a flaky API up to 5 times
+const fakeApiResponses = [500, 503, 200, 200];  // simulated HTTP status codes
+let response;
+for (let tryNo = 1; tryNo <= 5; tryNo++) {
+  response = fakeApiResponses[tryNo - 1];
+  note(`try ${tryNo} → HTTP ${response}`);
+  if (response === 200) break;
+}
 
-// "Loop forever until a condition" pattern
-let tries = 0;
+// APPLIED 5: validate-until-correct loop (while(true) + break)
+const simulatedInputs = ["abc", "-5", "200", "42"];
+let validAge = null, idx = 0;
 while (true) {
-  tries++;
-  if (tries === 4) break;
+  const raw = simulatedInputs[idx++];
+  validAge = parseIntInRange(raw, 0, 120);
+  if (validAge !== null) break;
+  note(`"${raw}" rejected, asking again...`);
 }
-console.log("tries:", tries);
+show("Accepted age", validAge);
 
-// 3.5.1 / 3.5.2 Challenge: primes up to N with break (trial division)
+// 3.5.1 / 3.5.2 Practice & Challenge — primes with early exit
 function primesUpTo(n) {
   const primes = [];
-  for (let cand = 2; cand <= n; cand++) {
+  for (let candidate = 2; candidate <= n; candidate++) {
     let isPrime = true;
-    for (let d = 2; d * d <= cand; d++) {
-      if (cand % d === 0) { isPrime = false; break; } // stop at first divisor
+    for (let d = 2; d * d <= candidate; d++) {
+      if (candidate % d === 0) { isPrime = false; break; } // one divisor is enough
     }
-    if (isPrime) primes.push(cand);
+    if (isPrime) primes.push(candidate);
   }
   return primes;
 }
-console.log(primesUpTo(30));
+show("primesUpTo(30)", primesUpTo(30));
+
 
 /* ============================================================================
- * MODULE 3 ASSIGNMENT: NUMBER GUESSING GAME
+ * A3. MODULE 3 ASSIGNMENT — NUMBER GUESSING GAME
  * ============================================================================
- * Uses: random numbers, input + validation, while loop, if/else, break,
+ * Uses: random numbers, input validation, while loop, if/else, break,
  *       continue, arrays (history), template strings.
+ * Design: game logic is a pure function → we can test it with a bot player.
  */
-section("Module 3 Assignment: Number Guessing Game");
+lesson("A3. Assignment: Number Guessing Game");
 
-// Pure game logic (testable without input)
 function checkGuess(secret, guess) {
   if (guess === secret) return "correct";
-  return guess < secret ? "too low" : "too high";
+  const distance = Math.abs(secret - guess);
+  const hint = distance <= 5 ? " (very close!)" : distance <= 15 ? " (close)" : "";
+  return (guess < secret ? "too low" : "too high") + hint;
 }
 
-// Automated demo: a "player" that uses binary search — always wins in <= 7 tries for 1..100
-function simulateGuessingGame(secret, min = 1, max = 100) {
-  let lo = min, hi = max;
+// Bot player using binary search → always wins within 7 guesses for 1..100
+function botPlays(secret) {
+  let low = 1, high = 100;
   const history = [];
-  while (lo <= hi) {
-    const guess = Math.floor((lo + hi) / 2);
+  while (low <= high) {
+    const guess = Math.floor((low + high) / 2);
     const result = checkGuess(secret, guess);
-    history.push(`${guess} (${result})`);
+    history.push(`${guess}:${result}`);
     if (result === "correct") break;
-    if (result === "too low") lo = guess + 1;
-    else hi = guess - 1;
+    if (result.startsWith("too low")) low = guess + 1;
+    else high = guess - 1;
   }
   return history;
 }
-console.log(simulateGuessingGame(randomInt(1, 100)).join(" -> "));
+const secretForBot = randomInt(1, 100);
+show(`Bot finds ${secretForBot}`, botPlays(secretForBot).join(" → "));
 
 async function guessingGameInteractive(maxAttempts = 7) {
   const secret = randomInt(1, 100);
   const history = [];
-  console.log(`I'm thinking of a number 1-100. You have ${maxAttempts} attempts.`);
+  console.log(`I'm thinking of a number 1–100. You have ${maxAttempts} attempts.`);
   while (history.length < maxAttempts) {
-    const raw = await ask(`Attempt ${history.length + 1}: `);
-    if (raw === null) break;                  // input closed (Ctrl+D)
-    const guess = parseNumber(raw);
-    if (guess === null || !Number.isInteger(guess) || guess < 1 || guess > 100) {
-      console.log("Please enter a whole number between 1 and 100.");
-      continue;                               // invalid input doesn't cost an attempt
-    }
-    if (history.includes(guess)) { console.log("You already tried that!"); continue; }
+    const raw = await ask(`Attempt ${history.length + 1}/${maxAttempts}: `);
+    if (raw === null) break;                          // input closed (Ctrl+D)
+    const guess = parseIntInRange(raw, 1, 100);
+    if (guess === null) { console.log("Enter a whole number 1–100."); continue; } // doesn't cost an attempt
+    if (history.includes(guess)) { console.log("Already tried that!"); continue; }
     history.push(guess);
     const result = checkGuess(secret, guess);
     if (result === "correct") {
-      console.log(`🎉 Correct! ${secret} in ${history.length} attempt(s).`);
-      return;
+      return console.log(`🎉 Correct! ${secret} in ${history.length} attempt(s).`);
     }
-    console.log(`${result}. Guesses so far: ${history.join(", ")}`);
+    console.log(`${result}   | tried: ${history.join(", ")}`);
   }
-  console.log(`Out of attempts. The number was ${secret}.`);
+  console.log(`Game over. The number was ${secret}.`);
 }
+
 
 /* ============================================================================
  * 4.1 DECLARING AND CALLING FUNCTIONS
  * ============================================================================
- * Functions are first-class VALUES: store them in variables, pass them as
- * arguments, return them from other functions.
+ * THREE WAYS (same result, small differences):
+ *   function name(a) { return a; }   declaration  — hoisted (callable before its line)
+ *   const name = function (a) {...}  expression   — not hoisted
+ *   const name = (a) => a;           arrow        — short; no own `this`
+ *
+ * Functions are VALUES: store them, pass them, return them.
  */
-section("4.1 Declaring and Calling Functions");
+lesson("4.1 Declaring and calling functions");
 
-// (1) Function DECLARATION — hoisted: callable before its line
-console.log(add(2, 3));
-function add(m, n) {
-  return m + n;
+// Declaration — hoisted: this call works even though the function is defined below it
+show("formatPrice(1999) (hoisted)", formatPrice(1999));
+function formatPrice(cents, currency = "$") {
+  return `${currency}${(cents / 100).toFixed(2)}`;
 }
 
-// (2) Function EXPRESSION — not hoisted (const is in TDZ until this line)
-const multiply = function (m, n) {
-  return m * n;
+// Expression
+const isValidEmail = function (text) {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(text);
 };
+show("isValidEmail('a@b.com')", isValidEmail("a@b.com"));
+show("isValidEmail('a@b')", isValidEmail("a@b"));
 
-// (3) ARROW function — concise; no own `this`/`arguments`; can't be used with `new`
-const square = n => n * n;                 // one param: parens optional; implicit return
-const sumThree = (m, n, o) => m + n + o;
-const makePoint = (px, py) => ({ x: px, y: py }); // returning an object literal: wrap in ()
-const logAndDouble = n => {                // block body needs explicit return
-  console.log("doubling", n);
-  return n * 2;
+// Arrow — one expression → implicit return, no braces
+const minutesToHours = minutes => +(minutes / 60).toFixed(1);
+const fullNameOf = (first, last) => `${first} ${last}`;
+const makeLecture = (title, duration) => ({ title, duration }); // object → wrap in ( )
+show("minutesToHours(135)", minutesToHours(135));
+show("makeLecture()", makeLecture("4.1 Functions", "27:51"));
+
+// Functions as values: CALLBACKS — you pass behavior into another function
+// This is how event handlers, array methods, and async code all work.
+function notifyAll(users, sendFn) {
+  for (const u of users) sendFn(u);
+}
+notifyAll(["Mohamad", "Sara"], u => note(`📧 sent "New lecture available" to ${u}`));
+
+// Real-life callback: event listener (browser)
+//   button.addEventListener("click", () => enroll(courseId));
+
+// Methods: functions stored on objects; `this` = the object before the dot
+const videoPlayer = {
+  currentTime: 0,
+  skip(seconds) { this.currentTime += seconds; return this; }, // return this → chaining
+  rewind(seconds) { this.currentTime = Math.max(0, this.currentTime - seconds); return this; },
 };
-console.log(multiply(3, 4), square(5), sumThree(1, 2, 3), makePoint(1, 2), logAndDouble(4));
+videoPlayer.skip(30).skip(30).rewind(10);
+show("Player position (s)", videoPlayer.currentTime);
+// GOTCHA: arrow functions don't have their own `this` → don't use them as object methods.
 
-// Functions as values / callbacks / higher-order functions
-const applyTwice = (fn, val) => fn(fn(val));
-console.log(applyTwice(square, 3));        // 81
-const ops = { add, multiply, square };     // functions stored in an object
-console.log(ops.add(1, 1));
-
-// IIFE — Immediately Invoked Function Expression (old-school private scope)
-(function () { console.log("IIFE ran"); })();
-
-// Methods & `this` (quick version): regular functions get `this` from the CALLER
-const counterObj = {
-  count: 0,
-  inc() { this.count++; return this; },    // method shorthand -> `this` = counterObj
-};
-counterObj.inc().inc();                    // chaining because inc returns this
-console.log(counterObj.count);             // 2
 
 /* ============================================================================
  * 4.2 PARAMETERS AND RETURN VALUES
- * ============================================================================ */
-section("4.2 Parameters and Return Values");
+ * ============================================================================
+ * - Missing arguments become undefined (no error). Extra ones are ignored.
+ * - No overloading in JS: use default values / options objects instead.
+ * - A function returns ONE value → return an object/array for several.
+ * - No `return` → returns undefined.
+ */
+lesson("4.2 Parameters and return values");
 
-// Missing args are `undefined`; extra args are ignored. No overloading in JS.
-function show(m, n) { return `${m}, ${n}`; }
-console.log(show(1), show(1, 2, 3));       // "1, undefined" "1, 2"
-
-// Default parameters (applied when arg is undefined)
-function greet(who = "stranger", punctuation = "!") {
-  return `Hello, ${who}${punctuation}`;
+// Default parameters
+function createCourse(title, price = 0, level = "beginner") {
+  return { title, price, level, isFree: price === 0 };
 }
-console.log(greet(), greet("Mo"), greet("Mo", "?"));
+show("createCourse('JS')", createCourse("JS"));
+show("createCourse('React', 59, 'intermediate')", createCourse("React", 59, "intermediate"));
 
-// Rest parameters — variable number of args collected into a real array
-function average(...values) {
-  if (values.length === 0) return 0;
-  return values.reduce((acc, val) => acc + val, 0) / values.length;
+// Options object + destructuring = "named parameters" (best for 3+ params)
+function sendEmail({ to, subject, body = "", priority = "normal" }) {
+  return `[${priority}] to=${to} subject="${subject}" body=${body.length} chars`;
 }
-console.log(average(1, 2, 3, 4), average(...[10, 20])); // spread array into args
+show("sendEmail({...})", sendEmail({ to: "mo@example.com", subject: "Welcome!", priority: "high" }));
+// order doesn't matter, self-documenting at the call site ✓
 
-// "Named parameters" via object destructuring (+ defaults) — very common
-function createUser({ username, role = "student", active = true } = {}) {
-  return { username, role, active };
+// Rest parameters: any number of arguments → a real array
+function averageRating(...ratings) {
+  if (ratings.length === 0) return null;
+  const sum = ratings.reduce((a, r) => a + r, 0);
+  return +(sum / ratings.length).toFixed(2);
 }
-console.log(createUser({ username: "mo" }), createUser({ username: "admin", role: "admin" }));
+show("averageRating(5, 4, 5, 3)", averageRating(5, 4, 5, 3));
+const ratingsFromDb = [4, 4, 5];
+show("averageRating(...array)", averageRating(...ratingsFromDb)); // spread array → arguments
 
-// Return values: one value only; return an array/object for "multiple"
-function minMax(list) {
-  return { min: Math.min(...list), max: Math.max(...list) };
+// Returning several values: return an object, destructure on receipt
+function courseStatsFor(lectures) {
+  const videos = lectures.filter(l => l.duration);
+  const seconds = videos.map(l => toSeconds(l.duration));
+  return {
+    count: lectures.length,
+    totalTime: formatHMS(seconds.reduce((a, s) => a + s, 0)),
+    shortest: formatHMS(Math.min(...seconds)),
+    longest: formatHMS(Math.max(...seconds)),
+  };
 }
-const { min, max } = minMax([4, 8, 1]);
-console.log(min, max);
-// No `return` (or bare `return;`) -> returns undefined
-function noReturn() {}
-console.log(noReturn());
-// ASI gotcha: a newline right after `return` ends the statement!
-function asiBug() {
-  return              // <- returns undefined, the object below is dead code
-  { ok: true };
+const { count, totalTime, longest: longestTime } = courseStatsFor(javascriptBasics); // rename while destructuring
+show("count / total / longest", `${count} / ${totalTime} / ${longestTime}`);
+
+// Return early for validation — a function that returns a result object
+function enroll(user, courseId) {
+  if (!user) return { ok: false, error: "Please log in" };
+  if (user.enrolledCourseIds.includes(courseId)) return { ok: false, error: "Already enrolled" };
+  return { ok: true, enrolledCourseIds: [...user.enrolledCourseIds, courseId] }; // new array, no mutation
 }
-console.log(asiBug());
+show("enroll(no user)", enroll(null, 1));
+show("enroll(already)", enroll(studentUser, 1));
+show("enroll(new)", enroll(studentUser, 2));
 
-// Pass-by-value... of references: primitives are copied, objects share the reference
-function mutate(num, obj) { num = 100; obj.changed = true; }
-const prim = 1, objArg = {};
-mutate(prim, objArg);
-console.log(prim, objArg);                 // 1 { changed: true }
+// GOTCHA: primitives are copied, objects are shared
+function applyDiscount(price, cartObj) {
+  price = price * 0.5;          // local copy — caller's variable unchanged
+  cartObj.discounted = true;    // same object — caller SEES this change
+}
+let myPrice = 100;
+const myCart = {};
+applyDiscount(myPrice, myCart);
+show("price after call", myPrice);
+show("cart after call", myCart);
 
-// Pure function (no side effects, same input -> same output) — prefer these
-const addTax = (amount, rate = 0.11) => +(amount * (1 + rate)).toFixed(2);
-console.log(addTax(100));
+// GOTCHA: never put a newline right after `return`
+function brokenReturn() {
+  return                        // JS inserts a ; here → returns undefined
+    { ok: true };
+}
+show("brokenReturn()", brokenReturn());
+
 
 /* ============================================================================
  * 4.3 REUSABLE CODE AND SCOPE
  * ============================================================================
- * Scope chain: block -> function -> module/script -> global.
- * Inner scopes can read outer variables; not vice versa (lexical scoping).
+ * SCOPE    Where a variable is visible: { block } → function → file → global.
+ *          Inner code can see outer variables; outer code cannot see inner ones.
+ * CLOSURE  A function REMEMBERS the variables around where it was created,
+ *          even after the outer function has finished. Gives private state.
  */
-section("4.3 Reusable Code and Scope");
+lesson("4.3 Reusable code and scope");
 
-const globalVar = "global";
-function outerFn() {
-  const outerVar = "outer";
-  function innerFn() {
-    const innerVar = "inner";
-    return `${innerVar} sees ${outerVar} and ${globalVar}`;
+// Scope chain
+const platformFee = 0.05;                     // file-level: visible everywhere below
+function instructorPayout(sales) {
+  const gross = sales * 49.99;                // function scope: only inside this function
+  if (gross > 1000) {
+    const bonus = 50;                         // block scope: only inside this if
+    return gross * (1 - platformFee) + bonus;
   }
-  return innerFn();
+  return gross * (1 - platformFee);
 }
-console.log(outerFn());
+show("instructorPayout(30)", +instructorPayout(30).toFixed(2));
+// console.log(gross);                        // ❌ ReferenceError — not visible outside
 
-// Shadowing: inner declaration hides the outer one
-const shadow = "outer";
-{ const shadow = "inner"; console.log(shadow); } // "inner"
-console.log(shadow);                              // "outer"
-
-// CLOSURES: a function remembers the variables of the scope it was created in,
-// even after that scope has returned. This gives you private state.
-function makeCounter(start = 0) {
-  let value = start;                     // private — not reachable from outside
+// APPLIED 1: closure → shopping cart with PRIVATE data (nobody can tamper with `items`)
+function createCart() {
+  const items = [];                           // private — only the functions below can reach it
   return {
-    increment: () => ++value,
-    decrement: () => --value,
-    get: () => value,
+    add(name, priceCents, qty = 1) {
+      const existing = items.find(i => i.name === name);
+      if (existing) existing.qty += qty;
+      else items.push({ name, priceCents, qty });
+    },
+    remove(name) {
+      const i = items.findIndex(item => item.name === name);
+      if (i !== -1) items.splice(i, 1);
+    },
+    totalCents: () => items.reduce((sum, i) => sum + i.priceCents * i.qty, 0),
+    list: () => items.map(i => `${i.qty}× ${i.name}`),
   };
 }
-const c1 = makeCounter(), c2 = makeCounter(10);
-c1.increment(); c1.increment(); c2.decrement();
-console.log(c1.get(), c2.get());         // 2 9 — independent states
+const myShoppingCart = createCart();
+myShoppingCart.add("JS Course", 4999);
+myShoppingCart.add("Stickers", 250, 2);
+myShoppingCart.add("Stickers", 250);          // merges quantity
+myShoppingCart.remove("Nothing");             // safe no-op
+show("Cart items", myShoppingCart.list());
+show("Cart total", formatPrice(myShoppingCart.totalCents()));
+show("Can we reach items directly?", myShoppingCart.items); // undefined — it's private ✓
 
-// Function factories (closures for reuse)
-const multiplier = factor => n => n * factor;
-const triple = multiplier(3);
-console.log(triple(7));                  // 21
+// APPLIED 2: closure → unique ID generator
+function createIdGenerator(prefix) {
+  let next = 1;
+  return () => `${prefix}-${String(next++).padStart(4, "0")}`;
+}
+const nextStudentId = createIdGenerator("STU");
+const nextCourseId = createIdGenerator("CRS");    // independent counter
+show("IDs", [nextStudentId(), nextStudentId(), nextCourseId()]);
 
-// Memoization — reusable caching wrapper built on a closure
+// APPLIED 3: function factory → reusable validators from one template
+const minLength = n => text => text.trim().length >= n;
+const isValidUsername = minLength(3);
+const isValidBio = minLength(20);
+show("isValidUsername('mo')", isValidUsername("mo"));
+show("isValidBio('I love JavaScript and coding')", isValidBio("I love JavaScript and coding"));
+
+// APPLIED 4: memoize → cache slow results (e.g., expensive calculation / API call)
 function memoize(fn) {
-  const cache = new Map();
-  return function (arg) {
-    if (cache.has(arg)) return cache.get(arg);
-    const result = fn(arg);
-    cache.set(arg, result);
-    return result;
+  const cache = new Map();                    // remembered between calls thanks to the closure
+  return arg => {
+    if (!cache.has(arg)) cache.set(arg, fn(arg));
+    return cache.get(arg);
   };
 }
-const slowSquare = n => { for (let k = 0; k < 1e6; k++); return n * n; };
-const fastSquare = memoize(slowSquare);
-console.log(fastSquare(9), fastSquare(9)); // second call is cached
+let realCalls = 0;
+const slowExchangeRate = currency => { realCalls++; return { EUR: 0.92, LBP: 89500 }[currency]; };
+const exchangeRate = memoize(slowExchangeRate);
+exchangeRate("EUR"); exchangeRate("EUR"); exchangeRate("EUR");
+show("3 lookups, real calls made", realCalls); // 1
 
-// DRY: write small, single-purpose functions and compose them
-const compose = (...fns) => input => fns.reduceRight((acc, fn) => fn(acc), input);
-const slugify = compose(
-  str => str.replace(/[^a-z0-9]+/g, "-"),
-  str => str.trim().toLowerCase()
+// APPLIED 5: small reusable functions composed into a pipeline (DRY)
+const pipe = (...fns) => input => fns.reduce((value, fn) => fn(value), input);
+const cleanUsername = pipe(
+  s => s.trim(),
+  s => s.toLowerCase(),
+  s => s.replace(/[^a-z0-9_]/g, ""),
+  s => s.slice(0, 15),
 );
-console.log(slugify("  Hello World JS  ")); // "hello-world-js"
+show("cleanUsername('  Mohamad Danach!! ')", cleanUsername("  Mohamad Danach!! "));
 
-// Modules (reuse across files):
-//   // math.js                         // main.js
-//   export const add = (a,b) => a+b;    import { add } from "./math.js";
-//   export default function sub() {}    import sub from "./math.js";
-// Node CommonJS:  module.exports = { add };   const { add } = require("./math");
+// Reuse across files = MODULES
+//   utils.js:   export function formatPrice(c) { ... }
+//   app.js:     import { formatPrice } from "./utils.js";
+//   (Node CommonJS:  module.exports = { formatPrice };   const { formatPrice } = require("./utils");)
+
 
 /* ============================================================================
  * 4.4 RECURSION
  * ============================================================================
- * A function that calls itself. Needs: (1) a BASE CASE that stops,
- * (2) a RECURSIVE CASE that moves toward the base case.
- * JS has no tail-call optimization in practice -> deep recursion (~10k frames)
- * throws "RangeError: Maximum call stack size exceeded".
+ * WHAT   A function that calls itself on a smaller piece of the problem.
+ * NEEDS  1) a BASE CASE that stops   2) a step that moves TOWARD the base case.
+ * WHEN   Naturally nested data: folders, menus, comment threads, course trees, JSON.
+ * GOTCHA Too deep (~10,000 calls) → "RangeError: Maximum call stack size exceeded".
  */
-section("4.4 Recursion");
+lesson("4.4 Recursion");
 
+// Classic first example
 function factorial(n) {
-  if (n <= 1) return 1;                  // base case
-  return n * factorial(n - 1);           // recursive case
+  if (n <= 1) return 1;            // base case
+  return n * factorial(n - 1);     // smaller problem
 }
-console.log(factorial(5), factorial(20)); // 120 2432902008176640000
+show("factorial(5)", factorial(5));
 
-// Naive Fibonacci is O(2^n); memoized is O(n)
-function fib(n, memo = {}) {
-  if (n <= 1) return n;
-  if (memo[n]) return memo[n];
-  return (memo[n] = fib(n - 1, memo) + fib(n - 2, memo));
-}
-console.log(fib(50));                     // 12586269025
-
-const sumArray = list => (list.length === 0 ? 0 : list[0] + sumArray(list.slice(1)));
-const power = (base, exp) => (exp === 0 ? 1 : base * power(base, exp - 1));
-const reverseStr = str => (str === "" ? "" : reverseStr(str.slice(1)) + str[0]);
-const isPalindrome = str => {
-  const clean = str.toLowerCase().replace(/[^a-z0-9]/g, "");
-  if (clean.length <= 1) return true;
-  if (clean[0] !== clean.at(-1)) return false;
-  return isPalindrome(clean.slice(1, -1));
-};
-console.log(sumArray([1, 2, 3, 4]), power(2, 10), reverseStr("hello"), isPalindrome("A man, a plan, a canal: Panama"));
-
-// Where recursion really shines: nested / tree data
-function flatten(list) {
-  const out = [];
-  for (const item of list) {
-    if (Array.isArray(item)) out.push(...flatten(item)); // recurse into sub-arrays
-    else out.push(item);
-  }
-  return out;
-}
-console.log(flatten([1, [2, [3, [4, 5]]], 6]));
-
-const fileTree = {
-  name: "root", children: [
-    { name: "a.js", size: 10 },
-    { name: "src", children: [{ name: "b.js", size: 20 }, { name: "c.js", size: 5 }] },
+// APPLIED 1: the whole course as a TREE (course → sections → lectures)
+const courseTree = {
+  title: "Foundations of Programming",
+  children: [
+    { title: "CS Fundamentals", children: [
+      { title: "1.1 Intro", duration: "58:30" },
+      { title: "1.2 Binary", duration: "58:19" },
+    ]},
+    { title: "JavaScript Basics", children: javascriptBasics },
+    { title: "Functions", children: [
+      { title: "4.1 Declaring and Calling Functions", duration: "27:51" },
+      { title: "Extras", children: [{ title: "4.4 Recursion", duration: "20:54" }] }, // nested deeper
+    ]},
   ],
 };
-const totalSize = node => node.children ? node.children.reduce((acc, ch) => acc + totalSize(ch), 0) : node.size;
-console.log("tree size:", totalSize(fileTree)); // 35
+// Works for ANY depth — that's why recursion is the right tool here
+function totalDuration(node) {
+  if (!node.children) return node.duration ? toSeconds(node.duration) : 0; // base: a lecture
+  return node.children.reduce((sum, child) => sum + totalDuration(child), 0); // recurse
+}
+function countLectures(node) {
+  if (!node.children) return 1;
+  return node.children.reduce((n, child) => n + countLectures(child), 0);
+}
+show("Whole course duration", formatHMS(totalDuration(courseTree)));
+show("Whole course lectures", countLectures(courseTree));
 
-// Binary search (recursive) and Tower of Hanoi
+// APPLIED 2: print the tree as an indented outline (sidebar menu)
+function printOutline(node, depth = 0) {
+  note("  ".repeat(depth) + (node.children ? "📁 " : "▸ ") + node.title);
+  if (node.children && depth < 1) node.children.forEach(child => printOutline(child, depth + 1));
+}
+printOutline(courseTree);
+
+// APPLIED 3: nested comment thread (Community page) — count all replies at any depth
+const thread = {
+  text: "How do closures work?", replies: [
+    { text: "A function remembers its scope", replies: [
+      { text: "Thanks!", replies: [] },
+      { text: "See lesson 4.3", replies: [{ text: "👍", replies: [] }] },
+    ]},
+    { text: "Check MDN", replies: [] },
+  ],
+};
+const countReplies = comment =>
+  comment.replies.reduce((total, r) => total + 1 + countReplies(r), 0);
+show("Total replies in thread", countReplies(thread));
+
+// APPLIED 4: find a lecture anywhere in the tree (returns the path)
+function findPath(node, title, path = []) {
+  const here = [...path, node.title];
+  if (node.title === title) return here;                 // base: found
+  for (const child of node.children ?? []) {
+    const result = findPath(child, title, here);
+    if (result) return result;                           // bubble the answer up
+  }
+  return null;                                           // not in this branch
+}
+show("Path to '4.4 Recursion'", findPath(courseTree, "4.4 Recursion")?.join(" › "));
+
+// APPLIED 5: Fibonacci — naive recursion is O(2^n), memoized is O(n)
+function fib(n, memo = new Map()) {
+  if (n <= 1) return n;
+  if (memo.has(n)) return memo.get(n);
+  const value = fib(n - 1, memo) + fib(n - 2, memo);
+  memo.set(n, value);
+  return value;
+}
+show("fib(50)", fib(50));
+
+// More practice
+const sumList = list => (list.length === 0 ? 0 : list[0] + sumList(list.slice(1)));
+const reverseText = s => (s === "" ? "" : reverseText(s.slice(1)) + s[0]);
+const power = (base, exp) => (exp === 0 ? 1 : base * power(base, exp - 1));
 function binarySearch(sorted, target, lo = 0, hi = sorted.length - 1) {
   if (lo > hi) return -1;
   const mid = Math.floor((lo + hi) / 2);
   if (sorted[mid] === target) return mid;
-  return sorted[mid] < target
-    ? binarySearch(sorted, target, mid + 1, hi)
-    : binarySearch(sorted, target, lo, mid - 1);
+  return sorted[mid] < target ? binarySearch(sorted, target, mid + 1, hi) : binarySearch(sorted, target, lo, mid - 1);
 }
-function hanoi(n, from = "A", to = "C", via = "B", moves = []) {
-  if (n === 0) return moves;
-  hanoi(n - 1, from, via, to, moves);
-  moves.push(`${from}->${to}`);
-  hanoi(n - 1, via, to, from, moves);
-  return moves;
-}
-console.log(binarySearch([1, 3, 5, 7, 9, 11], 7), hanoi(3).join(" "));
+show("sumList([1,2,3,4])", sumList([1, 2, 3, 4]));
+show("reverseText('hello')", reverseText("hello"));
+show("power(2, 10)", power(2, 10));
+show("binarySearch([1,3,5,7,9], 7)", binarySearch([1, 3, 5, 7, 9], 7));
+
 
 /* ============================================================================
- * MODULE 4 ASSIGNMENT: GRADE CALCULATOR
+ * A4. MODULE 4 ASSIGNMENT — GRADE CALCULATOR
  * ============================================================================
- * Uses functions with defaults, validation, arrays of objects, reduce,
- * map/filter, sorting, switch/if, and formatted output.
+ * Uses: functions with defaults, validation + errors, arrays of objects,
+ *       map/filter/reduce/sort, if/else, closures (config), formatted output.
  */
-section("Module 4 Assignment: Grade Calculator");
+lesson("A4. Assignment: Grade Calculator");
 
-const GRADE_SCALE = [
-  { min: 90, letter: "A" },
-  { min: 80, letter: "B" },
-  { min: 70, letter: "C" },
-  { min: 60, letter: "D" },
-  { min: 0,  letter: "F" },
+const GRADE_SCALE = [            // must stay sorted high → low (find() takes the first match)
+  { min: 90, letter: "A", gpa: 4.0 },
+  { min: 80, letter: "B", gpa: 3.0 },
+  { min: 70, letter: "C", gpa: 2.0 },
+  { min: 60, letter: "D", gpa: 1.0 },
+  { min: 0,  letter: "F", gpa: 0.0 },
 ];
+const DEFAULT_WEIGHTS = { assignments: 0.3, midterm: 0.3, final: 0.4 };
 
 function isValidScore(score) {
   return typeof score === "number" && Number.isFinite(score) && score >= 0 && score <= 100;
 }
 
-function letterGrade(score, scale = GRADE_SCALE) {
-  if (!isValidScore(score)) throw new RangeError(`Invalid score: ${score}`);
-  return scale.find(g => score >= g.min).letter; // scale sorted high -> low
+function gradeFor(score) {
+  if (!isValidScore(score)) throw new RangeError(`Invalid score: ${score}`); // fail loudly
+  return GRADE_SCALE.find(g => score >= g.min);
 }
 
-// Weighted average: [{ score, weight }] — weights don't need to sum to 1
-function weightedAverage(items) {
-  const totalWeight = items.reduce((acc, it) => acc + it.weight, 0);
-  if (totalWeight === 0) return 0;
-  return items.reduce((acc, it) => acc + it.score * it.weight, 0) / totalWeight;
+function weightedAverage(student, weights = DEFAULT_WEIGHTS) {
+  let total = 0, weightSum = 0;
+  for (const [part, weight] of Object.entries(weights)) {
+    const raw = student[part];
+    // assignments can be a list → average it first
+    const score = Array.isArray(raw) ? raw.reduce((a, s) => a + s, 0) / raw.length : raw;
+    if (!isValidScore(score)) throw new RangeError(`${student.name}: invalid ${part} (${raw})`);
+    total += score * weight;
+    weightSum += weight;
+  }
+  return total / weightSum;
 }
 
-function studentReport(student, weights = { homework: 0.3, midterm: 0.3, final: 0.4 }) {
-  const parts = Object.entries(weights).map(([key, weight]) => ({ score: student[key], weight }));
-  const avg = weightedAverage(parts);
-  return { name: student.name, average: +avg.toFixed(2), grade: letterGrade(avg), passed: avg >= 60 };
+function reportCard(student) {
+  const average = +weightedAverage(student).toFixed(1);
+  const { letter, gpa } = gradeFor(average);
+  return { name: student.name, average, letter, gpa, status: average >= 60 ? "PASS" : "FAIL" };
 }
 
-function classSummary(students) {
-  const reports = students.map(s => studentReport(s)).sort((m, n) => n.average - m.average);
-  const averages = reports.map(r => r.average);
-  const distribution = reports.reduce((acc, r) => ({ ...acc, [r.grade]: (acc[r.grade] ?? 0) + 1 }), {});
+function classReport(students) {
+  const cards = [], errors = [];
+  for (const s of students) {
+    try {
+      cards.push(reportCard(s));
+    } catch (err) {
+      errors.push(err.message);              // one bad record doesn't kill the report
+      continue;
+    }
+  }
+  cards.sort((a, b) => b.average - a.average);  // rank: best first
+  const averages = cards.map(c => c.average);
   return {
-    reports,
-    classAverage: +(averages.reduce((acc, v) => acc + v, 0) / averages.length).toFixed(2),
-    highest: reports[0],
-    lowest: reports.at(-1),
-    passRate: `${Math.round((reports.filter(r => r.passed).length / reports.length) * 100)}%`,
-    distribution,
+    cards,
+    errors,
+    classAverage: +(averages.reduce((a, v) => a + v, 0) / averages.length).toFixed(1),
+    top: cards[0]?.name,
+    passRate: `${Math.round((cards.filter(c => c.status === "PASS").length / cards.length) * 100)}%`,
+    distribution: cards.reduce((acc, c) => ({ ...acc, [c.letter]: (acc[c.letter] ?? 0) + 1 }), {}),
   };
 }
 
-const students = [
-  { name: "Mohamad", homework: 95, midterm: 88, final: 92 },
-  { name: "Sara",    homework: 78, midterm: 82, final: 74 },
-  { name: "Omar",    homework: 60, midterm: 55, final: 58 },
-  { name: "Lina",    homework: 85, midterm: 91, final: 79 },
+const classStudents = [
+  { name: "Mohamad", assignments: [95, 100, 90], midterm: 88, final: 92 },
+  { name: "Sara",    assignments: [80, 75, 85],  midterm: 82, final: 74 },
+  { name: "Omar",    assignments: [60, 50, 70],  midterm: 55, final: 58 },
+  { name: "Lina",    assignments: [90, 85, 88],  midterm: 91, final: 79 },
+  { name: "Ghost",   assignments: [100],         midterm: 140, final: 90 }, // bad data on purpose
 ];
-const summary = classSummary(students);
-console.table(summary.reports);
-console.log("Class average:", summary.classAverage, "| Pass rate:", summary.passRate);
-console.log("Top:", summary.highest.name, "| Lowest:", summary.lowest.name, "| Distribution:", summary.distribution);
-
-// Error handling (try/catch) for bad input
-try {
-  letterGrade(150);
-} catch (err) {
-  console.log(`${err.name}: ${err.message}`);
-} finally {
-  console.log("finally always runs");
-}
+const report = classReport(classStudents);
+console.table(report.cards);
+show("Class average", report.classAverage);
+show("Top student", report.top);
+show("Pass rate", report.passRate);
+show("Distribution", report.distribution);
+show("Rejected records", report.errors);
 
 async function gradeCalculatorInteractive() {
   const scores = [];
-  console.log("Enter scores (0-100). Empty line to finish.");
+  console.log("Enter scores 0–100, one per line. Empty line to finish.");
   while (true) {
     const raw = await ask(`Score #${scores.length + 1}: `);
-    if (!raw?.trim()) break;               // empty line or input closed
-    const n = parseNumber(raw);
-    if (!isValidScore(n)) { console.log("Invalid, try again."); continue; }
-    scores.push(n);
+    if (!raw?.trim()) break;                       // empty line or input closed
+    const score = parseNumber(raw);
+    if (!isValidScore(score)) { console.log("❌ Must be a number 0–100."); continue; }
+    scores.push(score);
   }
   if (scores.length === 0) return console.log("No scores entered.");
-  const avg = scores.reduce((acc, v) => acc + v, 0) / scores.length;
-  console.log(`Average: ${avg.toFixed(2)} -> ${letterGrade(avg)} | max ${Math.max(...scores)} | min ${Math.min(...scores)}`);
+  const avg = scores.reduce((a, s) => a + s, 0) / scores.length;
+  const { letter, gpa } = gradeFor(avg);
+  console.log(`Average ${avg.toFixed(1)} → ${letter} (GPA ${gpa}) | best ${Math.max(...scores)} | worst ${Math.min(...scores)}`);
 }
+
 
 /* ============================================================================
- * X. BONUS: OBJECTS IN 30 SECONDS + GOTCHAS CHEAT SHEET
- * ============================================================================ */
-section("X. Objects + Gotchas");
-
-const book = {
-  title: "Eloquent JavaScript",
-  "page count": 472,                  // keys with spaces need quotes + bracket access
-  tags: ["js", "programming"],
-  describe() { return `${this.title} (${this["page count"]} pages)`; },
-};
-book.year = 2024;                     // add property
-delete book.tags;                     // remove property
-const dynamicKey = "title";
-console.log(book[dynamicKey], "year" in book, book.describe());
-const clone = { ...book, title: "Copy" };   // spread copy + override
-console.log(Object.keys(clone));
-
-// Class syntax (sugar over prototypes) — familiar if you know Java
-class Animal {
-  #secret = "private field";          // # = truly private
-  constructor(name) { this.name = name; }
-  speak() { return `${this.name} makes a sound`; }
-  static create(name) { return new Animal(name); }
-}
-class Dog extends Animal {
-  speak() { return `${super.speak()} — woof`; }
-}
-console.log(new Dog("Rex").speak());
-
-/*
- * GOTCHAS CHEAT SHEET (coming from Java / C / Python)
- *  - Use === / !==, never == / != (coercion surprises).
- *  - const/let, never var. const doesn't make objects immutable.
- *  - Only one number type (double). 7/2 = 3.5; use Math.trunc for int division.
- *  - 0.1 + 0.2 !== 0.3. For money use integer cents or BigInt.
- *  - NaN !== NaN -> use Number.isNaN().
- *  - [] and {} and "0" are TRUTHY. Empty array check: arr.length === 0.
- *  - typeof null === "object"; typeof [] === "object" -> Array.isArray().
- *  - arr.sort() sorts as strings unless you pass (a, b) => a - b.
- *  - Out-of-range index returns undefined, no exception.
- *  - Arrays/objects are references: copy with [...arr] / {...obj} / structuredClone.
- *  - `||` replaces 0 and ""; use `??` for "only if null/undefined".
- *  - Never put a newline right after `return`.
- *  - for...in = object keys; for...of = iterable values.
- *  - forEach can't break; use for...of / some / every.
- *  - Missing function args are undefined; no overloading.
- *  - Arrow functions don't have their own `this`; don't use them as object methods.
- *  - Strings are immutable; all string methods return new strings.
+ * ★ CHEAT SHEET — THE 20 JAVASCRIPT GOTCHAS (read this before any interview)
+ * ============================================================================
+ *  1. Use === and !==. Never == (it converts types: 0 == "" is true).
+ *  2. const by default, let when reassigning, never var.
+ *  3. const object ≠ immutable object (use Object.freeze if needed).
+ *  4. One number type: 7 / 2 = 3.5. Integer division: Math.trunc(a / b).
+ *  5. 0.1 + 0.2 !== 0.3 → store money in cents.
+ *  6. NaN !== NaN → use Number.isNaN(x).
+ *  7. Falsy: false 0 "" null undefined NaN (and -0, 0n). [] and {} are TRUTHY.
+ *  8. typeof null === "object"; typeof [] === "object" → Array.isArray().
+ *  9. "5" + 1 = "51" but "5" - 1 = 4. Convert input with Number().
+ * 10. || replaces 0 and "" too → use ?? for "only if null/undefined".
+ * 11. obj?.a?.b → undefined instead of a crash on missing data.
+ * 12. arr.sort() sorts as STRINGS → arr.sort((a, b) => a - b).
+ * 13. Out-of-range index → undefined, not an exception.
+ * 14. Arrays/objects are references: copy with [...arr], {...obj}, structuredClone().
+ * 15. [1] === [1] is false (reference comparison).
+ * 16. for...of → values; for...in → object keys. Don't use for...in on arrays.
+ * 17. forEach can't break → use for...of, or find/some/every.
+ * 18. Missing arguments = undefined. No overloading; use defaults/options objects.
+ * 19. Never put a line break right after `return`.
+ * 20. Arrow functions have no own `this` → don't use them as object methods.
  */
+
 
 /* ============================================================================
  * RUN THE INTERACTIVE ASSIGNMENTS (only with --interactive)
  * ============================================================================ */
 async function main() {
   if (!process.argv.includes("--interactive")) {
-    section("Done. Run with --interactive to play the assignments.");
+    lesson("✔ Done. Run with --interactive to play the 3 assignments yourself.");
     return;
   }
-  section("Interactive: Temperature Converter");
+  lesson("A1 (interactive): Temperature Converter");
   await temperatureConverterInteractive();
-  section("Interactive: Number Guessing Game");
+  lesson("A3 (interactive): Number Guessing Game");
   await guessingGameInteractive();
-  section("Interactive: Grade Calculator");
+  lesson("A4 (interactive): Grade Calculator");
   await gradeCalculatorInteractive();
   rl?.close();
 }
